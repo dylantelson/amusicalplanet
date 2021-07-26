@@ -10,6 +10,7 @@ const MapPage = (props) => {
         <MapChart
           setTooltipContent={props.setTooltipContent}
           setCurrChosen={props.setCurrChosen}
+          currChosen={props.currChosen}
         />
       </div>
     </>

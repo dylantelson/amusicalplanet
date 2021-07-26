@@ -118,6 +118,7 @@ const Play = (props) => {
         {...props}
         setTooltipContent={setMapContent}
         setCurrChosen={setCurrChosen}
+        currChosen={currChosen}
       />
       <ReactTooltip>{mapContent}</ReactTooltip>
       <div>

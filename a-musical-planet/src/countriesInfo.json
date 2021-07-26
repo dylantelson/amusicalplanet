@@ -559,8 +559,8 @@
             "America/Dawson"
         ], 
         "latlng": [
-            60, 
-            -95
+            55, 
+            -105
         ], 
         "name": "Canada", 
         "area": 9970610.00,
@@ -933,8 +933,8 @@
             "Africa/El_Aaiun"
         ], 
         "latlng": [
-            24.5, 
-            -13
+            24, 
+            -12.7
         ], 
         "name": "Western Sahara",
         "area": 266000.00, 
@@ -1937,7 +1937,7 @@
         ], 
         "latlng": [
             17, 
-            -4
+            -2
         ], 
         "name": "Mali", 
         "area": 1240192.00,
@@ -2069,7 +2069,6 @@
             57.55
         ], 
         "name": "Mauritius", 
-        "area": 2040.00,
         "country_code": "MU", 
         "capital": "Port Louis"
     }, 
@@ -2583,8 +2582,8 @@
             "Africa/Dakar"
         ], 
         "latlng": [
-            14, 
-            -14
+            14.4, 
+            -15.5
         ], 
         "name": "Senegal", 
         "area": 196722.00,
@@ -2827,7 +2826,6 @@
             55.66666666
         ], 
         "name": "Seychelles", 
-        "area": 455.00,
         "country_code": "SC", 
         "capital": "Victoria"
     }, 

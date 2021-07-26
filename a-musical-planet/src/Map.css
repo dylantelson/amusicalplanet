@@ -4,6 +4,15 @@
   border: 2px solid black;
 }
 
+/* .rsm-marker {
+  color: "#ACACAC";
+  width: 100px;
+  display: block;
+  max-width: 100px;
+  white-space: pre-wrap;
+  height: 100px;
+} */
+
 /* svg {
   display: inline-block;
   vertical-align: middle;
