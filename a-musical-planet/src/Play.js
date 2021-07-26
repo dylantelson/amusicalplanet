@@ -6,6 +6,9 @@ import {
   Link,
   Redirect,
 } from "react-router-dom";
+import ReactTooltip from "react-tooltip";
+
+import MapPage from "./MapPage";
 
 const Playlists = [
   "6m36M8JSof1zJr7T0dAUF0",
@@ -18,25 +21,26 @@ const Playlists = [
 ];
 
 const Play = (props) => {
-  console.log("acctok: ", props.accessToken);
   const [currArtist, setCurrArtist] = useState("");
   const [currCountry, setCurrCountry] = useState("");
   const [currTrack, setCurrTrack] = useState("");
   const [currImage, setCurrImage] = useState("");
-  const [redirect, setRedirect] = useState(false);
+  const [redirect, setRedirect] = useState("");
+
+  const [mapContent, setMapContent] = useState("");
+  const [currChosen, setCurrChosen] = useState("");
 
   const audioRef = useRef(null);
   //const imageRef = useRef(null);
   //props.spotifyApi.setAccessToken(props.token);
-  console.log("tok: ", props.accessToken);
 
   const getNewArtist = () => {
-    console.log("mylittleboy: ", props.accessToken);
     if (props.accessToken === null || props.accessToken === "") {
       console.log("REDIRECTING");
-      setRedirect(true);
+      setRedirect("login");
       return;
     }
+
     const currPlaylistIndex = Math.floor(Math.random() * Playlists.length);
     fetch(
       `https://api.spotify.com/v1/playlists/${Playlists[currPlaylistIndex]}`,
@@ -46,7 +50,6 @@ const Play = (props) => {
     )
       .then((response) => response.json())
       .then((data) => {
-        console.log(data);
         let track = "";
         let artist = "";
         let country = "";
@@ -70,19 +73,35 @@ const Play = (props) => {
       });
   };
 
+  const guessGiven = () => {
+    if (currCountry === currChosen) {
+      alert(`${currChosen} is correct!`);
+    } else {
+      alert(`You guessed ${currChosen} but the answer was ${currCountry}!`);
+    }
+    getNewArtist();
+  };
+
+  const goToMap = () => {
+    setRedirect("map");
+  };
+
   useEffect(() => {
     getNewArtist();
   }, []);
 
-  if (redirect) return <Redirect to="/login" />;
+  if (redirect === "login") return <Redirect to="/login" />;
+  else if (redirect === "map") return <Redirect to="/map" />;
   return (
     <>
       <div>
-        <h1>Artist: {currArtist}</h1>
-        <h1>Country: {currCountry}</h1>
-      </div>
-      <div>
-        <img src={currImage} alt="Album image" width="300" height="300"></img>
+        <span>
+          <h2>Artist: {currArtist}</h2>
+          <h2>Country: {currCountry}</h2>
+        </span>
+        <span>
+          <img src={currImage} alt="Album image" width="300" height="300"></img>
+        </span>
       </div>
       <div>
         <audio controls id="music" ref={audioRef}>
@@ -95,8 +114,23 @@ const Play = (props) => {
           {/* Your browser does not support the audio element. */}
         </audio>
       </div>
+      <MapPage
+        {...props}
+        setTooltipContent={setMapContent}
+        setCurrChosen={setCurrChosen}
+      />
+      <ReactTooltip>{mapContent}</ReactTooltip>
+      <div>
+        <h2>Curr Guess: {currChosen}</h2>
+      </div>
+      <div>
+        <button onClick={guessGiven}>Submit Guess</button>
+      </div>
       <div>
         <button onClick={getNewArtist}>New Song</button>
+      </div>
+      <div>
+        <button onClick={goToMap}>Map</button>
       </div>
     </>
   );

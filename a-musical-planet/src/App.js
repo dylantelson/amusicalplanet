@@ -13,6 +13,9 @@ import { Credentials } from "./Credentials";
 import Auth from "./Auth";
 import Play from "./Play";
 import queryString from "query-string";
+
+import ReactTooltip from "react-tooltip";
+
 const SpotifyWebApi = require("spotify-web-api-node");
 
 function App() {
@@ -23,7 +26,9 @@ function App() {
   var spotifyApi = new SpotifyWebApi(Credentials());
 
   const handleLogin = () => {
-    window.location.replace("http://localhost:8888/login");
+    window.location.replace(
+      "https://a-musical-planet-backend.herokuapp.com/login"
+    );
   };
 
   const handleAuth = () => {
@@ -53,6 +58,14 @@ function App() {
             Login
           </button>
         </Route>
+        <Route
+          path="/map"
+          render={(props) => (
+            <div>
+              <h1>You shouldn't be here</h1>
+            </div>
+          )}
+        />
         <Route path="/play">
           <Play accessToken={accessToken} token={accessToken} />
         </Route>
