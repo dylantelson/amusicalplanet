@@ -1,0 +1,124 @@
+.play-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 50px;
+}
+
+.popup-container {
+  position: fixed;
+  background: #000000d8;
+  width: 100%;
+  height: 100vh;
+  top: 0;
+  left: 0;
+}
+
+.map {
+  margin-top: 20px;
+}
+
+.guess-popup {
+  color: white;
+  position: relative;
+  width: 50%;
+  max-width: 500px;
+  margin: auto;
+  height: auto;
+  max-height: 70vh;
+  margin-top: calc(100vh - 85vh - 20px);
+  background: #1db954;
+  border-radius: 4%;
+  padding: 30px 30px;
+  /* border: 1px solid #999; */
+  overflow: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.incorrect-background {
+  background: #ee6c4d;
+}
+
+h1 {
+  padding-top: 0px;
+  margin-top: 0px;
+}
+
+#score {
+  display: flex;
+  justify-content: center;
+}
+
+.popup-container img {
+  width: 30%;
+  height: auto;
+  object-fit: contain;
+  align-self: flex-start;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.popup-container text {
+  flex: 1 1 auto;
+}
+
+.text-div {
+  color: white;
+  width: 40%;
+  margin-left: 25px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.text-div h3 {
+  padding-bottom: 0px;
+  margin-top: 0px;
+  margin-bottom: 3px;
+  padding-top: 0px;
+  display: flex;
+}
+
+.text-div h4 {
+  padding-bottom: 0px;
+  padding-top: 0px;
+  margin-top: 0px;
+  display: flex;
+}
+
+.popupText {
+  display: block;
+}
+
+.song-info {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.popup-buttons {
+  margin-top: 30px;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.popup-buttons button {
+  padding: 10px 20px;
+  border-radius: 6px;
+  border-width: 0px;
+  background-color: "white";
+  font-size: 20px;
+  color: #1db954;
+  font-family: "Ubuntu", sans-serif;
+  cursor: pointer;
+  transition: 0.25s ease;
+}
+
+.incorrect-text button {
+  color: #ee6c4d;
+}
+
+.popup-buttons button:hover {
+  transform: scale(1.1);
+}

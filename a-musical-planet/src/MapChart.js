@@ -40,6 +40,8 @@ const colors = {
 function LightenDarkenColor(col, amt) {
   var usePound = false;
 
+  if (!col) return "#000";
+
   if (col[0] == "#") {
     col = col.slice(1);
     usePound = true;
@@ -66,10 +68,17 @@ function LightenDarkenColor(col, amt) {
 }
 
 const MapChart = (props) => {
-  console.log("RENDERING");
+  const hoveredStyle = (color) => {
+    return {
+      fill: LightenDarkenColor(color, 15),
+      stroke: "#000",
+      strokeWidth: 0.3,
+      outline: "none",
+    };
+  };
   const selectedStyle = (color) => {
     return {
-      fill: LightenDarkenColor(color, 20),
+      fill: LightenDarkenColor(color, 40),
       stroke: "#000",
       strokeWidth: 0.3,
       outline: "none",
@@ -115,10 +124,10 @@ const MapChart = (props) => {
             [-100, -50],
             [860, 600],
           ]}
-          onMoveEnd={(props) => {
+          onMoveEnd={({ zoom, coordinates }) => {
             setCurrPos({
-              zoom: props.zoom,
-              coordinates: props.coordinates,
+              zoom: zoom,
+              coordinates: coordinates,
             });
           }}
           maxZoom={12}
@@ -133,12 +142,6 @@ const MapChart = (props) => {
                   geography={geo}
                   onClick={() => {
                     props.setCurrChosen(geo.properties.NAME);
-                  }}
-                  onMouseEnter={() => {
-                    props.setTooltipContent(geo.properties.NAME);
-                  }}
-                  onMouseLeave={() => {
-                    props.setTooltipContent("");
                   }}
                   visibility={
                     geo.properties.CONTINENT === "Antarctica"
@@ -158,12 +161,7 @@ const MapChart = (props) => {
                     hover:
                       props.currChosen === geo.properties.NAME
                         ? selectedStyle(colors[geo.properties.CONTINENT])
-                        : {
-                            fill: colors[geo.properties.CONTINENT],
-                            stroke: "#000000",
-                            strokeWidth: 0.3,
-                            outline: "none",
-                          },
+                        : hoveredStyle(colors[geo.properties.CONTINENT]),
                   }}
                 />
               ))

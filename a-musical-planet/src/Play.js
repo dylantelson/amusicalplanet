@@ -6,35 +6,26 @@ import {
   Link,
   Redirect,
 } from "react-router-dom";
-import ReactTooltip from "react-tooltip";
 
 import MapPage from "./MapPage";
+import GuessPopup from "./GuessPopup";
+import "./Play.css";
 
-const Playlists = [
-  "6m36M8JSof1zJr7T0dAUF0",
-  "4RABU5Lx4c6u6Q28k74K6n",
-  "34TPiPoIKgqXCwKcQm36yR",
-  "7qQiRPJJuVmK2IfuBUEgG7",
-  "3ToF3Jc1dps69OxQvZxX0r",
-  "2oDF3FzMIhTPap9h8BIwre",
-  "4oVqu9orWVe2EWm26fhpz1",
-];
-
+const Playlists = require("./Playlists.json");
 const Play = (props) => {
-  const [currArtist, setCurrArtist] = useState("");
-  const [currCountry, setCurrCountry] = useState("");
-  const [currTrack, setCurrTrack] = useState("");
-  const [currImage, setCurrImage] = useState("");
+  console.log("render");
+  const [currTrack, setCurrTrack] = useState({});
   const [redirect, setRedirect] = useState("");
 
   const [mapContent, setMapContent] = useState("");
   const [currChosen, setCurrChosen] = useState("");
+  const [popupOpen, setPopupOpen] = useState(false);
 
   const audioRef = useRef(null);
-  //const imageRef = useRef(null);
-  //props.spotifyApi.setAccessToken(props.token);
 
-  const getNewArtist = () => {
+  const nextTrack = () => {
+    setPopupOpen(false);
+    setCurrChosen("");
     if (props.accessToken === null || props.accessToken === "") {
       console.log("REDIRECTING");
       setRedirect("login");
@@ -50,36 +41,34 @@ const Play = (props) => {
     )
       .then((response) => response.json())
       .then((data) => {
+        console.log(data);
         let track = "";
-        let artist = "";
-        let country = "";
+        let trackIndex = 0;
         while (track === "") {
-          const chosenIndex = Math.floor(
-            Math.random() * data.tracks.items.length
-          );
-          const possibleTrack = data.tracks.items[chosenIndex].track;
-          if (possibleTrack != null) {
-            track = possibleTrack;
-            artist = data.tracks.items[chosenIndex].track.artists[0].name;
-            country = data.name;
-          }
+          trackIndex = Math.floor(Math.random() * data.tracks.items.length);
+          track = data.tracks.items[trackIndex].track;
         }
-        setCurrArtist(artist);
-        setCurrTrack(track.preview_url);
-        setCurrCountry(country);
-        setCurrImage(track.album.images[0].url);
+        setCurrTrack({
+          url: track.preview_url,
+          artist: data.tracks.items[trackIndex].track.artists[0].name,
+          album: data.tracks.items[trackIndex].track.album.name,
+          image: data.tracks.items[trackIndex].track.album.images[0].url,
+          country: data.name,
+          name: data.tracks.items[trackIndex].track.name,
+        });
         audioRef.current.load();
         audioRef.current.play();
       });
   };
 
   const guessGiven = () => {
-    if (currCountry === currChosen) {
-      alert(`${currChosen} is correct!`);
-    } else {
-      alert(`You guessed ${currChosen} but the answer was ${currCountry}!`);
-    }
-    getNewArtist();
+    setPopupOpen(true);
+    // if (currTrack.country === currChosen) {
+    //   //alert(`${currChosen} is correct!`);
+    // } else {
+    //   //alert(  `You guessed ${currChosen} but the answer was ${currTrack.country}!`);
+    // }
+    // getNewArtist();
   };
 
   const goToMap = () => {
@@ -87,51 +76,59 @@ const Play = (props) => {
   };
 
   useEffect(() => {
-    getNewArtist();
+    nextTrack();
   }, []);
 
   if (redirect === "login") return <Redirect to="/login" />;
   else if (redirect === "map") return <Redirect to="/map" />;
   return (
     <>
-      <div>
+      {/* <h2>Country: {currTrack.country}</h2> */}
+      {/* <div>
         <span>
-          <h2>Artist: {currArtist}</h2>
-          <h2>Country: {currCountry}</h2>
+          <h2>Artist: {currTrack.artist}</h2>
+          <h2>Country: {currTrack.country}</h2>
         </span>
         <span>
-          <img src={currImage} alt="Album image" width="300" height="300"></img>
+          <img src={currTrack.image} alt="Album image" width="300" height="300"></img>
         </span>
-      </div>
-      <div>
+      </div> */}
+      <div className="play-section">
         <audio controls id="music" ref={audioRef}>
           <source
             volume="2"
             allow="autoplay"
-            src={currTrack}
+            src={currTrack.url}
             type="audio/mpeg"
           ></source>
           {/* Your browser does not support the audio element. */}
         </audio>
-      </div>
-      <MapPage
-        {...props}
-        setTooltipContent={setMapContent}
-        setCurrChosen={setCurrChosen}
-        currChosen={currChosen}
-      />
-      <ReactTooltip>{mapContent}</ReactTooltip>
-      <div>
-        <h2>Curr Guess: {currChosen}</h2>
-      </div>
-      <div>
-        <button onClick={guessGiven}>Submit Guess</button>
-      </div>
-      <div>
+        <div className="map-div">
+          <MapPage
+            {...props}
+            setCurrChosen={setCurrChosen}
+            currChosen={currChosen}
+          />
+        </div>
+        <div>
+          <h2>Curr Guess: {currChosen}</h2>
+        </div>
+        <div>
+          <button onClick={guessGiven}>Submit Guess</button>
+        </div>
+        {popupOpen && (
+          <GuessPopup
+            currTrack={currTrack}
+            currChosen={currChosen}
+            nextTrack={nextTrack}
+          />
+        )}
+        {/* <div>
         <button onClick={getNewArtist}>New Song</button>
       </div>
       <div>
         <button onClick={goToMap}>Map</button>
+      </div> */}
       </div>
     </>
   );

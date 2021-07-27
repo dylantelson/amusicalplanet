@@ -8,7 +8,6 @@ const MapPage = (props) => {
     <>
       <div className="map">
         <MapChart
-          setTooltipContent={props.setTooltipContent}
           setCurrChosen={props.setCurrChosen}
           currChosen={props.currChosen}
         />
