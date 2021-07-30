@@ -24,6 +24,8 @@ const rounded = (num) => {
   }
 };
 
+const borderWidth = 0.2;
+
 const colors = {
   Asia: "#E5B961",
   Europe: "#D4A29C",
@@ -72,7 +74,7 @@ const MapChart = (props) => {
     return {
       fill: LightenDarkenColor(color, 15),
       stroke: "#000",
-      strokeWidth: 0.3,
+      strokeWidth: borderWidth,
       outline: "none",
     };
   };
@@ -80,7 +82,7 @@ const MapChart = (props) => {
     return {
       fill: LightenDarkenColor(color, 40),
       stroke: "#000",
-      strokeWidth: 0.3,
+      strokeWidth: borderWidth,
       outline: "none",
     };
   };
@@ -130,7 +132,7 @@ const MapChart = (props) => {
               coordinates: coordinates,
             });
           }}
-          maxZoom={12}
+          maxZoom={6}
           zoom={currPos.zoom}
           center={currPos.coordinates}
         >
@@ -155,7 +157,7 @@ const MapChart = (props) => {
                         : {
                             fill: colors[geo.properties.CONTINENT],
                             stroke: "#000000",
-                            strokeWidth: 0.3,
+                            strokeWidth: borderWidth,
                             outline: "none",
                           },
                     hover:
@@ -170,8 +172,6 @@ const MapChart = (props) => {
           {countries.map((country) => {
             return (
               <Marker
-                //markerHeight="5"
-                scale={5}
                 coordinates={[country.latlng[1], country.latlng[0]]}
                 fill="#000"
               >

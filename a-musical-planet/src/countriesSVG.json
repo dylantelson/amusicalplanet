@@ -35402,7 +35402,7 @@
           ],
           "type": "Polygon",
           "properties": {
-            "NAME": "Dem. Rep. Congo",
+            "NAME": "DR Congo",
             "NAME_LONG": "Democratic Republic of the Congo",
             "ABBREV": "D.R.C.",
             "FORMAL_EN": "Democratic Republic of the Congo",
@@ -39468,7 +39468,7 @@
           ],
           "type": "MultiPolygon",
           "properties": {
-            "NAME": "United States of America",
+            "NAME": "United States",
             "NAME_LONG": "United States",
             "ABBREV": "U.S.A.",
             "FORMAL_EN": "United States of America",

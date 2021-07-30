@@ -10,24 +10,34 @@ import {
 import MapPage from "./MapPage";
 import GuessPopup from "./GuessPopup";
 import "./Play.css";
+import haversine from "haversine-distance";
+
+const maxScore = 5000;
 
 const Playlists = require("./Playlists.json");
+const countries = require("./countriesInfo.json");
+
 const Play = (props) => {
-  console.log("render");
+  console.log("Cookies", document.cookie);
   const [currTrack, setCurrTrack] = useState({});
   const [redirect, setRedirect] = useState("");
 
   const [mapContent, setMapContent] = useState("");
   const [currChosen, setCurrChosen] = useState("");
-  const [popupOpen, setPopupOpen] = useState(false);
+  //first value is a bool on whether to show popup,
+  //second is the score to show
+  const [popup, setPopup] = useState({
+    show: false,
+    roundScore: 0,
+    sessionScore: 0,
+  });
 
   const audioRef = useRef(null);
 
   const nextTrack = () => {
-    setPopupOpen(false);
+    setPopup({ ...popup, show: false, roundScore: 0 });
     setCurrChosen("");
     if (props.accessToken === null || props.accessToken === "") {
-      console.log("REDIRECTING");
       setRedirect("login");
       return;
     }
@@ -41,13 +51,13 @@ const Play = (props) => {
     )
       .then((response) => response.json())
       .then((data) => {
-        console.log(data);
         let track = "";
         let trackIndex = 0;
         while (track === "") {
           trackIndex = Math.floor(Math.random() * data.tracks.items.length);
           track = data.tracks.items[trackIndex].track;
         }
+        console.log(track);
         setCurrTrack({
           url: track.preview_url,
           artist: data.tracks.items[trackIndex].track.artists[0].name,
@@ -58,11 +68,51 @@ const Play = (props) => {
         });
         audioRef.current.load();
         audioRef.current.play();
+      })
+      .catch((err) => {
+        console.log("ERROR LOADING TRACK");
+        console.log(err);
+        window.location.replace("http://localhost:8888/getNewToken");
       });
   };
 
   const guessGiven = () => {
-    setPopupOpen(true);
+    if (currChosen === currTrack.country) {
+      setPopup({
+        sessionScore: popup.sessionScore + maxScore,
+        show: true,
+        roundScore: maxScore,
+      });
+      return;
+    }
+    const chosenCountryCoords = countries.filter(function (country) {
+      return country.name === currChosen;
+    })[0].latlng;
+
+    const currTrackCountryCoords = countries.filter(function (country) {
+      return country.name === currTrack.country;
+    })[0].latlng;
+    console.log("Chosen Country Coords for", currChosen, chosenCountryCoords);
+    console.log(
+      "Correct Country Coords",
+      currTrack.country,
+      currTrackCountryCoords
+    );
+
+    let score =
+      maxScore -
+      Math.ceil(
+        haversine(chosenCountryCoords, currTrackCountryCoords) / 1000 / 2
+      );
+
+    if (score < 0) score = 0;
+    console.log("Setting score:", score);
+
+    setPopup({
+      show: true,
+      roundScore: score,
+      sessionScore: popup.sessionScore + score,
+    });
     // if (currTrack.country === currChosen) {
     //   //alert(`${currChosen} is correct!`);
     // } else {
@@ -116,11 +166,13 @@ const Play = (props) => {
         <div>
           <button onClick={guessGiven}>Submit Guess</button>
         </div>
-        {popupOpen && (
+        {popup.show && (
           <GuessPopup
             currTrack={currTrack}
             currChosen={currChosen}
             nextTrack={nextTrack}
+            roundScore={popup.roundScore}
+            sessionScore={popup.sessionScore}
           />
         )}
         {/* <div>

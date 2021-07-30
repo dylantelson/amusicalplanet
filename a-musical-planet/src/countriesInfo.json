@@ -668,7 +668,7 @@
             -1, 
             15
         ], 
-        "name": "Republic of the Congo", 
+        "name": "Congo", 
         "area": 342000.00,
         "country_code": "CG", 
         "capital": "Brazzaville"
@@ -3064,20 +3064,6 @@
     }, 
     {
         "timezones": [
-            "Pacific/Johnston", 
-            "Pacific/Midway", 
-            "Pacific/Wake"
-        ], 
-        "latlng": [
-            19.2911437, 
-            166.618332
-        ], 
-        "name": "United States Minor Outlying Islands", 
-        "country_code": "UM", 
-        "capital": null
-    }, 
-    {
-        "timezones": [
             "America/Montevideo"
         ], 
         "latlng": [
@@ -3192,18 +3178,6 @@
         "name": "British Virgin Islands", 
         "country_code": "VG", 
         "capital": "Road Town"
-    }, 
-    {
-        "timezones": [
-            "America/St_Thomas"
-        ], 
-        "latlng": [
-            18.35, 
-            -64.933333
-        ], 
-        "name": "United States Virgin Islands", 
-        "country_code": "VI", 
-        "capital": "Charlotte Amalie"
     }, 
     {
         "timezones": [

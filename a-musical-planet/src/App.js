@@ -26,12 +26,12 @@ function App() {
   var spotifyApi = new SpotifyWebApi(Credentials());
 
   const handleLogin = () => {
-    window.location.replace(
-      "https://a-musical-planet-backend.herokuapp.com/login"
-    );
+    window.location.replace("http://localhost:8888/login");
   };
 
   const handleAuth = () => {
+    if (accessToken !== "") return;
+    console.count("Handling AUTH");
     console.log(
       new URLSearchParams(window.location.search).get("access_token")
     );
@@ -41,6 +41,23 @@ function App() {
     setRefreshToken(
       new URLSearchParams(window.location.search).get("refresh_token")
     );
+    axios("https://api.spotify.com/v1/me", {
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+        Authorization:
+          "Bearer " +
+          new URLSearchParams(window.location.search).get("access_token"),
+      },
+      method: "GET",
+    }).then((userData) => {
+      console.log("userData:", userData);
+      console.log("Saving cookie");
+      let expireDate = new Date();
+      expireDate.setMonth((expireDate.getMonth() + 1) % 12);
+      // document.cookie =
+      //   "session=" + userData.data.id + "; expires=" + expireDate.toUTCString();
+    });
     setRedirect(true);
   };
 
