@@ -37,7 +37,7 @@ const GuessPopup = ({
         <div className="song-info">
           <img
             src={currTrack.image}
-            alt="Album image"
+            alt="Song Album"
             width="300"
             height="300"
           ></img>

@@ -1,4 +1,4 @@
-import React, { memo, useState, useEffect } from "react";
+import React, { memo, useState } from "react";
 import {
   ZoomableGroup,
   ComposableMap,
@@ -13,16 +13,6 @@ import "./Map.css";
 const countries = require("./countriesInfo.json");
 
 const geoSVG = require("./countriesSVG.json");
-
-const rounded = (num) => {
-  if (num > 1000000000) {
-    return Math.round(num / 100000000) / 10 + "Bn";
-  } else if (num > 1000000) {
-    return Math.round(num / 100000) / 10 + "M";
-  } else {
-    return Math.round(num / 100) / 10 + "K";
-  }
-};
 
 const borderWidth = 0.2;
 
@@ -43,7 +33,7 @@ function LightenDarkenColor(col, amt) {
 
   if (!col) return "#000";
 
-  if (col[0] == "#") {
+  if (col[0] === "#") {
     col = col.slice(1);
     usePound = true;
   }
@@ -107,8 +97,8 @@ const MapChart = (props) => {
 
   const [currPos, setCurrPos] = useState({ zoom: 1, coordinates: [0, 0] });
   const projection = geoMercator()
-    .scale(153)
-    .center([40, 50])
+    .scale(170)
+    .center([40, 40])
     .rotate([-10, 0, 0]);
 
   //Uncomment this to make map reset after guess

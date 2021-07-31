@@ -1,33 +1,22 @@
 //import "./App.css";
-import React, { useState, useEffect, useCallback } from "react";
+import React, { useState } from "react";
 import {
   BrowserRouter as Router,
   Switch,
   Route,
-  Link,
   Redirect,
 } from "react-router-dom";
 
 import "./App.css";
 import axios from "axios";
-import { Credentials } from "./Credentials";
-import Auth from "./Auth";
 import Play from "./Play";
 import Header from "./Header";
 import Login from "./Login";
-import queryString from "query-string";
-
-import ReactTooltip from "react-tooltip";
-
-const SpotifyWebApi = require("spotify-web-api-node");
 
 function App() {
   const [accessToken, setAccessToken] = useState("");
-  const [refreshToken, setRefreshToken] = useState("");
   const [redirect, setRedirect] = useState(false);
   const [userData, setUserData] = useState({ username: "", totalScore: 0 });
-
-  var spotifyApi = new SpotifyWebApi(Credentials());
 
   const handleLogin = () => {
     window.location.replace("http://localhost:8888/login");
@@ -41,9 +30,6 @@ function App() {
     );
     setAccessToken(
       new URLSearchParams(window.location.search).get("access_token")
-    );
-    setRefreshToken(
-      new URLSearchParams(window.location.search).get("refresh_token")
     );
     axios("https://api.spotify.com/v1/me", {
       headers: {

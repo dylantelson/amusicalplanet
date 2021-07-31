@@ -1,11 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link,
-  Redirect,
-} from "react-router-dom";
+import { Redirect } from "react-router-dom";
 
 import MapPage from "./MapPage";
 import GuessPopup from "./GuessPopup";
@@ -22,7 +16,6 @@ const Play = (props) => {
   const [currTrack, setCurrTrack] = useState({});
   const [redirect, setRedirect] = useState("");
 
-  const [mapContent, setMapContent] = useState("");
   const [currChosen, setCurrChosen] = useState("");
   //first value is a bool on whether to show popup,
   //second is the score to show
@@ -116,10 +109,6 @@ const Play = (props) => {
     //   //alert(  `You guessed ${currChosen} but the answer was ${currTrack.country}!`);
     // }
     // getNewArtist();
-  };
-
-  const goToMap = () => {
-    setRedirect("map");
   };
 
   useEffect(() => {
