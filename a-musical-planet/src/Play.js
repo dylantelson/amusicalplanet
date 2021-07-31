@@ -9,6 +9,7 @@ import {
 
 import MapPage from "./MapPage";
 import GuessPopup from "./GuessPopup";
+import CountryGuessInfo from "./CountryGuessInfo.js";
 import "./Play.css";
 import haversine from "haversine-distance";
 
@@ -18,7 +19,6 @@ const Playlists = require("./Playlists.json");
 const countries = require("./countriesInfo.json");
 
 const Play = (props) => {
-  console.log("Cookies", document.cookie);
   const [currTrack, setCurrTrack] = useState({});
   const [redirect, setRedirect] = useState("");
 
@@ -42,9 +42,13 @@ const Play = (props) => {
       return;
     }
 
-    const currPlaylistIndex = Math.floor(Math.random() * Playlists.length);
+    let currPlaylistIndex = Math.floor(Math.random() * Playlists.length);
+    if (Playlists[currPlaylistIndex].country === currTrack.country) {
+      if (currPlaylistIndex > 0) currPlaylistIndex--;
+      else currPlaylistIndex++;
+    }
     fetch(
-      `https://api.spotify.com/v1/playlists/${Playlists[currPlaylistIndex]}`,
+      `https://api.spotify.com/v1/playlists/${Playlists[currPlaylistIndex].playlistId}`,
       {
         headers: { Authorization: "Bearer " + props.accessToken },
       }
@@ -92,12 +96,6 @@ const Play = (props) => {
     const currTrackCountryCoords = countries.filter(function (country) {
       return country.name === currTrack.country;
     })[0].latlng;
-    console.log("Chosen Country Coords for", currChosen, chosenCountryCoords);
-    console.log(
-      "Correct Country Coords",
-      currTrack.country,
-      currTrackCountryCoords
-    );
 
     let score =
       maxScore -
@@ -106,7 +104,6 @@ const Play = (props) => {
       );
 
     if (score < 0) score = 0;
-    console.log("Setting score:", score);
 
     setPopup({
       show: true,
@@ -133,38 +130,25 @@ const Play = (props) => {
   else if (redirect === "map") return <Redirect to="/map" />;
   return (
     <>
-      {/* <h2>Country: {currTrack.country}</h2> */}
-      {/* <div>
-        <span>
-          <h2>Artist: {currTrack.artist}</h2>
-          <h2>Country: {currTrack.country}</h2>
-        </span>
-        <span>
-          <img src={currTrack.image} alt="Album image" width="300" height="300"></img>
-        </span>
-      </div> */}
       <div className="play-section">
-        <audio controls id="music" ref={audioRef}>
-          <source
-            volume="2"
-            allow="autoplay"
-            src={currTrack.url}
-            type="audio/mpeg"
-          ></source>
-          {/* Your browser does not support the audio element. */}
-        </audio>
+        <div className="overlay">
+          <audio className="music" controls ref={audioRef}>
+            <source
+              volume="2"
+              allow="autoplay"
+              src={currTrack.url}
+              type="audio/mpeg"
+            ></source>
+            {/* Your browser does not support the audio element. */}
+          </audio>
+          <CountryGuessInfo currChosen={currChosen} guessGiven={guessGiven} />
+        </div>
         <div className="map-div">
           <MapPage
-            {...props}
+            currCountry={currTrack.country}
             setCurrChosen={setCurrChosen}
             currChosen={currChosen}
           />
-        </div>
-        <div>
-          <h2>Curr Guess: {currChosen}</h2>
-        </div>
-        <div>
-          <button onClick={guessGiven}>Submit Guess</button>
         </div>
         {popup.show && (
           <GuessPopup
@@ -175,12 +159,6 @@ const Play = (props) => {
             sessionScore={popup.sessionScore}
           />
         )}
-        {/* <div>
-        <button onClick={getNewArtist}>New Song</button>
-      </div>
-      <div>
-        <button onClick={goToMap}>Map</button>
-      </div> */}
       </div>
     </>
   );

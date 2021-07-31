@@ -1,8 +1,43 @@
 .play-section {
+  height: 90%;
+  background-color: #bdd1c5;
+}
+
+.countryGuessInfo {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  margin-top: 50px;
+  justify-content: flex-end;
+  align-items: baseline;
+  width: 100%;
+  max-height: 200px;
+  max-width: 250px;
+}
+
+.countryGuessInfo h2 {
+  margin: 10px 0px;
+}
+
+.countryGuessInfo img {
+  width: 50%;
+  height: auto;
+  max-height: 100px;
+  max-width: 150px;
+  /* display: block; */
+}
+
+.countryGuessInfo button {
+  padding: 10px 20px;
+  border-radius: 6px;
+  border-width: 0px;
+  width: 50%;
+  height: auto;
+  margin-top: 10px;
+  background-color: "white";
+  font-size: 18px;
+  color: #000;
+  font-family: "Ubuntu", sans-serif;
+  cursor: pointer;
+  transition: 0.25s ease;
 }
 
 .popup-container {
@@ -14,8 +49,25 @@
   left: 0;
 }
 
+.overlay {
+  position: absolute;
+  width: 20%;
+  padding-top: 20px;
+  padding-left: 20px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: baseline;
+  flex-direction: column;
+}
+
+.map-div {
+  height: 100%;
+  width: auto;
+}
+
 .map {
-  margin-top: 20px;
+  display: flex;
+  flex: 1 1 auto;
 }
 
 .guess-popup {
@@ -40,7 +92,7 @@
   background: #ee6c4d;
 }
 
-h1 {
+.popup-container h1 {
   padding-top: 0px;
   margin-top: 0px;
 }
@@ -70,6 +122,7 @@ h1 {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
+  text-align: left;
 }
 
 .text-div h3 {

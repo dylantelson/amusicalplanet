@@ -10,6 +10,7 @@ const MapPage = (props) => {
         <MapChart
           setCurrChosen={props.setCurrChosen}
           currChosen={props.currChosen}
+          currCountry={props.currCountry}
         />
       </div>
     </>

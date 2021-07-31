@@ -1,0 +1,36 @@
+.header {
+  background-color: #333;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 10%;
+  width: 100%;
+}
+
+.header div {
+  margin: 0px 4%;
+}
+
+.header h1 {
+  display: flex;
+  height: auto;
+  margin: 0px;
+  color: #ddd;
+}
+
+.navbar button {
+  padding: 10px 20px;
+  margin: 0px 6px;
+  border-radius: 6px;
+  border-width: 0px;
+  background-color: #ddd;
+  font-size: 20px;
+  color: #000;
+  font-family: "Ubuntu", sans-serif;
+  cursor: pointer;
+  transition: 0.25s ease;
+}
+
+.navbar button:hover {
+  transform: scale(1.1);
+}

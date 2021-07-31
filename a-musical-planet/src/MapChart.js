@@ -1,4 +1,4 @@
-import React, { memo, useState } from "react";
+import React, { memo, useState, useEffect } from "react";
 import {
   ZoomableGroup,
   ComposableMap,
@@ -31,7 +31,6 @@ const colors = {
   Europe: "#D4A29C",
   Africa: "#EDCC8B",
   SouthAmerica: "#E8B298",
-  //NorthAmerica: "#A26360",
   NorthAmerica: "#C7877F",
   Oceania: "#7FC6A4",
   Water: "#BDD1C5",
@@ -69,6 +68,25 @@ function LightenDarkenColor(col, amt) {
   return (usePound ? "#" : "") + (g | (b << 8) | (r << 16)).toString(16);
 }
 
+const renderStyle = (country) => {
+  if (!country.area) return [{ fontSize: "0px" }, 0];
+  let adjustedFont =
+    country.area > 500000
+      ? country.area / 800000 + 4.5
+      : country.area / 800000 + 2.3;
+  if (adjustedFont <= country.name.length) adjustedFont = adjustedFont / 1.3;
+  //const rightOffset = adjustedFont;
+  return [
+    {
+      fontSize: `${adjustedFont}px`,
+      //stroke: "#FFF",
+      stroke: colors[country.CONTINENT],
+      strokeWidth: `${adjustedFont / 50}px`,
+    },
+    adjustedFont - 1,
+  ];
+};
+
 const MapChart = (props) => {
   const hoveredStyle = (color) => {
     return {
@@ -88,26 +106,18 @@ const MapChart = (props) => {
   };
 
   const [currPos, setCurrPos] = useState({ zoom: 1, coordinates: [0, 0] });
-  const renderStyle = (country) => {
-    if (!country.area) return [{ fontSize: "0px" }, 0];
-    let adjustedFont =
-      country.area > 500000
-        ? country.area / 800000 + 3.5
-        : country.area / 800000 + 1.3;
-    adjustedFont += 1;
-    if (adjustedFont <= country.name.length) adjustedFont = adjustedFont / 1.3;
-    //const rightOffset = adjustedFont;
-    return [
-      {
-        fontSize: `${adjustedFont}px`,
-        //stroke: "#FFF",
-        stroke: colors[country.CONTINENT],
-        strokeWidth: `${adjustedFont / 50}px`,
-      },
-      adjustedFont - 1,
-    ];
-  };
-  const projection = geoMercator().scale(153).center([40, 50]);
+  const projection = geoMercator()
+    .scale(153)
+    .center([40, 50])
+    .rotate([-10, 0, 0]);
+
+  //Uncomment this to make map reset after guess
+  // useEffect(() => {
+  //   setCurrPos({
+  //     zoom: 1,
+  //     coordinates: [0, 40],
+  //   });
+  // }, [props.currCountry]);
 
   return (
     <>
@@ -120,7 +130,7 @@ const MapChart = (props) => {
           outline: "none",
         }}
       >
-        <rect width="100%" height="100%" style={{ fill: colors.Water }}></rect>
+        {/* <rect width="100%" height="100%" style={{ fill: colors.Water }}></rect> */}
         <ZoomableGroup
           translateExtent={[
             [-100, -50],
@@ -170,17 +180,18 @@ const MapChart = (props) => {
             }
           </Geographies>
           {countries.map((country) => {
+            const currStyle = renderStyle(country);
             return (
               <Marker
                 coordinates={[country.latlng[1], country.latlng[0]]}
                 fill="#000"
               >
-                {currPos.zoom * 2 + renderStyle(country)[1] > 9 ? (
-                  renderStyle(country)[1] > country.name.length ? (
+                {currPos.zoom * 2 + currStyle[1] > 9 ? (
+                  currStyle[1] > country.name.length ? (
                     <text
                       textAnchor="middle"
                       pointerEvents="none"
-                      style={renderStyle(country)[0]}
+                      style={currStyle[0]}
                     >
                       {country.name}
                     </text>
@@ -188,10 +199,11 @@ const MapChart = (props) => {
                     country.name.split(" ").map((word, index) => {
                       return (
                         <text
+                          textRendering="optimizeSpeed"
                           textAnchor="middle"
                           pointerEvents="none"
-                          y={(renderStyle(country)[1] / 1.3 + 1.3) * index}
-                          style={renderStyle(country)[0]}
+                          y={(currStyle[1] / 1.3 + 1.3) * index}
+                          style={currStyle[0]}
                         >
                           {word}
                         </text>

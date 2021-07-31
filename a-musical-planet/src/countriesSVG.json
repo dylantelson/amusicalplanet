@@ -34802,7 +34802,7 @@
           ],
           "type": "Polygon",
           "properties": {
-            "NAME": "Bosnia and Herz.",
+            "NAME": "Bosnia",
             "NAME_LONG": "Bosnia and Herzegovina",
             "ABBREV": "B.H.",
             "FORMAL_EN": "Bosnia and Herzegovina",
@@ -35024,7 +35024,7 @@
           ],
           "type": "Polygon",
           "properties": {
-            "NAME": "Central African Rep.",
+            "NAME": "Central African Republic",
             "NAME_LONG": "Central African Republic",
             "ABBREV": "C.A.R.",
             "FORMAL_EN": "Central African Republic",
@@ -35337,7 +35337,7 @@
           ],
           "type": "Polygon",
           "properties": {
-            "NAME": "Côte d'Ivoire",
+            "NAME": "Ivory Coast",
             "NAME_LONG": "Côte d'Ivoire",
             "ABBREV": "I.C.",
             "FORMAL_EN": "Republic of Ivory Coast",
@@ -35707,7 +35707,7 @@
           ],
           "type": "Polygon",
           "properties": {
-            "NAME": "Dominican Rep.",
+            "NAME": "Dominican Republic",
             "NAME_LONG": "Dominican Republic",
             "ABBREV": "Dom. Rep.",
             "FORMAL_EN": "Dominican Republic",
@@ -36255,7 +36255,7 @@
           ],
           "type": "Polygon",
           "properties": {
-            "NAME": "Eq. Guinea",
+            "NAME": "Equatorial Guinea",
             "NAME_LONG": "Equatorial Guinea",
             "ABBREV": "Eq. G.",
             "FORMAL_EN": "Republic of Equatorial Guinea",
@@ -38528,7 +38528,7 @@
           ],
           "type": "Polygon",
           "properties": {
-            "NAME": "W. Sahara",
+            "NAME": "Western Sahara",
             "NAME_LONG": "Western Sahara",
             "ABBREV": "W. Sah.",
             "FORMAL_EN": "Sahrawi Arab Democratic Republic",
@@ -38621,7 +38621,7 @@
           ],
           "type": "Polygon",
           "properties": {
-            "NAME": "S. Sudan",
+            "NAME": "South Sudan",
             "NAME_LONG": "South Sudan",
             "ABBREV": "S. Sud.",
             "FORMAL_EN": "Republic of South Sudan",
@@ -38697,7 +38697,7 @@
           ],
           "type": "MultiPolygon",
           "properties": {
-            "NAME": "Solomon Is.",
+            "NAME": "Solomon Islands",
             "NAME_LONG": "Solomon Islands",
             "ABBREV": "S. Is.",
             "FORMAL_EN": "",

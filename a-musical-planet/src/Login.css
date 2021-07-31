@@ -1,0 +1,28 @@
+.login {
+  height: 90vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.login img {
+  width: 35%;
+}
+
+.login button {
+  padding: 10px 20px;
+  margin: 0px 6px;
+  border-radius: 6px;
+  border-width: 0px;
+  background-color: #333;
+  font-size: 20px;
+  color: #ddd;
+  font-family: "Ubuntu", sans-serif;
+  cursor: pointer;
+  transition: 0.25s ease;
+}
+
+.login button:hover {
+  transform: scale(1.1);
+}

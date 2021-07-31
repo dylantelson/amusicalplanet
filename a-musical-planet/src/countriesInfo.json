@@ -331,7 +331,6 @@
             50.55
         ], 
         "name": "Bahrain", 
-        "area": 694.00,
         "country_code": "BH", 
         "capital": "Manama"
     }, 
@@ -356,7 +355,7 @@
             44, 
             18
         ], 
-        "name": "Bosnia and Herzegovina", 
+        "name": "Bosnia", 
         "area": 51197.00,
         "country_code": "BA", 
         "capital": "Sarajevo"
@@ -799,13 +798,26 @@
     }, 
     {
         "timezones": [
+            "Asia/Nicosia"
+        ], 
+        "latlng": [
+            35.24, 
+            33.65
+        ], 
+        "name": "N. Cyprus", 
+        "area": 9251.00,
+        "country_code": "NCY", 
+        "capital": "North Nicosia"
+    }, 
+    {
+        "timezones": [
             "Europe/Prague"
         ], 
         "latlng": [
             49.75, 
             15.5
         ], 
-        "name": "Czech Republic", 
+        "name": "Czechia", 
         "area": 78866.00,
         "country_code": "CZ", 
         "capital": "Prague"
@@ -1000,8 +1012,8 @@
             "Pacific/Fiji"
         ], 
         "latlng": [
-            -18, 
-            175
+            -16.71, 
+            178.06
         ], 
         "name": "Fiji", 
         "area": 18274.00,
@@ -2359,8 +2371,8 @@
             "Pacific/Bougainville"
         ], 
         "latlng": [
-            -6, 
-            147
+            -5, 
+            143
         ], 
         "name": "Papua New Guinea", 
         "area": 462840.00,
@@ -2692,6 +2704,19 @@
     }, 
     {
         "timezones": [
+            "Africa/Mogadishu"
+        ], 
+        "latlng": [
+            9.4, 
+            46.82
+        ], 
+        "name": "Somaliland", 
+        "area": 637657.00,
+        "country_code": "SOM", 
+        "capital": "Hargeisa"
+    }, 
+    {
+        "timezones": [
             "America/Miquelon"
         ], 
         "latlng": [
@@ -2953,7 +2978,6 @@
             -175
         ], 
         "name": "Tonga", 
-        "area": 650.00,
         "country_code": "TO", 
         "capital": "Nuku'alofa"
     }, 
@@ -3226,7 +3250,6 @@
             -172.33333333
         ], 
         "name": "Samoa", 
-        "area": 2831.00,
         "country_code": "WS", 
         "capital": "Apia"
     }, 

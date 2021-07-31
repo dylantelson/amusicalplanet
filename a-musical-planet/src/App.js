@@ -8,10 +8,13 @@ import {
   Redirect,
 } from "react-router-dom";
 
+import "./App.css";
 import axios from "axios";
 import { Credentials } from "./Credentials";
 import Auth from "./Auth";
 import Play from "./Play";
+import Header from "./Header";
+import Login from "./Login";
 import queryString from "query-string";
 
 import ReactTooltip from "react-tooltip";
@@ -22,6 +25,7 @@ function App() {
   const [accessToken, setAccessToken] = useState("");
   const [refreshToken, setRefreshToken] = useState("");
   const [redirect, setRedirect] = useState(false);
+  const [userData, setUserData] = useState({ username: "", totalScore: 0 });
 
   var spotifyApi = new SpotifyWebApi(Credentials());
 
@@ -51,10 +55,15 @@ function App() {
       },
       method: "GET",
     }).then((userData) => {
-      console.log("userData:", userData);
-      console.log("Saving cookie");
       let expireDate = new Date();
       expireDate.setMonth((expireDate.getMonth() + 1) % 12);
+      console.log("Setting user data");
+      console.log(userData);
+      console.log("Setting username to", userData.data.display_name);
+      setUserData({
+        username: userData.data.display_name,
+        totalScore: 0,
+      });
       // document.cookie =
       //   "session=" + userData.data.id + "; expires=" + expireDate.toUTCString();
     });
@@ -62,38 +71,38 @@ function App() {
   };
 
   return (
-    <Router>
-      {redirect && window.location.href.split("/")[3] === "auth" ? (
-        <Redirect to="/play" />
-      ) : null}
-      <Switch>
-        <Route path="/auth" render={() => handleAuth()} />
-        <Route path="/login" render={() => handleLogin()} />
-        <Route exact path="/">
-          <h1>Login Screen</h1>
-          <button type="submit" onClick={handleLogin}>
-            Login
-          </button>
-        </Route>
-        <Route
-          path="/map"
-          render={(props) => (
-            <div>
-              <h1>You shouldn't be here</h1>
-            </div>
-          )}
-        />
-        <Route path="/play">
-          <Play accessToken={accessToken} token={accessToken} />
-        </Route>
-        <Route path="/error">
-          <h1>Error! Check console</h1>
-        </Route>
-        <Route path="*">
-          <h1>Not Found!</h1>
-        </Route>
-      </Switch>
-    </Router>
+    <div className="app">
+      <Router>
+        {redirect && window.location.href.split("/")[3] === "auth" ? (
+          <Redirect to="/play" />
+        ) : null}
+        <Header userData={userData} />
+        <Switch>
+          <Route path="/auth" render={() => handleAuth()} />
+          <Route path="/login" render={() => handleLogin()} />
+          <Route exact path="/">
+            <Login handleLogin={handleLogin} />
+          </Route>
+          <Route
+            path="/map"
+            render={(props) => (
+              <div>
+                <h1>You shouldn't be here</h1>
+              </div>
+            )}
+          />
+          <Route path="/play">
+            <Play accessToken={accessToken} token={accessToken} />
+          </Route>
+          <Route path="/error">
+            <h1>Error! Check console</h1>
+          </Route>
+          <Route path="*">
+            <h1>Not Found!</h1>
+          </Route>
+        </Switch>
+      </Router>
+    </div>
   );
 }
 
