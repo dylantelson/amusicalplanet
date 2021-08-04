@@ -2,7 +2,7 @@ import React from "react";
 
 import "./Header.css";
 
-const Header = ({ userData }) => {
+const Header = ({ userData, setRedirect }) => {
   console.log("Rendering Header");
   return (
     <>
@@ -11,7 +11,7 @@ const Header = ({ userData }) => {
           <h1>A Musical Planet</h1>
         </div>
         <div className="navbar">
-          <button>Home</button>
+          <button onClick={() => setRedirect("maps")}>Maps</button>
           <button>About</button>
           <button>Leaderboard</button>
           {userData.username ? <button>{userData.username}</button> : <></>}

@@ -4,6 +4,13 @@
   border: 2px solid black;
 }
 
+/* this must be done because otherwise there is some space on each side
+of the panning-zooming rectangle in ZoomableGroup that is not covered.
+This leads to selecting text when the user means to pan. Making the rect
+bigger and moving it to the left covers both margins. */
+.map rect {
+  transform: scale(2, 2) translate(-25%);
+}
 /* .rsm-marker {
   color: "#ACACAC";
   width: 100px;

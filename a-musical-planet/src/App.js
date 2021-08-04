@@ -12,11 +12,20 @@ import axios from "axios";
 import Play from "./Play";
 import Header from "./Header";
 import Login from "./Login";
+import ChooseMap from "./ChooseMap";
 
 function App() {
   const [accessToken, setAccessToken] = useState("");
-  const [redirect, setRedirect] = useState(false);
+  const [redirect, setRedirect] = useState("");
   const [userData, setUserData] = useState({ username: "", totalScore: 0 });
+
+  //default europe as map
+  const [currMap, setCurrMap] = useState("Europe");
+
+  const handleMapChosen = (mapName) => {
+    setCurrMap(mapName.replace(" ", ""));
+    setRedirect("play");
+  };
 
   const handleLogin = () => {
     window.location.replace("http://localhost:8888/login");
@@ -40,45 +49,59 @@ function App() {
           new URLSearchParams(window.location.search).get("access_token"),
       },
       method: "GET",
-    }).then((userData) => {
-      let expireDate = new Date();
-      expireDate.setMonth((expireDate.getMonth() + 1) % 12);
-      console.log("Setting user data");
-      console.log(userData);
-      console.log("Setting username to", userData.data.display_name);
-      setUserData({
-        username: userData.data.display_name,
-        totalScore: 0,
+    })
+      .then((userData) => {
+        let expireDate = new Date();
+        expireDate.setMonth((expireDate.getMonth() + 1) % 12);
+        console.log("Setting user data");
+        console.log(userData);
+        console.log("Setting username to", userData.data.display_name);
+        setUserData({
+          username: userData.data.display_name,
+          totalScore: 0,
+        });
+        // alert("SETTING COOKIE");
+        document.cookie =
+          "user=" +
+          userData.data.id +
+          ";expires=" +
+          expireDate.toUTCString() +
+          ";path=/";
+      })
+      .catch((err) => {
+        console.log("ERROR", err);
       });
-      // document.cookie =
-      //   "session=" + userData.data.id + "; expires=" + expireDate.toUTCString();
-    });
-    setRedirect(true);
+    return <Redirect to="/maps" />;
+    // setRedirect(true);
   };
 
   return (
     <div className="app">
       <Router>
-        {redirect && window.location.href.split("/")[3] === "auth" ? (
-          <Redirect to="/play" />
+        {redirect === "play" && window.location.pathname === "/maps" ? (
+          <Redirect to="play" />
         ) : null}
-        <Header userData={userData} />
+        {redirect === "maps" ? <Redirect to="maps" /> : null}
+        <Header userData={userData} setRedirect={setRedirect} />
         <Switch>
           <Route path="/auth" render={() => handleAuth()} />
           <Route path="/login" render={() => handleLogin()} />
           <Route exact path="/">
-            <Login handleLogin={handleLogin} />
-          </Route>
-          <Route
-            path="/map"
-            render={(props) => (
-              <div>
-                <h1>You shouldn't be here</h1>
-              </div>
+            {document.cookie === "" ? (
+              <Login handleLogin={handleLogin} />
+            ) : (
+              <Redirect to="/login" />
             )}
-          />
+          </Route>
+          <Route path="/maps">
+            <ChooseMap handleMapChosen={handleMapChosen} />
+          </Route>
           <Route path="/play">
-            <Play accessToken={accessToken} token={accessToken} />
+            <Play
+              accessToken={accessToken}
+              token={accessToken}
+              currMap={currMap}
+            />
           </Route>
           <Route path="/error">
             <h1>Error! Check console</h1>

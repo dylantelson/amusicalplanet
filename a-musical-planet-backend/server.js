@@ -68,7 +68,7 @@ app.get("/login", function (req, res) {
     req.session.user.refresh_token &&
     req.session.user.refresh_token !== ""
   ) {
-    console.log("Refreshing token");
+    console.log("Refreshing token from /login");
     let authOptions = {
       url: "https://accounts.spotify.com/api/token",
       form: {
@@ -141,7 +141,7 @@ app.get("/login", function (req, res) {
 });
 
 app.get("/getNewToken", function (req, res) {
-  console.log("Refreshing token");
+  console.log("Refreshing token from /getNewToken");
   let authOptions = {
     url: "https://accounts.spotify.com/api/token",
     form: {

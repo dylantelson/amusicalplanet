@@ -35548,9 +35548,9 @@
             "GDP_YEAR": 2013,
             "ISO_A2": "-99",
             "ISO_A3": "-99",
-            "CONTINENT": "Asia",
-            "REGION_UN": "Asia",
-            "SUBREGION": "Western Asia"
+            "CONTINENT": "Europe",
+            "REGION_UN": "Europe",
+            "SUBREGION": "Eastern Europe"
           }
         },
         {
@@ -35573,9 +35573,9 @@
             "GDP_YEAR": 2016,
             "ISO_A2": "CY",
             "ISO_A3": "CYP",
-            "CONTINENT": "Asia",
-            "REGION_UN": "Asia",
-            "SUBREGION": "Western Asia"
+            "CONTINENT": "Europe",
+            "REGION_UN": "Europe",
+            "SUBREGION": "Eastern Europe"
           }
         },
         {
@@ -38485,7 +38485,7 @@
             "GDP_YEAR": 2016,
             "ISO_A2": "RU",
             "ISO_A3": "RUS",
-            "CONTINENT": "Russia",
+            "CONTINENT": "Europe",
             "REGION_UN": "Europe",
             "SUBREGION": "Eastern Europe"
           }

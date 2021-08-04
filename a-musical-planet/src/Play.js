@@ -10,10 +10,10 @@ import haversine from "haversine-distance";
 const maxScore = 5000;
 
 const Playlists = require("./Playlists.json");
-const countries = require("./countriesInfo.json");
+const countries = require("./WorldInfo.json");
 
-const Play = (props) => {
-  const [currTrack, setCurrTrack] = useState({});
+const Play = ({ accessToken, currMap }) => {
+  const [currTrack, setCurrTrack] = useState({ round: 0 });
   const [redirect, setRedirect] = useState("");
 
   const [currChosen, setCurrChosen] = useState("");
@@ -27,32 +27,51 @@ const Play = (props) => {
 
   const audioRef = useRef(null);
 
+  const newGame = () => {
+    nextTrack();
+  };
+
   const nextTrack = () => {
     setPopup({ ...popup, show: false, roundScore: 0 });
     setCurrChosen("");
-    if (props.accessToken === null || props.accessToken === "") {
+    if (accessToken === null || accessToken === "") {
       setRedirect("login");
       return;
     }
 
-    let currPlaylistIndex = Math.floor(Math.random() * Playlists.length);
-    if (Playlists[currPlaylistIndex].country === currTrack.country) {
+    let currPlaylistIndex = Math.floor(
+      Math.random() * Playlists[currMap].length
+    );
+    if (Playlists[currMap][currPlaylistIndex].country === currTrack.location) {
       if (currPlaylistIndex > 0) currPlaylistIndex--;
       else currPlaylistIndex++;
     }
     fetch(
-      `https://api.spotify.com/v1/playlists/${Playlists[currPlaylistIndex].playlistId}`,
+      `https://api.spotify.com/v1/playlists/${Playlists[currMap][currPlaylistIndex].playlistId}`,
       {
-        headers: { Authorization: "Bearer " + props.accessToken },
+        headers: { Authorization: "Bearer " + accessToken },
       }
     )
-      .then((response) => response.json())
+      .then((response) => {
+        if (response.status > 400) throw "INVALID_ACCESS_TOKEN";
+        return response.json();
+      })
       .then((data) => {
         let track = "";
         let trackIndex = 0;
         while (track === "") {
           trackIndex = Math.floor(Math.random() * data.tracks.items.length);
           track = data.tracks.items[trackIndex].track;
+          if (track.preview_url === null) {
+            console.log(
+              "Track",
+              data.tracks.items[trackIndex].track.name,
+              "in country",
+              data.name,
+              "has no preview url"
+            );
+            track = "";
+          }
         }
         console.log(track);
         setCurrTrack({
@@ -60,21 +79,27 @@ const Play = (props) => {
           artist: data.tracks.items[trackIndex].track.artists[0].name,
           album: data.tracks.items[trackIndex].track.album.name,
           image: data.tracks.items[trackIndex].track.album.images[0].url,
-          country: data.name,
+          location: data.name,
           name: data.tracks.items[trackIndex].track.name,
+          round: currTrack.round < 5 ? currTrack.round + 1 : 1,
         });
         audioRef.current.load();
         audioRef.current.play();
       })
       .catch((err) => {
-        console.log("ERROR LOADING TRACK");
+        console.log(
+          "ERROR LOADING TRACK FROM COUNTRY",
+          Playlists[currMap][currPlaylistIndex].country
+        );
         console.log(err);
-        window.location.replace("http://localhost:8888/getNewToken");
+        if (err === "INVALID_ACCESS_TOKEN")
+          window.location.replace("http://localhost:8888/getNewToken");
+        else nextTrack();
       });
   };
 
   const guessGiven = () => {
-    if (currChosen === currTrack.country) {
+    if (currChosen === currTrack.location) {
       setPopup({
         sessionScore: popup.sessionScore + maxScore,
         show: true,
@@ -83,19 +108,43 @@ const Play = (props) => {
       return;
     }
     const chosenCountryCoords = countries.filter(function (country) {
-      return country.name === currChosen;
+      return country.name.common === currChosen;
     })[0].latlng;
 
     const currTrackCountryCoords = countries.filter(function (country) {
-      return country.name === currTrack.country;
+      return country.name.common === currTrack.location;
     })[0].latlng;
 
-    let score =
-      maxScore -
-      Math.ceil(
-        haversine(chosenCountryCoords, currTrackCountryCoords) / 1000 / 2
-      );
+    let scoreDeduction = Math.ceil(
+      haversine(chosenCountryCoords, currTrackCountryCoords) / 1000 / 2
+    );
 
+    console.log("Initial deduction", scoreDeduction);
+
+    switch (currMap) {
+      case "Europe":
+        scoreDeduction *= 4;
+        break;
+      case "SouthAmerica":
+        scoreDeduction *= 4;
+        break;
+      case "NorthAmerica":
+        scoreDeduction *= 3;
+        break;
+      case "Asia":
+        scoreDeduction *= 2;
+        break;
+      case "Oceania":
+        scoreDeduction *= 2;
+        break;
+      case "Africa":
+        scoreDeduction *= 2;
+        break;
+    }
+
+    console.log("Final deduction", scoreDeduction);
+
+    let score = maxScore - scoreDeduction;
     if (score < 0) score = 0;
 
     setPopup({
@@ -103,10 +152,10 @@ const Play = (props) => {
       roundScore: score,
       sessionScore: popup.sessionScore + score,
     });
-    // if (currTrack.country === currChosen) {
+    // if (currTrack.location === currChosen) {
     //   //alert(`${currChosen} is correct!`);
     // } else {
-    //   //alert(  `You guessed ${currChosen} but the answer was ${currTrack.country}!`);
+    //   //alert(  `You guessed ${currChosen} but the answer was ${currTrack.location}!`);
     // }
     // getNewArtist();
   };
@@ -115,8 +164,9 @@ const Play = (props) => {
     nextTrack();
   }, []);
 
-  if (redirect === "login") return <Redirect to="/login" />;
-  else if (redirect === "map") return <Redirect to="/map" />;
+  if (redirect === "login") {
+    return <Redirect to="/login" />;
+  }
   return (
     <>
       <div className="play-section">
@@ -128,15 +178,15 @@ const Play = (props) => {
               src={currTrack.url}
               type="audio/mpeg"
             ></source>
-            {/* Your browser does not support the audio element. */}
           </audio>
           <CountryGuessInfo currChosen={currChosen} guessGiven={guessGiven} />
         </div>
         <div className="map-div">
           <MapPage
-            currCountry={currTrack.country}
+            // currLocation={currTrack.location}
             setCurrChosen={setCurrChosen}
             currChosen={currChosen}
+            currMap={currMap}
           />
         </div>
         {popup.show && (
@@ -146,6 +196,7 @@ const Play = (props) => {
             nextTrack={nextTrack}
             roundScore={popup.roundScore}
             sessionScore={popup.sessionScore}
+            newGame={newGame}
           />
         )}
       </div>

@@ -1,0 +1,85 @@
+.MapItems {
+  height: 100%;
+  display: flex;
+  flex: 0 1 auto;
+  flex-wrap: wrap;
+  /* align-self: center; */
+  justify-content: center;
+  background-color: #fff;
+  min-height: 0;
+  min-width: 0;
+}
+
+.MapHead {
+  margin: 0.3% 0px;
+}
+
+.MapItem {
+  display: flex;
+  flex-direction: column;
+  flex: 0 1 auto;
+  justify-content: flex-start;
+  align-items: center;
+  border: 0px;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  margin: 0px 10px 20px 10px;
+  background-color: #fff;
+  /* width: 20%; */
+  height: auto;
+  min-height: 0;
+  min-width: 150px;
+  overflow: hidden;
+  width: 20%;
+  max-height: 450px;
+}
+
+.MapItem img {
+  max-height: 40%;
+  min-width: 0;
+  min-height: 0;
+  object-fit: contain;
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.MapItem h1 {
+  font-size: 2vw;
+}
+
+.MapItem p {
+  font-size: 1vw;
+}
+
+.MapItem button {
+  font-size: 1vw;
+  padding: 10px 20px;
+  margin: 0px 6px;
+  border-radius: 6px;
+  border-width: 0px;
+  background-color: #ddd;
+  font-size: 1em;
+  color: #000;
+  font-family: "Ubuntu", sans-serif;
+  width: 50%;
+}
+
+@media screen and (min-width: 1600px) {
+  .MapItem h1 {
+    font-size: 1.8em;
+  }
+  .MapItem p {
+    font-size: 1em;
+  }
+  .MapItem button {
+    font-size: 1em;
+  }
+}
+
+.ChooseMapContainer {
+  max-height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  flex: 0 1 auto;
+}

@@ -1,4 +1,4 @@
-import React, { memo, useState } from "react";
+import React, { memo, useState, useEffect } from "react";
 import {
   ZoomableGroup,
   ComposableMap,
@@ -10,9 +10,20 @@ import { geoMercator } from "d3-geo";
 
 import "./Map.css";
 
-const countries = require("./countriesInfo.json");
+const worldCountries = require("./WorldInfo.json");
+// const europeCountries = require("./EuropeInfo.json");
 
-const geoSVG = require("./countriesSVG.json");
+const worldGeoSVG = require("./worldSVG.json");
+// const europeGeoSVG = require("./EuropeInfo.json");
+
+const locationInfo = {
+  world: worldCountries,
+  // europe: europeCountries,
+};
+
+const locationGeoSVG = {
+  world: worldGeoSVG,
+};
 
 const borderWidth = 0.2;
 
@@ -58,26 +69,29 @@ function LightenDarkenColor(col, amt) {
   return (usePound ? "#" : "") + (g | (b << 8) | (r << 16)).toString(16);
 }
 
-const renderStyle = (country) => {
-  if (!country.area) return [{ fontSize: "0px" }, 0];
-  let adjustedFont =
-    country.area > 500000
-      ? country.area / 800000 + 4.5
-      : country.area / 800000 + 2.3;
-  if (adjustedFont <= country.name.length) adjustedFont = adjustedFont / 1.3;
-  //const rightOffset = adjustedFont;
-  return [
-    {
-      fontSize: `${adjustedFont}px`,
-      //stroke: "#FFF",
-      stroke: colors[country.CONTINENT],
-      strokeWidth: `${adjustedFont / 50}px`,
-    },
-    adjustedFont - 1,
-  ];
-};
+const MapChart = ({ setCurrChosen, currChosen, mapProps, currMap }) => {
+  const renderStyle = (country) => {
+    if (!country.area || country.area < 1500) return [{ fontSize: "0px" }, 0];
+    let adjustedFont =
+      country.area > 500000
+        ? country.area / 800000 + 4.5
+        : country.area / 800000 + 2.3;
+    if (adjustedFont <= country.name.common.length) adjustedFont /= 1.3;
 
-const MapChart = (props) => {
+    if (country.name.common === "Russia" && currMap === "Europe")
+      adjustedFont /= 2.5;
+    //const rightOffset = adjustedFont;
+    return [
+      {
+        fontSize: `${adjustedFont}px`,
+        // stroke: "#FFF",
+        // stroke: colors[country.CONTINENT],
+        // strokeWidth: `${adjustedFont / 50}px`,
+      },
+      adjustedFont - 1,
+    ];
+  };
+
   const hoveredStyle = (color) => {
     return {
       fill: LightenDarkenColor(color, 15),
@@ -95,11 +109,14 @@ const MapChart = (props) => {
     };
   };
 
-  const [currPos, setCurrPos] = useState({ zoom: 1, coordinates: [0, 0] });
+  const [currPos, setCurrPos] = useState({
+    zoom: mapProps.minZoom,
+    coordinates: mapProps.coordinates,
+  });
   const projection = geoMercator()
-    .scale(170)
-    .center([40, 40])
-    .rotate([-10, 0, 0]);
+    .scale(mapProps.scale)
+    .center(mapProps.center)
+    .rotate(mapProps.rotate);
 
   //Uncomment this to make map reset after guess
   // useEffect(() => {
@@ -107,7 +124,7 @@ const MapChart = (props) => {
   //     zoom: 1,
   //     coordinates: [0, 40],
   //   });
-  // }, [props.currCountry]);
+  // }, [currLocation]);
 
   return (
     <>
@@ -120,30 +137,27 @@ const MapChart = (props) => {
           outline: "none",
         }}
       >
-        {/* <rect width="100%" height="100%" style={{ fill: colors.Water }}></rect> */}
         <ZoomableGroup
-          translateExtent={[
-            [-100, -50],
-            [860, 600],
-          ]}
+          translateExtent={mapProps.translateExtent}
           onMoveEnd={({ zoom, coordinates }) => {
             setCurrPos({
               zoom: zoom,
               coordinates: coordinates,
             });
           }}
-          maxZoom={6}
+          minZoom={mapProps.minZoom}
+          maxZoom={mapProps.maxZoom}
           zoom={currPos.zoom}
           center={currPos.coordinates}
         >
-          <Geographies geography={geoSVG}>
+          <Geographies geography={worldGeoSVG}>
             {({ geographies }) =>
               geographies.map((geo) => (
                 <Geography
                   key={geo.rsmKey}
                   geography={geo}
                   onClick={() => {
-                    props.setCurrChosen(geo.properties.NAME);
+                    setCurrChosen(geo.properties.NAME);
                   }}
                   visibility={
                     geo.properties.CONTINENT === "Antarctica"
@@ -152,16 +166,25 @@ const MapChart = (props) => {
                   }
                   style={{
                     default:
-                      props.currChosen === geo.properties.NAME
+                      currChosen === geo.properties.NAME
                         ? selectedStyle(colors[geo.properties.CONTINENT])
                         : {
-                            fill: colors[geo.properties.CONTINENT],
+                            fill:
+                              currMap === "World" ||
+                              geo.properties.CONTINENT === currMap
+                                ? colors[geo.properties.CONTINENT]
+                                : "#ccc",
+                            pointerEvents:
+                              currMap === "World" ||
+                              geo.properties.CONTINENT === currMap
+                                ? "all"
+                                : "none",
                             stroke: "#000000",
                             strokeWidth: borderWidth,
                             outline: "none",
                           },
                     hover:
-                      props.currChosen === geo.properties.NAME
+                      currChosen === geo.properties.NAME
                         ? selectedStyle(colors[geo.properties.CONTINENT])
                         : hoveredStyle(colors[geo.properties.CONTINENT]),
                   }}
@@ -169,24 +192,33 @@ const MapChart = (props) => {
               ))
             }
           </Geographies>
-          {countries.map((country) => {
+          {worldCountries.map((country) => {
+            if (
+              (currMap !== "World" && country.region !== currMap) ||
+              country.area < 1500
+            )
+              return;
             const currStyle = renderStyle(country);
             return (
               <Marker
-                coordinates={[country.latlng[1], country.latlng[0]]}
+                coordinates={
+                  country.name.common === "Russia" && currMap === "Europe"
+                    ? [country.latlng[1] - 60, country.latlng[0] - 6]
+                    : [country.latlng[1], country.latlng[0]]
+                }
                 fill="#000"
               >
                 {currPos.zoom * 2 + currStyle[1] > 9 ? (
-                  currStyle[1] > country.name.length ? (
+                  currStyle[1] > country.name.common.length ? (
                     <text
                       textAnchor="middle"
                       pointerEvents="none"
                       style={currStyle[0]}
                     >
-                      {country.name}
+                      {country.name.common}
                     </text>
                   ) : (
-                    country.name.split(" ").map((word, index) => {
+                    country.name.common.split(" ").map((word, index) => {
                       return (
                         <text
                           textRendering="optimizeSpeed"

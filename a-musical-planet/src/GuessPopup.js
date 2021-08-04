@@ -6,6 +6,7 @@ const GuessPopup = ({
   nextTrack,
   roundScore,
   sessionScore,
+  newGame,
 }) => {
   const correctText = (
     <div>
@@ -16,18 +17,19 @@ const GuessPopup = ({
   const incorrectText = (
     <div>
       <h1>Whoops!</h1>
-      <h3>The answer was {currTrack.country}</h3>
+      <h3>The answer was {currTrack.location}</h3>
     </div>
   );
 
   let correct = false;
-  if (currChosen === currTrack.country) correct = true;
+  if (currChosen === currTrack.location) correct = true;
 
   return (
     <div className="popup-container">
       <div
         className={"guess-popup" + (!correct ? " incorrect-background" : "")}
       >
+        <h3 className="indexText">{currTrack.round}/5</h3>
         <div className="popupText">
           {correct ? correctText : incorrectText}
           <h3 id="score">
@@ -50,7 +52,11 @@ const GuessPopup = ({
         <div className={"popup-buttons" + (!correct ? " incorrect-text" : "")}>
           <button>LIKE</button>
           <button>PLAY</button>
-          <button onClick={nextTrack}>NEXT</button>
+          {currTrack.round < 5 ? (
+            <button onClick={nextTrack}>NEXT</button>
+          ) : (
+            <button onClick={newGame}>New Game</button>
+          )}
         </div>
       </div>
     </div>
