@@ -55,7 +55,11 @@ const ChooseMap = ({ handleMapChosen }) => {
       </div>
       <div className="MapItems">
         {Maps.map((currMap) => (
-          <MapItem map={currMap} handleMapChosen={handleMapChosen} />
+          <MapItem
+            key={currMap.name}
+            map={currMap}
+            handleMapChosen={handleMapChosen}
+          />
         ))}
       </div>
     </div>

@@ -1,4 +1,5 @@
 import React from "react";
+import { BrowserRouter as Router, Link } from "react-router-dom";
 
 const MapItem = ({ map, handleMapChosen }) => {
   return (
@@ -6,7 +7,9 @@ const MapItem = ({ map, handleMapChosen }) => {
       <img src={"/mapimages/" + map.image} alt={map.name} />
       <h1>{map.name}</h1>
       <p>{map.description}</p>
-      <button onClick={() => handleMapChosen(map.name)}>Play</button>
+      <Link to="/play" onClick={() => handleMapChosen(map.name)} replace>
+        Play
+      </Link>
     </div>
   );
 };

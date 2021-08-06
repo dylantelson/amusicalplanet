@@ -18,7 +18,7 @@
   color: #ddd;
 }
 
-.navbar button {
+.navbar .linkButton {
   padding: 10px 20px;
   margin: 0px 6px;
   border-radius: 6px;
@@ -28,9 +28,5 @@
   color: #000;
   font-family: "Ubuntu", sans-serif;
   cursor: pointer;
-  transition: 0.25s ease;
-}
-
-.navbar button:hover {
-  transform: scale(1.1);
+  text-decoration: none;
 }

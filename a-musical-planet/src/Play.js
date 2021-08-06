@@ -7,12 +7,14 @@ import CountryGuessInfo from "./CountryGuessInfo.js";
 import "./Play.css";
 import haversine from "haversine-distance";
 
+import getCookie from "./GetCookie";
+
 const maxScore = 5000;
 
 const Playlists = require("./Playlists.json");
 const countries = require("./WorldInfo.json");
 
-const Play = ({ accessToken, currMap }) => {
+const Play = ({ accessToken, setAccessToken, currMap }) => {
   const [currTrack, setCurrTrack] = useState({ round: 0 });
   const [redirect, setRedirect] = useState("");
 
@@ -35,8 +37,18 @@ const Play = ({ accessToken, currMap }) => {
     setPopup({ ...popup, show: false, roundScore: 0 });
     setCurrChosen("");
     if (accessToken === null || accessToken === "") {
-      setRedirect("login");
-      return;
+      const accessTokenCookie = getCookie("accessToken");
+      // const refreshTokenCookie = getCookie("refreshToken");
+      if (accessTokenCookie !== "") {
+        console.log("GOT COOKIE!", accessTokenCookie);
+        setAccessToken(accessTokenCookie);
+        return setRedirect("maps");
+      }
+      // if (refreshTokenCookie !== "") {
+      //   refreshTokens(refreshTokenCookie);
+      // }
+      console.log("Could not find cookie");
+      return setRedirect("login");
     }
 
     let currPlaylistIndex = Math.floor(
@@ -53,7 +65,8 @@ const Play = ({ accessToken, currMap }) => {
       }
     )
       .then((response) => {
-        if (response.status > 400) throw "INVALID_ACCESS_TOKEN";
+        console.log(response.status);
+        if (response.status >= 400) throw response;
         return response.json();
       })
       .then((data) => {
@@ -91,10 +104,13 @@ const Play = ({ accessToken, currMap }) => {
           "ERROR LOADING TRACK FROM COUNTRY",
           Playlists[currMap][currPlaylistIndex].country
         );
-        console.log(err);
-        if (err === "INVALID_ACCESS_TOKEN")
-          window.location.replace("http://localhost:8888/getNewToken");
-        else nextTrack();
+        console.log("err", err);
+        console.log("err status", err.status);
+        if (err.status === 400 || err.status === 401)
+          return window.location.replace("http://localhost:8888/getNewToken");
+        if (err.status === 404) return nextTrack();
+        //this is only really for error 401, meaning
+        return setRedirect("maps");
       });
   };
 
@@ -140,6 +156,8 @@ const Play = ({ accessToken, currMap }) => {
       case "Africa":
         scoreDeduction *= 2;
         break;
+      default:
+        break;
     }
 
     console.log("Final deduction", scoreDeduction);
@@ -164,22 +182,22 @@ const Play = ({ accessToken, currMap }) => {
     nextTrack();
   }, []);
 
-  if (redirect === "login") {
-    return <Redirect to="/login" />;
+  if (redirect !== "") {
+    return <Redirect to={`/${redirect}`} />;
   }
+  // if (redirect === "login") {
+  //   return <Redirect to="/login" />;
+  // }
   return (
     <>
       <div className="play-section">
         <div className="overlay">
-          <audio className="music" controls ref={audioRef}>
-            <source
-              volume="2"
-              allow="autoplay"
-              src={currTrack.url}
-              type="audio/mpeg"
-            ></source>
-          </audio>
-          <CountryGuessInfo currChosen={currChosen} guessGiven={guessGiven} />
+          <CountryGuessInfo
+            currChosen={currChosen}
+            guessGiven={guessGiven}
+            audioRef={audioRef}
+            trackURL={currTrack.url}
+          />
         </div>
         <div className="map-div">
           <MapPage

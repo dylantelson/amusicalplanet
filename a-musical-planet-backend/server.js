@@ -55,11 +55,12 @@ app.get("/login", function (req, res) {
     req.session.user.access_token !== ""
   ) {
     console.log("Session existing");
+    console.log("REFRESH:", req.session.user.refresh_token);
     return res.redirect(
       process.env.FRONTEND_URI +
         "?access_token=" +
         req.session.user.access_token +
-        "?refresh_token=" +
+        "&refresh_token=" +
         req.session.user.refresh_token
     );
   }
@@ -121,7 +122,7 @@ app.get("/login", function (req, res) {
             uri +
               "?access_token=" +
               access_token +
-              "?refresh_token=" +
+              "&refresh_token=" +
               refresh_token
           );
         }
@@ -194,7 +195,7 @@ app.get("/getNewToken", function (req, res) {
           uri +
             "?access_token=" +
             access_token +
-            "?refresh_token=" +
+            "&refresh_token=" +
             refresh_token
         );
       }
@@ -266,7 +267,7 @@ app.get("/callback", function (req, res) {
           uri +
             "?access_token=" +
             access_token +
-            "?refresh_token=" +
+            "&refresh_token=" +
             refresh_token
         );
       }

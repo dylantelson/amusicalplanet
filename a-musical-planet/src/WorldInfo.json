@@ -1821,7 +1821,7 @@
         ],
         "landlocked": false,
         "borders": [],
-        "area": 14000000,
+        "area": 0,
         "flag": "\ud83c\udde6\ud83c\uddf6",
         "demonyms": {
             "eng": {
@@ -3863,7 +3863,7 @@
     },
     {
         "name": {
-            "common": "Bosnia and Herzegovina",
+            "common": "Bosnia",
             "official": "Bosnia and Herzegovina",
             "native": {
                 "bos": {
@@ -7529,7 +7529,7 @@
     },
     {
         "name": {
-            "common": "Republic of the Congo",
+            "common": "Congo",
             "official": "Republic of the Congo",
             "native": {
                 "fra": {
@@ -22631,7 +22631,7 @@
     },
     {
         "name": {
-            "common": "North Macedonia",
+            "common": "Macedonia",
             "official": "Republic of North Macedonia",
             "native": {
                 "mkd": {

@@ -1,4 +1,4 @@
-import React, { memo, useState, useEffect } from "react";
+import React, { memo, useState } from "react";
 import {
   ZoomableGroup,
   ComposableMap,
@@ -16,14 +16,14 @@ const worldCountries = require("./WorldInfo.json");
 const worldGeoSVG = require("./worldSVG.json");
 // const europeGeoSVG = require("./EuropeInfo.json");
 
-const locationInfo = {
-  world: worldCountries,
-  // europe: europeCountries,
-};
+// const locationInfo = {
+//   world: worldCountries,
+//   // europe: europeCountries,
+// };
 
-const locationGeoSVG = {
-  world: worldGeoSVG,
-};
+// const locationGeoSVG = {
+//   world: worldGeoSVG,
+// };
 
 const borderWidth = 0.2;
 
@@ -197,10 +197,11 @@ const MapChart = ({ setCurrChosen, currChosen, mapProps, currMap }) => {
               (currMap !== "World" && country.region !== currMap) ||
               country.area < 1500
             )
-              return;
+              return null;
             const currStyle = renderStyle(country);
             return (
               <Marker
+                key={country.name.common}
                 coordinates={
                   country.name.common === "Russia" && currMap === "Europe"
                     ? [country.latlng[1] - 60, country.latlng[0] - 6]
@@ -221,6 +222,7 @@ const MapChart = ({ setCurrChosen, currChosen, mapProps, currMap }) => {
                     country.name.common.split(" ").map((word, index) => {
                       return (
                         <text
+                          key={word + index}
                           textRendering="optimizeSpeed"
                           textAnchor="middle"
                           pointerEvents="none"

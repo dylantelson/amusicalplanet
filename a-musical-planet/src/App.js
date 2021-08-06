@@ -1,5 +1,5 @@
 //import "./App.css";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   BrowserRouter as Router,
   Switch,
@@ -14,17 +14,76 @@ import Header from "./Header";
 import Login from "./Login";
 import ChooseMap from "./ChooseMap";
 
+import getCookie from "./GetCookie";
+
 function App() {
   const [accessToken, setAccessToken] = useState("");
   const [redirect, setRedirect] = useState("");
   const [userData, setUserData] = useState({ username: "", totalScore: 0 });
 
-  //default europe as map
-  const [currMap, setCurrMap] = useState("Europe");
+  //default world as map
+  const [currMap, setCurrMap] = useState("World");
+
+  const setTokenFromCookie = () => {
+    const accessTokenCookie = getCookie("accessToken");
+    console.log("myCookie", accessTokenCookie);
+    if (accessTokenCookie !== "") {
+      console.log("GOT COOKIE!", accessTokenCookie);
+      setAccessToken(accessTokenCookie);
+      return true;
+    } else {
+      console.log("Could not find cookie");
+      return false;
+    }
+  };
+
+  useEffect(() => {
+    console.log(accessToken);
+    if (accessToken !== "" && accessToken !== null) {
+      console.log("UseEffect setting user with accesstoken", accessToken);
+      setUser();
+    } else {
+      console.log("No access token with which to set user");
+    }
+  }, [accessToken]);
+
+  const setUser = async () => {
+    return axios("https://api.spotify.com/v1/me", {
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+        Authorization: "Bearer " + accessToken,
+      },
+      method: "GET",
+    })
+      .then((userData) => {
+        setUserData({
+          username: userData.data.display_name,
+          totalScore: 0,
+        });
+      })
+      .catch((err) => {
+        console.log("ERROR GETTING SPOTIFY USER DATA", err);
+        if (err.response.status >= 400) {
+          console.log("ERROR 400+, REFRESHING TOKEN");
+          window.location.replace("http://localhost:8888/getNewToken");
+        }
+      });
+  };
 
   const handleMapChosen = (mapName) => {
+    if (accessToken === null || accessToken === "") {
+      if (!setTokenFromCookie()) return setRedirect("login");
+    }
+    console.log("HANDLING MAP CHOSEN");
     setCurrMap(mapName.replace(" ", ""));
-    setRedirect("play");
+    // setRedirect("play");
+  };
+
+  const checkToken = () => {
+    if (!setTokenFromCookie()) {
+      setRedirect("login");
+    }
   };
 
   const handleLogin = () => {
@@ -32,60 +91,71 @@ function App() {
   };
 
   const handleAuth = () => {
-    if (accessToken !== "") return;
+    // console.log(accessToken === "");
+    // if (accessToken !== "" && accessToken !== null) {
+    //   console.log("have access token", accessToken);
+    //   return setRedirect("maps");
+    // }
+    // if (setTokenFromCookie()) {
+    //   console.log("gettin from cookie");
+    //   return setRedirect("maps");
+    // }
     console.count("Handling AUTH");
-    console.log(
-      new URLSearchParams(window.location.search).get("access_token")
+    const URLAccessToken = new URLSearchParams(window.location.search).get(
+      "access_token"
     );
-    setAccessToken(
-      new URLSearchParams(window.location.search).get("access_token")
+    const URLRefreshToken = new URLSearchParams(window.location.search).get(
+      "refresh_token"
     );
-    axios("https://api.spotify.com/v1/me", {
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-        Authorization:
-          "Bearer " +
-          new URLSearchParams(window.location.search).get("access_token"),
-      },
-      method: "GET",
-    })
-      .then((userData) => {
-        let expireDate = new Date();
-        expireDate.setMonth((expireDate.getMonth() + 1) % 12);
-        console.log("Setting user data");
-        console.log(userData);
-        console.log("Setting username to", userData.data.display_name);
-        setUserData({
-          username: userData.data.display_name,
-          totalScore: 0,
-        });
-        // alert("SETTING COOKIE");
-        document.cookie =
-          "user=" +
-          userData.data.id +
-          ";expires=" +
-          expireDate.toUTCString() +
-          ";path=/";
-      })
-      .catch((err) => {
-        console.log("ERROR", err);
-      });
-    return <Redirect to="/maps" />;
-    // setRedirect(true);
+    setAccessToken(URLAccessToken);
+
+    let accessTokenExpireDate = new Date();
+    accessTokenExpireDate.setTime(
+      accessTokenExpireDate.getTime() + 3600 * 1000
+    );
+
+    let refreshTokenExpireDate = new Date();
+    refreshTokenExpireDate.setTime(
+      refreshTokenExpireDate.getTime() + 3600 * 1000 * 24 * 365
+    );
+
+    document.cookie =
+      "accessToken=" +
+      URLAccessToken +
+      ";expires=" +
+      accessTokenExpireDate.toUTCString() +
+      ";path=/";
+    document.cookie =
+      "refreshToken=" +
+      URLRefreshToken +
+      ";expires=" +
+      refreshTokenExpireDate.toUTCString() +
+      ";path=/";
+    // return <Redirect to="/maps" />;
+    setRedirect("maps");
   };
 
   return (
     <div className="app">
       <Router>
         {redirect === "play" && window.location.pathname === "/maps" ? (
-          <Redirect to="play" />
+          <Redirect to="play" replace />
         ) : null}
-        {redirect === "maps" ? <Redirect to="maps" /> : null}
-        <Header userData={userData} setRedirect={setRedirect} />
+        {redirect === "maps" ? <Redirect to="/maps" /> : null}
+        {redirect === "login" ? <Redirect to="/login" /> : null}
+        <Header
+          userData={userData}
+          checkToken={checkToken}
+          setRedirect={setRedirect}
+        />
         <Switch>
           <Route path="/auth" render={() => handleAuth()} />
-          <Route path="/login" render={() => handleLogin()} />
+          <Route
+            path="/login"
+            render={() =>
+              setTokenFromCookie() ? <Redirect to="/maps" /> : handleLogin()
+            }
+          />
           <Route exact path="/">
             {document.cookie === "" ? (
               <Login handleLogin={handleLogin} />
@@ -101,6 +171,7 @@ function App() {
               accessToken={accessToken}
               token={accessToken}
               currMap={currMap}
+              setAccessToken={setAccessToken}
             />
           </Route>
           <Route path="/error">

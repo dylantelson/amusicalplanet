@@ -1,4 +1,4 @@
-GET https://api.spotify.com/v1/me
+GET https://api.spotify.com/v1/playlists/
     Content-Type: "application/json"
     Accept: "application/json"
-    Authorization: "Bearer BQAC3o8JGVogdPHqSnyO3K9jCdYFcXOocescMSAgdvypxkcWGw1lu0q-JYcpB26G483MZxZcHz0I_4wWJy6btBySKAK9XkJ6RiwzsIdCf80jvza4knVSHzeFCvgjEiranJICkI2XW4GPRpyJlJ2343Y2EuYpQ3YSoho3W-er0g"
+    Authorization: "Bearera BQDFmHiLy09NyYNuf7Q-lwuCuEtuY5a1MJlZCpOYGP4WthDo8SJ5IdGRBMbJ6fbTKuKjuZlZ5EtVEOT_uTA5_MmzeUiwRexVTdO5S90ohXxZRsUIRt9_E-_LG2h4W7HnGe8T-0Ls-y194DyVX5rGXev7RVhKgYRf-O05BvJG7w"

@@ -6,31 +6,51 @@
 .countryGuessInfo {
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
-  align-items: baseline;
+  /* justify-content: flex-end; */
+  align-items: flex-start;
   width: 100%;
   max-height: 200px;
-  max-width: 250px;
+  /* max-width: 250px; */
+  min-width: 100px;
 }
 
 .countryGuessInfo h2 {
   margin: 10px 0px;
+  font-size: 1.5vw;
+  text-align: left;
+  /* width: 100%; */
+  /* max-width: 133.35px; */
 }
 
 .countryGuessInfo img {
-  width: 50%;
+  width: 100%;
   height: auto;
-  max-height: 100px;
-  max-width: 150px;
+  /* max-height: 100px; */
+  max-width: 133.35px;
+  min-width: 100px;
+  /* margin-left: ; */
   /* display: block; */
+}
+
+@media screen and (min-width: 1350px) {
+  .countryGuessInfo h2 {
+    font-size: 21px;
+  }
+}
+@media screen and (max-width: 1000px) {
+  .countryGuessInfo h2 {
+    font-size: 15px;
+  }
 }
 
 .countryGuessInfo button {
   padding: 10px 20px;
   border-radius: 6px;
   border-width: 0px;
-  width: 50%;
+  width: 100%;
   height: auto;
+  max-width: 133.35px;
+  min-width: 100px;
   margin-top: 10px;
   background-color: "white";
   font-size: 18px;
@@ -51,7 +71,8 @@
 
 .overlay {
   position: absolute;
-  width: 20%;
+  width: 10%;
+  max-width: 350px;
   padding-top: 20px;
   padding-left: 20px;
   display: flex;
@@ -190,4 +211,61 @@
 
 .popup-buttons button:hover {
   transform: scale(1.1);
+}
+
+.playButtonContainer {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.timeControls {
+  width: 100%;
+  display: flex;
+  flex: 1 1 auto;
+  justify-content: flex-start;
+}
+
+#audioPlayer {
+  display: none;
+}
+
+.audioSeeker {
+  flex: 1 1 auto;
+  pointer-events: all;
+}
+
+.audioButton {
+  pointer-events: all;
+  box-sizing: border-box;
+  width: 0;
+  height: 4vw;
+  border-style: solid;
+  border-width: 2vw 0 2vw 3.2vw;
+  border-color: transparent transparent transparent #202020;
+  cursor: pointer;
+  will-change: border-width;
+  transition: all 0.2s ease;
+}
+.audioButton.paused {
+  border-style: double;
+  height: 4vw;
+  border-width: 0px 0 0px 4vw;
+}
+.audioButton:hover {
+  border-color: transparent transparent transparent #404040;
+}
+
+@media screen and (min-width: 1000px) {
+  .audioButton {
+    height: 40px;
+    border-width: 20px 0px 20px 32px;
+  }
+  .audioButton.paused {
+    border-style: double;
+    height: 40px;
+    border-width: 0px 0 0px 32px;
+  }
 }
