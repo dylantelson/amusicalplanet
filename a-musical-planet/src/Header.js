@@ -1,10 +1,12 @@
-import React from "react";
+import React, { useContext } from "react";
 import { BrowserRouter as Router, NavLink } from "react-router-dom";
 
+import { UserContext } from "./App.js";
 import "./Header.css";
 
-const Header = ({ userData, setRedirect, checkToken }) => {
-  if (userData.username === "") {
+const Header = ({ setRedirect, checkToken }) => {
+  const userData = useContext(UserContext);
+  if (userData.userName === "") {
     checkToken();
   }
   return (
@@ -35,13 +37,13 @@ const Header = ({ userData, setRedirect, checkToken }) => {
           >
             Leaderboard
           </NavLink>
-          {userData.username ? (
+          {userData.displayName ? (
             <NavLink
               className="linkButton"
               to="/userplaceholder"
               activeStyle={{ backgroundColor: "white" }}
             >
-              {userData.username}
+              {userData.displayName}
             </NavLink>
           ) : (
             <></>

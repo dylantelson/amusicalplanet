@@ -1,18 +1,30 @@
-let express = require("express");
-const session = require("express-session");
-const MongoDBSession = require("connect-mongodb-session")(session);
-const mongoose = require("mongoose");
-let request = require("request");
-let querystring = require("querystring");
-const bcrypt = require("bcryptjs");
+import express from "express";
+import session from "express-session";
+import connectMongoDBSession from "connect-mongodb-session";
+// const MongoDBSession = require("connect-mongodb-session")(session);
+import mongoose from "mongoose";
+import request from "request";
+import querystring from "querystring";
 
-require("dotenv").config();
+import UserDAO from "./userDAO.js";
 
+import cors from "cors";
+import dotenv from "dotenv";
+
+import User from "./models/user.js";
+
+dotenv.config();
+
+const MongoDBSession = connectMongoDBSession(session);
 let app = express();
+
+app.use(cors());
 
 let redirect_uri = process.env.REDIRECT_URI || "http://localhost:8888/callback";
 
-const mongoURI = "mongodb://localhost:27017/sessions";
+// const mongoURI = "mongodb://localhost:27017/sessions";
+const mongoURI = `mongodb+srv://dylan:${process.env.MONGO_PASSWORD}@dtcluster.yn1yz.mongodb.net/aMusicalPlanet?retryWrites=true&w=majority`;
+console.log(mongoURI);
 
 mongoose
   .connect(mongoURI, {
@@ -20,14 +32,25 @@ mongoose
     useCreateIndex: true,
     useUnifiedTopology: true,
   })
-  .then((res) => {
+  .then(async (client) => {
     console.log("MongoDB Connected");
+    // console.log(client);
+    // await UserDAO.injectDB(client);
   });
 
 const store = new MongoDBSession({
   uri: mongoURI,
-  collection: "mySessions",
+  collection: "sessions",
 });
+
+try {
+  User.findOne({ userName: "joncena" }, function (err, doc) {
+    console.log(doc);
+  });
+  // console.log(await User.findOne({ userName: "joncena" }));
+} catch (e) {
+  console.log("ERRORASD", e);
+}
 
 app.use(
   session({
@@ -55,7 +78,6 @@ app.get("/login", function (req, res) {
     req.session.user.access_token !== ""
   ) {
     console.log("Session existing");
-    console.log("REFRESH:", req.session.user.refresh_token);
     return res.redirect(
       process.env.FRONTEND_URI +
         "?access_token=" +
@@ -103,30 +125,41 @@ app.get("/login", function (req, res) {
       var access_token = body.access_token;
       var refresh_token = body.refresh_token;
       let uri = process.env.FRONTEND_URI || "http://localhost:3000/auth/";
-      request.get(
-        {
-          url: "https://api.spotify.com/v1/me",
-          headers: {
-            Accept: "application/json",
-            "Content-Type": "application/json",
-            Authorization: "Bearer " + access_token,
-          },
-        },
-        function (error, response, body) {
-          req.session.user = {
-            id: JSON.parse(body).id,
-            access_token,
-            refresh_token,
-          };
-          return res.redirect(
-            uri +
-              "?access_token=" +
-              access_token +
-              "&refresh_token=" +
-              refresh_token
-          );
-        }
+      req.session.user = {
+        access_token,
+        refresh_token,
+      };
+      return res.redirect(
+        uri +
+          "?access_token=" +
+          access_token +
+          "&refresh_token=" +
+          refresh_token
       );
+      // request.get(
+      //   {
+      //     url: "https://api.spotify.com/v1/me",
+      //     headers: {
+      //       Accept: "application/json",
+      //       "Content-Type": "application/json",
+      //       Authorization: "Bearer " + access_token,
+      //     },
+      //   },
+      //   function (error, response, body) {
+      //     req.session.user = {
+      //       id: JSON.parse(body).id,
+      //       access_token,
+      //       refresh_token,
+      //     };
+      //     return res.redirect(
+      //       uri +
+      //         "?access_token=" +
+      //         access_token +
+      //         "&refresh_token=" +
+      //         refresh_token
+      //     );
+      //   }
+      // );
     });
   }
   console.log("Creating new session");
@@ -258,11 +291,30 @@ app.get("/callback", function (req, res) {
         },
       },
       function (error, response, body) {
+        const parsedBody = JSON.parse(body);
         req.session.user = {
           id: JSON.parse(body).id,
           access_token,
           refresh_token,
         };
+        User.findOne({ userName: parsedBody.id }).then((user, err) => {
+          if (user) {
+            console.log(`USER ${parsedBody.id} ALREADY EXISTS`);
+          } else {
+            console.log(`CREATING USER WITH ID ${parsedBody.id}`);
+            const user = new User({
+              displayName: parsedBody.display_name,
+              userName: parsedBody.id,
+              maxScores: { world: 24108 },
+            });
+            user
+              .save()
+              .then((result) => {
+                console.log(result);
+              })
+              .catch((err) => console.log(err));
+          }
+        });
         return res.redirect(
           uri +
             "?access_token=" +
@@ -273,6 +325,17 @@ app.get("/callback", function (req, res) {
       }
     );
   });
+});
+
+app.get("/userData/:userSpotifyId", function (req, res) {
+  console.log("User requested data");
+  const userSpotifyId = req.params.userSpotifyId;
+  // console.log(userSpotifyId);
+  User.findOne({ userName: userSpotifyId })
+    .exec()
+    .then((user) => {
+      return res.json(user);
+    });
 });
 
 let port = process.env.PORT || 8888;

@@ -1,5 +1,5 @@
 //import "./App.css";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import {
   BrowserRouter as Router,
   Switch,
@@ -16,10 +16,21 @@ import ChooseMap from "./ChooseMap";
 
 import getCookie from "./GetCookie";
 
+export const UserContext = React.createContext({
+  userName: "user",
+  displayName: "user",
+  maxScores: {},
+});
+
 function App() {
   const [accessToken, setAccessToken] = useState("");
   const [redirect, setRedirect] = useState("");
-  const [userData, setUserData] = useState({ username: "", totalScore: 0 });
+  const [userData, setUserData] = useState({
+    displayName: "",
+    userName: "",
+    maxScores: {},
+    currGameScore: 0,
+  });
 
   //default world as map
   const [currMap, setCurrMap] = useState("World");
@@ -48,19 +59,38 @@ function App() {
   }, [accessToken]);
 
   const setUser = async () => {
+    console.log("SETTING USER");
     return axios("https://api.spotify.com/v1/me", {
       headers: {
         Accept: "application/json",
-        "Content-Type": "application/json",
+        // "Content-Type": "application/json",
         Authorization: "Bearer " + accessToken,
       },
       method: "GET",
     })
-      .then((userData) => {
-        setUserData({
-          username: userData.data.display_name,
-          totalScore: 0,
+      .then((spotifyData) => {
+        console.log("SPOTIFY DATA");
+        console.log(spotifyData);
+        axios(`http://localhost:8888/userData/${spotifyData.data.id}`, {
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+          },
+          method: "GET",
+        }).then((dbUserData) => {
+          console.log("DATABASE DATA");
+          console.log(dbUserData);
+          setUserData({
+            displayName: dbUserData.data.displayName,
+            userName: dbUserData.data.userName,
+            maxScores: dbUserData.data.maxScores,
+            currGameScore: 0,
+          });
         });
+        // setUserData({
+        //   username: userData.data.display_name,
+        //   totalScore: 0,
+        // });
       })
       .catch((err) => {
         console.log("ERROR GETTING SPOTIFY USER DATA", err);
@@ -143,44 +173,46 @@ function App() {
         ) : null}
         {redirect === "maps" ? <Redirect to="/maps" /> : null}
         {redirect === "login" ? <Redirect to="/login" /> : null}
-        <Header
-          userData={userData}
-          checkToken={checkToken}
-          setRedirect={setRedirect}
-        />
-        <Switch>
-          <Route path="/auth" render={() => handleAuth()} />
-          <Route
-            path="/login"
-            render={() =>
-              setTokenFromCookie() ? <Redirect to="/maps" /> : handleLogin()
-            }
+        <UserContext.Provider value={userData}>
+          <Header
+            // userData={userData}
+            checkToken={checkToken}
+            setRedirect={setRedirect}
           />
-          <Route exact path="/">
-            {document.cookie === "" ? (
-              <Login handleLogin={handleLogin} />
-            ) : (
-              <Redirect to="/login" />
-            )}
-          </Route>
-          <Route path="/maps">
-            <ChooseMap handleMapChosen={handleMapChosen} />
-          </Route>
-          <Route path="/play">
-            <Play
-              accessToken={accessToken}
-              token={accessToken}
-              currMap={currMap}
-              setAccessToken={setAccessToken}
+          <Switch>
+            <Route path="/auth" render={() => handleAuth()} />
+            <Route
+              path="/login"
+              render={() =>
+                setTokenFromCookie() ? <Redirect to="/maps" /> : handleLogin()
+              }
             />
-          </Route>
-          <Route path="/error">
-            <h1>Error! Check console</h1>
-          </Route>
-          <Route path="*">
-            <h1>Not Found!</h1>
-          </Route>
-        </Switch>
+            <Route exact path="/">
+              {document.cookie === "" ? (
+                <Login handleLogin={handleLogin} />
+              ) : (
+                <Redirect to="/login" />
+              )}
+            </Route>
+            <Route path="/maps">
+              <ChooseMap handleMapChosen={handleMapChosen} />
+            </Route>
+            <Route path="/play">
+              <Play
+                accessToken={accessToken}
+                token={accessToken}
+                currMap={currMap}
+                setAccessToken={setAccessToken}
+              />
+            </Route>
+            <Route path="/error">
+              <h1>Error! Check console</h1>
+            </Route>
+            <Route path="*">
+              <h1>Not Found!</h1>
+            </Route>
+          </Switch>
+        </UserContext.Provider>
       </Router>
     </div>
   );
