@@ -6,8 +6,6 @@ const MapItem = ({ map, handleMapChosen }) => {
   const userData = useContext(UserContext);
 
   const formattedMapName = map.name.toLowerCase().replace(" ", "");
-  console.log("MapItem USERDATA");
-  console.log(userData);
   const maxScore = userData.maxScores[formattedMapName]
     ? userData.maxScores[formattedMapName]
     : 0;

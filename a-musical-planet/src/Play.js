@@ -14,7 +14,7 @@ const maxScore = 5000;
 const Playlists = require("./Playlists.json");
 const countries = require("./WorldInfo.json");
 
-const Play = ({ accessToken, setAccessToken, currMap }) => {
+const Play = ({ accessToken, setAccessToken, currMap, setUserMaxScore }) => {
   const [currTrack, setCurrTrack] = useState({ round: 0 });
   const [redirect, setRedirect] = useState("");
 
@@ -31,6 +31,7 @@ const Play = ({ accessToken, setAccessToken, currMap }) => {
 
   const newGame = () => {
     nextTrack();
+    setPopup({ show: false, roundScore: 0, sessionScore: 0 });
   };
 
   const nextTrack = () => {
@@ -209,11 +210,13 @@ const Play = ({ accessToken, setAccessToken, currMap }) => {
         </div>
         {popup.show && (
           <GuessPopup
+            currMap={currMap}
             currTrack={currTrack}
             currChosen={currChosen}
             nextTrack={nextTrack}
             roundScore={popup.roundScore}
             sessionScore={popup.sessionScore}
+            setUserMaxScore={setUserMaxScore}
             newGame={newGame}
           />
         )}

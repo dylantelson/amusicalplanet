@@ -13,8 +13,19 @@ import dotenv from "dotenv";
 
 import User from "./models/user.js";
 
+import RandomNames from "./RandomNames.js";
+
 dotenv.config();
 
+const mapNames = [
+  "world",
+  "northamerica",
+  "southamerica",
+  "europe",
+  "africa",
+  "oceania",
+  "asia",
+];
 const MongoDBSession = connectMongoDBSession(session);
 let app = express();
 
@@ -43,18 +54,9 @@ const store = new MongoDBSession({
   collection: "sessions",
 });
 
-try {
-  User.findOne({ userName: "joncena" }, function (err, doc) {
-    console.log(doc);
-  });
-  // console.log(await User.findOne({ userName: "joncena" }));
-} catch (e) {
-  console.log("ERRORASD", e);
-}
-
 app.use(
   session({
-    secret: "mySecret",
+    secret: process.env.EXPRESS_SESSION_SECRET,
     saveUninitialized: false,
     resave: false,
     cookie: {
@@ -337,6 +339,91 @@ app.get("/userData/:userSpotifyId", function (req, res) {
       return res.json(user);
     });
 });
+
+const randInt = (min, max) => {
+  // min and max included
+  return Math.floor(Math.random() * (max - min + 1) + min);
+};
+
+const createRandomUsers = async (loopTimes) => {
+  const users = [];
+  for (let i = 0; i < loopTimes; i++) {
+    const randomName = RandomNames()[randInt(0, RandomNames().length - 1)];
+    const user = new User({
+      displayName: randomName,
+      userName: randomName.toLowerCase(),
+      maxScores: {
+        world: randInt(1, 25000),
+        northamerica: randInt(1, 25000),
+        southamerica: randInt(1, 25000),
+        africa: randInt(1, 25000),
+        europe: randInt(1, 25000),
+        asia: randInt(1, 25000),
+        oceania: randInt(1, 25000),
+      },
+    });
+    const currUser = await user.save();
+    console.log(currUser);
+    users.push(currUser);
+  }
+  return users;
+};
+
+const getLeaderboardForMap = async (map) => {
+  var maxScoresForMap = {};
+  maxScoresForMap["maxScores." + map] = -1;
+  let leaderboardData = await User.find().sort(maxScoresForMap).limit(5);
+  return leaderboardData;
+};
+
+app.get("/getLeaderboard/", async (req, res) => {
+  const leaderboardData = ;
+  for (const map of mapNames) {
+    leaderboardData[map] = await getLeaderboardForMap(map);
+  }
+  console.log(leaderboardData);
+  res.send(leaderboardData);
+});
+
+app.post("/createRandomUsers/:loopTimes", async (req, res) => {
+  const loopTimes = req.params.loopTimes;
+  const usersMade = await createRandomUsers(loopTimes);
+  res.send(usersMade);
+});
+
+app.post("/setMaxScore/:userSpotifyId/:map/:newScore", async (req, res) => {
+  console.log(req.url);
+  const userSpotifyId = req.params.userSpotifyId;
+  const map = req.params.map;
+  const newScore = parseInt(req.params.newScore);
+  console.log(
+    `User ${userSpotifyId} posting new high score ${newScore} on map ${map}`
+  );
+
+  let userDoc = {};
+
+  User.findOne({ userName: userSpotifyId }).then((newUser) => {
+    userDoc = newUser;
+    userDoc.maxScores[map] = newScore;
+
+    userDoc.markModified("maxScores");
+
+    mongoose.set("debug", true);
+
+    userDoc.save().then((savedUserDoc) => {
+      console.log(`Successfully saved ${userSpotifyId}'s new high score!`);
+      console.log(savedUserDoc);
+      return res.json(savedUserDoc);
+    });
+  });
+  // .catch((err) => {
+  //   console.log("ERROR UPDATING MAX SCORE");
+  //   console.error(err);
+  //   return res.send(err);
+  // });
+});
+
+app.options("/", (req, res) => res.send());
 
 let port = process.env.PORT || 8888;
 console.log(

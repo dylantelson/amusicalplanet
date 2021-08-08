@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useState, useContext } from "react";
+import { UserContext } from "./App.js";
 
 const GuessPopup = ({
   currChosen,
@@ -7,7 +8,14 @@ const GuessPopup = ({
   roundScore,
   sessionScore,
   newGame,
+  setUserMaxScore,
+  currMap,
 }) => {
+  const userData = useContext(UserContext);
+  console.log("USER DATA");
+  console.log(userData);
+
+  const [gameFinished, setGameFinished] = useState(false);
   const correctText = (
     <div>
       <h1>Good job!</h1>
@@ -24,6 +32,27 @@ const GuessPopup = ({
   let correct = false;
   if (currChosen === currTrack.location) correct = true;
 
+  if (currTrack.round === 5 && !gameFinished) {
+    const formattedCurrMap = currMap.toLowerCase().replace(" ", "");
+    if (
+      !userData.maxScores[formattedCurrMap] ||
+      sessionScore > userData.maxScores[formattedCurrMap]
+    ) {
+      console.log(
+        "Saving score, as",
+        sessionScore,
+        "is more than",
+        userData.maxScores[currMap]
+      );
+      setGameFinished(true);
+      setUserMaxScore(sessionScore);
+    } else {
+      console.log(
+        `${sessionScore} is not more than ${userData.maxScores[currMap]}`
+      );
+    }
+  }
+
   return (
     <div className="popup-container">
       <div
@@ -33,7 +62,7 @@ const GuessPopup = ({
         <div className="popupText">
           {correct ? correctText : incorrectText}
           <h3 id="score">
-            Score: {sessionScore} (+{roundScore})
+            Score: {sessionScore} (+{roundScore} {gameFinished})
           </h3>
         </div>
         <div className="song-info">

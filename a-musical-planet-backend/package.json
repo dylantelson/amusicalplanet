@@ -10,6 +10,7 @@
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.19.0",
+    "connect-mongo": "^4.4.1",
     "connect-mongodb-session": "^3.0.0",
     "cors": "^2.8.5",
     "dotenv": "^10.0.0",

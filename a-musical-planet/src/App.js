@@ -13,6 +13,7 @@ import Play from "./Play";
 import Header from "./Header";
 import Login from "./Login";
 import ChooseMap from "./ChooseMap";
+import Leaderboard from "./Leaderboard";
 
 import getCookie from "./GetCookie";
 
@@ -34,6 +35,28 @@ function App() {
 
   //default world as map
   const [currMap, setCurrMap] = useState("World");
+
+  const setUserMaxScore = (newScore) => {
+    console.log("APP SETTING NEW MAXSCORE", newScore);
+    axios(
+      `http://localhost:8888/setMaxScore/${
+        userData.userName
+      }/${currMap.toLowerCase()}/${newScore}`,
+      {
+        method: "POST",
+      }
+    )
+      .then(() => {
+        console.log("POSTED NEW MAX SCORE OF", currMap, newScore);
+        let newMaxScores = userData.maxScores;
+        newMaxScores[currMap.toLowerCase()] = newScore;
+        setUserData({ ...userData, maxScores: newMaxScores });
+        console.log(userData);
+      })
+      .catch((err) => {
+        console.log("ERROR SETTING NEW SCORE", err);
+      });
+  };
 
   const setTokenFromCookie = () => {
     const accessTokenCookie = getCookie("accessToken");
@@ -69,8 +92,6 @@ function App() {
       method: "GET",
     })
       .then((spotifyData) => {
-        console.log("SPOTIFY DATA");
-        console.log(spotifyData);
         axios(`http://localhost:8888/userData/${spotifyData.data.id}`, {
           headers: {
             Accept: "application/json",
@@ -78,8 +99,6 @@ function App() {
           },
           method: "GET",
         }).then((dbUserData) => {
-          console.log("DATABASE DATA");
-          console.log(dbUserData);
           setUserData({
             displayName: dbUserData.data.displayName,
             userName: dbUserData.data.userName,
@@ -197,12 +216,16 @@ function App() {
             <Route path="/maps">
               <ChooseMap handleMapChosen={handleMapChosen} />
             </Route>
+            <Route path="/leaderboard">
+              <Leaderboard />
+            </Route>
             <Route path="/play">
               <Play
                 accessToken={accessToken}
                 token={accessToken}
                 currMap={currMap}
                 setAccessToken={setAccessToken}
+                setUserMaxScore={setUserMaxScore}
               />
             </Route>
             <Route path="/error">

@@ -1,4 +1,7 @@
-GET https://api.spotify.com/v1/me/
-    Content-Type: "application/json"
-    Accept: "application/json"
-    Authorization: "Bearer BQDHbvyeVZiHcGF_w0wBYbEfw5fcUJTTRIlRMoURdYtD1c-k29WEq3tn0ZsTupBiZSWyIIaszqySNCKoeLkDWKBkowlJrHm-U7PXkr-JvUS0U6T6EZ69bEQxRweRCpseY-PgHCitDvN2rydqSnztuymtVvlBncyU7PPO3LzXr5cxE40"
+# GET https://api.spotify.com/v1/me/
+#     Content-Type: "application/json"
+#     Accept: "application/json"
+#     Authorization: "Bearer BQDHbvyeVZiHcGF_w0wBYbEfw5fcUJTTRIlRMoURdYtD1c-k29WEq3tn0ZsTupBiZSWyIIaszqySNCKoeLkDWKBkowlJrHm-U7PXkr-JvUS0U6T6EZ69bEQxRweRCpseY-PgHCitDvN2rydqSnztuymtVvlBncyU7PPO3LzXr5cxE40"
+
+
+GET http://localhost:8888/getLeaderboard/
