@@ -6,9 +6,10 @@ const MapItem = ({ map, handleMapChosen }) => {
   const userData = useContext(UserContext);
 
   const formattedMapName = map.name.toLowerCase().replace(" ", "");
-  const maxScore = userData.maxScores[formattedMapName]
-    ? userData.maxScores[formattedMapName]
-    : 0;
+  const maxScore =
+    userData.maxScores && userData.maxScores[formattedMapName]
+      ? userData.maxScores[formattedMapName]
+      : 0;
   return (
     <div className="MapItem">
       <img src={"/mapimages/" + map.image} alt={map.name} />

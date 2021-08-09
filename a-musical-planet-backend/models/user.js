@@ -14,6 +14,14 @@ const userSchema = new Schema({
   maxScores: {
     type: mongoose.SchemaTypes.Mixed,
   },
+  profilePicture: {
+    type: String,
+    default: "/defaultavatar.png",
+  },
+  country: {
+    type: String,
+    default: "US",
+  },
 });
 
 export default mongoose.model("User", userSchema);

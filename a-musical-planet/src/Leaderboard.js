@@ -45,9 +45,10 @@ const Leaderboard = () => {
       </div>
       <div className="leaderboard">
         {leaderboardStats[chosenMap] ? (
-          leaderboardStats[chosenMap].map((userData) => (
+          leaderboardStats[chosenMap].map((userData, rank) => (
             <LeaderboardUser
-              key={userData.userName + chosenMap}
+              key={userData.userName + chosenMap + (rank + 1)}
+              rank={rank + 1}
               userData={userData}
               map={chosenMap}
             />

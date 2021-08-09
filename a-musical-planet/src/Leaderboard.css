@@ -17,9 +17,8 @@
 
 .leaderboardUser {
   display: flex;
-  flex-direction: column;
   flex: 0 1 auto;
-  justify-content: flex-start;
+  justify-content: space-around;
   align-items: center;
   border: 0px;
   box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
@@ -30,8 +29,39 @@
   min-height: 0;
   min-width: 150px;
   overflow: hidden;
-  width: 20%;
+  width: 34%;
   max-height: 450px;
+  padding: 8px 12px;
+  border-radius: 15px;
+}
+
+.names {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
+}
+
+.leaderboardUser img {
+  width: 15%;
+  height: auto;
+  border-radius: 50%;
+  margin: 0px 20px;
+}
+
+.leaderboardUser a {
+  text-decoration: none;
+}
+
+.leaderboardUser a,
+.leaderboardUser p,
+.leaderboardUser h3 {
+  margin: 0px;
+  text-align: left;
+}
+
+.leaderboardUser .highScore {
+  display: flex;
+  flex-direction: column;
 }
 
 /* .LeaderboardUser {

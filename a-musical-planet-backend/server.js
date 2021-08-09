@@ -5,6 +5,7 @@ import connectMongoDBSession from "connect-mongodb-session";
 import mongoose from "mongoose";
 import request from "request";
 import querystring from "querystring";
+import fetch from "node-fetch";
 
 import UserDAO from "./userDAO.js";
 
@@ -307,7 +308,9 @@ app.get("/callback", function (req, res) {
             const user = new User({
               displayName: parsedBody.display_name,
               userName: parsedBody.id,
-              maxScores: { world: 24108 },
+              maxScores: { world: 0 },
+              profilePicture: parsedBody.images[0].url,
+              country: parsedBody.country,
             });
             user
               .save()
@@ -348,10 +351,12 @@ const randInt = (min, max) => {
 const createRandomUsers = async (loopTimes) => {
   const users = [];
   for (let i = 0; i < loopTimes; i++) {
-    const randomName = RandomNames()[randInt(0, RandomNames().length - 1)];
+    const res = await fetch("https://randomuser.me/api/");
+    const resultsJson = await res.json();
+    const userData = resultsJson.results[0];
     const user = new User({
-      displayName: randomName,
-      userName: randomName.toLowerCase(),
+      displayName: `${userData.name.first} ${userData.name.last}`,
+      userName: userData.login.username,
       maxScores: {
         world: randInt(1, 25000),
         northamerica: randInt(1, 25000),
@@ -361,12 +366,35 @@ const createRandomUsers = async (loopTimes) => {
         asia: randInt(1, 25000),
         oceania: randInt(1, 25000),
       },
+      profilePicture: userData.picture.large,
+      country: userData.location.country,
     });
     const currUser = await user.save();
-    console.log(currUser);
     users.push(currUser);
   }
+  console.log("USERS:");
+  console.log(users);
   return users;
+
+  // const randomFirstName = RandomNames()[randInt(0, RandomNames().length - 1)];
+  // const randomLastName = RandomNames()[randInt(0, RandomNames().length - 1)];
+  // const user = new User({
+  //   displayName: `${randomFirstName} ${randomLastName}`,
+  //   userName:
+  //     randomFirstName.toLowerCase() + randInt(10000, 99999).toString(),
+  //   maxScores: {
+  //     world: randInt(1, 25000),
+  //     northamerica: randInt(1, 25000),
+  //     southamerica: randInt(1, 25000),
+  //     africa: randInt(1, 25000),
+  //     europe: randInt(1, 25000),
+  //     asia: randInt(1, 25000),
+  //     oceania: randInt(1, 25000),
+  //   },
+  // });
+  // const currUser = await user.save();
+  // console.log(currUser);
+  // users.push(currUser);
 };
 
 const getLeaderboardForMap = async (map) => {
@@ -377,7 +405,7 @@ const getLeaderboardForMap = async (map) => {
 };
 
 app.get("/getLeaderboard/", async (req, res) => {
-  const leaderboardData = ;
+  const leaderboardData = {};
   for (const map of mapNames) {
     leaderboardData[map] = await getLeaderboardForMap(map);
   }

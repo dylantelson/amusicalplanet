@@ -14,6 +14,7 @@ import Header from "./Header";
 import Login from "./Login";
 import ChooseMap from "./ChooseMap";
 import Leaderboard from "./Leaderboard";
+import PersonalPage from "./PersonalPage";
 
 import getCookie from "./GetCookie";
 
@@ -31,6 +32,8 @@ function App() {
     userName: "",
     maxScores: {},
     currGameScore: 0,
+    profilePicture: "",
+    country: "",
   });
 
   //default world as map
@@ -104,6 +107,8 @@ function App() {
             userName: dbUserData.data.userName,
             maxScores: dbUserData.data.maxScores,
             currGameScore: 0,
+            profilePicture: dbUserData.data.profilePicture,
+            country: dbUserData.data.country,
           });
         });
         // setUserData({
@@ -219,6 +224,7 @@ function App() {
             <Route path="/leaderboard">
               <Leaderboard />
             </Route>
+            <Route path="/user/:userName" children={<PersonalPage />} />
             <Route path="/play">
               <Play
                 accessToken={accessToken}

@@ -35,15 +35,10 @@ const GuessPopup = ({
   if (currTrack.round === 5 && !gameFinished) {
     const formattedCurrMap = currMap.toLowerCase().replace(" ", "");
     if (
+      !userData.maxScores ||
       !userData.maxScores[formattedCurrMap] ||
       sessionScore > userData.maxScores[formattedCurrMap]
     ) {
-      console.log(
-        "Saving score, as",
-        sessionScore,
-        "is more than",
-        userData.maxScores[currMap]
-      );
       setGameFinished(true);
       setUserMaxScore(sessionScore);
     } else {
