@@ -8,7 +8,7 @@ const GuessPopup = ({
   roundScore,
   sessionScore,
   newGame,
-  setUserMaxScore,
+  sendScoreToServer,
   currMap,
 }) => {
   const userData = useContext(UserContext);
@@ -32,20 +32,9 @@ const GuessPopup = ({
   let correct = false;
   if (currChosen === currTrack.location) correct = true;
 
-  if (currTrack.round === 5 && !gameFinished) {
-    const formattedCurrMap = currMap.toLowerCase().replace(" ", "");
-    if (
-      !userData.maxScores ||
-      !userData.maxScores[formattedCurrMap] ||
-      sessionScore > userData.maxScores[formattedCurrMap]
-    ) {
-      setGameFinished(true);
-      setUserMaxScore(sessionScore);
-    } else {
-      console.log(
-        `${sessionScore} is not more than ${userData.maxScores[currMap]}`
-      );
-    }
+  if (!gameFinished && currTrack.round === 5) {
+    setGameFinished(true);
+    sendScoreToServer(sessionScore);
   }
 
   return (

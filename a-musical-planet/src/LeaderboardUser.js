@@ -12,7 +12,7 @@ const LeaderboardUser = ({ userData, map, rank }) => {
       </div>
       <div className="highScore">
         <p>Score</p>
-        <h3>{userData.maxScores[map]}</h3>
+        <h3>{userData.stats.maxScores[map]}</h3>
       </div>
     </div>
   );

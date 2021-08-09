@@ -69,7 +69,7 @@ app.use(
 );
 
 app.use((req, res, next) => {
-  console.log(req.session);
+  // console.log(req.session);
   next();
 });
 
@@ -308,7 +308,20 @@ app.get("/callback", function (req, res) {
             const user = new User({
               displayName: parsedBody.display_name,
               userName: parsedBody.id,
-              maxScores: { world: 0 },
+              stats: {
+                maxScores: {
+                  overall: {
+                    score: 0,
+                    map: "world",
+                  },
+                },
+                averageScores: {
+                  overall: 0,
+                },
+                completedGames: {
+                  overall: 0,
+                },
+              },
               profilePicture: parsedBody.images[0].url,
               country: parsedBody.country,
             });
@@ -339,6 +352,8 @@ app.get("/userData/:userSpotifyId", function (req, res) {
   User.findOne({ userName: userSpotifyId })
     .exec()
     .then((user) => {
+      console.log("RETURNING USER");
+      console.log(user);
       return res.json(user);
     });
 });
@@ -351,55 +366,74 @@ const randInt = (min, max) => {
 const createRandomUsers = async (loopTimes) => {
   const users = [];
   for (let i = 0; i < loopTimes; i++) {
+    // console.log("LOOP#", i);
     const res = await fetch("https://randomuser.me/api/");
     const resultsJson = await res.json();
     const userData = resultsJson.results[0];
     const user = new User({
       displayName: `${userData.name.first} ${userData.name.last}`,
       userName: userData.login.username,
-      maxScores: {
-        world: randInt(1, 25000),
-        northamerica: randInt(1, 25000),
-        southamerica: randInt(1, 25000),
-        africa: randInt(1, 25000),
-        europe: randInt(1, 25000),
-        asia: randInt(1, 25000),
-        oceania: randInt(1, 25000),
+      stats: {
+        maxScores: {
+          world: randInt(1, 25000),
+          northamerica: randInt(1, 25000),
+          southamerica: randInt(1, 25000),
+          africa: randInt(1, 25000),
+          europe: randInt(1, 25000),
+          asia: randInt(1, 25000),
+          oceania: randInt(1, 25000),
+        },
+        averageScores: {
+          world: randInt(5000, 20000),
+          northamerica: randInt(5000, 20000),
+          southamerica: randInt(5000, 20000),
+          africa: randInt(5000, 20000),
+          europe: randInt(5000, 20000),
+          asia: randInt(5000, 20000),
+          oceania: randInt(5000, 20000),
+        },
+        completedGames: {
+          world: randInt(1, 500),
+          northamerica: randInt(1, 500),
+          southamerica: randInt(1, 500),
+          africa: randInt(1, 500),
+          europe: randInt(1, 500),
+          asia: randInt(1, 500),
+          oceania: randInt(1, 500),
+        },
       },
       profilePicture: userData.picture.large,
       country: userData.location.country,
     });
+
+    let keys = Object.keys(user.stats.maxScores);
+    let overallMaxScore = parseInt(user.stats.maxScores[keys[0]]);
+    let overallMaxScoreMap = keys[0];
+    let totalCompletedGames = 0;
+    for (let i = 1; i < keys.length; i++) {
+      totalCompletedGames += parseInt(user.stats.completedGames[keys[i]]);
+      const currVal = parseInt(user.stats.maxScores[keys[i]]);
+      if (currVal > overallMaxScore) {
+        overallMaxScore = currVal;
+        overallMaxScoreMap = keys[i];
+      }
+    }
+
+    user.stats.completedGames.overall = totalCompletedGames;
+    user.stats.maxScores.overall = {
+      score: overallMaxScore,
+      map: overallMaxScoreMap,
+    };
+    user.stats.averageScores.overall = randInt(5000, 20000);
     const currUser = await user.save();
     users.push(currUser);
   }
-  console.log("USERS:");
-  console.log(users);
   return users;
-
-  // const randomFirstName = RandomNames()[randInt(0, RandomNames().length - 1)];
-  // const randomLastName = RandomNames()[randInt(0, RandomNames().length - 1)];
-  // const user = new User({
-  //   displayName: `${randomFirstName} ${randomLastName}`,
-  //   userName:
-  //     randomFirstName.toLowerCase() + randInt(10000, 99999).toString(),
-  //   maxScores: {
-  //     world: randInt(1, 25000),
-  //     northamerica: randInt(1, 25000),
-  //     southamerica: randInt(1, 25000),
-  //     africa: randInt(1, 25000),
-  //     europe: randInt(1, 25000),
-  //     asia: randInt(1, 25000),
-  //     oceania: randInt(1, 25000),
-  //   },
-  // });
-  // const currUser = await user.save();
-  // console.log(currUser);
-  // users.push(currUser);
 };
 
 const getLeaderboardForMap = async (map) => {
   var maxScoresForMap = {};
-  maxScoresForMap["maxScores." + map] = -1;
+  maxScoresForMap["stats.maxScores." + map] = -1;
   let leaderboardData = await User.find().sort(maxScoresForMap).limit(5);
   return leaderboardData;
 };
@@ -409,7 +443,6 @@ app.get("/getLeaderboard/", async (req, res) => {
   for (const map of mapNames) {
     leaderboardData[map] = await getLeaderboardForMap(map);
   }
-  console.log(leaderboardData);
   res.send(leaderboardData);
 });
 
@@ -419,36 +452,66 @@ app.post("/createRandomUsers/:loopTimes", async (req, res) => {
   res.send(usersMade);
 });
 
-app.post("/setMaxScore/:userSpotifyId/:map/:newScore", async (req, res) => {
-  console.log(req.url);
+app.post("/newScore/:userSpotifyId/:map/:newScore", async (req, res) => {
   const userSpotifyId = req.params.userSpotifyId;
   const map = req.params.map;
   const newScore = parseInt(req.params.newScore);
-  console.log(
-    `User ${userSpotifyId} posting new high score ${newScore} on map ${map}`
-  );
+  // console.log(
+  //   `User ${userSpotifyId} posting new high score ${newScore} on map ${map}`
+  // );
 
   let userDoc = {};
 
   User.findOne({ userName: userSpotifyId }).then((newUser) => {
     userDoc = newUser;
-    userDoc.maxScores[map] = newScore;
 
-    userDoc.markModified("maxScores");
+    userDoc.stats.averageScores[map] = Math.floor(
+      ((userDoc.stats.averageScores[map]
+        ? userDoc.stats.averageScores[map]
+        : 0) *
+        (userDoc.stats.completedGames[map]
+          ? userDoc.stats.completedGames[map]
+          : 0) +
+        newScore) /
+        ((userDoc.stats.completedGames[map]
+          ? userDoc.stats.completedGames[map]
+          : 0) +
+          1)
+    );
+    userDoc.stats.averageScores.overall = Math.floor(
+      (userDoc.stats.averageScores.overall *
+        userDoc.stats.completedGames.overall +
+        newScore) /
+        (userDoc.stats.completedGames.overall + 1)
+    );
 
-    mongoose.set("debug", true);
+    userDoc.stats.completedGames[map] = userDoc.stats.completedGames[map]
+      ? userDoc.stats.completedGames[map] + 1
+      : 1;
+    userDoc.stats.completedGames.overall += 1;
+
+    if (
+      !userDoc.stats.maxScores[map] ||
+      newScore > userDoc.stats.maxScores[map]
+    ) {
+      console.log("SETTING NEW MAX SCORE ON MAP", map, newScore);
+      userDoc.stats.maxScores[map] = newScore;
+    }
+    if (newScore > userDoc.stats.maxScores.overall.score) {
+      console.log("SETTING NEW MAX SCORE OVERALL", newScore);
+      userDoc.stats.maxScores.overall.score = newScore;
+      userDoc.stats.maxScores.overall.map = map;
+    }
+
+    userDoc.markModified("stats");
+
+    // mongoose.set("debug", true);
 
     userDoc.save().then((savedUserDoc) => {
-      console.log(`Successfully saved ${userSpotifyId}'s new high score!`);
-      console.log(savedUserDoc);
+      console.log(`Successfully saved ${userSpotifyId}'s new score!`);
       return res.json(savedUserDoc);
     });
   });
-  // .catch((err) => {
-  //   console.log("ERROR UPDATING MAX SCORE");
-  //   console.error(err);
-  //   return res.send(err);
-  // });
 });
 
 app.options("/", (req, res) => res.send());

@@ -14,7 +14,7 @@ const maxScore = 5000;
 const Playlists = require("./Playlists.json");
 const countries = require("./WorldInfo.json");
 
-const Play = ({ accessToken, setAccessToken, currMap, setUserMaxScore }) => {
+const Play = ({ accessToken, setAccessToken, currMap, sendScoreToServer }) => {
   const [currTrack, setCurrTrack] = useState({ round: 0 });
   const [redirect, setRedirect] = useState("");
 
@@ -216,7 +216,7 @@ const Play = ({ accessToken, setAccessToken, currMap, setUserMaxScore }) => {
             nextTrack={nextTrack}
             roundScore={popup.roundScore}
             sessionScore={popup.sessionScore}
-            setUserMaxScore={setUserMaxScore}
+            sendScoreToServer={sendScoreToServer}
             newGame={newGame}
           />
         )}

@@ -7,8 +7,11 @@ const MapItem = ({ map, handleMapChosen }) => {
 
   const formattedMapName = map.name.toLowerCase().replace(" ", "");
   const maxScore =
-    userData.maxScores && userData.maxScores[formattedMapName]
-      ? userData.maxScores[formattedMapName]
+    userData &&
+    userData.stats &&
+    userData.stats.maxScores &&
+    userData.stats.maxScores[formattedMapName]
+      ? userData.stats.maxScores[formattedMapName]
       : 0;
   return (
     <div className="MapItem">

@@ -21,7 +21,11 @@ import getCookie from "./GetCookie";
 export const UserContext = React.createContext({
   userName: "user",
   displayName: "user",
-  maxScores: {},
+  stats: {
+    maxScores: {},
+    averageScores: {},
+    completedGames: 0,
+  },
 });
 
 function App() {
@@ -31,7 +35,6 @@ function App() {
     displayName: "",
     userName: "",
     maxScores: {},
-    currGameScore: 0,
     profilePicture: "",
     country: "",
   });
@@ -39,25 +42,23 @@ function App() {
   //default world as map
   const [currMap, setCurrMap] = useState("World");
 
-  const setUserMaxScore = (newScore) => {
-    console.log("APP SETTING NEW MAXSCORE", newScore);
+  const sendScoreToServer = (newScore) => {
+    console.log("Sending score to server", newScore);
     axios(
-      `http://localhost:8888/setMaxScore/${
+      `http://localhost:8888/newScore/${
         userData.userName
       }/${currMap.toLowerCase()}/${newScore}`,
       {
         method: "POST",
       }
     )
-      .then(() => {
-        console.log("POSTED NEW MAX SCORE OF", currMap, newScore);
-        let newMaxScores = userData.maxScores;
-        newMaxScores[currMap.toLowerCase()] = newScore;
-        setUserData({ ...userData, maxScores: newMaxScores });
-        console.log(userData);
+      .then(({ data }) => {
+        console.log("Score sent to server!");
+        console.log(data);
+        setUserData(data);
       })
       .catch((err) => {
-        console.log("ERROR SETTING NEW SCORE", err);
+        console.log("ERROR SENDING SCORE TO SERVER", err);
       });
   };
 
@@ -101,20 +102,9 @@ function App() {
             "Content-Type": "application/json",
           },
           method: "GET",
-        }).then((dbUserData) => {
-          setUserData({
-            displayName: dbUserData.data.displayName,
-            userName: dbUserData.data.userName,
-            maxScores: dbUserData.data.maxScores,
-            currGameScore: 0,
-            profilePicture: dbUserData.data.profilePicture,
-            country: dbUserData.data.country,
-          });
+        }).then(({ data }) => {
+          setUserData(data);
         });
-        // setUserData({
-        //   username: userData.data.display_name,
-        //   totalScore: 0,
-        // });
       })
       .catch((err) => {
         console.log("ERROR GETTING SPOTIFY USER DATA", err);
@@ -231,7 +221,7 @@ function App() {
                 token={accessToken}
                 currMap={currMap}
                 setAccessToken={setAccessToken}
-                setUserMaxScore={setUserMaxScore}
+                sendScoreToServer={sendScoreToServer}
               />
             </Route>
             <Route path="/error">

@@ -11,8 +11,16 @@ const userSchema = new Schema({
     required: true,
     unique: true,
   },
-  maxScores: {
-    type: mongoose.SchemaTypes.Mixed,
+  stats: {
+    maxScores: {
+      type: mongoose.SchemaTypes.Mixed,
+    },
+    averageScores: {
+      type: mongoose.SchemaTypes.Mixed,
+    },
+    completedGames: {
+      type: mongoose.SchemaTypes.Mixed,
+    },
   },
   profilePicture: {
     type: String,

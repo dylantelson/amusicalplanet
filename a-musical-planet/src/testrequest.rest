@@ -6,4 +6,4 @@
 
 # GET http://localhost:8888/getLeaderboard/
 
-POST http://localhost:8888/createRandomUsers/10
+POST http://localhost:8888/createRandomUsers/2

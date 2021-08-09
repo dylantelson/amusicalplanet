@@ -6,7 +6,7 @@ import "./Header.css";
 
 const Header = ({ setRedirect, checkToken }) => {
   const userData = useContext(UserContext);
-  if (userData.userName === "") {
+  if (userData && userData.userName === "") {
     checkToken();
   }
   return (
@@ -37,10 +37,10 @@ const Header = ({ setRedirect, checkToken }) => {
           >
             Leaderboard
           </NavLink>
-          {userData.displayName ? (
+          {userData && userData.displayName ? (
             <NavLink
               className="linkButton"
-              to="/userplaceholder"
+              to={`/user/${userData.userName}`}
               activeStyle={{ backgroundColor: "white" }}
             >
               {userData.displayName}
