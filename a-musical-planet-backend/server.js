@@ -20,8 +20,8 @@ dotenv.config();
 
 const mapNames = [
   "world",
-  "northamerica",
-  "southamerica",
+  "northAmerica",
+  "southAmerica",
   "europe",
   "africa",
   "oceania",
@@ -376,8 +376,8 @@ const createRandomUsers = async (loopTimes) => {
       stats: {
         maxScores: {
           world: randInt(1, 25000),
-          northamerica: randInt(1, 25000),
-          southamerica: randInt(1, 25000),
+          northAmerica: randInt(1, 25000),
+          southAmerica: randInt(1, 25000),
           africa: randInt(1, 25000),
           europe: randInt(1, 25000),
           asia: randInt(1, 25000),
@@ -385,8 +385,8 @@ const createRandomUsers = async (loopTimes) => {
         },
         averageScores: {
           world: randInt(5000, 20000),
-          northamerica: randInt(5000, 20000),
-          southamerica: randInt(5000, 20000),
+          northAmerica: randInt(5000, 20000),
+          southAmerica: randInt(5000, 20000),
           africa: randInt(5000, 20000),
           europe: randInt(5000, 20000),
           asia: randInt(5000, 20000),
@@ -394,8 +394,8 @@ const createRandomUsers = async (loopTimes) => {
         },
         completedGames: {
           world: randInt(1, 500),
-          northamerica: randInt(1, 500),
-          southamerica: randInt(1, 500),
+          northAmerica: randInt(1, 500),
+          southAmerica: randInt(1, 500),
           africa: randInt(1, 500),
           europe: randInt(1, 500),
           asia: randInt(1, 500),

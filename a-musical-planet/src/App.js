@@ -40,14 +40,12 @@ function App() {
   });
 
   //default world as map
-  const [currMap, setCurrMap] = useState("World");
+  const [currMap, setCurrMap] = useState("world");
 
   const sendScoreToServer = (newScore) => {
     console.log("Sending score to server", newScore);
     axios(
-      `http://localhost:8888/newScore/${
-        userData.userName
-      }/${currMap.toLowerCase()}/${newScore}`,
+      `http://localhost:8888/newScore/${userData.userName}/${currMap}/${newScore}`,
       {
         method: "POST",
       }
@@ -120,7 +118,7 @@ function App() {
       if (!setTokenFromCookie()) return setRedirect("login");
     }
     console.log("HANDLING MAP CHOSEN");
-    setCurrMap(mapName.replace(" ", ""));
+    setCurrMap(mapName[0].toLowerCase() + mapName.slice(1).replace(" ", ""));
     // setRedirect("play");
   };
 

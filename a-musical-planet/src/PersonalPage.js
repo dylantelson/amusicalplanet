@@ -2,6 +2,8 @@ import React, { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 
+import "./PersonalPage.css";
+
 import MapData from "./MapData.json";
 
 const PersonalPage = () => {
@@ -19,60 +21,94 @@ const PersonalPage = () => {
       },
       method: "GET",
     }).then(({ data }) => setUserData(data));
-  }, []);
+  }, [userName]);
 
   return (
-    <div>
-      <select
-        id="maplist"
-        onChange={(e) => {
-          console.log(
-            "Changing value to",
-            e.target.value.toLowerCase().replace(" ", "")
-          );
-          setChosenMap(e.target.value.toLowerCase().replace(" ", ""));
-        }}
-      >
-        <option key="overall" value="overall">
-          Overall
-        </option>
-        {MapData.map((map) => (
-          <option key={map.name} value={map.name}>
-            {map.name}
-          </option>
-        ))}
-      </select>
+    <div className="userPageContainer">
       {userData ? (
-        <div>
-          <img src={userData.profilePicture} alt="User" />
-          <h3>{userData.displayName}</h3>
-          <div>
-            <h3>
-              {userData.stats.completedGames[chosenMap]
-                ? userData.stats.completedGames[chosenMap]
-                : 0}
-            </h3>
-            <p>Completed Games</p>
+        <div className="userPage">
+          <div className="userHead">
+            <img src={userData.profilePicture} alt="User" />
+            <div className="userName">
+              <h1>{userData.displayName}</h1>
+              <img
+                src={
+                  "/flags/" +
+                  (userData.country.length === 2
+                    ? userData.country.toLowerCase()
+                    : userData.country.substring(0, 2).toLowerCase()) +
+                  ".svg"
+                }
+                alt=""
+              />
+            </div>
           </div>
-          <div>
-            <h3>
-              {chosenMap === "overall"
-                ? userData.stats.maxScores[chosenMap]
-                  ? `${userData.stats.maxScores[chosenMap].score} (${userData.stats.maxScores[chosenMap].map})`
-                  : 0
-                : userData.stats.maxScores[chosenMap]
-                ? userData.stats.maxScores[chosenMap]
-                : 0}
-            </h3>
-            <p>Best Game</p>
-          </div>
-          <div>
-            <h3>
-              {userData.stats.averageScores[chosenMap]
-                ? userData.stats.averageScores[chosenMap]
-                : 0}
-            </h3>
-            <p>Average Game</p>
+          <div className="stats">
+            <div className="statsHead">
+              <h2>Game Statistics</h2>
+              <select
+                id="maplist"
+                onChange={(e) => {
+                  console.log("Changing value to", e.target.value);
+                  setChosenMap(e.target.value);
+                }}
+              >
+                <option key="overall" value="overall">
+                  Overall
+                </option>
+                {MapData.map((map) => (
+                  <option
+                    key={map.name}
+                    value={
+                      map.name[0].toLowerCase() +
+                      map.name.slice(1).replace(" ", "")
+                    }
+                  >
+                    {map.name}
+                  </option>
+                ))}
+              </select>
+            </div>
+            <div className="statsBody">
+              <div>
+                <p>Completed Games</p>
+                <h3>
+                  {userData.stats.completedGames[chosenMap]
+                    ? userData.stats.completedGames[chosenMap]
+                    : 0}
+                </h3>
+              </div>
+              <div>
+                <p>Best Game</p>
+                {chosenMap === "overall" ? (
+                  <h3 className="overallMaxScore">
+                    {userData.stats.maxScores.overall.score &&
+                    userData.stats.maxScores.overall.score !== 0
+                      ? `${userData.stats.maxScores.overall.score} \n (${
+                          userData.stats.maxScores.overall.map[0].toUpperCase() +
+                          userData.stats.maxScores.overall.map
+                            .slice(1)
+                            .replace(/[A-Z]/, (letter) => " " + letter)
+                        })`
+                      : 0}
+                  </h3>
+                ) : (
+                  <h3>
+                    {userData.stats.maxScores[chosenMap]
+                      ? userData.stats.maxScores[chosenMap]
+                      : 0}
+                  </h3>
+                )}
+              </div>
+              <div>
+                <p>Average Game</p>
+                <h3>
+                  {userData.stats.averageScores[chosenMap]
+                    ? userData.stats.averageScores[chosenMap]
+                    : 0}
+                </h3>
+              </div>
+            </div>
           </div>
         </div>
       ) : (

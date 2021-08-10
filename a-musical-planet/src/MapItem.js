@@ -5,7 +5,8 @@ import { UserContext } from "./App.js";
 const MapItem = ({ map, handleMapChosen }) => {
   const userData = useContext(UserContext);
 
-  const formattedMapName = map.name.toLowerCase().replace(" ", "");
+  const formattedMapName =
+    map.name[0].toLowerCase() + map.name.slice(1).replace(" ", "");
   const maxScore =
     userData &&
     userData.stats &&

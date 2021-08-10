@@ -1,5 +1,5 @@
 {
-  "World": [
+  "world": [
     {
       "country": "Portugal",
       "playlistId": "55T5FbjUVIpZRdgNsrPvKr"
@@ -141,7 +141,7 @@
       "playlistId": "0uvne7mpiDwjIHFYpd6pfO"
     }
   ],
-  "Europe": [
+  "europe": [
     {
       "country": "France",
       "playlistId": "7fdpsp6o3iYkz0NKarr5tw"
@@ -159,7 +159,7 @@
       "playlistId": "55T5FbjUVIpZRdgNsrPvKr"
     }
   ],
-  "Africa": [
+  "africa": [
     {
       "country": "Cameroon",
       "playlistId": "4axzkyzZMubwQ2f6ntPwFH"
@@ -217,7 +217,7 @@
       "playlistId": "2EchA1jp8PplmETrwElMzz"
     }
   ],
-  "SouthAmerica": [
+  "southAmerica": [
     {
       "country": "Uruguay",
       "playlistId": "13lhWEXVhRlwPWbLwmOP3g"
@@ -243,7 +243,7 @@
       "playlistId": "1ZMjUWrDwdCHAtpRGW3QoM"
     }
   ],
-  "NorthAmerica": [
+  "northAmerica": [
     {
       "country": "Mexico",
       "playlistId": "3sorpmHj9Kd4e8eDWzsbHz"
@@ -265,7 +265,7 @@
       "playlistId": "6monERA0JCaexRxjC7NWo3"
     }
   ],
-  "Asia": [
+  "asia": [
     {
       "country": "Indonesia",
       "playlistId": "1J2OPZzBrELPgiphPyWoCo"
@@ -283,7 +283,7 @@
       "playlistId": "09wT0hpBt0vJmCMBxuOV1q"
     }
   ],
-  "Oceania": [
+  "oceania": [
     {
       "country": "Papua New Guinea",
       "playlistId": "58hr98mN77yqRlgRBvnGO0"

@@ -34246,7 +34246,7 @@
             "GDP_YEAR": 2016,
             "ISO_A2": "AF",
             "ISO_A3": "AFG",
-            "CONTINENT": "Asia",
+            "CONTINENT": "asia",
             "REGION_UN": "Asia",
             "SUBREGION": "Southern Asia"
           }
@@ -34282,7 +34282,7 @@
             "GDP_YEAR": 2016,
             "ISO_A2": "AO",
             "ISO_A3": "AGO",
-            "CONTINENT": "Africa",
+            "CONTINENT": "africa",
             "REGION_UN": "Africa",
             "SUBREGION": "Middle Africa"
           }
@@ -34310,7 +34310,7 @@
             "GDP_YEAR": 2016,
             "ISO_A2": "AL",
             "ISO_A3": "ALB",
-            "CONTINENT": "Europe",
+            "CONTINENT": "europe",
             "REGION_UN": "Europe",
             "SUBREGION": "Southern Europe"
           }
@@ -34338,7 +34338,7 @@
             "GDP_YEAR": 2016,
             "ISO_A2": "AE",
             "ISO_A3": "ARE",
-            "CONTINENT": "Asia",
+            "CONTINENT": "asia",
             "REGION_UN": "Asia",
             "SUBREGION": "Western Asia"
           }
@@ -34375,7 +34375,7 @@
             "GDP_YEAR": 2016,
             "ISO_A2": "AR",
             "ISO_A3": "ARG",
-            "CONTINENT": "SouthAmerica",
+            "CONTINENT": "southAmerica",
             "REGION_UN": "Americas",
             "SUBREGION": "SouthAmerica"
           }
@@ -34403,7 +34403,7 @@
             "GDP_YEAR": 2016,
             "ISO_A2": "AM",
             "ISO_A3": "ARM",
-            "CONTINENT": "Asia",
+            "CONTINENT": "asia",
             "REGION_UN": "Asia",
             "SUBREGION": "Western Asia"
           }
@@ -34519,7 +34519,7 @@
             "GDP_YEAR": 2016,
             "ISO_A2": "AU",
             "ISO_A3": "AUS",
-            "CONTINENT": "Oceania",
+            "CONTINENT": "oceania",
             "REGION_UN": "Oceania",
             "SUBREGION": "Australia and New Zealand"
           }
@@ -34549,7 +34549,7 @@
             "GDP_YEAR": 2016,
             "ISO_A2": "AT",
             "ISO_A3": "AUT",
-            "CONTINENT": "Europe",
+            "CONTINENT": "europe",
             "REGION_UN": "Europe",
             "SUBREGION": "Western Europe"
           }
@@ -34585,7 +34585,7 @@
             "GDP_YEAR": 2016,
             "ISO_A2": "AZ",
             "ISO_A3": "AZE",
-            "CONTINENT": "Asia",
+            "CONTINENT": "asia",
             "REGION_UN": "Asia",
             "SUBREGION": "Western Asia"
           }
@@ -34611,7 +34611,7 @@
             "GDP_YEAR": 2016,
             "ISO_A2": "BI",
             "ISO_A3": "BDI",
-            "CONTINENT": "Africa",
+            "CONTINENT": "africa",
             "REGION_UN": "Africa",
             "SUBREGION": "Eastern Africa"
           }
@@ -34639,7 +34639,7 @@
             "GDP_YEAR": 2016,
             "ISO_A2": "BE",
             "ISO_A3": "BEL",
-            "CONTINENT": "Europe",
+            "CONTINENT": "europe",
             "REGION_UN": "Europe",
             "SUBREGION": "Western Europe"
           }
@@ -34667,7 +34667,7 @@
             "GDP_YEAR": 2016,
             "ISO_A2": "BJ",
             "ISO_A3": "BEN",
-            "CONTINENT": "Africa",
+            "CONTINENT": "africa",
             "REGION_UN": "Africa",
             "SUBREGION": "Western Africa"
           }
@@ -34696,7 +34696,7 @@
             "GDP_YEAR": 2016,
             "ISO_A2": "BF",
             "ISO_A3": "BFA",
-            "CONTINENT": "Africa",
+            "CONTINENT": "africa",
             "REGION_UN": "Africa",
             "SUBREGION": "Western Africa"
           }
@@ -34722,7 +34722,7 @@
             "GDP_YEAR": 2016,
             "ISO_A2": "BD",
             "ISO_A3": "BGD",
-            "CONTINENT": "Asia",
+            "CONTINENT": "asia",
             "REGION_UN": "Asia",
             "SUBREGION": "Southern Asia"
           }
@@ -34751,7 +34751,7 @@
             "GDP_YEAR": 2016,
             "ISO_A2": "BG",
             "ISO_A3": "BGR",
-            "CONTINENT": "Europe",
+            "CONTINENT": "europe",
             "REGION_UN": "Europe",
             "SUBREGION": "Eastern Europe"
           }
@@ -34787,7 +34787,7 @@
             "GDP_YEAR": 2016,
             "ISO_A2": "BS",
             "ISO_A3": "BHS",
-            "CONTINENT": "NorthAmerica",
+            "CONTINENT": "northAmerica",
             "REGION_UN": "Americas",
             "SUBREGION": "Caribbean"
           }
@@ -34813,7 +34813,7 @@
             "GDP_YEAR": 2016,
             "ISO_A2": "BA",
             "ISO_A3": "BIH",
-            "CONTINENT": "Europe",
+            "CONTINENT": "europe",
             "REGION_UN": "Europe",
             "SUBREGION": "Southern Europe"
           }
@@ -34841,7 +34841,7 @@
             "GDP_YEAR": 2016,
             "ISO_A2": "BY",
             "ISO_A3": "BLR",
-            "CONTINENT": "Europe",
+            "CONTINENT": "europe",
             "REGION_UN": "Europe",
             "SUBREGION": "Eastern Europe"
           }
@@ -34867,7 +34867,7 @@
             "GDP_YEAR": 2016,
             "ISO_A2": "BZ",
             "ISO_A3": "BLZ",
-            "CONTINENT": "NorthAmerica",
+            "CONTINENT": "northAmerica",
             "REGION_UN": "Americas",
             "SUBREGION": "Central America"
           }
@@ -34895,7 +34895,7 @@
             "GDP_YEAR": 2016,
             "ISO_A2": "BO",
             "ISO_A3": "BOL",
-            "CONTINENT": "SouthAmerica",
+            "CONTINENT": "southAmerica",
             "REGION_UN": "Americas",
             "SUBREGION": "SouthAmerica"
           }
@@ -34929,7 +34929,7 @@
             "GDP_YEAR": 2016,
             "ISO_A2": "BR",
             "ISO_A3": "BRA",
-            "CONTINENT": "SouthAmerica",
+            "CONTINENT": "southAmerica",
             "REGION_UN": "Americas",
             "SUBREGION": "SouthAmerica"
           }
@@ -34954,7 +34954,7 @@
             "GDP_YEAR": 2016,
             "ISO_A2": "BN",
             "ISO_A3": "BRN",
-            "CONTINENT": "Asia",
+            "CONTINENT": "asia",
             "REGION_UN": "Asia",
             "SUBREGION": "South-Eastern Asia"
           }
@@ -34979,7 +34979,7 @@
             "GDP_YEAR": 2016,
             "ISO_A2": "BT",
             "ISO_A3": "BTN",
-            "CONTINENT": "Asia",
+            "CONTINENT": "asia",
             "REGION_UN": "Asia",
             "SUBREGION": "Southern Asia"
           }
@@ -35006,7 +35006,7 @@
             "GDP_YEAR": 2016,
             "ISO_A2": "BW",
             "ISO_A3": "BWA",
-            "CONTINENT": "Africa",
+            "CONTINENT": "africa",
             "REGION_UN": "Africa",
             "SUBREGION": "Southern Africa"
           }
@@ -35035,7 +35035,7 @@
             "GDP_YEAR": 2016,
             "ISO_A2": "CF",
             "ISO_A3": "CAF",
-            "CONTINENT": "Africa",
+            "CONTINENT": "africa",
             "REGION_UN": "Africa",
             "SUBREGION": "Middle Africa"
           }
@@ -35209,7 +35209,7 @@
             "GDP_YEAR": 2016,
             "ISO_A2": "CA",
             "ISO_A3": "CAN",
-            "CONTINENT": "NorthAmerica",
+            "CONTINENT": "northAmerica",
             "REGION_UN": "Americas",
             "SUBREGION": "Northern America"
           }
@@ -35236,7 +35236,7 @@
             "GDP_YEAR": 2016,
             "ISO_A2": "CH",
             "ISO_A3": "CHE",
-            "CONTINENT": "Europe",
+            "CONTINENT": "europe",
             "REGION_UN": "Europe",
             "SUBREGION": "Western Europe"
           }
@@ -35271,7 +35271,7 @@
             "GDP_YEAR": 2016,
             "ISO_A2": "CL",
             "ISO_A3": "CHL",
-            "CONTINENT": "SouthAmerica",
+            "CONTINENT": "southAmerica",
             "REGION_UN": "Americas",
             "SUBREGION": "SouthAmerica"
           }
@@ -35319,7 +35319,7 @@
             "GDP_YEAR": 2016,
             "ISO_A2": "CN",
             "ISO_A3": "CHN",
-            "CONTINENT": "Asia",
+            "CONTINENT": "asia",
             "REGION_UN": "Asia",
             "SUBREGION": "Eastern Asia"
           }
@@ -35348,7 +35348,7 @@
             "GDP_YEAR": 2016,
             "ISO_A2": "CI",
             "ISO_A3": "CIV",
-            "CONTINENT": "Africa",
+            "CONTINENT": "africa",
             "REGION_UN": "Africa",
             "SUBREGION": "Western Africa"
           }
@@ -35379,7 +35379,7 @@
             "GDP_YEAR": 2016,
             "ISO_A2": "CM",
             "ISO_A3": "CMR",
-            "CONTINENT": "Africa",
+            "CONTINENT": "africa",
             "REGION_UN": "Africa",
             "SUBREGION": "Middle Africa"
           }
@@ -35413,7 +35413,7 @@
             "GDP_YEAR": 2016,
             "ISO_A2": "CD",
             "ISO_A3": "COD",
-            "CONTINENT": "Africa",
+            "CONTINENT": "africa",
             "REGION_UN": "Africa",
             "SUBREGION": "Middle Africa"
           }
@@ -35442,7 +35442,7 @@
             "GDP_YEAR": 2016,
             "ISO_A2": "CG",
             "ISO_A3": "COG",
-            "CONTINENT": "Africa",
+            "CONTINENT": "africa",
             "REGION_UN": "Africa",
             "SUBREGION": "Middle Africa"
           }
@@ -35472,7 +35472,7 @@
             "GDP_YEAR": 2016,
             "ISO_A2": "CO",
             "ISO_A3": "COL",
-            "CONTINENT": "SouthAmerica",
+            "CONTINENT": "southAmerica",
             "REGION_UN": "Americas",
             "SUBREGION": "SouthAmerica"
           }
@@ -35499,7 +35499,7 @@
             "GDP_YEAR": 2016,
             "ISO_A2": "CR",
             "ISO_A3": "CRI",
-            "CONTINENT": "NorthAmerica",
+            "CONTINENT": "northAmerica",
             "REGION_UN": "Americas",
             "SUBREGION": "Central America"
           }
@@ -35523,7 +35523,7 @@
             "GDP_YEAR": 2016,
             "ISO_A2": "CU",
             "ISO_A3": "CUB",
-            "CONTINENT": "NorthAmerica",
+            "CONTINENT": "northAmerica",
             "REGION_UN": "Americas",
             "SUBREGION": "Caribbean"
           }
@@ -35548,7 +35548,7 @@
             "GDP_YEAR": 2013,
             "ISO_A2": "-99",
             "ISO_A3": "-99",
-            "CONTINENT": "Europe",
+            "CONTINENT": "europe",
             "REGION_UN": "Europe",
             "SUBREGION": "Eastern Europe"
           }
@@ -35573,7 +35573,7 @@
             "GDP_YEAR": 2016,
             "ISO_A2": "CY",
             "ISO_A3": "CYP",
-            "CONTINENT": "Europe",
+            "CONTINENT": "europe",
             "REGION_UN": "Europe",
             "SUBREGION": "Eastern Europe"
           }
@@ -35600,7 +35600,7 @@
             "GDP_YEAR": 2016,
             "ISO_A2": "CZ",
             "ISO_A3": "CZE",
-            "CONTINENT": "Europe",
+            "CONTINENT": "europe",
             "REGION_UN": "Europe",
             "SUBREGION": "Eastern Europe"
           }
@@ -35634,7 +35634,7 @@
             "GDP_YEAR": 2016,
             "ISO_A2": "DE",
             "ISO_A3": "DEU",
-            "CONTINENT": "Europe",
+            "CONTINENT": "europe",
             "REGION_UN": "Europe",
             "SUBREGION": "Western Europe"
           }
@@ -35661,7 +35661,7 @@
             "GDP_YEAR": 2016,
             "ISO_A2": "DJ",
             "ISO_A3": "DJI",
-            "CONTINENT": "Africa",
+            "CONTINENT": "africa",
             "REGION_UN": "Africa",
             "SUBREGION": "Eastern Africa"
           }
@@ -35693,7 +35693,7 @@
             "GDP_YEAR": 2016,
             "ISO_A2": "DK",
             "ISO_A3": "DNK",
-            "CONTINENT": "Europe",
+            "CONTINENT": "europe",
             "REGION_UN": "Europe",
             "SUBREGION": "Northern Europe"
           }
@@ -35718,7 +35718,7 @@
             "GDP_YEAR": 2016,
             "ISO_A2": "DO",
             "ISO_A3": "DOM",
-            "CONTINENT": "NorthAmerica",
+            "CONTINENT": "northAmerica",
             "REGION_UN": "Americas",
             "SUBREGION": "Caribbean"
           }
@@ -35749,7 +35749,7 @@
             "GDP_YEAR": 2016,
             "ISO_A2": "DZ",
             "ISO_A3": "DZA",
-            "CONTINENT": "Africa",
+            "CONTINENT": "africa",
             "REGION_UN": "Africa",
             "SUBREGION": "Northern Africa"
           }
@@ -35775,7 +35775,7 @@
             "GDP_YEAR": 2016,
             "ISO_A2": "EC",
             "ISO_A3": "ECU",
-            "CONTINENT": "SouthAmerica",
+            "CONTINENT": "southAmerica",
             "REGION_UN": "Americas",
             "SUBREGION": "SouthAmerica"
           }
@@ -35803,7 +35803,7 @@
             "GDP_YEAR": 2016,
             "ISO_A2": "EG",
             "ISO_A3": "EGY",
-            "CONTINENT": "Africa",
+            "CONTINENT": "africa",
             "REGION_UN": "Africa",
             "SUBREGION": "Northern Africa"
           }
@@ -35830,7 +35830,7 @@
             "GDP_YEAR": 2016,
             "ISO_A2": "ER",
             "ISO_A3": "ERI",
-            "CONTINENT": "Africa",
+            "CONTINENT": "africa",
             "REGION_UN": "Africa",
             "SUBREGION": "Eastern Africa"
           }
@@ -35857,7 +35857,7 @@
             "GDP_YEAR": 2016,
             "ISO_A2": "ES",
             "ISO_A3": "ESP",
-            "CONTINENT": "Europe",
+            "CONTINENT": "europe",
             "REGION_UN": "Europe",
             "SUBREGION": "Southern Europe"
           }
@@ -35883,7 +35883,7 @@
             "GDP_YEAR": 2016,
             "ISO_A2": "EE",
             "ISO_A3": "EST",
-            "CONTINENT": "Europe",
+            "CONTINENT": "europe",
             "REGION_UN": "Europe",
             "SUBREGION": "Northern Europe"
           }
@@ -35913,7 +35913,7 @@
             "GDP_YEAR": 2016,
             "ISO_A2": "ET",
             "ISO_A3": "ETH",
-            "CONTINENT": "Africa",
+            "CONTINENT": "africa",
             "REGION_UN": "Africa",
             "SUBREGION": "Eastern Africa"
           }
@@ -35940,7 +35940,7 @@
             "GDP_YEAR": 2016,
             "ISO_A2": "FI",
             "ISO_A3": "FIN",
-            "CONTINENT": "Europe",
+            "CONTINENT": "europe",
             "REGION_UN": "Europe",
             "SUBREGION": "Northern Europe"
           }
@@ -35976,7 +35976,7 @@
             "GDP_YEAR": 2016,
             "ISO_A2": "FJ",
             "ISO_A3": "FJI",
-            "CONTINENT": "Oceania",
+            "CONTINENT": "oceania",
             "REGION_UN": "Oceania",
             "SUBREGION": "Melanesia"
           }
@@ -36000,7 +36000,7 @@
             "GDP_YEAR": 2012,
             "ISO_A2": "FK",
             "ISO_A3": "FLK",
-            "CONTINENT": "SouthAmerica",
+            "CONTINENT": "southAmerica",
             "REGION_UN": "Americas",
             "SUBREGION": "SouthAmerica"
           }
@@ -36045,7 +36045,7 @@
             "GDP_YEAR": 2016,
             "ISO_A2": "FR",
             "ISO_A3": "FRA",
-            "CONTINENT": "Europe",
+            "CONTINENT": "europe",
             "REGION_UN": "Europe",
             "SUBREGION": "Western Europe"
           }
@@ -36072,7 +36072,7 @@
             "GDP_YEAR": 2016,
             "ISO_A2": "GA",
             "ISO_A3": "GAB",
-            "CONTINENT": "Africa",
+            "CONTINENT": "africa",
             "REGION_UN": "Africa",
             "SUBREGION": "Middle Africa"
           }
@@ -36104,7 +36104,7 @@
             "GDP_YEAR": 2016,
             "ISO_A2": "GB",
             "ISO_A3": "GBR",
-            "CONTINENT": "Europe",
+            "CONTINENT": "europe",
             "REGION_UN": "Europe",
             "SUBREGION": "Northern Europe"
           }
@@ -36132,7 +36132,7 @@
             "GDP_YEAR": 2016,
             "ISO_A2": "GE",
             "ISO_A3": "GEO",
-            "CONTINENT": "Asia",
+            "CONTINENT": "asia",
             "REGION_UN": "Asia",
             "SUBREGION": "Western Asia"
           }
@@ -36159,7 +36159,7 @@
             "GDP_YEAR": 2016,
             "ISO_A2": "GH",
             "ISO_A3": "GHA",
-            "CONTINENT": "Africa",
+            "CONTINENT": "africa",
             "REGION_UN": "Africa",
             "SUBREGION": "Western Africa"
           }
@@ -36189,7 +36189,7 @@
             "GDP_YEAR": 2016,
             "ISO_A2": "GN",
             "ISO_A3": "GIN",
-            "CONTINENT": "Africa",
+            "CONTINENT": "africa",
             "REGION_UN": "Africa",
             "SUBREGION": "Western Africa"
           }
@@ -36214,7 +36214,7 @@
             "GDP_YEAR": 2016,
             "ISO_A2": "GM",
             "ISO_A3": "GMB",
-            "CONTINENT": "Africa",
+            "CONTINENT": "africa",
             "REGION_UN": "Africa",
             "SUBREGION": "Western Africa"
           }
@@ -36240,7 +36240,7 @@
             "GDP_YEAR": 2016,
             "ISO_A2": "GW",
             "ISO_A3": "GNB",
-            "CONTINENT": "Africa",
+            "CONTINENT": "africa",
             "REGION_UN": "Africa",
             "SUBREGION": "Western Africa"
           }
@@ -36266,7 +36266,7 @@
             "GDP_YEAR": 2016,
             "ISO_A2": "GQ",
             "ISO_A3": "GNQ",
-            "CONTINENT": "Africa",
+            "CONTINENT": "africa",
             "REGION_UN": "Africa",
             "SUBREGION": "Middle Africa"
           }
@@ -36301,7 +36301,7 @@
             "GDP_YEAR": 2016,
             "ISO_A2": "GR",
             "ISO_A3": "GRC",
-            "CONTINENT": "Europe",
+            "CONTINENT": "europe",
             "REGION_UN": "Europe",
             "SUBREGION": "Southern Europe"
           }
@@ -36325,7 +36325,7 @@
             "GDP_YEAR": 2015,
             "ISO_A2": "GL",
             "ISO_A3": "GRL",
-            "CONTINENT": "NorthAmerica",
+            "CONTINENT": "northAmerica",
             "REGION_UN": "Americas",
             "SUBREGION": "Northern America"
           }
@@ -36354,7 +36354,7 @@
             "GDP_YEAR": 2016,
             "ISO_A2": "GT",
             "ISO_A3": "GTM",
-            "CONTINENT": "NorthAmerica",
+            "CONTINENT": "northAmerica",
             "REGION_UN": "Americas",
             "SUBREGION": "Central America"
           }
@@ -36381,7 +36381,7 @@
             "GDP_YEAR": 2016,
             "ISO_A2": "GY",
             "ISO_A3": "GUY",
-            "CONTINENT": "SouthAmerica",
+            "CONTINENT": "southAmerica",
             "REGION_UN": "Americas",
             "SUBREGION": "SouthAmerica"
           }
@@ -36409,7 +36409,7 @@
             "GDP_YEAR": 2016,
             "ISO_A2": "HN",
             "ISO_A3": "HND",
-            "CONTINENT": "NorthAmerica",
+            "CONTINENT": "northAmerica",
             "REGION_UN": "Americas",
             "SUBREGION": "Central America"
           }
@@ -36438,7 +36438,7 @@
             "GDP_YEAR": 2016,
             "ISO_A2": "HR",
             "ISO_A3": "HRV",
-            "CONTINENT": "Europe",
+            "CONTINENT": "europe",
             "REGION_UN": "Europe",
             "SUBREGION": "Southern Europe"
           }
@@ -36463,7 +36463,7 @@
             "GDP_YEAR": 2016,
             "ISO_A2": "HT",
             "ISO_A3": "HTI",
-            "CONTINENT": "NorthAmerica",
+            "CONTINENT": "northAmerica",
             "REGION_UN": "Americas",
             "SUBREGION": "Caribbean"
           }
@@ -36493,7 +36493,7 @@
             "GDP_YEAR": 2016,
             "ISO_A2": "HU",
             "ISO_A3": "HUN",
-            "CONTINENT": "Europe",
+            "CONTINENT": "europe",
             "REGION_UN": "Europe",
             "SUBREGION": "Eastern Europe"
           }
@@ -36582,7 +36582,7 @@
             "GDP_YEAR": 2016,
             "ISO_A2": "ID",
             "ISO_A3": "IDN",
-            "CONTINENT": "Asia",
+            "CONTINENT": "asia",
             "REGION_UN": "Asia",
             "SUBREGION": "South-Eastern Asia"
           }
@@ -36614,7 +36614,7 @@
             "GDP_YEAR": 2016,
             "ISO_A2": "IN",
             "ISO_A3": "IND",
-            "CONTINENT": "Asia",
+            "CONTINENT": "asia",
             "REGION_UN": "Asia",
             "SUBREGION": "Southern Asia"
           }
@@ -36639,7 +36639,7 @@
             "GDP_YEAR": 2016,
             "ISO_A2": "IE",
             "ISO_A3": "IRL",
-            "CONTINENT": "Europe",
+            "CONTINENT": "europe",
             "REGION_UN": "Europe",
             "SUBREGION": "Northern Europe"
           }
@@ -36672,7 +36672,7 @@
             "GDP_YEAR": 2016,
             "ISO_A2": "IR",
             "ISO_A3": "IRN",
-            "CONTINENT": "Asia",
+            "CONTINENT": "asia",
             "REGION_UN": "Asia",
             "SUBREGION": "Southern Asia"
           }
@@ -36702,7 +36702,7 @@
             "GDP_YEAR": 2016,
             "ISO_A2": "IQ",
             "ISO_A3": "IRQ",
-            "CONTINENT": "Asia",
+            "CONTINENT": "asia",
             "REGION_UN": "Asia",
             "SUBREGION": "Western Asia"
           }
@@ -36726,7 +36726,7 @@
             "GDP_YEAR": 2016,
             "ISO_A2": "IS",
             "ISO_A3": "ISL",
-            "CONTINENT": "Europe",
+            "CONTINENT": "europe",
             "REGION_UN": "Europe",
             "SUBREGION": "Northern Europe"
           }
@@ -36756,7 +36756,7 @@
             "GDP_YEAR": 2016,
             "ISO_A2": "IL",
             "ISO_A3": "ISR",
-            "CONTINENT": "Asia",
+            "CONTINENT": "asia",
             "REGION_UN": "Asia",
             "SUBREGION": "Western Asia"
           }
@@ -36796,7 +36796,7 @@
             "GDP_YEAR": 2016,
             "ISO_A2": "IT",
             "ISO_A3": "ITA",
-            "CONTINENT": "Europe",
+            "CONTINENT": "europe",
             "REGION_UN": "Europe",
             "SUBREGION": "Southern Europe"
           }
@@ -36820,7 +36820,7 @@
             "GDP_YEAR": 2016,
             "ISO_A2": "JM",
             "ISO_A3": "JAM",
-            "CONTINENT": "NorthAmerica",
+            "CONTINENT": "northAmerica",
             "REGION_UN": "Americas",
             "SUBREGION": "Caribbean"
           }
@@ -36850,7 +36850,7 @@
             "GDP_YEAR": 2016,
             "ISO_A2": "JO",
             "ISO_A3": "JOR",
-            "CONTINENT": "Asia",
+            "CONTINENT": "asia",
             "REGION_UN": "Asia",
             "SUBREGION": "Western Asia"
           }
@@ -36886,7 +36886,7 @@
             "GDP_YEAR": 2016,
             "ISO_A2": "JP",
             "ISO_A3": "JPN",
-            "CONTINENT": "Asia",
+            "CONTINENT": "asia",
             "REGION_UN": "Asia",
             "SUBREGION": "Eastern Asia"
           }
@@ -36915,7 +36915,7 @@
             "GDP_YEAR": 2016,
             "ISO_A2": "KZ",
             "ISO_A3": "KAZ",
-            "CONTINENT": "Asia",
+            "CONTINENT": "asia",
             "REGION_UN": "Asia",
             "SUBREGION": "Central Asia"
           }
@@ -36944,7 +36944,7 @@
             "GDP_YEAR": 2016,
             "ISO_A2": "KE",
             "ISO_A3": "KEN",
-            "CONTINENT": "Africa",
+            "CONTINENT": "africa",
             "REGION_UN": "Africa",
             "SUBREGION": "Eastern Africa"
           }
@@ -36971,7 +36971,7 @@
             "GDP_YEAR": 2016,
             "ISO_A2": "KG",
             "ISO_A3": "KGZ",
-            "CONTINENT": "Asia",
+            "CONTINENT": "asia",
             "REGION_UN": "Asia",
             "SUBREGION": "Central Asia"
           }
@@ -36998,7 +36998,7 @@
             "GDP_YEAR": 2016,
             "ISO_A2": "KH",
             "ISO_A3": "KHM",
-            "CONTINENT": "Asia",
+            "CONTINENT": "asia",
             "REGION_UN": "Asia",
             "SUBREGION": "South-Eastern Asia"
           }
@@ -37023,7 +37023,7 @@
             "GDP_YEAR": 2016,
             "ISO_A2": "KR",
             "ISO_A3": "KOR",
-            "CONTINENT": "Asia",
+            "CONTINENT": "asia",
             "REGION_UN": "Asia",
             "SUBREGION": "Eastern Asia"
           }
@@ -37050,7 +37050,7 @@
             "GDP_YEAR": 2016,
             "ISO_A2": "XK",
             "ISO_A3": "-99",
-            "CONTINENT": "Europe",
+            "CONTINENT": "europe",
             "REGION_UN": "Europe",
             "SUBREGION": "Southern Europe"
           }
@@ -37076,7 +37076,7 @@
             "GDP_YEAR": 2016,
             "ISO_A2": "KW",
             "ISO_A3": "KWT",
-            "CONTINENT": "Asia",
+            "CONTINENT": "asia",
             "REGION_UN": "Asia",
             "SUBREGION": "Western Asia"
           }
@@ -37104,7 +37104,7 @@
             "GDP_YEAR": 2016,
             "ISO_A2": "LA",
             "ISO_A3": "LAO",
-            "CONTINENT": "Asia",
+            "CONTINENT": "asia",
             "REGION_UN": "Asia",
             "SUBREGION": "South-Eastern Asia"
           }
@@ -37130,7 +37130,7 @@
             "GDP_YEAR": 2016,
             "ISO_A2": "LB",
             "ISO_A3": "LBN",
-            "CONTINENT": "Asia",
+            "CONTINENT": "asia",
             "REGION_UN": "Asia",
             "SUBREGION": "Western Asia"
           }
@@ -37157,7 +37157,7 @@
             "GDP_YEAR": 2016,
             "ISO_A2": "LR",
             "ISO_A3": "LBR",
-            "CONTINENT": "Africa",
+            "CONTINENT": "africa",
             "REGION_UN": "Africa",
             "SUBREGION": "Western Africa"
           }
@@ -37187,7 +37187,7 @@
             "GDP_YEAR": 2016,
             "ISO_A2": "LY",
             "ISO_A3": "LBY",
-            "CONTINENT": "Africa",
+            "CONTINENT": "africa",
             "REGION_UN": "Africa",
             "SUBREGION": "Northern Africa"
           }
@@ -37211,7 +37211,7 @@
             "GDP_YEAR": 2016,
             "ISO_A2": "LK",
             "ISO_A3": "LKA",
-            "CONTINENT": "Asia",
+            "CONTINENT": "asia",
             "REGION_UN": "Asia",
             "SUBREGION": "Southern Asia"
           }
@@ -37235,7 +37235,7 @@
             "GDP_YEAR": 2016,
             "ISO_A2": "LS",
             "ISO_A3": "LSO",
-            "CONTINENT": "Africa",
+            "CONTINENT": "africa",
             "REGION_UN": "Africa",
             "SUBREGION": "Southern Africa"
           }
@@ -37263,7 +37263,7 @@
             "GDP_YEAR": 2016,
             "ISO_A2": "LT",
             "ISO_A3": "LTU",
-            "CONTINENT": "Europe",
+            "CONTINENT": "europe",
             "REGION_UN": "Europe",
             "SUBREGION": "Northern Europe"
           }
@@ -37289,7 +37289,7 @@
             "GDP_YEAR": 2016,
             "ISO_A2": "LU",
             "ISO_A3": "LUX",
-            "CONTINENT": "Europe",
+            "CONTINENT": "europe",
             "REGION_UN": "Europe",
             "SUBREGION": "Western Europe"
           }
@@ -37317,7 +37317,7 @@
             "GDP_YEAR": 2016,
             "ISO_A2": "LV",
             "ISO_A3": "LVA",
-            "CONTINENT": "Europe",
+            "CONTINENT": "europe",
             "REGION_UN": "Europe",
             "SUBREGION": "Northern Europe"
           }
@@ -37343,7 +37343,7 @@
             "GDP_YEAR": 2016,
             "ISO_A2": "MA",
             "ISO_A3": "MAR",
-            "CONTINENT": "Africa",
+            "CONTINENT": "africa",
             "REGION_UN": "Africa",
             "SUBREGION": "Northern Africa"
           }
@@ -37368,7 +37368,7 @@
             "GDP_YEAR": 2016,
             "ISO_A2": "MD",
             "ISO_A3": "MDA",
-            "CONTINENT": "Europe",
+            "CONTINENT": "europe",
             "REGION_UN": "Europe",
             "SUBREGION": "Eastern Europe"
           }
@@ -37392,7 +37392,7 @@
             "GDP_YEAR": 2016,
             "ISO_A2": "MG",
             "ISO_A3": "MDG",
-            "CONTINENT": "Africa",
+            "CONTINENT": "africa",
             "REGION_UN": "Africa",
             "SUBREGION": "Eastern Africa"
           }
@@ -37420,7 +37420,7 @@
             "GDP_YEAR": 2016,
             "ISO_A2": "MX",
             "ISO_A3": "MEX",
-            "CONTINENT": "NorthAmerica",
+            "CONTINENT": "northAmerica",
             "REGION_UN": "Americas",
             "SUBREGION": "Central America"
           }
@@ -37448,7 +37448,7 @@
             "GDP_YEAR": 2016,
             "ISO_A2": "MK",
             "ISO_A3": "MKD",
-            "CONTINENT": "Europe",
+            "CONTINENT": "europe",
             "REGION_UN": "Europe",
             "SUBREGION": "Southern Europe"
           }
@@ -37478,7 +37478,7 @@
             "GDP_YEAR": 2016,
             "ISO_A2": "ML",
             "ISO_A3": "MLI",
-            "CONTINENT": "Africa",
+            "CONTINENT": "africa",
             "REGION_UN": "Africa",
             "SUBREGION": "Western Africa"
           }
@@ -37507,7 +37507,7 @@
             "GDP_YEAR": 2016,
             "ISO_A2": "MM",
             "ISO_A3": "MMR",
-            "CONTINENT": "Asia",
+            "CONTINENT": "asia",
             "REGION_UN": "Asia",
             "SUBREGION": "South-Eastern Asia"
           }
@@ -37536,7 +37536,7 @@
             "GDP_YEAR": 2016,
             "ISO_A2": "ME",
             "ISO_A3": "MNE",
-            "CONTINENT": "Europe",
+            "CONTINENT": "europe",
             "REGION_UN": "Europe",
             "SUBREGION": "Southern Europe"
           }
@@ -37561,7 +37561,7 @@
             "GDP_YEAR": 2016,
             "ISO_A2": "MN",
             "ISO_A3": "MNG",
-            "CONTINENT": "Asia",
+            "CONTINENT": "asia",
             "REGION_UN": "Asia",
             "SUBREGION": "Eastern Asia"
           }
@@ -37592,7 +37592,7 @@
             "GDP_YEAR": 2016,
             "ISO_A2": "MZ",
             "ISO_A3": "MOZ",
-            "CONTINENT": "Africa",
+            "CONTINENT": "africa",
             "REGION_UN": "Africa",
             "SUBREGION": "Eastern Africa"
           }
@@ -37620,7 +37620,7 @@
             "GDP_YEAR": 2016,
             "ISO_A2": "MR",
             "ISO_A3": "MRT",
-            "CONTINENT": "Africa",
+            "CONTINENT": "africa",
             "REGION_UN": "Africa",
             "SUBREGION": "Western Africa"
           }
@@ -37646,7 +37646,7 @@
             "GDP_YEAR": 2016,
             "ISO_A2": "MW",
             "ISO_A3": "MWI",
-            "CONTINENT": "Africa",
+            "CONTINENT": "africa",
             "REGION_UN": "Africa",
             "SUBREGION": "Eastern Africa"
           }
@@ -37681,7 +37681,7 @@
             "GDP_YEAR": 2016,
             "ISO_A2": "MY",
             "ISO_A3": "MYS",
-            "CONTINENT": "Asia",
+            "CONTINENT": "asia",
             "REGION_UN": "Asia",
             "SUBREGION": "South-Eastern Asia"
           }
@@ -37709,7 +37709,7 @@
             "GDP_YEAR": 2016,
             "ISO_A2": "NA",
             "ISO_A3": "NAM",
-            "CONTINENT": "Africa",
+            "CONTINENT": "africa",
             "REGION_UN": "Africa",
             "SUBREGION": "Southern Africa"
           }
@@ -37733,7 +37733,7 @@
             "GDP_YEAR": 2016,
             "ISO_A2": "NC",
             "ISO_A3": "NCL",
-            "CONTINENT": "Oceania",
+            "CONTINENT": "oceania",
             "REGION_UN": "Oceania",
             "SUBREGION": "Melanesia"
           }
@@ -37764,7 +37764,7 @@
             "GDP_YEAR": 2016,
             "ISO_A2": "NE",
             "ISO_A3": "NER",
-            "CONTINENT": "Africa",
+            "CONTINENT": "africa",
             "REGION_UN": "Africa",
             "SUBREGION": "Western Africa"
           }
@@ -37791,7 +37791,7 @@
             "GDP_YEAR": 2016,
             "ISO_A2": "NG",
             "ISO_A3": "NGA",
-            "CONTINENT": "Africa",
+            "CONTINENT": "africa",
             "REGION_UN": "Africa",
             "SUBREGION": "Western Africa"
           }
@@ -37818,7 +37818,7 @@
             "GDP_YEAR": 2016,
             "ISO_A2": "NI",
             "ISO_A3": "NIC",
-            "CONTINENT": "NorthAmerica",
+            "CONTINENT": "northAmerica",
             "REGION_UN": "Americas",
             "SUBREGION": "Central America"
           }
@@ -37844,7 +37844,7 @@
             "GDP_YEAR": 2016,
             "ISO_A2": "NL",
             "ISO_A3": "NLD",
-            "CONTINENT": "Europe",
+            "CONTINENT": "europe",
             "REGION_UN": "Europe",
             "SUBREGION": "Western Europe"
           }
@@ -37888,7 +37888,7 @@
             "GDP_YEAR": 2016,
             "ISO_A2": "NO",
             "ISO_A3": "NOR",
-            "CONTINENT": "Europe",
+            "CONTINENT": "europe",
             "REGION_UN": "Europe",
             "SUBREGION": "Northern Europe"
           }
@@ -37913,7 +37913,7 @@
             "GDP_YEAR": 2016,
             "ISO_A2": "NP",
             "ISO_A3": "NPL",
-            "CONTINENT": "Asia",
+            "CONTINENT": "asia",
             "REGION_UN": "Asia",
             "SUBREGION": "Southern Asia"
           }
@@ -37944,7 +37944,7 @@
             "GDP_YEAR": 2016,
             "ISO_A2": "NZ",
             "ISO_A3": "NZL",
-            "CONTINENT": "Oceania",
+            "CONTINENT": "oceania",
             "REGION_UN": "Oceania",
             "SUBREGION": "Australia and New Zealand"
           }
@@ -37979,7 +37979,7 @@
             "GDP_YEAR": 2016,
             "ISO_A2": "OM",
             "ISO_A3": "OMN",
-            "CONTINENT": "Asia",
+            "CONTINENT": "asia",
             "REGION_UN": "Asia",
             "SUBREGION": "Western Asia"
           }
@@ -38007,7 +38007,7 @@
             "GDP_YEAR": 2016,
             "ISO_A2": "PK",
             "ISO_A3": "PAK",
-            "CONTINENT": "Asia",
+            "CONTINENT": "asia",
             "REGION_UN": "Asia",
             "SUBREGION": "Southern Asia"
           }
@@ -38034,7 +38034,7 @@
             "GDP_YEAR": 2016,
             "ISO_A2": "PA",
             "ISO_A3": "PAN",
-            "CONTINENT": "NorthAmerica",
+            "CONTINENT": "northAmerica",
             "REGION_UN": "Americas",
             "SUBREGION": "Central America"
           }
@@ -38063,7 +38063,7 @@
             "GDP_YEAR": 2016,
             "ISO_A2": "PE",
             "ISO_A3": "PER",
-            "CONTINENT": "SouthAmerica",
+            "CONTINENT": "southAmerica",
             "REGION_UN": "Americas",
             "SUBREGION": "SouthAmerica"
           }
@@ -38119,7 +38119,7 @@
             "GDP_YEAR": 2016,
             "ISO_A2": "PH",
             "ISO_A3": "PHL",
-            "CONTINENT": "Asia",
+            "CONTINENT": "asia",
             "REGION_UN": "Asia",
             "SUBREGION": "South-Eastern Asia"
           }
@@ -38161,7 +38161,7 @@
             "GDP_YEAR": 2016,
             "ISO_A2": "PG",
             "ISO_A3": "PNG",
-            "CONTINENT": "Oceania",
+            "CONTINENT": "oceania",
             "REGION_UN": "Oceania",
             "SUBREGION": "Melanesia"
           }
@@ -38192,7 +38192,7 @@
             "GDP_YEAR": 2016,
             "ISO_A2": "PL",
             "ISO_A3": "POL",
-            "CONTINENT": "Europe",
+            "CONTINENT": "europe",
             "REGION_UN": "Europe",
             "SUBREGION": "Eastern Europe"
           }
@@ -38216,7 +38216,7 @@
             "GDP_YEAR": 2016,
             "ISO_A2": "PR",
             "ISO_A3": "PRI",
-            "CONTINENT": "NorthAmerica",
+            "CONTINENT": "northAmerica",
             "REGION_UN": "Americas",
             "SUBREGION": "Caribbean"
           }
@@ -38244,7 +38244,7 @@
             "GDP_YEAR": 2016,
             "ISO_A2": "KP",
             "ISO_A3": "PRK",
-            "CONTINENT": "Asia",
+            "CONTINENT": "asia",
             "REGION_UN": "Asia",
             "SUBREGION": "Eastern Asia"
           }
@@ -38269,7 +38269,7 @@
             "GDP_YEAR": 2016,
             "ISO_A2": "PT",
             "ISO_A3": "PRT",
-            "CONTINENT": "Europe",
+            "CONTINENT": "europe",
             "REGION_UN": "Europe",
             "SUBREGION": "Southern Europe"
           }
@@ -38295,7 +38295,7 @@
             "GDP_YEAR": 2016,
             "ISO_A2": "PY",
             "ISO_A3": "PRY",
-            "CONTINENT": "SouthAmerica",
+            "CONTINENT": "southAmerica",
             "REGION_UN": "Americas",
             "SUBREGION": "SouthAmerica"
           }
@@ -38320,7 +38320,7 @@
             "GDP_YEAR": 2016,
             "ISO_A2": "PS",
             "ISO_A3": "PSE",
-            "CONTINENT": "Asia",
+            "CONTINENT": "asia",
             "REGION_UN": "Asia",
             "SUBREGION": "Western Asia"
           }
@@ -38345,7 +38345,7 @@
             "GDP_YEAR": 2016,
             "ISO_A2": "QA",
             "ISO_A3": "QAT",
-            "CONTINENT": "Asia",
+            "CONTINENT": "asia",
             "REGION_UN": "Asia",
             "SUBREGION": "Western Asia"
           }
@@ -38375,7 +38375,7 @@
             "GDP_YEAR": 2016,
             "ISO_A2": "RO",
             "ISO_A3": "ROU",
-            "CONTINENT": "Europe",
+            "CONTINENT": "europe",
             "REGION_UN": "Europe",
             "SUBREGION": "Eastern Europe"
           }
@@ -38485,7 +38485,7 @@
             "GDP_YEAR": 2016,
             "ISO_A2": "RU",
             "ISO_A3": "RUS",
-            "CONTINENT": "Europe",
+            "CONTINENT": "europe",
             "REGION_UN": "Europe",
             "SUBREGION": "Eastern Europe"
           }
@@ -38512,7 +38512,7 @@
             "GDP_YEAR": 2016,
             "ISO_A2": "RW",
             "ISO_A3": "RWA",
-            "CONTINENT": "Africa",
+            "CONTINENT": "africa",
             "REGION_UN": "Africa",
             "SUBREGION": "Eastern Africa"
           }
@@ -38539,7 +38539,7 @@
             "GDP_YEAR": 2007,
             "ISO_A2": "EH",
             "ISO_A3": "ESH",
-            "CONTINENT": "Africa",
+            "CONTINENT": "africa",
             "REGION_UN": "Africa",
             "SUBREGION": "Northern Africa"
           }
@@ -38572,7 +38572,7 @@
             "GDP_YEAR": 2016,
             "ISO_A2": "SA",
             "ISO_A3": "SAU",
-            "CONTINENT": "Asia",
+            "CONTINENT": "asia",
             "REGION_UN": "Asia",
             "SUBREGION": "Western Asia"
           }
@@ -38603,7 +38603,7 @@
             "GDP_YEAR": 2016,
             "ISO_A2": "SD",
             "ISO_A3": "SDN",
-            "CONTINENT": "Africa",
+            "CONTINENT": "africa",
             "REGION_UN": "Africa",
             "SUBREGION": "Northern Africa"
           }
@@ -38632,7 +38632,7 @@
             "GDP_YEAR": 2016,
             "ISO_A2": "SS",
             "ISO_A3": "SSD",
-            "CONTINENT": "Africa",
+            "CONTINENT": "africa",
             "REGION_UN": "Africa",
             "SUBREGION": "Eastern Africa"
           }
@@ -38662,7 +38662,7 @@
             "GDP_YEAR": 2016,
             "ISO_A2": "SN",
             "ISO_A3": "SEN",
-            "CONTINENT": "Africa",
+            "CONTINENT": "africa",
             "REGION_UN": "Africa",
             "SUBREGION": "Western Africa"
           }
@@ -38708,7 +38708,7 @@
             "GDP_YEAR": 2016,
             "ISO_A2": "SB",
             "ISO_A3": "SLB",
-            "CONTINENT": "Oceania",
+            "CONTINENT": "oceania",
             "REGION_UN": "Oceania",
             "SUBREGION": "Melanesia"
           }
@@ -38734,7 +38734,7 @@
             "GDP_YEAR": 2016,
             "ISO_A2": "SL",
             "ISO_A3": "SLE",
-            "CONTINENT": "Africa",
+            "CONTINENT": "africa",
             "REGION_UN": "Africa",
             "SUBREGION": "Western Africa"
           }
@@ -38760,7 +38760,7 @@
             "GDP_YEAR": 2016,
             "ISO_A2": "SV",
             "ISO_A3": "SLV",
-            "CONTINENT": "NorthAmerica",
+            "CONTINENT": "northAmerica",
             "REGION_UN": "Americas",
             "SUBREGION": "Central America"
           }
@@ -38787,7 +38787,7 @@
             "GDP_YEAR": 2013,
             "ISO_A2": "-99",
             "ISO_A3": "-99",
-            "CONTINENT": "Africa",
+            "CONTINENT": "africa",
             "REGION_UN": "Africa",
             "SUBREGION": "Eastern Africa"
           }
@@ -38814,7 +38814,7 @@
             "GDP_YEAR": 2016,
             "ISO_A2": "SO",
             "ISO_A3": "SOM",
-            "CONTINENT": "Africa",
+            "CONTINENT": "africa",
             "REGION_UN": "Africa",
             "SUBREGION": "Eastern Africa"
           }
@@ -38845,7 +38845,7 @@
             "GDP_YEAR": 2016,
             "ISO_A2": "RS",
             "ISO_A3": "SRB",
-            "CONTINENT": "Europe",
+            "CONTINENT": "europe",
             "REGION_UN": "Europe",
             "SUBREGION": "Southern Europe"
           }
@@ -38872,7 +38872,7 @@
             "GDP_YEAR": 2016,
             "ISO_A2": "SR",
             "ISO_A3": "SUR",
-            "CONTINENT": "SouthAmerica",
+            "CONTINENT": "southAmerica",
             "REGION_UN": "Americas",
             "SUBREGION": "SouthAmerica"
           }
@@ -38900,7 +38900,7 @@
             "GDP_YEAR": 2016,
             "ISO_A2": "SK",
             "ISO_A3": "SVK",
-            "CONTINENT": "Europe",
+            "CONTINENT": "europe",
             "REGION_UN": "Europe",
             "SUBREGION": "Eastern Europe"
           }
@@ -38928,7 +38928,7 @@
             "GDP_YEAR": 2016,
             "ISO_A2": "SI",
             "ISO_A3": "SVN",
-            "CONTINENT": "Europe",
+            "CONTINENT": "europe",
             "REGION_UN": "Europe",
             "SUBREGION": "Southern Europe"
           }
@@ -38954,7 +38954,7 @@
             "GDP_YEAR": 2016,
             "ISO_A2": "SE",
             "ISO_A3": "SWE",
-            "CONTINENT": "Europe",
+            "CONTINENT": "europe",
             "REGION_UN": "Europe",
             "SUBREGION": "Northern Europe"
           }
@@ -38979,7 +38979,7 @@
             "GDP_YEAR": 2016,
             "ISO_A2": "SZ",
             "ISO_A3": "SWZ",
-            "CONTINENT": "Africa",
+            "CONTINENT": "africa",
             "REGION_UN": "Africa",
             "SUBREGION": "Southern Africa"
           }
@@ -39008,7 +39008,7 @@
             "GDP_YEAR": 2015,
             "ISO_A2": "SY",
             "ISO_A3": "SYR",
-            "CONTINENT": "Asia",
+            "CONTINENT": "asia",
             "REGION_UN": "Asia",
             "SUBREGION": "Western Asia"
           }
@@ -39036,7 +39036,7 @@
             "GDP_YEAR": 2016,
             "ISO_A2": "TD",
             "ISO_A3": "TCD",
-            "CONTINENT": "Africa",
+            "CONTINENT": "africa",
             "REGION_UN": "Africa",
             "SUBREGION": "Middle Africa"
           }
@@ -39063,7 +39063,7 @@
             "GDP_YEAR": 2016,
             "ISO_A2": "TG",
             "ISO_A3": "TGO",
-            "CONTINENT": "Africa",
+            "CONTINENT": "africa",
             "REGION_UN": "Africa",
             "SUBREGION": "Western Africa"
           }
@@ -39092,7 +39092,7 @@
             "GDP_YEAR": 2016,
             "ISO_A2": "TH",
             "ISO_A3": "THA",
-            "CONTINENT": "Asia",
+            "CONTINENT": "asia",
             "REGION_UN": "Asia",
             "SUBREGION": "South-Eastern Asia"
           }
@@ -39119,7 +39119,7 @@
             "GDP_YEAR": 2016,
             "ISO_A2": "TJ",
             "ISO_A3": "TJK",
-            "CONTINENT": "Asia",
+            "CONTINENT": "asia",
             "REGION_UN": "Asia",
             "SUBREGION": "Central Asia"
           }
@@ -39147,7 +39147,7 @@
             "GDP_YEAR": 2016,
             "ISO_A2": "TM",
             "ISO_A3": "TKM",
-            "CONTINENT": "Asia",
+            "CONTINENT": "asia",
             "REGION_UN": "Asia",
             "SUBREGION": "Central Asia"
           }
@@ -39172,7 +39172,7 @@
             "GDP_YEAR": 2016,
             "ISO_A2": "TL",
             "ISO_A3": "TLS",
-            "CONTINENT": "Asia",
+            "CONTINENT": "asia",
             "REGION_UN": "Asia",
             "SUBREGION": "South-Eastern Asia"
           }
@@ -39196,7 +39196,7 @@
             "GDP_YEAR": 2016,
             "ISO_A2": "TT",
             "ISO_A3": "TTO",
-            "CONTINENT": "NorthAmerica",
+            "CONTINENT": "northAmerica",
             "REGION_UN": "Americas",
             "SUBREGION": "Caribbean"
           }
@@ -39222,7 +39222,7 @@
             "GDP_YEAR": 2016,
             "ISO_A2": "TN",
             "ISO_A3": "TUN",
-            "CONTINENT": "Africa",
+            "CONTINENT": "africa",
             "REGION_UN": "Africa",
             "SUBREGION": "Northern Africa"
           }
@@ -39260,7 +39260,7 @@
             "GDP_YEAR": 2016,
             "ISO_A2": "TR",
             "ISO_A3": "TUR",
-            "CONTINENT": "Asia",
+            "CONTINENT": "asia",
             "REGION_UN": "Asia",
             "SUBREGION": "Western Asia"
           }
@@ -39284,7 +39284,7 @@
             "GDP_YEAR": 2016,
             "ISO_A2": "TW",
             "ISO_A3": "TWN",
-            "CONTINENT": "Asia",
+            "CONTINENT": "asia",
             "REGION_UN": "Asia",
             "SUBREGION": "Eastern Asia"
           }
@@ -39316,7 +39316,7 @@
             "GDP_YEAR": 2016,
             "ISO_A2": "TZ",
             "ISO_A3": "TZA",
-            "CONTINENT": "Africa",
+            "CONTINENT": "africa",
             "REGION_UN": "Africa",
             "SUBREGION": "Eastern Africa"
           }
@@ -39344,7 +39344,7 @@
             "GDP_YEAR": 2016,
             "ISO_A2": "UG",
             "ISO_A3": "UGA",
-            "CONTINENT": "Africa",
+            "CONTINENT": "africa",
             "REGION_UN": "Africa",
             "SUBREGION": "Eastern Africa"
           }
@@ -39378,7 +39378,7 @@
             "GDP_YEAR": 2016,
             "ISO_A2": "UA",
             "ISO_A3": "UKR",
-            "CONTINENT": "Europe",
+            "CONTINENT": "europe",
             "REGION_UN": "Europe",
             "SUBREGION": "Eastern Europe"
           }
@@ -39404,7 +39404,7 @@
             "GDP_YEAR": 2016,
             "ISO_A2": "UY",
             "ISO_A3": "URY",
-            "CONTINENT": "SouthAmerica",
+            "CONTINENT": "southAmerica",
             "REGION_UN": "Americas",
             "SUBREGION": "SouthAmerica"
           }
@@ -39479,7 +39479,7 @@
             "GDP_YEAR": 2016,
             "ISO_A2": "US",
             "ISO_A3": "USA",
-            "CONTINENT": "NorthAmerica",
+            "CONTINENT": "northAmerica",
             "REGION_UN": "Americas",
             "SUBREGION": "Northern America"
           }
@@ -39507,7 +39507,7 @@
             "GDP_YEAR": 2016,
             "ISO_A2": "UZ",
             "ISO_A3": "UZB",
-            "CONTINENT": "Asia",
+            "CONTINENT": "asia",
             "REGION_UN": "Asia",
             "SUBREGION": "Central Asia"
           }
@@ -39534,7 +39534,7 @@
             "GDP_YEAR": 2016,
             "ISO_A2": "VE",
             "ISO_A3": "VEN",
-            "CONTINENT": "SouthAmerica",
+            "CONTINENT": "southAmerica",
             "REGION_UN": "Americas",
             "SUBREGION": "SouthAmerica"
           }
@@ -39561,7 +39561,7 @@
             "GDP_YEAR": 2016,
             "ISO_A2": "VN",
             "ISO_A3": "VNM",
-            "CONTINENT": "Asia",
+            "CONTINENT": "asia",
             "REGION_UN": "Asia",
             "SUBREGION": "South-Eastern Asia"
           }
@@ -39592,7 +39592,7 @@
             "GDP_YEAR": 2016,
             "ISO_A2": "VU",
             "ISO_A3": "VUT",
-            "CONTINENT": "Oceania",
+            "CONTINENT": "oceania",
             "REGION_UN": "Oceania",
             "SUBREGION": "Melanesia"
           }
@@ -39618,7 +39618,7 @@
             "GDP_YEAR": 2016,
             "ISO_A2": "YE",
             "ISO_A3": "YEM",
-            "CONTINENT": "Asia",
+            "CONTINENT": "asia",
             "REGION_UN": "Asia",
             "SUBREGION": "Western Asia"
           }
@@ -39651,7 +39651,7 @@
             "GDP_YEAR": 2016,
             "ISO_A2": "ZA",
             "ISO_A3": "ZAF",
-            "CONTINENT": "Africa",
+            "CONTINENT": "africa",
             "REGION_UN": "Africa",
             "SUBREGION": "Southern Africa"
           }
@@ -39682,7 +39682,7 @@
             "GDP_YEAR": 2016,
             "ISO_A2": "ZM",
             "ISO_A3": "ZMB",
-            "CONTINENT": "Africa",
+            "CONTINENT": "africa",
             "REGION_UN": "Africa",
             "SUBREGION": "Eastern Africa"
           }
@@ -39709,7 +39709,7 @@
             "GDP_YEAR": 2016,
             "ISO_A2": "ZW",
             "ISO_A3": "ZWE",
-            "CONTINENT": "Africa",
+            "CONTINENT": "africa",
             "REGION_UN": "Africa",
             "SUBREGION": "Eastern Africa"
           }

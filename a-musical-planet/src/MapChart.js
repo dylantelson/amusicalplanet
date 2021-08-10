@@ -13,7 +13,7 @@ import "./Map.css";
 const worldCountries = require("./WorldInfo.json");
 // const europeCountries = require("./EuropeInfo.json");
 
-const worldGeoSVG = require("./worldSVG.json");
+const worldGeoSVG = require("./WorldSVG.json");
 // const europeGeoSVG = require("./EuropeInfo.json");
 
 // const locationInfo = {
@@ -28,14 +28,14 @@ const worldGeoSVG = require("./worldSVG.json");
 const borderWidth = 0.2;
 
 const colors = {
-  Asia: "#E5B961",
-  Europe: "#D4A29C",
-  Africa: "#EDCC8B",
-  SouthAmerica: "#E8B298",
-  NorthAmerica: "#C7877F",
-  Oceania: "#7FC6A4",
-  Water: "#BDD1C5",
-  Russia: "#DDAE7F",
+  asia: "#E5B961",
+  europe: "#D4A29C",
+  africa: "#EDCC8B",
+  southAmerica: "#E8B298",
+  northAmerica: "#C7877F",
+  oceania: "#7FC6A4",
+  water: "#BDD1C5",
+  russia: "#DDAE7F",
   Selected: "#FFAAFA",
 };
 
@@ -78,7 +78,7 @@ const MapChart = ({ setCurrChosen, currChosen, mapProps, currMap }) => {
         : country.area / 800000 + 2.3;
     if (adjustedFont <= country.name.common.length) adjustedFont /= 1.3;
 
-    if (country.name.common === "Russia" && currMap === "Europe")
+    if (country.name.common === "Russia" && currMap === "europe")
       adjustedFont /= 2.5;
     //const rightOffset = adjustedFont;
     return [
@@ -170,12 +170,12 @@ const MapChart = ({ setCurrChosen, currChosen, mapProps, currMap }) => {
                         ? selectedStyle(colors[geo.properties.CONTINENT])
                         : {
                             fill:
-                              currMap === "World" ||
+                              currMap === "world" ||
                               geo.properties.CONTINENT === currMap
                                 ? colors[geo.properties.CONTINENT]
                                 : "#ccc",
                             pointerEvents:
-                              currMap === "World" ||
+                              currMap === "world" ||
                               geo.properties.CONTINENT === currMap
                                 ? "all"
                                 : "none",
@@ -194,7 +194,7 @@ const MapChart = ({ setCurrChosen, currChosen, mapProps, currMap }) => {
           </Geographies>
           {worldCountries.map((country) => {
             if (
-              (currMap !== "World" && country.region !== currMap) ||
+              (currMap !== "world" && country.region !== currMap) ||
               country.area < 1500
             )
               return null;
@@ -203,7 +203,7 @@ const MapChart = ({ setCurrChosen, currChosen, mapProps, currMap }) => {
               <Marker
                 key={country.name.common}
                 coordinates={
-                  country.name.common === "Russia" && currMap === "Europe"
+                  country.name.common === "Russia" && currMap === "europe"
                     ? [country.latlng[1] - 60, country.latlng[0] - 6]
                     : [country.latlng[1], country.latlng[0]]
                 }

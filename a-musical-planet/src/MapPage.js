@@ -5,7 +5,7 @@ import "./Map.css";
 
 const MapPage = ({ setCurrChosen, currChosen, currMap }) => {
   const mapProps = {
-    World: {
+    world: {
       scale: 170,
       center: [40, 40],
       rotate: [-10, 0, 0],
@@ -17,7 +17,7 @@ const MapPage = ({ setCurrChosen, currChosen, currMap }) => {
       minZoom: 1,
       maxZoom: 6,
     },
-    Europe: {
+    europe: {
       scale: 170,
       center: [40, 80],
       rotate: [-10, 0, 0],
@@ -32,7 +32,7 @@ const MapPage = ({ setCurrChosen, currChosen, currMap }) => {
       minZoom: 4.5,
       maxZoom: 8,
     },
-    SouthAmerica: {
+    southAmerica: {
       scale: 170,
       center: [40, 40],
       rotate: [-10, 0, 0],
@@ -47,7 +47,7 @@ const MapPage = ({ setCurrChosen, currChosen, currMap }) => {
       minZoom: 2,
       maxZoom: 6,
     },
-    NorthAmerica: {
+    northAmerica: {
       scale: 170,
       center: [40, 75],
       rotate: [-10, 0, 0],
@@ -62,7 +62,7 @@ const MapPage = ({ setCurrChosen, currChosen, currMap }) => {
       minZoom: 2,
       maxZoom: 8,
     },
-    Africa: {
+    africa: {
       scale: 170,
       center: [40, 40],
       rotate: [-10, 0, 0],
@@ -77,7 +77,7 @@ const MapPage = ({ setCurrChosen, currChosen, currMap }) => {
       minZoom: 2.2,
       maxZoom: 6,
     },
-    Asia: {
+    asia: {
       scale: 170,
       center: [40, 80],
       rotate: [-10, 0, 0],
@@ -92,7 +92,7 @@ const MapPage = ({ setCurrChosen, currChosen, currMap }) => {
       minZoom: 2.2,
       maxZoom: 9,
     },
-    Oceania: {
+    oceania: {
       scale: 170,
       center: [40, 80],
       rotate: [-10, 0, 0],

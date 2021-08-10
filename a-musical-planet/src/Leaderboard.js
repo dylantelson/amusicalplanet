@@ -23,17 +23,16 @@ const Leaderboard = () => {
   }, []);
 
   return (
-    <div>
+    <div className="leaderboardContainer">
       <div className="leaderboardHead">
-        <h1>LEADERBOARD</h1>
+        <h1>Leaderboard</h1>
         <select
           id="maplist"
           onChange={(e) => {
-            console.log(
-              "Changing value to",
-              e.target.value.toLowerCase().replace(" ", "")
+            setChosenMap(
+              e.target.value[0].toLowerCase() +
+                e.target.value.slice(1).replace(" ", "")
             );
-            setChosenMap(e.target.value.toLowerCase().replace(" ", ""));
           }}
         >
           {MapData.map((map) => (

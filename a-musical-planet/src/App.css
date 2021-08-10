@@ -9,6 +9,7 @@
 body {
   height: 100vh;
   overflow: hidden;
+  background-color: #fcfaf9;
 }
 
 #root {

@@ -1,18 +1,45 @@
+.leaderboardContainer {
+  /* box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px; */
+}
+
+.leaderboardHead {
+  margin: 0.3% 0px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 34%;
+  margin: 2% auto 0px auto;
+}
+
+.leaderboardHead select {
+  /* background-color: #1abc9c; */
+  background-color: white;
+  border: 1px solid black;
+  height: 25%;
+  color: black;
+  font-size: inherit;
+  padding: 0.5em;
+  padding-right: 2.5em;
+  /* border: 0; */
+  margin: 0;
+  border-radius: 3px;
+  text-indent: 0.01px;
+  text-overflow: "";
+  -webkit-appearance: button; /* hide default arrow in chrome OSX */
+}
+
 .leaderboard {
   height: 100%;
   display: flex;
   flex-direction: column;
   flex: 0 1 auto;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
-  background-color: #fff;
   min-height: 0;
   min-width: 0;
-}
-
-.leaderboardHead {
-  margin: 0.3% 0px;
+  padding-top: 1%;
 }
 
 .leaderboardUser {
