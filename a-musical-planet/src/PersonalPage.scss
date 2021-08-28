@@ -1,9 +1,12 @@
+$small: 650px;
+
 .userPageContainer {
   background-color: white;
   box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
-  width: 40%;
+  width: 75%;
+  max-width: 650px;
   margin: 0px auto;
-  margin-top: 8%;
+  margin-top: 15vh;
   border-radius: 15px;
   display: flex;
   flex-direction: column;
@@ -37,6 +40,7 @@
 .statsHead {
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
   justify-content: space-evenly;
   align-items: center;
   width: 70%;
@@ -64,7 +68,10 @@
   display: flex;
   justify-content: center;
   margin-top: 25px;
-  /* flex-direction: row; */
+  @media screen and (max-width: $small) {
+    flex-direction: column;
+    align-items: center;
+  }
 }
 
 .statsBody > * {
@@ -73,6 +80,7 @@
   justify-content: flex-start;
   width: 25%;
   max-width: 200px;
+  // margin: 10px 0px;
   padding: 0px 15px;
   height: 85px;
 }
@@ -84,4 +92,10 @@
 /* this is necessary to make the (MAP NAME) show up on a new line for the overall stats */
 .overallMaxScore {
   white-space: pre-line;
+}
+
+.bestOverall {
+  @media screen and (max-width: $small) {
+    margin-bottom: 35px;
+  }
 }

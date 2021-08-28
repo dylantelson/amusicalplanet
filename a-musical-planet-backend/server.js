@@ -434,7 +434,7 @@ const createRandomUsers = async (loopTimes) => {
 const getLeaderboardForMap = async (map) => {
   var maxScoresForMap = {};
   maxScoresForMap["stats.maxScores." + map] = -1;
-  let leaderboardData = await User.find().sort(maxScoresForMap).limit(5);
+  let leaderboardData = await User.find().sort(maxScoresForMap).limit(25);
   return leaderboardData;
 };
 

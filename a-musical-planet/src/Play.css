@@ -116,17 +116,13 @@
   max-height: 70vh;
   margin-top: calc(100vh - 85vh - 20px);
   background: #1db954;
-  border-radius: 4%;
+  border-radius: 30px;
   padding: 30px 30px;
   /* border: 1px solid #999; */
   overflow: none;
   display: flex;
   flex-direction: column;
   flex: 0 1 auto;
-}
-
-.incorrect-background {
-  background: #ee6c4d;
 }
 
 .popup-container h1 {
@@ -188,14 +184,14 @@
 }
 
 .popup-buttons {
-  margin-top: 30px;
+  margin-top: 20px;
   display: flex;
   justify-content: space-evenly;
 }
 
 .popup-buttons button {
   padding: 10px 20px;
-  border-radius: 10%;
+  border-radius: 15px;
   border-width: 0px;
   background-color: "white";
   font-size: 20px;
@@ -213,12 +209,65 @@
   transform: scale(1.1);
 }
 
+.summary {
+  color: white;
+  position: relative;
+  width: 80%;
+  max-width: 1200px;
+  margin: auto;
+  height: auto;
+  max-height: 70vh;
+  margin-top: calc(100vh - 85vh - 20px);
+  background: #333;
+  border-radius: 30px;
+  padding: 30px 30px;
+  /* border: 1px solid #999; */
+  overflow: none;
+  display: flex;
+  flex-direction: column;
+  flex: 0 1 auto;
+}
+
+.summary-songs {
+  display: flex;
+  flex-wrap: wrap;
+  align-self: 1;
+  justify-content: center;
+}
+
+.summaryItemHeader {
+  display: flex;
+  justify-content: center;
+}
+.summaryItemHeader img {
+  width: 30px;
+  margin-top: 20px;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.summary-item {
+  width: 40%;
+  background-color: #1db954;
+  margin: 10px;
+  border-radius: 20px;
+  padding-bottom: 10px;
+}
+
+iframe {
+  border-radius: 20px;
+}
+
 .playButtonContainer {
   display: flex;
   flex-direction: column;
   width: 100%;
   justify-content: flex-start;
   align-items: center;
+}
+
+.hidden {
+  display: none;
 }
 
 .timeControls {
@@ -268,4 +317,8 @@
     height: 40px;
     border-width: 0px 0 0px 32px;
   }
+}
+
+.incorrect-background {
+  background: #ee6c4d;
 }

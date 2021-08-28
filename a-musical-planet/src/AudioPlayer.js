@@ -3,7 +3,7 @@ import "./Play.css";
 
 const AudioPlayer = ({ audioRef, trackURL }) => {
   const [paused, setPaused] = useState(true);
-  const [currTime, setCurrTime] = useState(true);
+  const [currTime, setCurrTime] = useState(0);
   const togglePause = () => {
     if (paused === true) audioRef.current.play();
     else audioRef.current.pause();
@@ -56,7 +56,7 @@ const AudioPlayer = ({ audioRef, trackURL }) => {
           onClick={() => togglePause()}
         ></div>
         <div className="timeControls">
-          <p>{paused ? "0:00" : formatTime(currTime)}</p>
+          <p>{formatTime(currTime)}</p>
           <input
             type="range"
             value={currTime}

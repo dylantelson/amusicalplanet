@@ -25,17 +25,27 @@ const Play = ({ accessToken, setAccessToken, currMap, sendScoreToServer }) => {
     show: false,
     roundScore: 0,
     sessionScore: 0,
+    sessionInfo: [],
   });
 
   const audioRef = useRef(null);
 
   const newGame = () => {
     nextTrack();
-    setPopup({ show: false, roundScore: 0, sessionScore: 0 });
+    setPopup({
+      show: false,
+      roundScore: 0,
+      sessionScore: 0,
+      sessionInfo: [],
+    });
   };
 
   const nextTrack = () => {
-    setPopup({ ...popup, show: false, roundScore: 0 });
+    setPopup({
+      ...popup,
+      show: false,
+      roundScore: 0,
+    });
     setCurrChosen("");
     if (accessToken === null || accessToken === "") {
       const accessTokenCookie = getCookie("accessToken");
@@ -96,6 +106,7 @@ const Play = ({ accessToken, setAccessToken, currMap, sendScoreToServer }) => {
           location: data.name,
           name: data.tracks.items[trackIndex].track.name,
           round: currTrack.round < 5 ? currTrack.round + 1 : 1,
+          id: data.tracks.items[trackIndex].track.id,
         });
         audioRef.current.load();
         audioRef.current.play();
@@ -116,20 +127,33 @@ const Play = ({ accessToken, setAccessToken, currMap, sendScoreToServer }) => {
   };
 
   const guessGiven = () => {
+    audioRef.current.pause();
+    const currTrackCountry = countries.filter(function (country) {
+      return country.name.common === currTrack.location;
+    })[0];
     if (currChosen === currTrack.location) {
       setPopup({
         sessionScore: popup.sessionScore + maxScore,
         show: true,
         roundScore: maxScore,
+        sessionInfo: [
+          ...popup.sessionInfo,
+          {
+            country: currTrack.location,
+            songId: currTrack.id,
+            correct: true,
+            score: 5000,
+            code: currTrackCountry.cca2.toLowerCase(),
+          },
+        ],
       });
       return;
     }
+
+    const currTrackCountryCoords = currTrackCountry.latlng;
+
     const chosenCountryCoords = countries.filter(function (country) {
       return country.name.common === currChosen;
-    })[0].latlng;
-
-    const currTrackCountryCoords = countries.filter(function (country) {
-      return country.name.common === currTrack.location;
     })[0].latlng;
 
     let scoreDeduction = Math.ceil(
@@ -170,6 +194,16 @@ const Play = ({ accessToken, setAccessToken, currMap, sendScoreToServer }) => {
       show: true,
       roundScore: score,
       sessionScore: popup.sessionScore + score,
+      sessionInfo: [
+        ...popup.sessionInfo,
+        {
+          country: currTrack.location,
+          songId: currTrack.id,
+          correct: false,
+          score: score,
+          code: currTrackCountry.cca2.toLowerCase(),
+        },
+      ],
     });
     // if (currTrack.location === currChosen) {
     //   //alert(`${currChosen} is correct!`);
@@ -208,18 +242,18 @@ const Play = ({ accessToken, setAccessToken, currMap, sendScoreToServer }) => {
             currMap={currMap}
           />
         </div>
-        {popup.show && (
-          <GuessPopup
-            currMap={currMap}
-            currTrack={currTrack}
-            currChosen={currChosen}
-            nextTrack={nextTrack}
-            roundScore={popup.roundScore}
-            sessionScore={popup.sessionScore}
-            sendScoreToServer={sendScoreToServer}
-            newGame={newGame}
-          />
-        )}
+        <GuessPopup
+          show={popup.show}
+          currMap={currMap}
+          currTrack={currTrack}
+          currChosen={currChosen}
+          nextTrack={nextTrack}
+          roundScore={popup.roundScore}
+          sessionScore={popup.sessionScore}
+          sessionInfo={popup.sessionInfo}
+          sendScoreToServer={sendScoreToServer}
+          newGame={newGame}
+        />
       </div>
     </>
   );

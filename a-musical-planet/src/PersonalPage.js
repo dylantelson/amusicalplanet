@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 
-import "./PersonalPage.css";
+import "./PersonalPage.scss";
 
 import MapData from "./MapData.json";
 
@@ -14,6 +14,7 @@ const PersonalPage = () => {
   const [chosenMap, setChosenMap] = useState("overall");
 
   useEffect(() => {
+    setChosenMap("overall");
     axios(`http://localhost:8888/userData/${userName}`, {
       headers: {
         Accept: "application/json",
@@ -48,6 +49,7 @@ const PersonalPage = () => {
               <h2>Game Statistics</h2>
               <select
                 id="maplist"
+                value={chosenMap}
                 onChange={(e) => {
                   console.log("Changing value to", e.target.value);
                   setChosenMap(e.target.value);
@@ -78,7 +80,7 @@ const PersonalPage = () => {
                     : 0}
                 </h3>
               </div>
-              <div>
+              <div className={chosenMap === "overall" ? "bestOverall" : ""}>
                 <p>Best Game</p>
                 {chosenMap === "overall" ? (
                   <h3 className="overallMaxScore">

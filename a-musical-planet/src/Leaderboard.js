@@ -2,11 +2,12 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import MapData from "./MapData.json";
 import LeaderboardUser from "./LeaderboardUser";
-import "./Leaderboard.css";
+import "./Leaderboard.scss";
 
 const Leaderboard = () => {
   const [leaderboardStats, setLeaderboardStats] = useState([]);
   const [chosenMap, setChosenMap] = useState("world");
+  const [currPage, setCurrPage] = useState(0);
 
   useEffect(() => {
     axios(`http://localhost:8888/getLeaderboard`, {
@@ -33,6 +34,7 @@ const Leaderboard = () => {
               e.target.value[0].toLowerCase() +
                 e.target.value.slice(1).replace(" ", "")
             );
+            setCurrPage(0);
           }}
         >
           {MapData.map((map) => (
@@ -43,18 +45,36 @@ const Leaderboard = () => {
         </select>
       </div>
       <div className="leaderboard">
-        {leaderboardStats[chosenMap] ? (
-          leaderboardStats[chosenMap].map((userData, rank) => (
-            <LeaderboardUser
-              key={userData.userName + chosenMap + (rank + 1)}
-              rank={rank + 1}
-              userData={userData}
-              map={chosenMap}
-            />
-          ))
-        ) : (
-          <></>
-        )}
+        <img
+          src="/next.png"
+          id="leftArrow"
+          className={currPage <= 0 ? "disabledArrow" : ""}
+          onClick={() => (currPage > 0 ? setCurrPage(currPage - 1) : null)}
+        />
+        <div className="leaderboardUsers">
+          {leaderboardStats[chosenMap] ? (
+            leaderboardStats[chosenMap]
+              .slice(currPage * 5, currPage * 5 + 5)
+              .map((userData, rank) => (
+                <LeaderboardUser
+                  key={
+                    userData.userName + chosenMap + (currPage * 5 + rank + 1)
+                  }
+                  rank={currPage * 5 + rank + 1}
+                  userData={userData}
+                  map={chosenMap}
+                />
+              ))
+          ) : (
+            <></>
+          )}
+        </div>
+        <img
+          src="/next.png"
+          id="rightArrow"
+          className={currPage >= 4 ? "disabledArrow" : ""}
+          onClick={() => (currPage < 4 ? setCurrPage(currPage + 1) : null)}
+        />
       </div>
     </div>
   );

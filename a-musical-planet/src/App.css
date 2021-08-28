@@ -10,6 +10,7 @@ body {
   height: 100vh;
   overflow: hidden;
   background-color: #fcfaf9;
+  margin: 0px;
 }
 
 #root {

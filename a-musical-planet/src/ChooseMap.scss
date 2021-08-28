@@ -1,0 +1,170 @@
+$small: 768px;
+
+.MapBodyDesktop {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  @media screen and (max-width: $small) {
+    display: none;
+  }
+}
+
+.MapItemsDesktop {
+  /* height: 100%; */
+  display: flex;
+  flex: 0 1 auto;
+  flex-wrap: wrap;
+  /* align-self: center; */
+  justify-content: center;
+  align-items: center;
+  min-height: 0;
+  min-width: 0;
+}
+
+.MapBodyDesktop select {
+  /* background-color: #1abc9c; */
+  background-color: white;
+  border: 1px solid black;
+  height: 40px;
+  width: 150px;
+  margin: auto;
+  color: black;
+  font-size: inherit;
+  padding: 0.5em;
+  padding-right: 2.5em;
+  /* border: 0; */
+  margin-bottom: 25px;
+  border-radius: 3px;
+  text-indent: 0.01px;
+  text-overflow: "";
+  -webkit-appearance: button; /* hide default arrow in chrome OSX */
+}
+
+.MapHead {
+  margin: 0.3% 0px;
+}
+
+.MapHead h1 {
+  font-size: #{"min(32px, 4vh)"};
+}
+
+.MapItem {
+  display: flex;
+  flex-direction: column;
+  flex: 0 1 auto;
+  justify-content: flex-start;
+  align-items: center;
+  border: 0px;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  margin: 0px 10px 20px 10px;
+  background-color: #fff;
+  width: #{"min(28vw, 30vh)"};
+  height: fit-content;
+  min-height: 0;
+  /* min-width: 150px; */
+  overflow: hidden;
+  max-height: 450px;
+  border-radius: 20px;
+  max-width: 330px;
+  padding: 8px;
+  padding-top: 0px;
+  @media screen and (max-width: $small) {
+    width: 75%;
+    margin: auto;
+    margin-top: 5vh;
+  }
+}
+
+.MapItemsMobile {
+  display: none;
+  @media screen and (max-width: $small) {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+.MapItemsMobile select {
+  /* background-color: #1abc9c; */
+  background-color: white;
+  border: 1px solid black;
+  height: 10%;
+  width: 50%;
+  margin: auto;
+  color: black;
+  font-size: inherit;
+  padding: 0.5em;
+  padding-right: 2.5em;
+  /* border: 0; */
+  margin: 0;
+  border-radius: 3px;
+  text-indent: 0.01px;
+  text-overflow: "";
+  -webkit-appearance: button; /* hide default arrow in chrome OSX */
+}
+
+.MapItem img {
+  max-height: 40%;
+  min-width: 0;
+  min-height: 0;
+  object-fit: contain;
+  width: #{"min(100%, 40vh)"};
+  height: auto;
+  display: block;
+}
+
+.MapItem h1 {
+  font-size: #{"min(2vw, 3vh)"};
+  margin: #{"min(0.67vw, 0.5vh)"} 0px;
+  @media screen and (max-width: $small) {
+    font-size: #{"min(5vw, 7vh)"};
+    margin: #{"min(1.3vw, 1vh)"} 0px;
+  }
+}
+
+.MapItem p {
+  font-size: #{"min(1vw, 1.5vh)"};
+  margin: #{"min(0.67vw, 1vh)"} 0px;
+  @media screen and (max-width: $small) {
+    font-size: #{"min(3vw, 4vh)"};
+    margin: #{"min(1.3vw, 1vh)"} 0px;
+  }
+}
+
+.MapItem a {
+  font-size: #{"min(1vw, 1.5vh)"};
+  padding: 8px 16px;
+  margin: 0px 6px;
+  border-radius: 6px;
+  border-width: 0px;
+  background-color: #ddd;
+  text-decoration: none;
+  /* font-size: 1em; */
+  color: #000;
+  font-family: "Ubuntu", sans-serif;
+  /* width: 50%; */
+  @media screen and (max-width: $small) {
+    font-size: #{"min(2vw, 3vh)"};
+  }
+}
+
+/* @media screen and (min-width: 1600px) {
+  .MapItem h1 {
+    font-size: 1.8em;
+  }
+  .MapItem p {
+    font-size: 1em;
+  }
+  .MapItem button {
+    font-size: 1em;
+  }
+} */
+
+.ChooseMapContainer {
+  height: 80vh;
+  display: flex;
+  flex-direction: column;
+  flex: 0 1 auto;
+  max-width: 1575;
+}

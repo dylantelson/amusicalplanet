@@ -1,6 +1,30 @@
 {
   "world": [
     {
+      "country": "United Kingdom",
+      "playlistId": "5022QVsn22SdqF5PF6ILke"
+    },
+    {
+      "country": "Ireland",
+      "playlistId": "0Hpy1YGdydlYIpXXPLXihL"
+    },
+    {
+      "country": "Russia",
+      "playlistId": "4D1kav7Iay1XxG6aQMggAf"
+    },
+    {
+      "country": "Germany",
+      "playlistId": "6yLm8Wig46SVLsPxDGnkCb"
+    },
+    {
+      "country": "Italy",
+      "playlistId": "1lystPP2r6E0jGkCvjBt2P"
+    },
+    {
+      "country": "Bosnia",
+      "playlistId": "3YDxzefl5kmaDKACoHBT7M"
+    },
+    {
       "country": "Portugal",
       "playlistId": "55T5FbjUVIpZRdgNsrPvKr"
     },
@@ -51,6 +75,22 @@
     {
       "country": "Colombia",
       "playlistId": "3sLmU1BftZok19FTaKccI2"
+    },
+    {
+      "country": "Venezuela",
+      "playlistId": "1q78pdUD8xExdzjEaqFSp3"
+    },
+    {
+      "country": "Peru",
+      "playlistId": "5V4vG7twdJXeobdkxhAbDD"
+    },
+    {
+      "country": "Bolivia",
+      "playlistId": "6zQ2U14zJnd1x6tRxDHZ6K"
+    },
+    {
+      "country": "Ecuador",
+      "playlistId": "0nCQlgXisMMchjpx08iMDB"
     },
     {
       "country": "Brazil",
@@ -113,6 +153,26 @@
       "playlistId": "2EchA1jp8PplmETrwElMzz"
     },
     {
+      "country": "South Korea",
+      "playlistId": "0bGDvighPRrCIuXtngZP7J"
+    },
+    {
+      "country": "Japan",
+      "playlistId": "5n0TMjCOJeNW1c2tujYM4G"
+    },
+    {
+      "country": "China",
+      "playlistId": "1wycdr5WBrV4p1Iaimv9tx"
+    },
+    {
+      "country": "Iran",
+      "playlistId": "5QHgk0hAUelO6kTixCjYA9"
+    },
+    {
+      "country": "Turkey",
+      "playlistId": "23Gws5s9RK6y3Izqmt4I7C"
+    },
+    {
       "country": "Indonesia",
       "playlistId": "1J2OPZzBrELPgiphPyWoCo"
     },
@@ -157,6 +217,30 @@
     {
       "country": "Portugal",
       "playlistId": "55T5FbjUVIpZRdgNsrPvKr"
+    },
+    {
+      "country": "United Kingdom",
+      "playlistId": "5022QVsn22SdqF5PF6ILke"
+    },
+    {
+      "country": "Ireland",
+      "playlistId": "0Hpy1YGdydlYIpXXPLXihL"
+    },
+    {
+      "country": "Russia",
+      "playlistId": "4D1kav7Iay1XxG6aQMggAf"
+    },
+    {
+      "country": "Germany",
+      "playlistId": "6yLm8Wig46SVLsPxDGnkCb"
+    },
+    {
+      "country": "Italy",
+      "playlistId": "1lystPP2r6E0jGkCvjBt2P"
+    },
+    {
+      "country": "Bosnia",
+      "playlistId": "3YDxzefl5kmaDKACoHBT7M"
     }
   ],
   "africa": [
@@ -241,6 +325,22 @@
     {
       "country": "Brazil",
       "playlistId": "1ZMjUWrDwdCHAtpRGW3QoM"
+    },
+    {
+      "country": "Venezuela",
+      "playlistId": "1q78pdUD8xExdzjEaqFSp3"
+    },
+    {
+      "country": "Peru",
+      "playlistId": "5V4vG7twdJXeobdkxhAbDD"
+    },
+    {
+      "country": "Bolivia",
+      "playlistId": "6zQ2U14zJnd1x6tRxDHZ6K"
+    },
+    {
+      "country": "Ecuador",
+      "playlistId": "0nCQlgXisMMchjpx08iMDB"
     }
   ],
   "northAmerica": [
@@ -281,6 +381,26 @@
     {
       "country": "Lebanon",
       "playlistId": "09wT0hpBt0vJmCMBxuOV1q"
+    },
+    {
+      "country": "South Korea",
+      "playlistId": "0bGDvighPRrCIuXtngZP7J"
+    },
+    {
+      "country": "Japan",
+      "playlistId": "5n0TMjCOJeNW1c2tujYM4G"
+    },
+    {
+      "country": "China",
+      "playlistId": "1wycdr5WBrV4p1Iaimv9tx"
+    },
+    {
+      "country": "Iran",
+      "playlistId": "5QHgk0hAUelO6kTixCjYA9"
+    },
+    {
+      "country": "Turkey",
+      "playlistId": "23Gws5s9RK6y3Izqmt4I7C"
     }
   ],
   "oceania": [
