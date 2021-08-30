@@ -4,7 +4,7 @@ import { Redirect } from "react-router-dom";
 import MapPage from "./MapPage";
 import GuessPopup from "./GuessPopup";
 import CountryGuessInfo from "./CountryGuessInfo.js";
-import "./Play.css";
+import "./Play.scss";
 import haversine from "haversine-distance";
 
 import getCookie from "./GetCookie";

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./Play.css";
+// import "./Play.scss";
 
 const AudioPlayer = ({ audioRef, trackURL }) => {
   const [paused, setPaused] = useState(true);

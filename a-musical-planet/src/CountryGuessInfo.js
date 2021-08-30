@@ -1,5 +1,5 @@
 import React from "react";
-import "./Play.css";
+// import "./Play.scss";
 import AudioPlayer from "./AudioPlayer";
 
 const countries = require("./WorldInfo.json");

@@ -3,6 +3,7 @@ import React, { useState, useContext, useEffect } from "react";
 
 import Summary from "./Summary";
 import CustomiFrame from "./CustomiFrame";
+import getMixedColor from "./GetMixedColor";
 
 const GuessPopup = ({
   show,
@@ -26,12 +27,20 @@ const GuessPopup = ({
     <div>
       <h1>Good job!</h1>
       <h3>You correctly guessed {currChosen}</h3>
+      <h3>
+        SHOW: {show.toString()}, GAMEFINISHED: {gameFinished.toString()},
+        currTrack.round: {currTrack.round}
+      </h3>
     </div>
   );
   const incorrectText = (
     <div>
       <h1>Whoops!</h1>
       <h3>The answer was {currTrack.location}</h3>
+      <h3>
+        SHOW: {show.toString()}, GAMEFINISHED: {gameFinished.toString()},
+        currTrack.round: {currTrack.round}
+      </h3>
     </div>
   );
 
@@ -40,11 +49,13 @@ const GuessPopup = ({
 
   if (show && !gameFinished && currTrack.round === 5) {
     setGameFinished(true);
+    console.log("SENDING SCORE TO SERVER:", sessionScore);
     sendScoreToServer(sessionScore);
   }
 
   const summaryExit = () => {
     setShowSummary(false);
+    setGameFinished(false);
     newGame();
   };
 
@@ -60,13 +71,14 @@ const GuessPopup = ({
         className={"popup-container" + (!show || showSummary ? " hidden" : "")}
       >
         <div
-          className={"guess-popup" + (!correct ? " incorrect-background" : "")}
+          className={"guess-popup"}
+          style={{ background: `#${getMixedColor(roundScore / 5000)}` }}
         >
           <h3 className="indexText">{currTrack.round}/5</h3>
           <div className="popupText">
             {correct ? correctText : incorrectText}
             <h3 id="score">
-              Score: {sessionScore} (+{roundScore} {gameFinished})
+              Score: {sessionScore} (+{roundScore})
             </h3>
           </div>
           <div className="song-info">
