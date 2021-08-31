@@ -2,203 +2,258 @@
   "world": [
     {
       "country": "United Kingdom",
-      "playlistId": "5022QVsn22SdqF5PF6ILke"
+      "difficulty": "easy",
+			"playlistId": "5022QVsn22SdqF5PF6ILke"
     },
     {
       "country": "Ireland",
-      "playlistId": "0Hpy1YGdydlYIpXXPLXihL"
+      "difficulty": "hard",
+			"playlistId": "0Hpy1YGdydlYIpXXPLXihL"
     },
     {
       "country": "Russia",
-      "playlistId": "4D1kav7Iay1XxG6aQMggAf"
+      "difficulty": "medium",
+			"playlistId": "4D1kav7Iay1XxG6aQMggAf"
     },
     {
       "country": "Germany",
-      "playlistId": "6yLm8Wig46SVLsPxDGnkCb"
+      "difficulty": "medium",
+			"playlistId": "6yLm8Wig46SVLsPxDGnkCb"
     },
     {
       "country": "Italy",
-      "playlistId": "1lystPP2r6E0jGkCvjBt2P"
+      "difficulty": "easy",
+			"playlistId": "1lystPP2r6E0jGkCvjBt2P"
     },
     {
       "country": "Bosnia",
-      "playlistId": "3YDxzefl5kmaDKACoHBT7M"
+      "difficulty": "hard",
+			"playlistId": "3YDxzefl5kmaDKACoHBT7M"
     },
     {
       "country": "Portugal",
-      "playlistId": "55T5FbjUVIpZRdgNsrPvKr"
+      "difficulty": "hard",
+			"playlistId": "55T5FbjUVIpZRdgNsrPvKr"
     },
     {
       "country": "Spain",
-      "playlistId": "4vFSNRan67VPynZD38h2sp"
+      "difficulty": "medium",
+			"playlistId": "4vFSNRan67VPynZD38h2sp"
     },
     {
       "country": "France",
-      "playlistId": "7fdpsp6o3iYkz0NKarr5tw"
+      "difficulty": "easy",
+			"playlistId": "7fdpsp6o3iYkz0NKarr5tw"
     },
     {
       "country": "Bulgaria",
-      "playlistId": "6tlljVyHc8sp02FMtq07ec"
+      "difficulty": "hard",
+			"playlistId": "6tlljVyHc8sp02FMtq07ec"
     },
     {
       "country": "Mexico",
-      "playlistId": "3sorpmHj9Kd4e8eDWzsbHz"
+      "difficulty": "easy",
+			"playlistId": "3sorpmHj9Kd4e8eDWzsbHz"
     },
     {
       "country": "Cuba",
-      "playlistId": "1RssjRpDgstMIxHzMhla96"
+      "difficulty": "medium",
+			"playlistId": "1RssjRpDgstMIxHzMhla96"
     },
     {
       "country": "Panama",
-      "playlistId": "0sWwhwwVhja1WRVgF6YCnT"
+      "difficulty": "hard",
+			"playlistId": "0sWwhwwVhja1WRVgF6YCnT"
     },
     {
       "country": "Haiti",
-      "playlistId": "5ZERJEcReK8RuEAuYOgkkZ"
+      "difficulty": "hard",
+			"playlistId": "5ZERJEcReK8RuEAuYOgkkZ"
+    },
+    {
+      "country": "Trinidad and Tobago",
+      "difficulty": "easy",
+      "playlistId": "6monERA0JCaexRxjC7NWo3"
     },
     {
       "country": "Uruguay",
-      "playlistId": "13lhWEXVhRlwPWbLwmOP3g"
+      "difficulty": "hard",
+			"playlistId": "13lhWEXVhRlwPWbLwmOP3g"
     },
     {
       "country": "Chile",
-      "playlistId": "6mj7rOPHUj2bm9vAaArkbB"
+      "difficulty": "hard",
+			"playlistId": "6mj7rOPHUj2bm9vAaArkbB"
     },
     {
       "country": "Argentina",
-      "playlistId": "3ej3W4XxIdxEMJBwpfuMgp"
+      "difficulty": "easy",
+			"playlistId": "3ej3W4XxIdxEMJBwpfuMgp"
     },
     {
       "country": "Paraguay",
-      "playlistId": "6mjbOGvMnacK5oPmqxlR2Q"
+      "difficulty": "hard",
+			"playlistId": "6mjbOGvMnacK5oPmqxlR2Q"
     },
     {
       "country": "Colombia",
-      "playlistId": "3sLmU1BftZok19FTaKccI2"
+      "difficulty": "medium",
+			"playlistId": "3sLmU1BftZok19FTaKccI2"
     },
     {
       "country": "Venezuela",
-      "playlistId": "1q78pdUD8xExdzjEaqFSp3"
+      "difficulty": "hard",
+			"playlistId": "1q78pdUD8xExdzjEaqFSp3"
     },
     {
       "country": "Peru",
-      "playlistId": "5V4vG7twdJXeobdkxhAbDD"
+      "difficulty": "hard",
+			"playlistId": "5V4vG7twdJXeobdkxhAbDD"
     },
     {
       "country": "Bolivia",
-      "playlistId": "6zQ2U14zJnd1x6tRxDHZ6K"
+      "difficulty": "hard",
+			"playlistId": "6zQ2U14zJnd1x6tRxDHZ6K"
     },
     {
       "country": "Ecuador",
-      "playlistId": "0nCQlgXisMMchjpx08iMDB"
+      "difficulty": "hard",
+			"playlistId": "0nCQlgXisMMchjpx08iMDB"
     },
     {
       "country": "Brazil",
-      "playlistId": "1ZMjUWrDwdCHAtpRGW3QoM"
+      "difficulty": "easy",
+			"playlistId": "1ZMjUWrDwdCHAtpRGW3QoM"
     },
     {
       "country": "Cameroon",
-      "playlistId": "4axzkyzZMubwQ2f6ntPwFH"
+      "difficulty": "hard",
+			"playlistId": "4axzkyzZMubwQ2f6ntPwFH"
     },
     {
       "country": "Central African Republic",
-      "playlistId": "4pCEPB1uhiLvdtEF2LNYyA"
+      "difficulty": "hard",
+			"playlistId": "4pCEPB1uhiLvdtEF2LNYyA"
     },
     {
       "country": "Niger",
-      "playlistId": "2IDoXSBTyoqoYw6E815Tf6"
+      "difficulty": "hard",
+			"playlistId": "2IDoXSBTyoqoYw6E815Tf6"
     },
     {
       "country": "Mali",
-      "playlistId": "05qP7NTi5P4vIEtEYjAYqJ"
+      "difficulty": "medium",
+			"playlistId": "05qP7NTi5P4vIEtEYjAYqJ"
     },
     {
       "country": "Egypt",
-      "playlistId": "4DUCSDcD2wx7pVeFiZVpJ4"
+      "difficulty": "medium",
+			"playlistId": "4DUCSDcD2wx7pVeFiZVpJ4"
     },
     {
       "country": "Ghana",
-      "playlistId": "3w84XGZUM5omvMBu5AmWBL"
+      "difficulty": "medium",
+			"playlistId": "3w84XGZUM5omvMBu5AmWBL"
     },
     {
       "country": "Burkina Faso",
-      "playlistId": "0f7jofRnTnTtkc6LkYbqSg"
+      "difficulty": "hard",
+			"playlistId": "0f7jofRnTnTtkc6LkYbqSg"
     },
     {
       "country": "Kenya",
-      "playlistId": "5PCkpuIPmxtFLbEHJRiiQi"
+      "difficulty": "hard",
+			"playlistId": "5PCkpuIPmxtFLbEHJRiiQi"
     },
     {
       "country": "Uganda",
-      "playlistId": "6MNWq4lsMv0v2B3Hn5fMKX"
+      "difficulty": "hard",
+			"playlistId": "6MNWq4lsMv0v2B3Hn5fMKX"
     },
     {
       "country": "Ethiopia",
-      "playlistId": "6G4nRptgcsm8bpvoBrLL7s"
+      "difficulty": "easy",
+			"playlistId": "6G4nRptgcsm8bpvoBrLL7s"
     },
     {
       "country": "Nigeria",
-      "playlistId": "4Tfmvj1zTCzAXiTpQ1pTK2"
+      "difficulty": "easy",
+			"playlistId": "4Tfmvj1zTCzAXiTpQ1pTK2"
     },
     {
       "country": "Tanzania",
-      "playlistId": "311H1EdOKNpsXZ7tU0ugQy"
+      "difficulty": "hard",
+			"playlistId": "311H1EdOKNpsXZ7tU0ugQy"
     },
     {
       "country": "Zimbabwe",
-      "playlistId": "0Lyomn3xLjATwhHUdPHbDO"
+      "difficulty": "medium",
+			"playlistId": "0Lyomn3xLjATwhHUdPHbDO"
     },
     {
       "country": "DR Congo",
-      "playlistId": "2EchA1jp8PplmETrwElMzz"
+      "difficulty": "hard",
+			"playlistId": "2EchA1jp8PplmETrwElMzz"
     },
     {
       "country": "South Korea",
-      "playlistId": "0bGDvighPRrCIuXtngZP7J"
+      "difficulty": "medium",
+			"playlistId": "0bGDvighPRrCIuXtngZP7J"
     },
     {
       "country": "Japan",
-      "playlistId": "5n0TMjCOJeNW1c2tujYM4G"
+      "difficulty": "easy",
+			"playlistId": "5n0TMjCOJeNW1c2tujYM4G"
     },
     {
       "country": "China",
-      "playlistId": "1wycdr5WBrV4p1Iaimv9tx"
+      "difficulty": "medium",
+			"playlistId": "1wycdr5WBrV4p1Iaimv9tx"
     },
     {
       "country": "Iran",
-      "playlistId": "5QHgk0hAUelO6kTixCjYA9"
+      "difficulty": "easy",
+			"playlistId": "5QHgk0hAUelO6kTixCjYA9"
     },
     {
       "country": "Turkey",
-      "playlistId": "23Gws5s9RK6y3Izqmt4I7C"
+      "difficulty": "medium",
+			"playlistId": "23Gws5s9RK6y3Izqmt4I7C"
     },
     {
       "country": "Indonesia",
-      "playlistId": "1J2OPZzBrELPgiphPyWoCo"
+      "difficulty": "hard",
+			"playlistId": "1J2OPZzBrELPgiphPyWoCo"
     },
     {
       "country": "Armenia",
-      "playlistId": "4HVsjTH2mkyr3dN8PKhLZP"
+      "difficulty": "hard",
+			"playlistId": "4HVsjTH2mkyr3dN8PKhLZP"
     },
     {
       "country": "Cambodia",
-      "playlistId": "1JtyW3n3dpxVSoNol2L67P"
+      "difficulty": "medium",
+			"playlistId": "1JtyW3n3dpxVSoNol2L67P"
     },
     {
       "country": "Lebanon",
-      "playlistId": "09wT0hpBt0vJmCMBxuOV1q"
+      "difficulty": "hard",
+			"playlistId": "09wT0hpBt0vJmCMBxuOV1q"
     },
     {
       "country": "Papua New Guinea",
-      "playlistId": "58hr98mN77yqRlgRBvnGO0"
+      "difficulty": "hard",
+			"playlistId": "58hr98mN77yqRlgRBvnGO0"
     },
     {
       "country": "Australia",
-      "playlistId": "2iwDiBWKpiOGE1rh1XJGMT"
+      "difficulty": "easy",
+			"playlistId": "2iwDiBWKpiOGE1rh1XJGMT"
     },
     {
       "country": "Fiji",
-      "playlistId": "0uvne7mpiDwjIHFYpd6pfO"
+      "difficulty": "medium",
+			"playlistId": "0uvne7mpiDwjIHFYpd6pfO"
     }
   ],
   "europe": [

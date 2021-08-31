@@ -66,7 +66,7 @@ const Leaderboard = () => {
                 />
               ))
           ) : (
-            <></>
+            <h3>LOADING...</h3>
           )}
         </div>
         <img

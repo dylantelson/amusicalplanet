@@ -62,15 +62,32 @@ const Play = ({ accessToken, setAccessToken, currMap, sendScoreToServer }) => {
       return setRedirect("login");
     }
 
+    let relevantPlaylists = Playlists;
+    if (currMap.slice(0, 5) === "world") {
+      if (currMap.slice(5) === "easy")
+        relevantPlaylists = Playlists[currMap].filter(
+          (country) => country.difficulty === "easy"
+        );
+      else if (currMap.slice(5) === "medium") {
+        relevantPlaylists = Playlists[currMap].filter(
+          (country) =>
+            country.difficulty === "easy" || country.difficulty === "medium"
+        );
+      }
+    }
+
     let currPlaylistIndex = Math.floor(
-      Math.random() * Playlists[currMap].length
+      Math.random() * relevantPlaylists.length
     );
-    if (Playlists[currMap][currPlaylistIndex].country === currTrack.location) {
-      if (currPlaylistIndex > 0) currPlaylistIndex--;
-      else currPlaylistIndex++;
+
+    if (relevantPlaylists[currPlaylistIndex].country === currTrack.location) {
+      nextTrack();
+      return;
+      // if (currPlaylistIndex > 0) currPlaylistIndex--;
+      // else currPlaylistIndex++;
     }
     fetch(
-      `https://api.spotify.com/v1/playlists/${Playlists[currMap][currPlaylistIndex].playlistId}`,
+      `https://api.spotify.com/v1/playlists/${relevantPlaylists[currPlaylistIndex].playlistId}`,
       {
         headers: { Authorization: "Bearer " + accessToken },
       }
