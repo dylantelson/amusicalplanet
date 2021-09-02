@@ -12,7 +12,7 @@ const LeaderboardUser = ({ userData, map, rank }) => {
       </div>
       <div className="highScore">
         <p>Score</p>
-        <h3>{userData.stats.maxScores[map]}</h3>
+        <h3>{userData.stats.maxScores[map] ? userData.stats.maxScores[map] : 0}</h3>
       </div>
     </div>
   );

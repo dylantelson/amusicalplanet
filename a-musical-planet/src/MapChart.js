@@ -1,4 +1,4 @@
-import React, { memo, useState } from "react";
+import React, { memo, useState, useEffect } from "react";
 import {
   ZoomableGroup,
   ComposableMap,
@@ -8,6 +8,7 @@ import {
 } from "react-simple-maps";
 import { geoMercator } from "d3-geo";
 
+import Playlists from "./Playlists";
 import "./Map.css";
 
 const worldCountries = require("./WorldInfo.json");
@@ -69,7 +70,31 @@ function LightenDarkenColor(col, amt) {
   return (usePound ? "#" : "") + (g | (b << 8) | (r << 16)).toString(16);
 }
 
+const checkDifficulty = (mapDifficulty, countryDifficulty) => {
+  console.log(mapDifficulty);
+  if(mapDifficulty === "Easy") return countryDifficulty === "Easy";
+  if(mapDifficulty === "Medium") return (countryDifficulty === "Easy" || countryDifficulty === "Medium");
+  //for some reason this necessary, otherwise it returns true even if mapDifficulty is Easy
+  if(mapDifficulty === "Hard") return true;
+  return false;
+}
+
+let countriesToShow = [];
 const MapChart = ({ setCurrChosen, currChosen, mapProps, currMap }) => {
+
+  useEffect(() => {
+    countriesToShow = [];
+    if(currMap.slice(0,5) === "world") {
+      for(const playlist of Playlists.world) {
+        if(checkDifficulty(currMap.slice(5), playlist.difficulty)) countriesToShow.push(playlist.country);
+      }
+    } else {
+      for(const playlist of Playlists[currMap]) {
+        countriesToShow.push(playlist.country);
+      }
+    }
+    console.log(countriesToShow);
+  }, [currMap]);
   const renderStyle = (country) => {
     if (!country.area || country.area < 1500) return [{ fontSize: "0px" }, 0];
     let adjustedFont =
@@ -168,17 +193,16 @@ const MapChart = ({ setCurrChosen, currChosen, mapProps, currMap }) => {
                     default:
                       currChosen === geo.properties.NAME
                         ? selectedStyle(colors[geo.properties.CONTINENT])
-                        : {
-                            fill:
-                              currMap === "world" ||
-                              geo.properties.CONTINENT === currMap
-                                ? colors[geo.properties.CONTINENT]
-                                : "#ccc",
-                            pointerEvents:
-                              currMap === "world" ||
-                              geo.properties.CONTINENT === currMap
-                                ? "all"
-                                : "none",
+                        : countriesToShow.indexOf(geo.properties.NAME) >= 0
+                          ? {
+                            fill: colors[geo.properties.CONTINENT],
+                            pointerEvents: "all",
+                            stroke: "#000000",
+                            strokeWidth: borderWidth,
+                            outline: "none",
+                          } : {
+                            fill: "#ccc",
+                            pointerEvents: "none",
                             stroke: "#000000",
                             strokeWidth: borderWidth,
                             outline: "none",
@@ -193,10 +217,7 @@ const MapChart = ({ setCurrChosen, currChosen, mapProps, currMap }) => {
             }
           </Geographies>
           {worldCountries.map((country) => {
-            if (
-              (currMap !== "world" && country.region !== currMap) ||
-              country.area < 1500
-            )
+            if (countriesToShow.indexOf(country.name.common) < 0)
               return null;
             const currStyle = renderStyle(country);
             return (

@@ -2,257 +2,292 @@
   "world": [
     {
       "country": "United Kingdom",
-      "difficulty": "easy",
+      "difficulty": "Easy",
 			"playlistId": "5022QVsn22SdqF5PF6ILke"
     },
     {
       "country": "Ireland",
-      "difficulty": "hard",
+      "difficulty": "Hard",
 			"playlistId": "0Hpy1YGdydlYIpXXPLXihL"
     },
     {
       "country": "Russia",
-      "difficulty": "medium",
+      "difficulty": "Medium",
 			"playlistId": "4D1kav7Iay1XxG6aQMggAf"
     },
     {
       "country": "Germany",
-      "difficulty": "medium",
+      "difficulty": "Medium",
 			"playlistId": "6yLm8Wig46SVLsPxDGnkCb"
     },
     {
       "country": "Italy",
-      "difficulty": "easy",
+      "difficulty": "Easy",
 			"playlistId": "1lystPP2r6E0jGkCvjBt2P"
     },
     {
       "country": "Bosnia",
-      "difficulty": "hard",
+      "difficulty": "Hard",
 			"playlistId": "3YDxzefl5kmaDKACoHBT7M"
     },
     {
       "country": "Portugal",
-      "difficulty": "hard",
+      "difficulty": "Hard",
 			"playlistId": "55T5FbjUVIpZRdgNsrPvKr"
     },
     {
       "country": "Spain",
-      "difficulty": "medium",
+      "difficulty": "Medium",
 			"playlistId": "4vFSNRan67VPynZD38h2sp"
     },
     {
       "country": "France",
-      "difficulty": "easy",
+      "difficulty": "Easy",
 			"playlistId": "7fdpsp6o3iYkz0NKarr5tw"
     },
     {
       "country": "Bulgaria",
-      "difficulty": "hard",
+      "difficulty": "Hard",
 			"playlistId": "6tlljVyHc8sp02FMtq07ec"
     },
     {
+      "country": "Canada",
+      "difficulty": "Medium",
+			"playlistId": "https://open.spotify.com/playlist/0PSIeEbRwcMewVtMp1HsBh?si=7781ceaeb2bd4345"
+    },
+    {
+      "country": "United States",
+      "difficulty": "Easy",
+			"playlistId": "https://open.spotify.com/playlist/574Eur5rJ4oO11PzUoQhVb?si=9e961829cc324c1b"
+    },
+    {
       "country": "Mexico",
-      "difficulty": "easy",
+      "difficulty": "Easy",
 			"playlistId": "3sorpmHj9Kd4e8eDWzsbHz"
     },
     {
       "country": "Cuba",
-      "difficulty": "medium",
+      "difficulty": "Medium",
 			"playlistId": "1RssjRpDgstMIxHzMhla96"
     },
     {
+      "country": "Dominican Republic",
+      "difficulty": "Medium",
+			"playlistId": "https://open.spotify.com/playlist/4LRDG2CYFmzKUz4ZSx3kAl?si=7c129f7e88994f33"
+    },
+    {
+      "country": "Jamaica",
+      "difficulty": "Easy",
+			"playlistId": "https://open.spotify.com/playlist/4LcdV2drfpyC0YX5cwDQ7J?si=6da3890ea8b54a17"
+    },
+    {
+      "country": "Puerto Rico",
+      "difficulty": "Medium",
+			"playlistId": "https://open.spotify.com/playlist/2GcAUVhvdGhzQ0FzzuGMQn?si=fecc850a64294aa7"
+    },
+    {
       "country": "Panama",
-      "difficulty": "hard",
+      "difficulty": "Hard",
 			"playlistId": "0sWwhwwVhja1WRVgF6YCnT"
     },
     {
       "country": "Haiti",
-      "difficulty": "hard",
+      "difficulty": "Hard",
 			"playlistId": "5ZERJEcReK8RuEAuYOgkkZ"
     },
     {
       "country": "Trinidad and Tobago",
-      "difficulty": "easy",
+      "difficulty": "Easy",
       "playlistId": "6monERA0JCaexRxjC7NWo3"
     },
     {
       "country": "Uruguay",
-      "difficulty": "hard",
+      "difficulty": "Hard",
 			"playlistId": "13lhWEXVhRlwPWbLwmOP3g"
     },
     {
       "country": "Chile",
-      "difficulty": "hard",
+      "difficulty": "Hard",
 			"playlistId": "6mj7rOPHUj2bm9vAaArkbB"
     },
     {
       "country": "Argentina",
-      "difficulty": "easy",
+      "difficulty": "Easy",
 			"playlistId": "3ej3W4XxIdxEMJBwpfuMgp"
     },
     {
       "country": "Paraguay",
-      "difficulty": "hard",
+      "difficulty": "Hard",
 			"playlistId": "6mjbOGvMnacK5oPmqxlR2Q"
     },
     {
       "country": "Colombia",
-      "difficulty": "medium",
+      "difficulty": "Medium",
 			"playlistId": "3sLmU1BftZok19FTaKccI2"
     },
     {
       "country": "Venezuela",
-      "difficulty": "hard",
+      "difficulty": "Hard",
 			"playlistId": "1q78pdUD8xExdzjEaqFSp3"
     },
     {
       "country": "Peru",
-      "difficulty": "hard",
+      "difficulty": "Hard",
 			"playlistId": "5V4vG7twdJXeobdkxhAbDD"
     },
     {
       "country": "Bolivia",
-      "difficulty": "hard",
+      "difficulty": "Hard",
 			"playlistId": "6zQ2U14zJnd1x6tRxDHZ6K"
     },
     {
       "country": "Ecuador",
-      "difficulty": "hard",
+      "difficulty": "Hard",
 			"playlistId": "0nCQlgXisMMchjpx08iMDB"
     },
     {
       "country": "Brazil",
-      "difficulty": "easy",
+      "difficulty": "Easy",
 			"playlistId": "1ZMjUWrDwdCHAtpRGW3QoM"
     },
     {
       "country": "Cameroon",
-      "difficulty": "hard",
+      "difficulty": "Hard",
 			"playlistId": "4axzkyzZMubwQ2f6ntPwFH"
     },
     {
       "country": "Central African Republic",
-      "difficulty": "hard",
+      "difficulty": "Hard",
 			"playlistId": "4pCEPB1uhiLvdtEF2LNYyA"
     },
     {
       "country": "Niger",
-      "difficulty": "hard",
+      "difficulty": "Hard",
 			"playlistId": "2IDoXSBTyoqoYw6E815Tf6"
     },
     {
       "country": "Mali",
-      "difficulty": "medium",
+      "difficulty": "Medium",
 			"playlistId": "05qP7NTi5P4vIEtEYjAYqJ"
     },
     {
       "country": "Egypt",
-      "difficulty": "medium",
+      "difficulty": "Medium",
 			"playlistId": "4DUCSDcD2wx7pVeFiZVpJ4"
     },
     {
       "country": "Ghana",
-      "difficulty": "medium",
+      "difficulty": "Medium",
 			"playlistId": "3w84XGZUM5omvMBu5AmWBL"
     },
     {
       "country": "Burkina Faso",
-      "difficulty": "hard",
+      "difficulty": "Hard",
 			"playlistId": "0f7jofRnTnTtkc6LkYbqSg"
     },
     {
       "country": "Kenya",
-      "difficulty": "hard",
+      "difficulty": "Hard",
 			"playlistId": "5PCkpuIPmxtFLbEHJRiiQi"
     },
     {
       "country": "Uganda",
-      "difficulty": "hard",
+      "difficulty": "Hard",
 			"playlistId": "6MNWq4lsMv0v2B3Hn5fMKX"
     },
     {
       "country": "Ethiopia",
-      "difficulty": "easy",
+      "difficulty": "Easy",
 			"playlistId": "6G4nRptgcsm8bpvoBrLL7s"
     },
     {
       "country": "Nigeria",
-      "difficulty": "easy",
+      "difficulty": "Easy",
 			"playlistId": "4Tfmvj1zTCzAXiTpQ1pTK2"
     },
     {
       "country": "Tanzania",
-      "difficulty": "hard",
+      "difficulty": "Hard",
 			"playlistId": "311H1EdOKNpsXZ7tU0ugQy"
     },
     {
+      "country": "South Africa",
+      "difficulty": "Medium",
+			"playlistId": "https://open.spotify.com/playlist/4qNhLLYCb7m9AYs1I7Oqga?si=13d5633f5c6d42f1"
+    },
+    {
       "country": "Zimbabwe",
-      "difficulty": "medium",
+      "difficulty": "Medium",
 			"playlistId": "0Lyomn3xLjATwhHUdPHbDO"
     },
     {
       "country": "DR Congo",
-      "difficulty": "hard",
+      "difficulty": "Hard",
 			"playlistId": "2EchA1jp8PplmETrwElMzz"
     },
     {
       "country": "South Korea",
-      "difficulty": "medium",
+      "difficulty": "Medium",
 			"playlistId": "0bGDvighPRrCIuXtngZP7J"
     },
     {
       "country": "Japan",
-      "difficulty": "easy",
+      "difficulty": "Easy",
 			"playlistId": "5n0TMjCOJeNW1c2tujYM4G"
     },
     {
       "country": "China",
-      "difficulty": "medium",
+      "difficulty": "Medium",
 			"playlistId": "1wycdr5WBrV4p1Iaimv9tx"
     },
     {
+      "country": "India",
+      "difficulty": "Medium",
+			"playlistId": "https://open.spotify.com/playlist/6CWetakXCCP4lYRx5yOgjq?si=608da6237aba420c"
+    },
+    {
       "country": "Iran",
-      "difficulty": "easy",
+      "difficulty": "Easy",
 			"playlistId": "5QHgk0hAUelO6kTixCjYA9"
     },
     {
       "country": "Turkey",
-      "difficulty": "medium",
+      "difficulty": "Medium",
 			"playlistId": "23Gws5s9RK6y3Izqmt4I7C"
     },
     {
       "country": "Indonesia",
-      "difficulty": "hard",
+      "difficulty": "Hard",
 			"playlistId": "1J2OPZzBrELPgiphPyWoCo"
     },
     {
       "country": "Armenia",
-      "difficulty": "hard",
+      "difficulty": "Hard",
 			"playlistId": "4HVsjTH2mkyr3dN8PKhLZP"
     },
     {
       "country": "Cambodia",
-      "difficulty": "medium",
+      "difficulty": "Medium",
 			"playlistId": "1JtyW3n3dpxVSoNol2L67P"
     },
     {
       "country": "Lebanon",
-      "difficulty": "hard",
+      "difficulty": "Hard",
 			"playlistId": "09wT0hpBt0vJmCMBxuOV1q"
     },
     {
       "country": "Papua New Guinea",
-      "difficulty": "hard",
+      "difficulty": "Hard",
 			"playlistId": "58hr98mN77yqRlgRBvnGO0"
     },
     {
       "country": "Australia",
-      "difficulty": "easy",
+      "difficulty": "Easy",
 			"playlistId": "2iwDiBWKpiOGE1rh1XJGMT"
     },
     {
       "country": "Fiji",
-      "difficulty": "medium",
+      "difficulty": "Medium",
 			"playlistId": "0uvne7mpiDwjIHFYpd6pfO"
     }
   ],
@@ -348,6 +383,10 @@
       "playlistId": "311H1EdOKNpsXZ7tU0ugQy"
     },
     {
+      "country": "South Africa",
+			"playlistId": "https://open.spotify.com/playlist/4qNhLLYCb7m9AYs1I7Oqga?si=13d5633f5c6d42f1"
+    },
+    {
       "country": "Zimbabwe",
       "playlistId": "0Lyomn3xLjATwhHUdPHbDO"
     },
@@ -400,12 +439,34 @@
   ],
   "northAmerica": [
     {
+      "country": "Canada",
+      "difficulty": "Medium",
+			"playlistId": "https://open.spotify.com/playlist/0PSIeEbRwcMewVtMp1HsBh?si=7781ceaeb2bd4345"
+    },
+    {
+      "country": "United States",
+      "difficulty": "Easy",
+			"playlistId": "https://open.spotify.com/playlist/574Eur5rJ4oO11PzUoQhVb?si=9e961829cc324c1b"
+    },
+    {
       "country": "Mexico",
       "playlistId": "3sorpmHj9Kd4e8eDWzsbHz"
     },
     {
       "country": "Cuba",
       "playlistId": "1RssjRpDgstMIxHzMhla96"
+    },
+    {
+      "country": "Dominican Republic",
+			"playlistId": "https://open.spotify.com/playlist/4LRDG2CYFmzKUz4ZSx3kAl?si=7c129f7e88994f33"
+    },
+    {
+      "country": "Jamaica",
+			"playlistId": "https://open.spotify.com/playlist/4LcdV2drfpyC0YX5cwDQ7J?si=6da3890ea8b54a17"
+    },
+    {
+      "country": "Puerto Rico",
+			"playlistId": "https://open.spotify.com/playlist/2GcAUVhvdGhzQ0FzzuGMQn?si=fecc850a64294aa7"
     },
     {
       "country": "Panama",
@@ -448,6 +509,10 @@
     {
       "country": "China",
       "playlistId": "1wycdr5WBrV4p1Iaimv9tx"
+    },
+    {
+      "country": "India",
+			"playlistId": "https://open.spotify.com/playlist/6CWetakXCCP4lYRx5yOgjq?si=608da6237aba420c"
     },
     {
       "country": "Iran",

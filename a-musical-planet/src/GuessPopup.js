@@ -27,20 +27,12 @@ const GuessPopup = ({
     <div>
       <h1>Good job!</h1>
       <h3>You correctly guessed {currChosen}</h3>
-      <h3>
-        SHOW: {show.toString()}, GAMEFINISHED: {gameFinished.toString()},
-        currTrack.round: {currTrack.round}
-      </h3>
     </div>
   );
   const incorrectText = (
     <div>
       <h1>Whoops!</h1>
       <h3>The answer was {currTrack.location}</h3>
-      <h3>
-        SHOW: {show.toString()}, GAMEFINISHED: {gameFinished.toString()},
-        currTrack.round: {currTrack.round}
-      </h3>
     </div>
   );
 

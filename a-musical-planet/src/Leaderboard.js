@@ -6,7 +6,7 @@ import "./Leaderboard.scss";
 
 const Leaderboard = () => {
   const [leaderboardStats, setLeaderboardStats] = useState([]);
-  const [chosenMap, setChosenMap] = useState("world");
+  const [chosenMap, setChosenMap] = useState("worldEasy");
   const [currPage, setCurrPage] = useState(0);
 
   useEffect(() => {

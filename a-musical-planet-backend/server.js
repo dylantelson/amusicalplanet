@@ -19,7 +19,9 @@ import RandomNames from "./RandomNames.js";
 dotenv.config();
 
 const mapNames = [
-  "world",
+  "worldEasy",
+  "worldMedium",
+  "worldHard",
   "northAmerica",
   "southAmerica",
   "europe",
@@ -312,7 +314,7 @@ app.get("/callback", function (req, res) {
                 maxScores: {
                   overall: {
                     score: 0,
-                    map: "world",
+                    map: "worldHard",
                   },
                 },
                 averageScores: {
@@ -375,7 +377,9 @@ const createRandomUsers = async (loopTimes) => {
       userName: userData.login.username,
       stats: {
         maxScores: {
-          world: randInt(1, 25000),
+          worldEasy: randInt(1, 25000),
+          worldMedium: randInt(1, 25000),
+          worldHard: randInt(1, 25000),
           northAmerica: randInt(1, 25000),
           southAmerica: randInt(1, 25000),
           africa: randInt(1, 25000),
@@ -384,7 +388,9 @@ const createRandomUsers = async (loopTimes) => {
           oceania: randInt(1, 25000),
         },
         averageScores: {
-          world: randInt(5000, 20000),
+          worldEasy: randInt(5000, 20000),
+          worldMedium: randInt(5000, 20000),
+          worldHard: randInt(5000, 20000),
           northAmerica: randInt(5000, 20000),
           southAmerica: randInt(5000, 20000),
           africa: randInt(5000, 20000),
@@ -393,7 +399,9 @@ const createRandomUsers = async (loopTimes) => {
           oceania: randInt(5000, 20000),
         },
         completedGames: {
-          world: randInt(1, 500),
+          worldEasy: randInt(1, 500),
+          worldMedium: randInt(1, 500),
+          worldHard: randInt(1, 500),
           northAmerica: randInt(1, 500),
           southAmerica: randInt(1, 500),
           africa: randInt(1, 500),

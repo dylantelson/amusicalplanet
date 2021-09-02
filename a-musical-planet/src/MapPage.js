@@ -116,7 +116,7 @@ const MapPage = ({ setCurrChosen, currChosen, currMap }) => {
           setCurrChosen={setCurrChosen}
           currChosen={currChosen}
           currMap={currMap}
-          mapProps={mapProps[currMap]}
+          mapProps={currMap.slice(0,5) === "world" ? mapProps.world : mapProps[currMap]}
           // currLocation={props.currLocation}
         />
       </div>

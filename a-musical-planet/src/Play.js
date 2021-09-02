@@ -62,18 +62,18 @@ const Play = ({ accessToken, setAccessToken, currMap, sendScoreToServer }) => {
       return setRedirect("login");
     }
 
-    let relevantPlaylists = Playlists;
+    let relevantPlaylists = Playlists[currMap];
     if (currMap.slice(0, 5) === "world") {
-      if (currMap.slice(5) === "easy")
-        relevantPlaylists = Playlists[currMap].filter(
-          (country) => country.difficulty === "easy"
+      if (currMap.slice(5) === "Easy")
+        relevantPlaylists = Playlists.world.filter(
+          (country) => country.difficulty === "Easy"
         );
-      else if (currMap.slice(5) === "medium") {
-        relevantPlaylists = Playlists[currMap].filter(
+      else if (currMap.slice(5) === "Medium") {
+        relevantPlaylists = Playlists.world.filter(
           (country) =>
-            country.difficulty === "easy" || country.difficulty === "medium"
+            country.difficulty === "Easy" || country.difficulty === "Medium"
         );
-      }
+      } else relevantPlaylists = Playlists.world;
     }
 
     let currPlaylistIndex = Math.floor(
@@ -131,7 +131,7 @@ const Play = ({ accessToken, setAccessToken, currMap, sendScoreToServer }) => {
       .catch((err) => {
         console.log(
           "ERROR LOADING TRACK FROM COUNTRY",
-          Playlists[currMap][currPlaylistIndex].country
+          relevantPlaylists[currPlaylistIndex].country
         );
         console.log("err", err);
         console.log("err status", err.status);
