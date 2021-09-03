@@ -4,62 +4,153 @@
     "category": "World",
     "description": "With only 2 countries from each continent, this should be easy!",
     "difficulty": 2,
-    "image": "/world.png"
+    "image": "/world.png",
+    "scale": 170,
+    "center": [40, 40],
+    "rotate": [-10, 0, 0],
+    "coordinates": [0, 0],
+    "translateExtent": [
+      [-100, -50],
+      [860, 600]
+    ],
+    "minZoom": 1,
+    "maxZoom": 6
   },
   {
     "name": "World Medium",
     "category": "World",
     "description": "This will be a challenge, but not quite impossible!",
     "difficulty": 4,
-    "image": "/world.png"
+    "image": "/world.png",
+    "scale": 170,
+    "center": [40, 40],
+    "rotate": [-10, 0, 0],
+    "coordinates": [0, 0],
+    "translateExtent": [
+      [-100, -50],
+      [860, 600]
+    ],
+    "minZoom": 1,
+    "maxZoom": 6
   },
   {
     "name": "World Hard",
     "category": "World",
     "description": "Guess from the music of over 100 countries!",
     "difficulty": 5,
-    "image": "/world.png"
+    "image": "/world.png",
+    "scale": 170,
+    "center": [40, 40],
+    "rotate": [-10, 0, 0],
+    "coordinates": [0, 0],
+    "translateExtent": [
+      [-100, -50],
+      [860, 600]
+    ],
+    "minZoom": 1,
+    "maxZoom": 6
   },
   {
     "name": "North America",
     "category": "Continent",
     "description": "Guess from the music of North America!",
     "difficulty": 3,
-    "image": "/na.png"
+    "image": "/na.png",
+    "scale": 170,
+      "center": [40, 75],
+      "rotate": [-10, 0, 0],
+      "coordinates": [-78, 45],
+      
+      "translateExtent": [
+        [-100, 290],
+        [300, 615]
+      ],
+      "minZoom": 2,
+      "maxZoom": 8
   },
   {
     "name": "South America",
     "category": "Continent",
     "description": "Guess from the music of South America!",
     "difficulty": 3,
-    "image": "/sa.png"
+    "image": "/sa.png",
+    "scale": 170,
+      "center": [40, 40],
+      "rotate": [-10, 0, 0],
+      "coordinates": [-60, -20],
+      "translateExtent": [
+        [0, 290],
+        [350, 600]
+      ],
+      "minZoom": 2,
+      "maxZoom": 6
   },
   {
     "name": "Africa",
     "category": "Continent",
     "description": "Guess from the music of Africa!",
     "difficulty": 4,
-    "image": "/africa.png"
+    "image": "/africa.png",
+    "scale": 170,
+      "center": [40, 40],
+      "rotate": [-10, 0, 0],
+      "coordinates": [20, 3],
+      "translateExtent": [
+        [200, 230],
+        [580, 530]
+      ],
+      "minZoom": 2.2,
+      "maxZoom": 6
   },
   {
     "name": "Europe",
     "category": "Continent",
     "description": "Guess from the music of Europe!",
     "difficulty": 2,
-    "image": "/europe.png"
+    "image": "/europe.png",
+    "scale": 170,
+      "center": [40, 80],
+      "rotate": [-10, 0, 0],
+      "coordinates": [13.5, 50],
+      "translateExtent": [
+        [280, 380],
+        [460, 570]
+      ],
+      "minZoom": 4.5,
+      "maxZoom": 8
   },
   {
     "name": "Asia",
     "category": "Continent",
     "description": "Guess from the music of Asia!",
     "difficulty": 3,
-    "image": "/asia.png"
+    "image": "/asia.png",
+    "scale": 170,
+      "center": [40, 80],
+      "rotate": [-10, 0, 0],
+      "coordinates": [90, 28],
+      "translateExtent": [
+        [400, 430],
+        [780, 730]
+      ],
+      "minZoom": 2.2,
+      "maxZoom": 9
   },
   {
     "name": "Oceania",
     "category": "Continent",
     "description": "Guess from the music of Oceania!",
     "difficulty": 3,
-    "image": "/oceania.png"
+    "image": "/oceania.png",
+    "scale": 170,
+      "center": [40, 80],
+      "rotate": [-10, 0, 0],
+      "coordinates": [150, -26],
+      "translateExtent": [
+        [620, 650],
+        [940, 840]
+      ],
+      "minZoom": 3.3,
+      "maxZoom": 9
   }
 ]

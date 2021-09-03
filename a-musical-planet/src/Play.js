@@ -13,12 +13,21 @@ const maxScore = 5000;
 
 const Playlists = require("./Playlists.json");
 const countries = require("./WorldInfo.json");
+const mapProps = require("./MapProps.json");
 
 const Play = ({ accessToken, setAccessToken, currMap, sendScoreToServer }) => {
   const [currTrack, setCurrTrack] = useState({ round: 0 });
   const [redirect, setRedirect] = useState("");
 
   const [currChosen, setCurrChosen] = useState("");
+
+  const [myCurrPos, setMyCurrPos] = useState(currMap.slice(0,5) === "world" ? {zoom: mapProps.world.minZoom, coordinates: mapProps.world.coordinates} : {zoom: mapProps[currMap].minZoom, coordinates: mapProps[currMap].coordinates});
+
+  const handleNewChosen = (newChosen, mapPos) => {
+    setMyCurrPos(mapPos);
+    setCurrChosen(newChosen);
+  }
+
   //first value is a bool on whether to show popup,
   //second is the score to show
   const [popup, setPopup] = useState({
@@ -253,8 +262,8 @@ const Play = ({ accessToken, setAccessToken, currMap, sendScoreToServer }) => {
         </div>
         <div className="map-div">
           <MapPage
-            // currLocation={currTrack.location}
-            setCurrChosen={setCurrChosen}
+            myCurrPos={myCurrPos}
+            handleNewChosen={handleNewChosen}
             currChosen={currChosen}
             currMap={currMap}
           />

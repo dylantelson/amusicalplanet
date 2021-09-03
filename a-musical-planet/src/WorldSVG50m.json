@@ -328616,7 +328616,7 @@
           ],
           "type": "Polygon",
           "properties": {
-            "NAME": "Central African Rep.",
+            "NAME": "CAR",
             "NAME_LONG": "Central African Republic",
             "ABBREV": "C.A.R.",
             "FORMAL_EN": "Central African Republic",
@@ -329765,7 +329765,7 @@
           ],
           "type": "Polygon",
           "properties": {
-            "NAME": "Dem. Rep. Congo",
+            "NAME": "DR Congo",
             "NAME_LONG": "Democratic Republic of the Congo",
             "ABBREV": "D.R.C.",
             "FORMAL_EN": "Democratic Republic of the Congo",
@@ -339604,8 +339604,8 @@
           ],
           "type": "MultiPolygon",
           "properties": {
-            "NAME": "United States of America",
-            "NAME_LONG": "United States",
+            "NAME": "United States",
+            "NAME_LONG": "United States of America",
             "ABBREV": "U.S.A.",
             "FORMAL_EN": "United States of America",
             "POP_EST": 326625791,

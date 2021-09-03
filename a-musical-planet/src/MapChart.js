@@ -14,7 +14,7 @@ import "./Map.css";
 const worldCountries = require("./WorldInfo.json");
 // const europeCountries = require("./EuropeInfo.json");
 
-const worldGeoSVG = require("./WorldSVG.json");
+const worldGeoSVG = require("./WorldSVG50m.json");
 // const europeGeoSVG = require("./EuropeInfo.json");
 
 // const locationInfo = {
@@ -80,7 +80,7 @@ const checkDifficulty = (mapDifficulty, countryDifficulty) => {
 }
 
 let countriesToShow = [];
-const MapChart = ({ setCurrChosen, currChosen, mapProps, currMap }) => {
+const MapChart = ({ handleNewChosen, currChosen, mapProps, currMap, myCurrPos }) => {
 
   useEffect(() => {
     countriesToShow = [];
@@ -95,27 +95,37 @@ const MapChart = ({ setCurrChosen, currChosen, mapProps, currMap }) => {
     }
     console.log(countriesToShow);
   }, [currMap]);
-  const renderStyle = (country) => {
-    if (!country.area || country.area < 1500) return [{ fontSize: "0px" }, 0];
-    let adjustedFont =
-      country.area > 500000
-        ? country.area / 800000 + 4.5
-        : country.area / 800000 + 2.3;
-    if (adjustedFont <= country.name.common.length) adjustedFont /= 1.3;
+  // const renderStyle = (country) => {
+  //   if (!country.area || country.area < 1500) return [{ fontSize: "0px" }, 0];
+  //   let adjustedFont =
+  //     country.area > 500000
+  //       ? country.area / 800000 + 4.5
+  //       : country.area / 800000 + 2.3;
+  //   if (adjustedFont <= country.name.common.length) adjustedFont /= 1.3;
 
-    if (country.name.common === "Russia" && currMap === "europe")
-      adjustedFont /= 2.5;
-    //const rightOffset = adjustedFont;
-    return [
-      {
-        fontSize: `${adjustedFont}px`,
-        // stroke: "#FFF",
-        // stroke: colors[country.CONTINENT],
-        // strokeWidth: `${adjustedFont / 50}px`,
-      },
-      adjustedFont - 1,
-    ];
-  };
+  //   if (country.name.common === "Russia" && currMap === "europe")
+  //     adjustedFont /= 2.5;
+  //   //const rightOffset = adjustedFont;
+  //   return [
+  //     {
+  //       fontSize: `${adjustedFont}px`,
+  //       // stroke: "#FFF",
+  //       // stroke: colors[country.CONTINENT],
+  //       // strokeWidth: `${adjustedFont / 50}px`,
+  //     },
+  //     adjustedFont - 1,
+  //   ];
+  // };
+
+  const renderStyle = (area) => {
+    if(area > 5000000) return {fontSize: "20px"};
+                        if(area > 2500000) return {fontSize: "12px"};
+                        if(area > 1000000) return {fontSize: "9px"};
+                        if(area > 500000) return {fontSize: "7px"};
+                        if(area > 250000) return {fontSize: "5px"};
+                        if(area > 100000) return {fontSize: "3px"};
+                        return {fontSize: "1px"};
+  }
 
   const hoveredStyle = (color) => {
     return {
@@ -134,10 +144,10 @@ const MapChart = ({ setCurrChosen, currChosen, mapProps, currMap }) => {
     };
   };
 
-  const [currPos, setCurrPos] = useState({
-    zoom: mapProps.minZoom,
-    coordinates: mapProps.coordinates,
-  });
+  // const [currPos, setCurrPos] = useState({
+  //   zoom: mapProps.minZoom,
+  //   coordinates: mapProps.coordinates,
+  // });
   const projection = geoMercator()
     .scale(mapProps.scale)
     .center(mapProps.center)
@@ -165,24 +175,25 @@ const MapChart = ({ setCurrChosen, currChosen, mapProps, currMap }) => {
         <ZoomableGroup
           translateExtent={mapProps.translateExtent}
           onMoveEnd={({ zoom, coordinates }) => {
-            setCurrPos({
-              zoom: zoom,
-              coordinates: coordinates,
-            });
+            myCurrPos = {zoom: zoom, coordinates: coordinates};
+            // setCurrPos({
+            //   zoom: zoom,
+            //   coordinates: coordinates,
+            // });
           }}
           minZoom={mapProps.minZoom}
           maxZoom={mapProps.maxZoom}
-          zoom={currPos.zoom}
-          center={currPos.coordinates}
+          zoom={myCurrPos.zoom}
+          center={myCurrPos.coordinates}
         >
           <Geographies geography={worldGeoSVG}>
             {({ geographies }) =>
-              geographies.map((geo) => (
-                <Geography
+              geographies.map((geo) => {
+                return <Geography
                   key={geo.rsmKey}
                   geography={geo}
                   onClick={() => {
-                    setCurrChosen(geo.properties.NAME);
+                    handleNewChosen(geo.properties.NAME, myCurrPos);
                   }}
                   visibility={
                     geo.properties.CONTINENT === "Antarctica"
@@ -213,13 +224,13 @@ const MapChart = ({ setCurrChosen, currChosen, mapProps, currMap }) => {
                         : hoveredStyle(colors[geo.properties.CONTINENT]),
                   }}
                 />
-              ))
+                })
             }
           </Geographies>
           {worldCountries.map((country) => {
             if (countriesToShow.indexOf(country.name.common) < 0)
               return null;
-            const currStyle = renderStyle(country);
+            // const currStyle = renderStyle(country);
             return (
               <Marker
                 key={country.name.common}
@@ -230,7 +241,14 @@ const MapChart = ({ setCurrChosen, currChosen, mapProps, currMap }) => {
                 }
                 fill="#000"
               >
-                {currPos.zoom * 2 + currStyle[1] > 9 ? (
+                <text
+                      textAnchor="middle"
+                      pointerEvents="none"
+                      style={renderStyle(country.area)}
+                    >
+                      {country.name.common}
+                    </text>
+                {/* {currPos.zoom * 2 + currStyle[1] > 9 ? (
                   currStyle[1] > country.name.common.length ? (
                     <text
                       textAnchor="middle"
@@ -257,7 +275,7 @@ const MapChart = ({ setCurrChosen, currChosen, mapProps, currMap }) => {
                   )
                 ) : (
                   <></>
-                )}
+                )} */}
               </Marker>
             );
           })}
