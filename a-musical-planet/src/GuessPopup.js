@@ -97,9 +97,19 @@ const GuessPopup = ({
             {/* <button>LIKE</button> */}
             {/* <button>PLAY</button> */}
             {currTrack.round < 5 ? (
-              <button onClick={nextTrack}>NEXT</button>
+              <button
+                style={{ color: `#${getMixedColor(roundScore / 5000)}` }}
+                onClick={nextTrack}
+              >
+                NEXT
+              </button>
             ) : (
-              <button onClick={() => setShowSummary(true)}>SUMMARY</button>
+              <button
+                style={{ color: `#${getMixedColor(roundScore / 5000)}` }}
+                onClick={() => setShowSummary(true)}
+              >
+                SUMMARY
+              </button>
             )}
           </div>
         </div>

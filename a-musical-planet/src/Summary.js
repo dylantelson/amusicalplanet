@@ -52,8 +52,10 @@ const Summary = ({ sessionInfo, sessionScore, summaryExit, show }) => {
             <></>
           )}
         </div>
-        <div className={"popup-buttons"}>
-          <button onClick={summaryExit}>NEW GAME</button>
+        <div className="popup-buttons">
+          <button id="summary-button" onClick={summaryExit}>
+            NEW GAME
+          </button>
         </div>
       </div>
     </div>

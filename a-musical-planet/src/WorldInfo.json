@@ -3532,7 +3532,7 @@
             }
         },
         "latlng": [
-            43,
+            42.5,
             25
         ],
         "landlocked": false,
@@ -4005,7 +4005,7 @@
         },
         "latlng": [
             44,
-            18
+            17.7
         ],
         "landlocked": false,
         "borders": [
@@ -9693,7 +9693,7 @@
         },
         "latlng": [
             51,
-            9
+            10.5
         ],
         "landlocked": false,
         "borders": [
@@ -10192,7 +10192,7 @@
     },
     {
         "name": {
-            "common": "Dominican Rep.",
+            "common": "Dominican Rep",
             "official": "Dominican Republic",
             "native": {
                 "spa": {
@@ -10790,8 +10790,8 @@
             }
         },
         "latlng": [
-            27,
-            30
+            25.5,
+            29.7
         ],
         "landlocked": false,
         "borders": [
@@ -11280,7 +11280,7 @@
         },
         "latlng": [
             40,
-            -4
+            -3.5
         ],
         "landlocked": false,
         "borders": [
@@ -11592,8 +11592,8 @@
             }
         },
         "latlng": [
-            8,
-            38
+            7,
+            39.7
         ],
         "landlocked": true,
         "borders": [
@@ -12211,7 +12211,7 @@
         },
         "latlng": [
             46,
-            2
+            2.5
         ],
         "landlocked": false,
         "borders": [
@@ -12815,7 +12815,7 @@
             }
         },
         "latlng": [
-            54,
+            52,
             -2
         ],
         "landlocked": false,
@@ -13275,7 +13275,7 @@
         },
         "latlng": [
             8,
-            -2
+            -1
         ],
         "landlocked": false,
         "borders": [
@@ -16619,8 +16619,8 @@
             }
         },
         "latlng": [
-            20,
-            77
+            21,
+            79
         ],
         "landlocked": false,
         "borders": [
@@ -16929,7 +16929,7 @@
         },
         "latlng": [
             53,
-            -8
+            -7.5
         ],
         "landlocked": false,
         "borders": [
@@ -17700,8 +17700,8 @@
             }
         },
         "latlng": [
-            42.83333333,
-            12.83333333
+            44.83333333,
+            9.83333333
         ],
         "landlocked": false,
         "borders": [
@@ -35544,7 +35544,7 @@
             }
         },
         "latlng": [
-            39,
+            38.5,
             35
         ],
         "landlocked": false,
@@ -38955,7 +38955,7 @@
         },
         "latlng": [
             -29,
-            24
+            25
         ],
         "landlocked": false,
         "borders": [

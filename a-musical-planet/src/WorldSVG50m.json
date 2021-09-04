@@ -330392,7 +330392,7 @@
           ],
           "type": "Polygon",
           "properties": {
-            "NAME": "Dominican Rep.",
+            "NAME": "Dominican Rep",
             "NAME_LONG": "Dominican Republic",
             "ABBREV": "Dom. Rep.",
             "FORMAL_EN": "Dominican Republic",
@@ -331526,7 +331526,7 @@
           ],
           "type": "MultiPolygon",
           "properties": {
-            "NAME": "Eq. Guinea",
+            "NAME": "Eq Guinea",
             "NAME_LONG": "Equatorial Guinea",
             "ABBREV": "Eq. G.",
             "FORMAL_EN": "Republic of Equatorial Guinea",
@@ -337868,7 +337868,7 @@
           ],
           "type": "MultiPolygon",
           "properties": {
-            "NAME": "Solomon Is.",
+            "NAME": "Solomon Islands",
             "NAME_LONG": "Solomon Islands",
             "ABBREV": "S. Is.",
             "FORMAL_EN": "",

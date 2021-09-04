@@ -89,6 +89,7 @@ const MapChart = ({ handleNewChosen, mapProps, currMap }) => {
         countriesToShow.push(camelize(playlist.country));
       }
     }
+    console.log(countriesToShow);
     var waitForMapLoad = setInterval(function () {
       if (document.querySelectorAll(".rsm-geography").length !== 0) {
         clearInterval(waitForMapLoad);
@@ -140,15 +141,10 @@ const MapChart = ({ handleNewChosen, mapProps, currMap }) => {
   //                   }}
 
   const setPressedStyle = (country, event) => {
-    console.log("setting pressed");
     if (currSelectedCountry) {
-      console.log("currSelected exists");
       //if user clicked on already selected country, return
       if (event.target.classList.contains("pressed")) return;
-      console.log("havent returned");
-      console.log("currSelectedCountry id");
       if (!(currSelectedCountry.element.id === event.target.id)) {
-        console.log("Changing prev");
         const prevCountry = document.querySelector(
           `#${currSelectedCountry.element.id}`
         );
@@ -199,8 +195,7 @@ const MapChart = ({ handleNewChosen, mapProps, currMap }) => {
     if (area > 300000) return { fontSize: "5px" };
     if (area > 200000) return { fontSize: "4px" };
     if (area > 100000) return { fontSize: "3px" };
-    if (area > 50000) return { fontSize: "2px" };
-    return { fontSize: "1px" };
+    return { fontSize: "2px" };
   };
 
   const hoveredStyle = (color) => {

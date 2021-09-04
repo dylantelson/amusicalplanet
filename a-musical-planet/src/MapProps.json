@@ -25,7 +25,7 @@
       ]
     ],
     "minZoom": 1,
-    "maxZoom": 6
+    "maxZoom": 10
   },
   "europe": {
     "scale": 170,
@@ -53,7 +53,7 @@
       ]
     ],
     "minZoom": 4.5,
-    "maxZoom": 8
+    "maxZoom": 12
   },
   "southAmerica": {
     "scale": 170,
@@ -81,7 +81,7 @@
       ]
     ],
     "minZoom": 2,
-    "maxZoom": 6
+    "maxZoom": 10
   },
   "northAmerica": {
     "scale": 170,
@@ -109,7 +109,7 @@
       ]
     ],
     "minZoom": 2,
-    "maxZoom": 8
+    "maxZoom": 12
   },
   "africa": {
     "scale": 170,
@@ -137,7 +137,7 @@
       ]
     ],
     "minZoom": 2.2,
-    "maxZoom": 6
+    "maxZoom": 10
   },
   "asia": {
     "scale": 170,
@@ -165,7 +165,7 @@
       ]
     ],
     "minZoom": 2.2,
-    "maxZoom": 9
+    "maxZoom": 13
   },
   "oceania": {
     "scale": 170,
@@ -193,6 +193,6 @@
       ]
     ],
     "minZoom": 3.3,
-    "maxZoom": 9
+    "maxZoom": 13
   }
 }
