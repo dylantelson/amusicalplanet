@@ -6,7 +6,7 @@ const MapItem = ({ map, handleMapChosen }) => {
   const userData = useContext(UserContext);
 
   const formattedMapName =
-    map.name[0].toLowerCase() + map.name.slice(1).replace(" ", "");
+    map.name[0].toLowerCase() + map.name.slice(1).replaceAll(" ", "");
   const maxScore =
     userData &&
     userData.stats &&

@@ -63,7 +63,7 @@ const PersonalPage = () => {
                     key={map.name}
                     value={
                       map.name[0].toLowerCase() +
-                      map.name.slice(1).replace(" ", "")
+                      map.name.slice(1).replaceAll(" ", "")
                     }
                   >
                     {map.name}
