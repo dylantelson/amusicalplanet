@@ -15,6 +15,7 @@ const worldCountries = require("./WorldInfo.json");
 // const europeCountries = require("./EuropeInfo.json");
 
 const worldGeoSVG = require("./WorldSVG50m.json");
+const colors = require("./colors.json");
 // const europeGeoSVG = require("./EuropeInfo.json");
 
 // const locationInfo = {
@@ -27,18 +28,6 @@ const worldGeoSVG = require("./WorldSVG50m.json");
 // };
 
 const borderWidth = 0.2;
-
-const colors = {
-  asia: "#E5B961",
-  europe: "#D4A29C",
-  africa: "#EDCC8B",
-  southAmerica: "#E8B298",
-  northAmerica: "#C7877F",
-  oceania: "#7FC6A4",
-  water: "#BDD1C5",
-  russia: "#DDAE7F",
-  Selected: "#FFAAFA",
-};
 
 function LightenDarkenColor(col, amt) {
   var usePound = false;
@@ -70,6 +59,10 @@ function LightenDarkenColor(col, amt) {
   return (usePound ? "#" : "") + (g | (b << 8) | (r << 16)).toString(16);
 }
 
+const camelize = (word) => {
+  return word[0].toLowerCase() + word.slice(1).replaceAll(" ", "");
+};
+
 const checkDifficulty = (mapDifficulty, countryDifficulty) => {
   if (mapDifficulty === "Easy") return countryDifficulty === "Easy";
   if (mapDifficulty === "Medium")
@@ -89,11 +82,11 @@ const MapChart = ({ handleNewChosen, mapProps, currMap }) => {
     if (currMap.slice(0, 5) === "world") {
       for (const playlist of Playlists.world) {
         if (checkDifficulty(currMap.slice(5), playlist.difficulty))
-          countriesToShow.push(playlist.country.replace(" ", ""));
+          countriesToShow.push(camelize(playlist.country));
       }
     } else {
       for (const playlist of Playlists[currMap]) {
-        countriesToShow.push(playlist.country.replace(" ", ""));
+        countriesToShow.push(camelize(playlist.country));
       }
     }
     var waitForMapLoad = setInterval(function () {
@@ -121,7 +114,7 @@ const MapChart = ({ handleNewChosen, mapProps, currMap }) => {
   // style={{
   //                       currSelectedCountry &&
   //                       currSelectedCountry.element.id ===
-  //                         geo.properties.NAME.replace(" ", "")
+  //                         geo.properties.NAME.replaceAll(" ", "")
   //                         ? selectedStyle(colors[geo.properties.CONTINENT])
   //                         : countriesToShow.indexOf(geo.properties.NAME) >= 0
   //                         ? {
@@ -141,19 +134,41 @@ const MapChart = ({ handleNewChosen, mapProps, currMap }) => {
   //                     hover:
   //                       currSelectedCountry &&
   //                       currSelectedCountry.element.id ===
-  //                         geo.properties.NAME.replace(" ", "")
+  //                         geo.properties.NAME.replaceAll(" ", "")
   //                         ? selectedStyle(colors[geo.properties.CONTINENT])
   //                         : hoveredStyle(colors[geo.properties.CONTINENT]),
   //                   }}
 
   const setPressedStyle = (country, event) => {
+    console.log("setting pressed");
     if (currSelectedCountry) {
-      document.querySelector(`#${currSelectedCountry.element.id}`).style.fill =
-        colors[currSelectedCountry.props.CONTINENT];
+      console.log("currSelected exists");
+      //if user clicked on already selected country, return
+      if (event.target.classList.contains("pressed")) return;
+      console.log("havent returned");
+      console.log("currSelectedCountry id");
+      if (!(currSelectedCountry.element.id === event.target.id)) {
+        console.log("Changing prev");
+        const prevCountry = document.querySelector(
+          `#${currSelectedCountry.element.id}`
+        );
+        prevCountry.style.fill = colors[currSelectedCountry.props.CONTINENT];
+        prevCountry.classList.remove("pressed");
+      }
     }
     currSelectedCountry = { element: event.target, props: country };
     event.target.style.fill = selectedStyle(colors[country.CONTINENT]).fill;
+    event.target.classList.add("pressed");
   };
+
+  // const clearPressedStyle = () => {
+  //   if (currSelectedCountry) {
+  //     document.querySelector(`#${currSelectedCountry.element.id}`).style.fill =
+  //       colors[currSelectedCountry.props.CONTINENT];
+  //     currSelectedCountry = null;
+  //   }
+  // };
+
   // const renderStyle = (country) => {
   //   if (!country.area || country.area < 1500) return [{ fontSize: "0px" }, 0];
   //   let adjustedFont =
@@ -181,8 +196,10 @@ const MapChart = ({ handleNewChosen, mapProps, currMap }) => {
     if (area > 2500000) return { fontSize: "12px" };
     if (area > 1000000) return { fontSize: "9px" };
     if (area > 500000) return { fontSize: "7px" };
-    if (area > 250000) return { fontSize: "5px" };
+    if (area > 300000) return { fontSize: "5px" };
+    if (area > 200000) return { fontSize: "4px" };
     if (area > 100000) return { fontSize: "3px" };
+    if (area > 50000) return { fontSize: "2px" };
     return { fontSize: "1px" };
   };
 
@@ -222,6 +239,7 @@ const MapChart = ({ handleNewChosen, mapProps, currMap }) => {
 
   return (
     <>
+      {loading ? <h1 class="mapLoading">Loading...</h1> : <></>}
       <ComposableMap
         data-tip=""
         projection={projection}
@@ -233,9 +251,6 @@ const MapChart = ({ handleNewChosen, mapProps, currMap }) => {
       >
         <ZoomableGroup
           translateExtent={mapProps.translateExtent}
-          // onMoveEnd={({ zoom, coordinates }) => {
-          //   myCurrPos = { zoom: zoom, coordinates: coordinates };
-          // }}
           minZoom={mapProps.minZoom}
           maxZoom={mapProps.maxZoom}
           zoom={mapProps.minZoom}
@@ -246,7 +261,7 @@ const MapChart = ({ handleNewChosen, mapProps, currMap }) => {
               geographies.map((geo) => {
                 return (
                   <Geography
-                    id={geo.properties.NAME.replace(" ", "")}
+                    id={camelize(geo.properties.NAME)}
                     continent={geo.properties.CONTINENT}
                     key={geo.rsmKey}
                     geography={geo}
@@ -257,7 +272,10 @@ const MapChart = ({ handleNewChosen, mapProps, currMap }) => {
                     onMouseEnter={(event) => {
                       if (
                         !currSelectedCountry ||
-                        currSelectedCountry.element.id !== event.target.id
+                        currSelectedCountry.element.id !== event.target.id ||
+                        !currSelectedCountry.element.classList.contains(
+                          "pressed"
+                        )
                       ) {
                         event.target.style.fill = hoveredStyle(
                           colors[event.target.getAttribute("continent")]
@@ -267,7 +285,10 @@ const MapChart = ({ handleNewChosen, mapProps, currMap }) => {
                     onMouseLeave={(event) => {
                       if (
                         currSelectedCountry &&
-                        currSelectedCountry.element.id === event.target.id
+                        currSelectedCountry.element.id === event.target.id &&
+                        currSelectedCountry.element.classList.contains(
+                          "pressed"
+                        )
                       ) {
                         event.target.style.fill = selectedStyle(
                           colors[event.target.getAttribute("continent")]
@@ -285,7 +306,8 @@ const MapChart = ({ handleNewChosen, mapProps, currMap }) => {
           </Geographies>
           {worldCountries.map((country) => {
             if (
-              countriesToShow.indexOf(country.name.common.replace(" ", "")) < 0
+              loading ||
+              countriesToShow.indexOf(camelize(country.name.common)) < 0
             )
               return null;
             // const currStyle = renderStyle(country);

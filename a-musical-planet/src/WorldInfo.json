@@ -3220,7 +3220,7 @@
             }
         },
         "latlng": [
-            13,
+            12,
             -2
         ],
         "landlocked": true,
@@ -6196,7 +6196,7 @@
             }
         },
         "latlng": [
-            7,
+            6.2,
             21
         ],
         "landlocked": true,
@@ -7319,7 +7319,7 @@
             }
         },
         "latlng": [
-            6,
+            5,
             12
         ],
         "landlocked": false,
@@ -7499,8 +7499,8 @@
             }
         },
         "latlng": [
-            0,
-            25
+            -5,
+            23
         ],
         "landlocked": false,
         "borders": [
@@ -10192,7 +10192,7 @@
     },
     {
         "name": {
-            "common": "Dominican Republic",
+            "common": "Dominican Rep.",
             "official": "Dominican Republic",
             "native": {
                 "spa": {
@@ -23073,7 +23073,7 @@
         },
         "latlng": [
             17,
-            -4
+            -2.5
         ],
         "landlocked": true,
         "borders": [
@@ -25540,7 +25540,7 @@
         },
         "latlng": [
             16,
-            8
+            8.5
         ],
         "landlocked": true,
         "borders": [
@@ -25847,7 +25847,7 @@
             }
         },
         "latlng": [
-            10,
+            9,
             8
         ],
         "landlocked": false,
@@ -36170,7 +36170,7 @@
         },
         "latlng": [
             1,
-            32
+            32.5
         ],
         "landlocked": true,
         "borders": [

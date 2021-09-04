@@ -14,6 +14,7 @@ const maxScore = 5000;
 const Playlists = require("./Playlists.json");
 const countries = require("./WorldInfo.json");
 const mapProps = require("./MapProps.json");
+const colors = require("./colors.json");
 
 const Play = ({ accessToken, setAccessToken, currMap, sendScoreToServer }) => {
   const [currTrack, setCurrTrack] = useState({ round: 0 });
@@ -151,6 +152,16 @@ const Play = ({ accessToken, setAccessToken, currMap, sendScoreToServer }) => {
 
   const guessGiven = () => {
     audioRef.current.pause();
+    const currChosenCountryDOM = document.querySelector(
+      `#${
+        currChosen[0].toLowerCase() + currChosen.slice(1).replaceAll(" ", "")
+      }`
+    );
+    if (currChosenCountryDOM) {
+      currChosenCountryDOM.classList.remove("pressed");
+      currChosenCountryDOM.style.fill =
+        colors[currChosenCountryDOM.getAttribute("continent")];
+    }
     const currTrackCountry = countries.filter(function (country) {
       return country.name.common === currTrack.location;
     })[0];

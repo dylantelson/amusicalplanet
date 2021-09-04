@@ -328221,7 +328221,7 @@
           ],
           "type": "Polygon",
           "properties": {
-            "NAME": "Bosnia and Herz.",
+            "NAME": "Bosnia",
             "NAME_LONG": "Bosnia and Herzegovina",
             "ABBREV": "B.H.",
             "FORMAL_EN": "Bosnia and Herzegovina",
@@ -329701,7 +329701,7 @@
           ],
           "type": "MultiPolygon",
           "properties": {
-            "NAME": "Côte d'Ivoire",
+            "NAME": "Ivory Coast",
             "NAME_LONG": "Côte d'Ivoire",
             "ABBREV": "I.C.",
             "FORMAL_EN": "Republic of Ivory Coast",
