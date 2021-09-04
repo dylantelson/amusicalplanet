@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, useCallback } from "react";
 import { Redirect } from "react-router-dom";
 
 import MapPage from "./MapPage";
@@ -21,12 +21,9 @@ const Play = ({ accessToken, setAccessToken, currMap, sendScoreToServer }) => {
 
   const [currChosen, setCurrChosen] = useState("");
 
-  const [myCurrPos, setMyCurrPos] = useState(currMap.slice(0,5) === "world" ? {zoom: mapProps.world.minZoom, coordinates: mapProps.world.coordinates} : {zoom: mapProps[currMap].minZoom, coordinates: mapProps[currMap].coordinates});
-
-  const handleNewChosen = (newChosen, mapPos) => {
-    setMyCurrPos(mapPos);
+  const handleNewChosen = useCallback((newChosen) => {
     setCurrChosen(newChosen);
-  }
+  }, []);
 
   //first value is a bool on whether to show popup,
   //second is the score to show
@@ -261,12 +258,7 @@ const Play = ({ accessToken, setAccessToken, currMap, sendScoreToServer }) => {
           />
         </div>
         <div className="map-div">
-          <MapPage
-            myCurrPos={myCurrPos}
-            handleNewChosen={handleNewChosen}
-            currChosen={currChosen}
-            currMap={currMap}
-          />
+          <MapPage handleNewChosen={handleNewChosen} currMap={currMap} />
         </div>
         <GuessPopup
           show={popup.show}
