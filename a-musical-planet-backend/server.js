@@ -32,7 +32,7 @@ const mapNames = [
 const MongoDBSession = connectMongoDBSession(session);
 let app = express();
 
-app.use(cors());
+app.use(cors({ credentials: true, origin: "http://localhost:3000" }));
 
 let redirect_uri = process.env.REDIRECT_URI || "http://localhost:8888/callback";
 
@@ -63,6 +63,7 @@ app.use(
     saveUninitialized: false,
     resave: false,
     cookie: {
+      path: "/",
       httpOnly: true,
       maxAge: 1000 * 60 * 60 * 24 * 7,
     },
@@ -179,6 +180,44 @@ app.get("/login", function (req, res) {
   );
 });
 
+app.get("/refreshToken", function (req, res) {
+  console.log("REFRESHING TOKEN FOR PLAY");
+  // console.log(req.session.user);
+  let authOptions = {
+    url: "https://accounts.spotify.com/api/token",
+    form: {
+      grant_type: "refresh_token",
+      refresh_token: req.session.user.refresh_token,
+    },
+    headers: {
+      Authorization:
+        "Basic " +
+        new Buffer(
+          process.env.SPOTIFY_CLIENT_ID +
+            ":" +
+            process.env.SPOTIFY_CLIENT_SECRET
+        ).toString("base64"),
+    },
+    json: true,
+  };
+  request.post(authOptions, function (error, response, body) {
+    if (error) {
+      console.log("ERROR AT REFRESH!");
+      cnosole.log(error);
+    }
+    console.log(body);
+
+    req.session.user = {
+      id: req.session.user.id,
+      access_token: body.access_token,
+      refresh_token: req.session.user.refresh_token,
+    };
+    return res.json({
+      access_token: body.access_token,
+    });
+  });
+});
+
 app.get("/getNewToken", function (req, res) {
   console.log("Refreshing token from /getNewToken");
   let authOptions = {
@@ -211,32 +250,18 @@ app.get("/getNewToken", function (req, res) {
           })
       );
     }
-    var access_token = body.access_token;
-    var refresh_token = body.refresh_token;
+    req.session.user = {
+      id: req.session.user.id,
+      access_token: body.access_token,
+      refresh_token: req.session.user.refresh_token,
+    };
     let uri = process.env.FRONTEND_URI || "http://localhost:3000/auth/";
-    request.get(
-      {
-        url: "https://api.spotify.com/v1/me",
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-          Authorization: "Bearer " + access_token,
-        },
-      },
-      function (error, response, body) {
-        req.session.user = {
-          id: JSON.parse(body).id,
-          access_token,
-          refresh_token,
-        };
-        return res.redirect(
-          uri +
-            "?access_token=" +
-            access_token +
-            "&refresh_token=" +
-            refresh_token
-        );
-      }
+    return res.redirect(
+      uri +
+        "?access_token=" +
+        body.access_token +
+        "&refresh_token=" +
+        req.session.user.refresh_token
     );
   });
 });
@@ -348,14 +373,14 @@ app.get("/callback", function (req, res) {
 });
 
 app.get("/userData/:userSpotifyId", function (req, res) {
-  console.log("User requested data");
+  // console.log("User requested data");
   const userSpotifyId = req.params.userSpotifyId;
   // console.log(userSpotifyId);
   User.findOne({ userName: userSpotifyId })
     .exec()
     .then((user) => {
-      console.log("RETURNING USER");
-      console.log(user);
+      // console.log("RETURNING USER");
+      // console.log(user);
       return res.json(user);
     });
 });

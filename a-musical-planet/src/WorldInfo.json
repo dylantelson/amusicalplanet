@@ -1365,7 +1365,7 @@
             }
         },
         "latlng": [
-            -34,
+            -37,
             -64
         ],
         "landlocked": false,
@@ -1523,7 +1523,7 @@
             }
         },
         "latlng": [
-            40,
+            40.35,
             45
         ],
         "landlocked": true,
@@ -4958,8 +4958,8 @@
             }
         },
         "latlng": [
-            -17,
-            -65
+            -18.4,
+            -63.8
         ],
         "landlocked": true,
         "borders": [
@@ -8615,8 +8615,8 @@
             }
         },
         "latlng": [
-            21.5,
-            -80
+            21.65,
+            -79
         ],
         "landlocked": false,
         "borders": [],
@@ -10323,8 +10323,8 @@
             }
         },
         "latlng": [
-            19,
-            -70.66666666
+            18.65,
+            -69.3
         ],
         "landlocked": false,
         "borders": [
@@ -10636,8 +10636,8 @@
             }
         },
         "latlng": [
-            -2,
-            -77.5
+            -1.8,
+            -78
         ],
         "landlocked": false,
         "borders": [
@@ -11917,7 +11917,7 @@
         },
         "latlng": [
             -18,
-            175
+            177.85
         ],
         "landlocked": false,
         "borders": [],
@@ -14342,7 +14342,7 @@
             }
         },
         "latlng": [
-            39,
+            39.5,
             22
         ],
         "landlocked": false,
@@ -16299,8 +16299,8 @@
             }
         },
         "latlng": [
-            -5,
-            120
+            -2,
+            117
         ],
         "landlocked": false,
         "borders": [
@@ -17241,7 +17241,7 @@
         },
         "latlng": [
             33,
-            44
+            43.5
         ],
         "landlocked": false,
         "borders": [
@@ -17857,7 +17857,7 @@
             }
         },
         "latlng": [
-            18.25,
+            18,
             -77.5
         ],
         "landlocked": false,
@@ -19413,7 +19413,7 @@
             }
         },
         "latlng": [
-            37,
+            36,
             127.5
         ],
         "landlocked": false,
@@ -19863,8 +19863,8 @@
             }
         },
         "latlng": [
-            18,
-            105
+            19.3,
+            102.7
         ],
         "landlocked": true,
         "borders": [
@@ -23380,8 +23380,8 @@
             }
         },
         "latlng": [
-            22,
-            98
+            21,
+            97
         ],
         "landlocked": false,
         "borders": [
@@ -27231,8 +27231,8 @@
             }
         },
         "latlng": [
-            30,
-            70
+            27.3,
+            67.8
         ],
         "landlocked": false,
         "borders": [
@@ -27387,8 +27387,8 @@
             }
         },
         "latlng": [
-            9,
-            -80
+            8.35,
+            -81.3
         ],
         "landlocked": false,
         "borders": [
@@ -28161,8 +28161,8 @@
             }
         },
         "latlng": [
-            -6,
-            147
+            -7.5,
+            148
         ],
         "landlocked": false,
         "borders": [
@@ -28311,7 +28311,7 @@
         },
         "latlng": [
             52,
-            20
+            19
         ],
         "landlocked": false,
         "borders": [
@@ -28471,7 +28471,7 @@
             }
         },
         "latlng": [
-            18.25,
+            18,
             -66.5
         ],
         "landlocked": false,
@@ -28930,7 +28930,7 @@
             }
         },
         "latlng": [
-            -23,
+            -23.5,
             -58
         ],
         "landlocked": true,
@@ -31092,8 +31092,8 @@
             }
         },
         "latlng": [
-            -8,
-            159
+            -9.5,
+            159.6
         ],
         "landlocked": false,
         "borders": [],
@@ -34319,7 +34319,7 @@
         },
         "latlng": [
             15,
-            100
+            101.5
         ],
         "landlocked": false,
         "borders": [
@@ -35246,8 +35246,8 @@
             }
         },
         "latlng": [
-            11,
-            -61
+            10.25,
+            -58.5
         ],
         "landlocked": false,
         "borders": [],
@@ -37089,7 +37089,7 @@
         },
         "latlng": [
             38,
-            -97
+            -99
         ],
         "landlocked": false,
         "borders": [
@@ -38143,8 +38143,8 @@
             }
         },
         "latlng": [
-            16.16666666,
-            107.83333333
+            10.7,
+            109.3
         ],
         "landlocked": false,
         "borders": [

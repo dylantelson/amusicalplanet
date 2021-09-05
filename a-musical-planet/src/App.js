@@ -132,6 +132,27 @@ function App() {
     window.location.replace("http://localhost:8888/login");
   };
 
+  const setAccessTokenHandler = (newAccessToken) => {
+    let accessTokenExpireDate = new Date();
+    accessTokenExpireDate.setTime(
+      accessTokenExpireDate.getTime() + 3600 * 1000
+    );
+
+    let refreshTokenExpireDate = new Date();
+    refreshTokenExpireDate.setTime(
+      refreshTokenExpireDate.getTime() + 3600 * 1000 * 24 * 365
+    );
+
+    document.cookie =
+      "accessToken=" +
+      newAccessToken +
+      ";expires=" +
+      accessTokenExpireDate.toUTCString() +
+      ";path=/";
+
+    setAccessToken(newAccessToken);
+  };
+
   const handleAuth = () => {
     // console.log(accessToken === "");
     // if (accessToken !== "" && accessToken !== null) {
@@ -149,30 +170,7 @@ function App() {
     const URLRefreshToken = new URLSearchParams(window.location.search).get(
       "refresh_token"
     );
-    setAccessToken(URLAccessToken);
-
-    let accessTokenExpireDate = new Date();
-    accessTokenExpireDate.setTime(
-      accessTokenExpireDate.getTime() + 3600 * 1000
-    );
-
-    let refreshTokenExpireDate = new Date();
-    refreshTokenExpireDate.setTime(
-      refreshTokenExpireDate.getTime() + 3600 * 1000 * 24 * 365
-    );
-
-    document.cookie =
-      "accessToken=" +
-      URLAccessToken +
-      ";expires=" +
-      accessTokenExpireDate.toUTCString() +
-      ";path=/";
-    document.cookie =
-      "refreshToken=" +
-      URLRefreshToken +
-      ";expires=" +
-      refreshTokenExpireDate.toUTCString() +
-      ";path=/";
+    setAccessTokenHandler(URLAccessToken);
     // return <Redirect to="/maps" />;
     setRedirect("maps");
   };
@@ -218,7 +216,8 @@ function App() {
                 accessToken={accessToken}
                 token={accessToken}
                 currMap={currMap}
-                setAccessToken={setAccessToken}
+                setAccessTokenHandler={setAccessTokenHandler}
+                setTokenFromCookie={setTokenFromCookie}
                 sendScoreToServer={sendScoreToServer}
               />
             </Route>

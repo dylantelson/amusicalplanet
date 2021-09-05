@@ -16,7 +16,13 @@ const countries = require("./WorldInfo.json");
 const mapProps = require("./MapProps.json");
 const colors = require("./colors.json");
 
-const Play = ({ accessToken, setAccessToken, currMap, sendScoreToServer }) => {
+const Play = ({
+  accessToken,
+  setAccessTokenHandler,
+  setTokenFromCookie,
+  currMap,
+  sendScoreToServer,
+}) => {
   const [currTrack, setCurrTrack] = useState({ round: 0 });
   const [redirect, setRedirect] = useState("");
 
@@ -54,18 +60,8 @@ const Play = ({ accessToken, setAccessToken, currMap, sendScoreToServer }) => {
       roundScore: 0,
     });
     setCurrChosen("");
+    console.log("PLAY_ACCESS_TOKEN", accessToken);
     if (accessToken === null || accessToken === "") {
-      const accessTokenCookie = getCookie("accessToken");
-      // const refreshTokenCookie = getCookie("refreshToken");
-      if (accessTokenCookie !== "") {
-        console.log("GOT COOKIE!", accessTokenCookie);
-        setAccessToken(accessTokenCookie);
-        return setRedirect("maps");
-      }
-      // if (refreshTokenCookie !== "") {
-      //   refreshTokens(refreshTokenCookie);
-      // }
-      console.log("Could not find cookie");
       return setRedirect("login");
     }
 
@@ -135,18 +131,45 @@ const Play = ({ accessToken, setAccessToken, currMap, sendScoreToServer }) => {
         audioRef.current.load();
         audioRef.current.play();
       })
-      .catch((err) => {
-        console.log(
-          "ERROR LOADING TRACK FROM COUNTRY",
-          relevantPlaylists[currPlaylistIndex].country
-        );
-        console.log("err", err);
-        console.log("err status", err.status);
-        if (err.status === 400 || err.status === 401)
-          return window.location.replace("http://localhost:8888/getNewToken");
-        if (err.status === 404) return nextTrack();
-        //this is only really for error 401, meaning
-        return setRedirect("maps");
+      .catch((err) =>
+        err.json().then((err) => {
+          console.log(
+            "ERROR LOADING TRACK FROM COUNTRY",
+            relevantPlaylists[currPlaylistIndex].country
+          );
+          console.log("err", err);
+          console.log("err status", err.status);
+          if (err.status === 400)
+            return window.location.replace("http://localhost:8888/getNewToken");
+          if (err.status === 401) {
+            return refreshToken();
+          }
+          if (err.status === 404) return nextTrack();
+          //this is only really for error 401, meaning
+          return setRedirect("maps");
+        })
+      );
+  };
+
+  const refreshToken = () => {
+    console.log("OLD ACCESS TOKEN:", accessToken);
+    fetch("http://localhost:8888/refreshToken", {
+      method: "GET",
+      credentials: "include",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+    })
+      .then((newAccessToken) => newAccessToken.json())
+      .then((data) => {
+        if (data && data.access_token) {
+          console.log("RETURNING NEW ACCESS TOKEN:", data.access_token);
+          setAccessTokenHandler(data.access_token);
+          return nextTrack();
+        }
+        console.log("Could not refresh! Going to server's /getNewToken...");
+        return window.location.replace("http://localhost:8888/getNewToken");
       });
   };
 
@@ -267,6 +290,7 @@ const Play = ({ accessToken, setAccessToken, currMap, sendScoreToServer }) => {
             audioRef={audioRef}
             trackURL={currTrack.url}
           />
+          {/* <button onClick={refreshToken}>Refresh</button> */}
         </div>
         <div className="map-div">
           <MapPage handleNewChosen={handleNewChosen} currMap={currMap} />

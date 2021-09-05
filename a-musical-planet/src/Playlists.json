@@ -56,6 +56,21 @@
 			"playlistId": "6tlljVyHc8sp02FMtq07ec"
     },
     {
+      "country": "Greece",
+      "difficulty": "Hard",
+			"playlistId": "339jUeL6NETyuBCwmlDM0I"
+    },
+    {
+      "country": "Romania",
+      "difficulty": "Hard",
+			"playlistId": "2cyLQ802g8fXN1uiF3ma8w"
+    },
+    {
+      "country": "Poland",
+      "difficulty": "Hard",
+			"playlistId": "2oQkWZ2EVbYeSxCPNncq91"
+    },
+    {
       "country": "Canada",
       "difficulty": "Medium",
 			"playlistId": "0PSIeEbRwcMewVtMp1HsBh"
@@ -76,7 +91,7 @@
 			"playlistId": "1RssjRpDgstMIxHzMhla96"
     },
     {
-      "country": "Dominican Rep.",
+      "country": "Dominican Rep",
       "difficulty": "Medium",
 			"playlistId": "4LRDG2CYFmzKUz4ZSx3kAl"
     },
@@ -226,6 +241,26 @@
 			"playlistId": "311H1EdOKNpsXZ7tU0ugQy"
     },
     {
+      "country": "Mozambique",
+      "difficulty": "Hard",
+			"playlistId": "27pmo6ecXL1d0IKQLpmqMi"
+    },
+    {
+      "country": "Angola",
+      "difficulty": "Hard",
+			"playlistId": "51QY3JG01oLZBwBp146sgO"
+    },
+    {
+      "country": "Morocco",
+      "difficulty": "Hard",
+			"playlistId": "6Uq3f9CcEDx4ayetTOWItY"
+    },
+    {
+      "country": "Madagascar",
+      "difficulty": "Hard",
+			"playlistId": "3VcKH2jWcBMDZ871KPMvfh"
+    },
+    {
       "country": "South Africa",
       "difficulty": "Medium",
 			"playlistId": "4qNhLLYCb7m9AYs1I7Oqga"
@@ -311,6 +346,21 @@
 			"playlistId": "5QHgk0hAUelO6kTixCjYA9"
     },
     {
+      "country": "Afghanistan",
+      "difficulty": "Hard",
+			"playlistId": "7eiI8qFKGeVF7C68piCPvR"
+    },
+    {
+      "country": "Saudi Arabia",
+      "difficulty": "Hard",
+			"playlistId": "1xoIbY8zFCu3PU5Y0g83cD"
+    },
+    {
+      "country": "Georgia",
+      "difficulty": "Hard",
+			"playlistId": "1BW4gnLKvOpdN0oluvFghO"
+    },
+    {
       "country": "Turkey",
       "difficulty": "Hard",
 			"playlistId": "23Gws5s9RK6y3Izqmt4I7C"
@@ -390,6 +440,18 @@
       "playlistId": "6tlljVyHc8sp02FMtq07ec"
     },
     {
+      "country": "Greece",
+			"playlistId": "339jUeL6NETyuBCwmlDM0I"
+    },
+    {
+      "country": "Romania",
+			"playlistId": "2cyLQ802g8fXN1uiF3ma8w"
+    },
+    {
+      "country": "Poland",
+			"playlistId": "2oQkWZ2EVbYeSxCPNncq91"
+    },
+    {
       "country": "Portugal",
       "playlistId": "55T5FbjUVIpZRdgNsrPvKr"
     },
@@ -404,6 +466,10 @@
     {
       "country": "Russia",
       "playlistId": "4D1kav7Iay1XxG6aQMggAf"
+    },
+    {
+      "country": "Ukraine",
+			"playlistId": "3V5eL4AFnhyQNfkYydbWy8"
     },
     {
       "country": "Germany",
@@ -474,6 +540,22 @@
     {
       "country": "Tanzania",
       "playlistId": "311H1EdOKNpsXZ7tU0ugQy"
+    },
+    {
+      "country": "Mozambique",
+			"playlistId": "27pmo6ecXL1d0IKQLpmqMi"
+    },
+    {
+      "country": "Angola",
+			"playlistId": "51QY3JG01oLZBwBp146sgO"
+    },
+    {
+      "country": "Morocco",
+			"playlistId": "6Uq3f9CcEDx4ayetTOWItY"
+    },
+    {
+      "country": "Madagascar",
+			"playlistId": "3VcKH2jWcBMDZ871KPMvfh"
     },
     {
       "country": "South Africa",
@@ -646,6 +728,18 @@
     {
       "country": "Iran",
       "playlistId": "5QHgk0hAUelO6kTixCjYA9"
+    },
+    {
+      "country": "Afghanistan",
+			"playlistId": "7eiI8qFKGeVF7C68piCPvR"
+    },
+    {
+      "country": "Saudi Arabia",
+			"playlistId": "1xoIbY8zFCu3PU5Y0g83cD"
+    },
+    {
+      "country": "Georgia",
+			"playlistId": "1BW4gnLKvOpdN0oluvFghO"
     },
     {
       "country": "Turkey",

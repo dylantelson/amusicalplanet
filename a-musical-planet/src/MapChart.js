@@ -195,6 +195,7 @@ const MapChart = ({ handleNewChosen, mapProps, currMap }) => {
     if (area > 300000) return { fontSize: "5px" };
     if (area > 200000) return { fontSize: "4px" };
     if (area > 100000) return { fontSize: "3px" };
+    if (area > 70000) return { fontSize: "2.5px" };
     return { fontSize: "2px" };
   };
 
@@ -311,7 +312,7 @@ const MapChart = ({ handleNewChosen, mapProps, currMap }) => {
                 key={country.name.common}
                 coordinates={
                   country.name.common === "Russia" && currMap === "europe"
-                    ? [country.latlng[1] - 60, country.latlng[0] - 6]
+                    ? [country.latlng[1] - 57, country.latlng[0] - 6]
                     : [country.latlng[1], country.latlng[0]]
                 }
                 fill="#000"

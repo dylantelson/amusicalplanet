@@ -3,7 +3,15 @@
 #     Accept: "application/json"
 #     Authorization: "Bearer BQCVeRJrktm8BUr9p1UwAa1BLUi29SJrtxUsBMLT-75TfFqj9LBlbIH77PFUE3Br-IpA9JXlCNmbnik5hc1BOvfSgmLH0O2ldNG0VhBp9kjUJ_5-hYDfpMiqFGkD057up49tDIty5x_35iQQnJONsxYHOVvK6mN5fDaNsjQ85g"
 
+# GET https://api.spotify.com/v1/playlists/203Sb3O6IJHmhZjc6T1evu
+#     Content-Type: "application/json"
+#     Accept: "application/json"
+#     Authorization: "Bearer BQCVeRJrktm8BUr9p1UwAa1BLUi29SJrtxUsBMLT-75TfFqj9LBlbIH77PFUE3Br-IpA9JXlCNmbnik5hc1BOvfSgmLH0O2ldNG0VhBp9kjUJ_5-hYDfpMiqFGkD057up49tDIty5x_35iQQnJONsxYHOVvK6mN5fDaNsjQ85g"
+
+GET http://localhost:8888/refreshToken
+    Content-Type: "application/json"
+    Accept: "application/json"
 
 # GET http://localhost:8888/getLeaderboard/
 
-POST http://localhost:8888/createRandomUsers/20
+# POST http://localhost:8888/createRandomUsers/20
