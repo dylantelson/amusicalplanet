@@ -10,7 +10,7 @@ const Leaderboard = () => {
   const [currPage, setCurrPage] = useState(0);
 
   useEffect(() => {
-    axios(`http://localhost:8888/getLeaderboard`, {
+    axios(`${process.env.REACT_APP_BACKEND_URI}/getLeaderboard`, {
       headers: {
         Accept: "application/json",
         "Content-Type": "application/json",

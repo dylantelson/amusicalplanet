@@ -131,29 +131,29 @@ const Play = ({
         audioRef.current.load();
         audioRef.current.play();
       })
-      .catch((err) =>
-        err.json().then((err) => {
-          console.log(
-            "ERROR LOADING TRACK FROM COUNTRY",
-            relevantPlaylists[currPlaylistIndex].country
+      .catch((err) => {
+        console.log(
+          "ERROR LOADING TRACK FROM COUNTRY",
+          relevantPlaylists[currPlaylistIndex].country
+        );
+        console.log("err", err);
+        console.log("err status", err.status);
+        if (err.status === 400)
+          return window.location.replace(
+            `${process.env.REACT_APP_BACKEND_URI}/getNewToken`
           );
-          console.log("err", err);
-          console.log("err status", err.status);
-          if (err.status === 400)
-            return window.location.replace("http://localhost:8888/getNewToken");
-          if (err.status === 401) {
-            return refreshToken();
-          }
-          if (err.status === 404) return nextTrack();
-          //this is only really for error 401, meaning
-          return setRedirect("maps");
-        })
-      );
+        if (err.status === 401) {
+          return refreshToken();
+        }
+        if (err.status === 404) return nextTrack();
+        //this is only really for error 401, meaning
+        return setRedirect("maps");
+      });
   };
 
   const refreshToken = () => {
     console.log("OLD ACCESS TOKEN:", accessToken);
-    fetch("http://localhost:8888/refreshToken", {
+    fetch(`${process.env.REACT_APP_BACKEND_URI}/refreshToken`, {
       method: "GET",
       credentials: "include",
       headers: {
@@ -169,7 +169,9 @@ const Play = ({
           return nextTrack();
         }
         console.log("Could not refresh! Going to server's /getNewToken...");
-        return window.location.replace("http://localhost:8888/getNewToken");
+        return window.location.replace(
+          `${process.env.REACT_APP_BACKEND_URI}/getNewToken`
+        );
       });
   };
 

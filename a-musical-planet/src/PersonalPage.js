@@ -15,7 +15,7 @@ const PersonalPage = () => {
 
   useEffect(() => {
     setChosenMap("overall");
-    axios(`http://localhost:8888/userData/${userName}`, {
+    axios(`${process.env.REACT_APP_BACKEND_URI}/userData/${userName}`, {
       headers: {
         Accept: "application/json",
         "Content-Type": "application/json",

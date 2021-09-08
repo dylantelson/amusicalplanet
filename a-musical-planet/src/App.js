@@ -15,8 +15,10 @@ import Login from "./Login";
 import ChooseMap from "./ChooseMap";
 import Leaderboard from "./Leaderboard";
 import PersonalPage from "./PersonalPage";
-
+import dotenv from "dotenv";
 import getCookie from "./GetCookie";
+
+dotenv.config();
 
 export const UserContext = React.createContext({
   userName: "user",
@@ -45,7 +47,7 @@ function App() {
   const sendScoreToServer = (newScore) => {
     console.log("Sending score to server", newScore);
     axios(
-      `http://localhost:8888/newScore/${userData.userName}/${currMap}/${newScore}`,
+      `${process.env.REACT_APP_BACKEND_URI}/newScore/${userData.userName}/${currMap}/${newScore}`,
       {
         method: "POST",
       }
@@ -94,13 +96,16 @@ function App() {
       method: "GET",
     })
       .then((spotifyData) => {
-        axios(`http://localhost:8888/userData/${spotifyData.data.id}`, {
-          headers: {
-            Accept: "application/json",
-            "Content-Type": "application/json",
-          },
-          method: "GET",
-        }).then(({ data }) => {
+        axios(
+          `${process.env.REACT_APP_BACKEND_URI}/userData/${spotifyData.data.id}`,
+          {
+            headers: {
+              Accept: "application/json",
+              "Content-Type": "application/json",
+            },
+            method: "GET",
+          }
+        ).then(({ data }) => {
           setUserData(data);
         });
       })
@@ -108,7 +113,9 @@ function App() {
         console.log("ERROR GETTING SPOTIFY USER DATA", err);
         if (err.response.status >= 400) {
           console.log("ERROR 400+, REFRESHING TOKEN");
-          window.location.replace("http://localhost:8888/getNewToken");
+          window.location.replace(
+            `${process.env.REACT_APP_BACKEND_URI}/getNewToken`
+          );
         }
       });
   };
@@ -129,7 +136,7 @@ function App() {
   };
 
   const handleLogin = () => {
-    window.location.replace("http://localhost:8888/login");
+    window.location.replace(`${process.env.REACT_APP_BACKEND_URI}/login`);
   };
 
   const setAccessTokenHandler = (newAccessToken) => {
