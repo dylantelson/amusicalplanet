@@ -203,7 +203,7 @@ app.get("/refreshToken", function (req, res) {
   request.post(authOptions, function (error, response, body) {
     if (error) {
       console.log("ERROR AT REFRESH!");
-      cnosole.log(error);
+      console.log(error);
     }
     console.log(body);
 
