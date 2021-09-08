@@ -13,6 +13,7 @@ import Play from "./Play";
 import Header from "./Header";
 import Login from "./Login";
 import ChooseMap from "./ChooseMap";
+import About from "./About";
 import Leaderboard from "./Leaderboard";
 import PersonalPage from "./PersonalPage";
 import dotenv from "dotenv";
@@ -213,6 +214,9 @@ function App() {
             </Route>
             <Route path="/maps">
               <ChooseMap handleMapChosen={handleMapChosen} />
+            </Route>
+            <Route path="/about">
+              <About />
             </Route>
             <Route path="/leaderboard">
               <Leaderboard />

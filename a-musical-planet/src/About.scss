@@ -1,0 +1,12 @@
+#About {
+  margin: 0.3% 0px;
+  height: 80vh;
+  display: flex;
+  flex-direction: column;
+  flex: 0 1 auto;
+  max-width: 1575;
+}
+
+#About h1 {
+  font-size: #{"min(32px, 4vh)"};
+}
