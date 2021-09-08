@@ -32,7 +32,12 @@ const mapNames = [
 const MongoDBSession = connectMongoDBSession(session);
 let app = express();
 
-app.use(cors({ credentials: true, origin: "http://localhost:3000" }));
+app.use(
+  cors({
+    credentials: true,
+    origin: process.env.FRONTEND_URI || "http://localhost:3000/",
+  })
+);
 
 let redirect_uri = process.env.REDIRECT_URI || "http://localhost:8888/callback";
 
@@ -86,7 +91,7 @@ app.get("/login", function (req, res) {
     console.log("Session existing");
     return res.redirect(
       process.env.FRONTEND_URI +
-        "?access_token=" +
+        "/auth/?access_token=" +
         req.session.user.access_token +
         "&refresh_token=" +
         req.session.user.refresh_token
@@ -137,7 +142,7 @@ app.get("/login", function (req, res) {
       };
       return res.redirect(
         uri +
-          "?access_token=" +
+          "/auth/?access_token=" +
           access_token +
           "&refresh_token=" +
           refresh_token
@@ -258,7 +263,7 @@ app.get("/getNewToken", function (req, res) {
     let uri = process.env.FRONTEND_URI || "http://localhost:3000/auth/";
     return res.redirect(
       uri +
-        "?access_token=" +
+        "/auth/?access_token=" +
         body.access_token +
         "&refresh_token=" +
         req.session.user.refresh_token
@@ -362,7 +367,7 @@ app.get("/callback", function (req, res) {
         });
         return res.redirect(
           uri +
-            "?access_token=" +
+            "/auth/?access_token=" +
             access_token +
             "&refresh_token=" +
             refresh_token
