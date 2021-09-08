@@ -122,7 +122,6 @@ function App() {
 
   const handleMapChosen = (mapName) => {
     if (accessToken === null || accessToken === "") {
-      alert("ACCESS NOT NULL?");
       if (!setTokenFromCookie()) return setRedirect("login");
     }
     console.log("HANDLING MAP CHOSEN");
@@ -132,7 +131,6 @@ function App() {
 
   const checkToken = () => {
     if (!setTokenFromCookie()) {
-      alert("CHECKIN TOKEN");
       setRedirect("login");
     }
   };
