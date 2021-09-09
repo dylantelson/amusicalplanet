@@ -7,7 +7,7 @@ import "./Header.scss";
 const Header = ({ setRedirect, checkToken }) => {
   const userData = useContext(UserContext);
   const [hamburgerOpen, setHamburgerOpen] = useState(false);
-  const menu = document.getElementById("menu");
+  let menu = document.getElementById("menu");
   console.log("Checking if I should check token");
   if (
     !(window.location.pathname === "/") &&
@@ -18,13 +18,12 @@ const Header = ({ setRedirect, checkToken }) => {
   }
 
   const openMenu = () => {
+    if (!menu) menu = document.getElementById("menu");
     console.log("openin!");
     if (hamburgerOpen) {
-      menu.style.left = "100vw";
-      menu.style.visibility = "hidden";
+      menu.style.display = "none";
     } else {
-      menu.style.left = "0px";
-      menu.style.visibility = "visible";
+      menu.style.display = "flex";
     }
     setHamburgerOpen(!hamburgerOpen);
   };

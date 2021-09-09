@@ -1,4 +1,5 @@
 $small: 650px;
+$tiny: 450px;
 
 .leaderboardContainer {
   /* box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px; */
@@ -21,7 +22,7 @@ $small: 650px;
   /* background-color: #1abc9c; */
   background-color: white;
   border: 1px solid black;
-  height: 25%;
+  height: 40px;
   color: black;
   font-size: inherit;
   padding: 0.5em;
@@ -79,9 +80,10 @@ $small: 650px;
   max-height: 450px;
   padding: 8px 12px;
   border-radius: 15px;
-  // @media screen and (max-width: $small) {
-  //   width: 90%;
-  // }
+  @media screen and (max-width: $tiny) {
+    padding: 12px 12px;
+    width: 100%;
+  }
 }
 
 // .leaderboard button {
@@ -95,10 +97,15 @@ $small: 650px;
 }
 
 .leaderboardUser img {
-  width: 15%;
-  height: auto;
+  width: 80px;
+  height: 80px;
   border-radius: 50%;
   margin: 0px 20px;
+  @media screen and (max-width: $tiny) {
+    width: 55px;
+    height: 55px;
+    margin: 0px 6px;
+  }
 }
 
 .leaderboardUser a {
@@ -107,9 +114,28 @@ $small: 650px;
 
 .leaderboardUser a,
 .leaderboardUser p,
-.leaderboardUser h3 {
+.leaderboardUser h3,
+.leaderboardUser h1 {
   margin: 0px;
   text-align: left;
+}
+
+.leaderboardUser a {
+  @media screen and (max-width: $tiny) {
+    font-size: 15px;
+  }
+}
+
+.leaderboardUser p {
+  @media screen and (max-width: $tiny) {
+    font-size: 12px;
+  }
+}
+
+.leaderboardUser h3 {
+  @media screen and (max-width: $tiny) {
+    font-size: 15px;
+  }
 }
 
 .leaderboardUser .highScore {

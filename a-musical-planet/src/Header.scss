@@ -6,6 +6,7 @@ $small: 650px;
   justify-content: space-between;
   align-items: center;
   height: 10vh;
+  min-height: 75px;
   width: 100%;
 }
 
@@ -162,18 +163,18 @@ $small: 650px;
   background-color: #fcfaf9;
   top: 10vh;
   margin-top: 100px;
-  display: flex;
+  display: none;
   position: absolute;
   flex-direction: column;
   // float: right;
   height: 90vh;
   width: 100vw;
   color: white;
-  left: 100vw;
-  transition: left 0.3s ease-in-out, visibility 0.3s, width 0s;
+  // left: 100vw;
+  // transition: left 0.3s ease-in-out, visibility 0.3s, width 0s;
   margin: 0;
   padding: 0;
-  visibility: hidden;
+  // visibility: hidden;
   @media screen and (min-width: $small) {
     display: none;
   }
