@@ -6,10 +6,19 @@
 
   var React__default = 'default' in React ? React['default'] : React;
 
+  function _setPrototypeOf(o, p) {
+    _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) {
+      o.__proto__ = p;
+      return o;
+    };
+
+    return _setPrototypeOf(o, p);
+  }
+
   function _inheritsLoose(subClass, superClass) {
     subClass.prototype = Object.create(superClass.prototype);
     subClass.prototype.constructor = subClass;
-    subClass.__proto__ = superClass;
+    _setPrototypeOf(subClass, superClass);
   }
 
   function unwrapExports (x) {
@@ -1571,12 +1580,6 @@
     return history;
   }
 
-  function _inheritsLoose$1(subClass, superClass) {
-    subClass.prototype = Object.create(superClass.prototype);
-    subClass.prototype.constructor = subClass;
-    subClass.__proto__ = superClass;
-  }
-
   var MAX_SIGNED_31_BIT_INT = 1073741823;
   var commonjsGlobal = typeof globalThis !== 'undefined' ? globalThis : typeof window !== 'undefined' ? window : typeof global !== 'undefined' ? global : {};
 
@@ -1626,7 +1629,7 @@
     var contextProp = '__create-react-context-' + getUniqueId() + '__';
 
     var Provider = /*#__PURE__*/function (_Component) {
-      _inheritsLoose$1(Provider, _Component);
+      _inheritsLoose(Provider, _Component);
 
       function Provider() {
         var _this;
@@ -1678,7 +1681,7 @@
     Provider.childContextTypes = (_Provider$childContex = {}, _Provider$childContex[contextProp] = propTypes.object.isRequired, _Provider$childContex);
 
     var Consumer = /*#__PURE__*/function (_Component2) {
-      _inheritsLoose$1(Consumer, _Component2);
+      _inheritsLoose(Consumer, _Component2);
 
       function Consumer() {
         var _this2;
@@ -1755,29 +1758,15 @@
     return context;
   };
 
-  var historyContext =
-  /*#__PURE__*/
-  createNamedContext("Router-History");
+  var historyContext = /*#__PURE__*/createNamedContext("Router-History");
 
-  // TODO: Replace with React.createContext once we can assume React 16+
-
-  var createNamedContext$1 = function createNamedContext(name) {
-    var context = index();
-    context.displayName = name;
-    return context;
-  };
-
-  var context =
-  /*#__PURE__*/
-  createNamedContext$1("Router");
+  var context = /*#__PURE__*/createNamedContext("Router");
 
   /**
    * The public API for putting history on context.
    */
 
-  var Router =
-  /*#__PURE__*/
-  function (_React$Component) {
+  var Router = /*#__PURE__*/function (_React$Component) {
     _inheritsLoose(Router, _React$Component);
 
     Router.computeRootMatch = function computeRootMatch(pathname) {
@@ -1832,18 +1821,22 @@
     };
 
     _proto.componentWillUnmount = function componentWillUnmount() {
-      if (this.unlisten) this.unlisten();
+      if (this.unlisten) {
+        this.unlisten();
+        this._isMounted = false;
+        this._pendingLocation = null;
+      }
     };
 
     _proto.render = function render() {
-      return React__default.createElement(context.Provider, {
+      return /*#__PURE__*/React__default.createElement(context.Provider, {
         value: {
           history: this.props.history,
           location: this.state.location,
           match: Router.computeRootMatch(this.state.location.pathname),
           staticContext: this.props.staticContext
         }
-      }, React__default.createElement(historyContext.Provider, {
+      }, /*#__PURE__*/React__default.createElement(historyContext.Provider, {
         children: this.props.children || null,
         value: this.props.history
       }));
@@ -1868,9 +1861,7 @@
    * The public API for a <Router> that stores location in memory.
    */
 
-  var MemoryRouter =
-  /*#__PURE__*/
-  function (_React$Component) {
+  var MemoryRouter = /*#__PURE__*/function (_React$Component) {
     _inheritsLoose(MemoryRouter, _React$Component);
 
     function MemoryRouter() {
@@ -1888,7 +1879,7 @@
     var _proto = MemoryRouter.prototype;
 
     _proto.render = function render() {
-      return React__default.createElement(Router, {
+      return /*#__PURE__*/React__default.createElement(Router, {
         history: this.history,
         children: this.props.children
       });
@@ -1911,9 +1902,7 @@
     };
   }
 
-  var Lifecycle =
-  /*#__PURE__*/
-  function (_React$Component) {
+  var Lifecycle = /*#__PURE__*/function (_React$Component) {
     _inheritsLoose(Lifecycle, _React$Component);
 
     function Lifecycle() {
@@ -1949,11 +1938,11 @@
     var message = _ref.message,
         _ref$when = _ref.when,
         when = _ref$when === void 0 ? true : _ref$when;
-    return React__default.createElement(context.Consumer, null, function (context) {
+    return /*#__PURE__*/React__default.createElement(context.Consumer, null, function (context) {
       !context ?  invariant(false, "You should not use <Prompt> outside a <Router>")  : void 0;
       if (!when || context.staticContext) return null;
       var method = context.history.block;
-      return React__default.createElement(Lifecycle, {
+      return /*#__PURE__*/React__default.createElement(Lifecycle, {
         onMount: function onMount(self) {
           self.release = method(message);
         },
@@ -2455,7 +2444,7 @@
         to = _ref.to,
         _ref$push = _ref.push,
         push = _ref$push === void 0 ? false : _ref$push;
-    return React__default.createElement(context.Consumer, null, function (context) {
+    return /*#__PURE__*/React__default.createElement(context.Consumer, null, function (context) {
       !context ?  invariant(false, "You should not use <Redirect> outside a <Router>")  : void 0;
       var history = context.history,
           staticContext = context.staticContext;
@@ -2470,7 +2459,7 @@
         return null;
       }
 
-      return React__default.createElement(Lifecycle, {
+      return /*#__PURE__*/React__default.createElement(Lifecycle, {
         onMount: function onMount() {
           method(location);
         },
@@ -2590,9 +2579,7 @@
    */
 
 
-  var Route =
-  /*#__PURE__*/
-  function (_React$Component) {
+  var Route = /*#__PURE__*/function (_React$Component) {
     _inheritsLoose(Route, _React$Component);
 
     function Route() {
@@ -2604,7 +2591,7 @@
     _proto.render = function render() {
       var _this = this;
 
-      return React__default.createElement(context.Consumer, null, function (context$1) {
+      return /*#__PURE__*/React__default.createElement(context.Consumer, null, function (context$1) {
         !context$1 ?  invariant(false, "You should not use <Route> outside a <Router>")  : void 0;
         var location = _this.props.location || context$1.location;
         var match = _this.props.computedMatch ? _this.props.computedMatch // <Switch> already computed the match for us
@@ -2621,13 +2608,13 @@
             render = _this$props.render; // Preact uses an empty array as children by
         // default, so use null if that's the case.
 
-        if (Array.isArray(children) && children.length === 0) {
+        if (Array.isArray(children) && isEmptyChildren(children)) {
           children = null;
         }
 
-        return React__default.createElement(context.Provider, {
+        return /*#__PURE__*/React__default.createElement(context.Provider, {
           value: props
-        }, props.match ? children ? typeof children === "function" ?  evalChildrenDev(children, props, _this.props.path)  : children : component ? React__default.createElement(component, props) : render ? render(props) : null : typeof children === "function" ?  evalChildrenDev(children, props, _this.props.path)  : null);
+        }, props.match ? children ? typeof children === "function" ?  evalChildrenDev(children, props, _this.props.path)  : children : component ? /*#__PURE__*/React__default.createElement(component, props) : render ? render(props) : null : typeof children === "function" ?  evalChildrenDev(children, props, _this.props.path)  : null);
       });
     };
 
@@ -2716,9 +2703,7 @@
    */
 
 
-  var StaticRouter =
-  /*#__PURE__*/
-  function (_React$Component) {
+  var StaticRouter = /*#__PURE__*/function (_React$Component) {
     _inheritsLoose(StaticRouter, _React$Component);
 
     function StaticRouter() {
@@ -2786,7 +2771,7 @@
         listen: this.handleListen,
         block: this.handleBlock
       };
-      return React__default.createElement(Router, _extends({}, rest, {
+      return /*#__PURE__*/React__default.createElement(Router, _extends({}, rest, {
         history: history,
         staticContext: context
       }));
@@ -2811,9 +2796,7 @@
    * The public API for rendering the first <Route> that matches.
    */
 
-  var Switch =
-  /*#__PURE__*/
-  function (_React$Component) {
+  var Switch = /*#__PURE__*/function (_React$Component) {
     _inheritsLoose(Switch, _React$Component);
 
     function Switch() {
@@ -2825,7 +2808,7 @@
     _proto.render = function render() {
       var _this = this;
 
-      return React__default.createElement(context.Consumer, null, function (context) {
+      return /*#__PURE__*/React__default.createElement(context.Consumer, null, function (context) {
         !context ?  invariant(false, "You should not use <Switch> outside a <Router>")  : void 0;
         var location = _this.props.location || context.location;
         var element, match; // We use React.Children.forEach instead of React.Children.toArray().find()
@@ -2834,7 +2817,7 @@
         // component at different URLs.
 
         React__default.Children.forEach(_this.props.children, function (child) {
-          if (match == null && React__default.isValidElement(child)) {
+          if (match == null && /*#__PURE__*/React__default.isValidElement(child)) {
             element = child;
             var path = child.props.path || child.props.from;
             match = path ? matchPath(location.pathname, _extends({}, child.props, {
@@ -2842,7 +2825,7 @@
             })) : context.match;
           }
         });
-        return match ? React__default.cloneElement(element, {
+        return match ? /*#__PURE__*/React__default.cloneElement(element, {
           location: location,
           computedMatch: match
         }) : null;
@@ -2977,9 +2960,9 @@
       var wrappedComponentRef = props.wrappedComponentRef,
           remainingProps = _objectWithoutPropertiesLoose(props, ["wrappedComponentRef"]);
 
-      return React__default.createElement(context.Consumer, null, function (context) {
+      return /*#__PURE__*/React__default.createElement(context.Consumer, null, function (context) {
         !context ?  invariant(false, "You should not use <" + displayName + " /> outside a <Router>")  : void 0;
-        return React__default.createElement(Component, _extends({}, remainingProps, context, {
+        return /*#__PURE__*/React__default.createElement(Component, _extends({}, remainingProps, context, {
           ref: wrappedComponentRef
         }));
       });

@@ -8,6 +8,7 @@ const Header = ({ setRedirect, checkToken }) => {
   const userData = useContext(UserContext);
   const [hamburgerOpen, setHamburgerOpen] = useState(false);
   const menu = document.getElementById("menu");
+  console.log("Checking if I should check token");
   if (
     !(window.location.pathname === "/") &&
     userData &&

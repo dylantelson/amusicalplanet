@@ -83,11 +83,9 @@ app.use((req, res, next) => {
 
 app.get("/login", function (req, res) {
   console.log("LOGGING IN");
-  if (
-    req.session.user &&
-    req.session.user.access_token &&
-    req.session.user.access_token !== ""
-  ) {
+  if (!req.session.user || !req.session.user.refresh_token)
+    return createNewSession(res);
+  if (req.session.user.access_token && req.session.user.access_token !== "") {
     console.log("Session existing");
     return res.redirect(
       process.env.FRONTEND_URI +
@@ -97,11 +95,7 @@ app.get("/login", function (req, res) {
         req.session.user.refresh_token
     );
   }
-  if (
-    req.session.user &&
-    req.session.user.refresh_token &&
-    req.session.user.refresh_token !== ""
-  ) {
+  if (req.session.user.refresh_token !== "") {
     console.log("Refreshing token from /login");
     let authOptions = {
       url: "https://accounts.spotify.com/api/token",
@@ -122,16 +116,7 @@ app.get("/login", function (req, res) {
     };
     request.post(authOptions, function (error, response, body) {
       if (!body.access_token || body.access_token === "") {
-        console.log("Creating new session");
-        return res.redirect(
-          "https://accounts.spotify.com/authorize?" +
-            querystring.stringify({
-              response_type: "code",
-              client_id: process.env.SPOTIFY_CLIENT_ID,
-              scope: "user-read-private user-read-email",
-              redirect_uri,
-            })
-        );
+        return createNewSession(res);
       }
       var access_token = body.access_token;
       var refresh_token = body.refresh_token;
@@ -173,6 +158,10 @@ app.get("/login", function (req, res) {
       // );
     });
   }
+  return createNewSession(res);
+});
+
+const createNewSession = (res) => {
   console.log("Creating new session");
   return res.redirect(
     "https://accounts.spotify.com/authorize?" +
@@ -183,11 +172,12 @@ app.get("/login", function (req, res) {
         redirect_uri,
       })
   );
-});
+};
 
 app.get("/refreshToken", function (req, res) {
   console.log("REFRESHING TOKEN FOR PLAY");
-  // console.log(req.session.user);
+  if (!req.session.user || !req.session.user.refresh_token)
+    return createNewSession(res);
   let authOptions = {
     url: "https://accounts.spotify.com/api/token",
     form: {
@@ -206,11 +196,8 @@ app.get("/refreshToken", function (req, res) {
     json: true,
   };
   request.post(authOptions, function (error, response, body) {
-    if (error) {
-      console.log("ERROR AT REFRESH!");
-      console.log(error);
-    }
-    console.log(body);
+    if (!body.access_token || body.access_token === "")
+      return createNewSession(res);
 
     req.session.user = {
       id: req.session.user.id,
@@ -224,6 +211,8 @@ app.get("/refreshToken", function (req, res) {
 });
 
 app.get("/getNewToken", function (req, res) {
+  if (!req.session.user || !req.session.user.refresh_token)
+    return createNewSession(res);
   console.log("Refreshing token from /getNewToken");
   let authOptions = {
     url: "https://accounts.spotify.com/api/token",
@@ -243,18 +232,8 @@ app.get("/getNewToken", function (req, res) {
     json: true,
   };
   request.post(authOptions, function (error, response, body) {
-    if (!body.access_token || body.access_token === "") {
-      console.log("Creating new session");
-      return res.redirect(
-        "https://accounts.spotify.com/authorize?" +
-          querystring.stringify({
-            response_type: "code",
-            client_id: process.env.SPOTIFY_CLIENT_ID,
-            scope: "user-read-private user-read-email",
-            redirect_uri,
-          })
-      );
-    }
+    if (!body.access_token || body.access_token === "")
+      return createNewSession(res);
     req.session.user = {
       id: req.session.user.id,
       access_token: body.access_token,
