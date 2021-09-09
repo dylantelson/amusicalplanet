@@ -78,12 +78,12 @@ $tiny: 450px;
   width: 90%;
   // max-width: 600px;
   max-height: 450px;
-  padding: 8px 12px;
+  padding: 12px 12px;
   border-radius: 15px;
-  @media screen and (max-width: $tiny) {
-    padding: 12px 12px;
-    width: 100%;
-  }
+  // @media screen and (max-width: $tiny) {
+  //   padding: 12px 12px;
+  //   width: 100%;
+  // }
 }
 
 // .leaderboard button {

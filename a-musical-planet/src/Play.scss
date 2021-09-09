@@ -61,7 +61,7 @@ $small-height: 900px;
   color: #000;
   font-family: "Ubuntu", sans-serif;
   cursor: pointer;
-  transition: 0.25s ease;
+  -moz-appearance: none;
 }
 
 .popup-container {

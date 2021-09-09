@@ -5,9 +5,11 @@
   flex-direction: column;
   height: 100%;
 }
-
+html {
+  height: 100%;
+}
 body {
-  height: 100vh;
+  height: 100%;
   overflow: hidden;
   background-color: #fcfaf9;
   margin: 0px;
