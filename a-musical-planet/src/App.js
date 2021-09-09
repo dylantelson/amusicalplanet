@@ -126,7 +126,7 @@ function App() {
       if (!setTokenFromCookie()) return setRedirect("login");
     }
     console.log("HANDLING MAP CHOSEN");
-    setCurrMap(mapName[0].toLowerCase() + mapName.slice(1).replaceAll(" ", ""));
+    setCurrMap(mapName[0].toLowerCase() + mapName.slice(1).replace(/ /g, ""));
     // setRedirect("play");
   };
 

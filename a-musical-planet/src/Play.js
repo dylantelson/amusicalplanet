@@ -178,9 +178,7 @@ const Play = ({
   const guessGiven = () => {
     audioRef.current.pause();
     const currChosenCountryDOM = document.querySelector(
-      `#${
-        currChosen[0].toLowerCase() + currChosen.slice(1).replaceAll(" ", "")
-      }`
+      `#${currChosen[0].toLowerCase() + currChosen.slice(1).replace(/ /g, "")}`
     );
     if (currChosenCountryDOM) {
       currChosenCountryDOM.classList.remove("pressed");

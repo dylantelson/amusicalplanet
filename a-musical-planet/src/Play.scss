@@ -68,7 +68,7 @@ $small-height: 900px;
   position: absolute;
   background: #000000d8;
   width: 100%;
-  height: 100vh;
+  height: 100%;
   top: 0;
   left: 0;
 }
@@ -118,7 +118,7 @@ $small-height: 900px;
   margin: auto;
   height: auto;
   max-height: 70vh;
-  margin-top: calc(100vh - 85vh - 20px);
+  margin-top: calc(15vh);
   // background: #1db954;
   border-radius: 30px;
   padding: 30px 30px;
@@ -209,6 +209,7 @@ $small-height: 900px;
   color: #1db954;
   font-family: "Ubuntu", sans-serif;
   cursor: pointer;
+  z-index: 2;
   transition: 0.25s ease;
 }
 

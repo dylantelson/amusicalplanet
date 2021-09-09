@@ -32,7 +32,7 @@ const Leaderboard = () => {
           onChange={(e) => {
             setChosenMap(
               e.target.value[0].toLowerCase() +
-                e.target.value.slice(1).replaceAll(" ", "")
+                e.target.value.slice(1).replace(/ /g, "")
             );
             setCurrPage(0);
           }}

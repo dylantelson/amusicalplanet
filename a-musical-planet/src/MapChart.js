@@ -60,7 +60,7 @@ function LightenDarkenColor(col, amt) {
 }
 
 const camelize = (word) => {
-  return word[0].toLowerCase() + word.slice(1).replaceAll(" ", "");
+  return word[0].toLowerCase() + word.slice(1).replace(/ /g, "");
 };
 
 const checkDifficulty = (mapDifficulty, countryDifficulty) => {
@@ -115,7 +115,7 @@ const MapChart = ({ handleNewChosen, mapProps, currMap }) => {
   // style={{
   //                       currSelectedCountry &&
   //                       currSelectedCountry.element.id ===
-  //                         geo.properties.NAME.replaceAll(" ", "")
+  //                         geo.properties.NAME.replace(/ /g, "")
   //                         ? selectedStyle(colors[geo.properties.CONTINENT])
   //                         : countriesToShow.indexOf(geo.properties.NAME) >= 0
   //                         ? {
@@ -135,7 +135,7 @@ const MapChart = ({ handleNewChosen, mapProps, currMap }) => {
   //                     hover:
   //                       currSelectedCountry &&
   //                       currSelectedCountry.element.id ===
-  //                         geo.properties.NAME.replaceAll(" ", "")
+  //                         geo.properties.NAME.replace(/ /g, "")
   //                         ? selectedStyle(colors[geo.properties.CONTINENT])
   //                         : hoveredStyle(colors[geo.properties.CONTINENT]),
   //                   }}
