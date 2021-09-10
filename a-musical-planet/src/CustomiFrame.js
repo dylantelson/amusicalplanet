@@ -5,6 +5,8 @@ const CustomiFrame = React.memo(({ src, width, height }) => {
   return (
     <iframe
       src={src}
+      title={`Spotify Web Player ${src}`}
+      key={src}
       width={width}
       height={height}
       frameBorder="0"

@@ -1,4 +1,4 @@
-$small: 768px;
+$small: 650px;
 
 $small-height: 900px;
 
@@ -112,7 +112,7 @@ button {
   margin: auto;
   height: auto;
   max-height: 73%;
-  margin-top: 20%;
+  margin-top: 10%;
   // background: #1db954;
   border-radius: 30px;
   padding: 20px 30px;
@@ -121,10 +121,9 @@ button {
   display: flex;
   flex-direction: column;
   flex: 0 1 auto;
-  // @media screen and (max-width: $small) {
-  //   width: 60px;
-  //   font-size: 12px;
-  // }
+  @media screen and (max-width: $small) {
+    margin-top: 20%;
+  }
 }
 
 .popup-container h1 {
@@ -384,10 +383,10 @@ button {
   box-sizing: border-box;
   width: 0;
   margin: auto;
-  height: 6vw;
+  height: 40px;
+  border-width: 20px 0px 20px 32px;
   max-height: 40px;
   border-style: solid;
-  border-width: 3vw 0 3vw 4.8vw;
   border-color: transparent transparent transparent #202020;
   cursor: pointer;
   will-change: border-width;
@@ -395,23 +394,10 @@ button {
 }
 .audioButton.paused {
   border-style: double;
-  height: 6vw;
-  border-width: 0px 0 0px 6vw;
+  border-width: 0px 0 0px 32px;
 }
 .audioButton:hover {
   border-color: transparent transparent transparent #404040;
-}
-
-@media screen and (min-width: 1000px) {
-  .audioButton {
-    height: 40px;
-    border-width: 20px 0px 20px 32px;
-  }
-  .audioButton.paused {
-    border-style: double;
-    height: 40px;
-    border-width: 0px 0 0px 32px;
-  }
 }
 
 // .incorrect-background {

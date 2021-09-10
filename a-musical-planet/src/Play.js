@@ -7,13 +7,10 @@ import CountryGuessInfo from "./CountryGuessInfo.js";
 import "./Play.scss";
 import haversine from "haversine-distance";
 
-import getCookie from "./GetCookie";
-
 const maxScore = 5000;
 
 const Playlists = require("./Playlists.json");
 const countries = require("./WorldInfo.json");
-const mapProps = require("./MapProps.json");
 const colors = require("./colors.json");
 
 const Play = ({

@@ -48,6 +48,7 @@ const Leaderboard = () => {
         <img
           src="/next.png"
           id="leftArrow"
+          alt="Previous Arrow"
           className={(!leaderboardStats[chosenMap] ? "hidden " : "") + (currPage <= 0 ? "disabledArrow" : "")}
           onClick={() => (currPage > 0 ? setCurrPage(currPage - 1) : null)}
         />
@@ -72,6 +73,7 @@ const Leaderboard = () => {
         <img
           src="/next.png"
           id="rightArrow"
+          alt="Next Arrow"
           className={(!leaderboardStats[chosenMap] ? "hidden " : "") + (currPage >= 4 ? "disabledArrow" : "")}
           onClick={() => (currPage < 4 ? setCurrPage(currPage + 1) : null)}
         />

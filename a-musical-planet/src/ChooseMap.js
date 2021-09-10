@@ -22,8 +22,8 @@ const ChooseMap = ({ handleMapChosen }) => {
             setChosenMapCategory(e.target.value);
           }}
         >
-          {mapCategories.map((category) => (
-            <option key={category} value={category}>
+          {mapCategories.map((category, i) => (
+            <option value={category}>
               {category}
             </option>
           ))}
@@ -32,7 +32,7 @@ const ChooseMap = ({ handleMapChosen }) => {
           {MapData.map((currMap) =>
             currMap.category === chosenMapCategory ? (
               <MapItem
-                key={currMap.name}
+                key={"desktopitem" + currMap.name}
                 map={currMap}
                 handleMapChosen={handleMapChosen}
               />
@@ -49,14 +49,14 @@ const ChooseMap = ({ handleMapChosen }) => {
             setChosenMap(e.target.value);
           }}
         >
-          {MapData.map((map) => (
-            <option key={map.name} value={map.name}>
+          {MapData.map((map, i) => (
+            <option value={map.name}>
               {map.name}
             </option>
           ))}
         </select>
         <MapItem
-          key={chosenMapData.name}
+          key={"mobileitem" + chosenMapData.name}
           map={chosenMapData}
           handleMapChosen={handleMapChosen}
         />

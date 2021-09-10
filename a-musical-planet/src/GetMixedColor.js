@@ -4,7 +4,7 @@ export default function getMixedColor(ratio) {
   if (ratio > 0.6 && ratio < 1) ratio -= 0.3;
   var hex = function (x) {
     x = x.toString(16);
-    return x.length == 1 ? "0" + x : x;
+    return x.length === 1 ? "0" + x : x;
   };
 
   var r = Math.ceil(

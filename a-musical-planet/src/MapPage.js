@@ -1,4 +1,4 @@
-import React, { memo } from "react";
+import React from "react";
 import MapChart from "./MapChart";
 import "./Map.css";
 

@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { BrowserRouter as Router, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { UserContext } from "./App.js";
 
 const MapItem = ({ map, handleMapChosen }) => {

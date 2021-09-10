@@ -23,8 +23,9 @@ const Summary = ({ sessionInfo, sessionScore, summaryExit, show }) => {
           {sessionInfo.length > 0 ? (
             <>
               <img
-                src="/next.png"
+                src="/nextwhite.png"
                 id="leftArrow"
+                alt="Previous arrow"
                 className={roundSelected <= 0 ? "disabledArrow" : ""}
                 onClick={() =>
                   roundSelected > 0 ? setRoundSelected(roundSelected - 1) : null
@@ -40,8 +41,9 @@ const Summary = ({ sessionInfo, sessionScore, summaryExit, show }) => {
                 );
               })}
               <img
-                src="/next.png"
+                src="/nextwhite.png"
                 id="rightArrow"
+                alt="Next arrow"
                 className={roundSelected >= 4 ? "disabledArrow" : ""}
                 onClick={() =>
                   roundSelected < 4 ? setRoundSelected(roundSelected + 1) : null

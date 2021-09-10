@@ -1,21 +1,13 @@
-import React, { useContext, useState } from "react";
-import { BrowserRouter as Router, NavLink } from "react-router-dom";
+import React, { useContext, useEffect, useState } from "react";
+import { NavLink } from "react-router-dom";
 
 import { UserContext } from "./App.js";
 import "./Header.scss";
 
-const Header = ({ setRedirect, checkToken }) => {
+const Header = () => {
   const userData = useContext(UserContext);
   const [hamburgerOpen, setHamburgerOpen] = useState(false);
   let menu = document.getElementById("menu");
-  console.log("Checking if I should check token");
-  if (
-    !(window.location.pathname === "/") &&
-    userData &&
-    userData.userName === ""
-  ) {
-    checkToken();
-  }
 
   const openMenu = () => {
     if (!menu) menu = document.getElementById("menu");

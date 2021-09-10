@@ -79,7 +79,7 @@ const MapChart = ({ handleNewChosen, mapProps, currMap, setPlayLoading }) => {
   const [loading, setLoading] = useState(true);
   useEffect(() => {
     countriesToShow = [];
-    let currSelectedCountry = null;
+    currSelectedCountry = null;
     if (currMap.slice(0, 5) === "world") {
       for (const playlist of Playlists.world) {
         if (checkDifficulty(currMap.slice(5), playlist.difficulty))
@@ -196,8 +196,8 @@ const MapChart = ({ handleNewChosen, mapProps, currMap, setPlayLoading }) => {
     if (area > 500000) return { fontSize: "7px" };
     if (area > 300000) return { fontSize: "5px" };
     // if (area > 200000) return { fontSize: "4px" };
-    // if (area > 100000) return { fontSize: "3px" };
-    return { fontSize: "4px" };
+    if (area > 100000) return { fontSize: "4px" };
+    return { fontSize: "3.5px" };
     // if (area > 70000) return { fontSize: "2.5px" };
     // return { fontSize: "2px" };
   };
@@ -238,7 +238,7 @@ const MapChart = ({ handleNewChosen, mapProps, currMap, setPlayLoading }) => {
 
   return (
     <>
-      {loading ? <h1 class="mapLoading">Loading...</h1> : <></>}
+      {loading ? <h1 className="mapLoading">Loading...</h1> : <></>}
       <ComposableMap
         data-tip=""
         projection={projection}

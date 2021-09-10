@@ -1,5 +1,5 @@
 //import "./App.css";
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect } from "react";
 import {
   BrowserRouter as Router,
   Switch,
@@ -65,9 +65,7 @@ function App() {
 
   const setTokenFromCookie = () => {
     const accessTokenCookie = getCookie("accessToken");
-    console.log("myCookie", accessTokenCookie);
     if (accessTokenCookie !== "") {
-      console.log("GOT COOKIE!", accessTokenCookie);
       setAccessToken(accessTokenCookie);
       return true;
     } else {
@@ -77,17 +75,16 @@ function App() {
   };
 
   useEffect(() => {
-    console.log(accessToken);
+    setTokenFromCookie();
+  }, []);
+
+  useEffect(() => {
     if (accessToken !== "" && accessToken !== null) {
-      console.log("UseEffect setting user with accesstoken", accessToken);
       setUser();
-    } else {
-      console.log("No access token with which to set user");
     }
   }, [accessToken]);
 
   const setUser = async () => {
-    console.log("SETTING USER");
     return axios("https://api.spotify.com/v1/me", {
       headers: {
         Accept: "application/json",
@@ -175,9 +172,6 @@ function App() {
     const URLAccessToken = new URLSearchParams(window.location.search).get(
       "access_token"
     );
-    const URLRefreshToken = new URLSearchParams(window.location.search).get(
-      "refresh_token"
-    );
     setAccessTokenHandler(URLAccessToken);
     // return <Redirect to="/maps" />;
     setRedirect("maps");
@@ -187,22 +181,18 @@ function App() {
     <div className="app">
       <Router>
         {redirect === "play" && window.location.pathname === "/maps" ? (
-          <Redirect to="play" replace />
+          <Redirect push to="play" />
         ) : null}
-        {redirect === "maps" ? <Redirect to="/maps" /> : null}
+        {redirect === "maps" ? <Redirect push to="/maps"/> : null}
         {redirect === "login" ? <Redirect to="/login" /> : null}
         <UserContext.Provider value={userData}>
-          <Header
-            // userData={userData}
-            checkToken={checkToken}
-            setRedirect={setRedirect}
-          />
+          <Header/>
           <Switch>
             <Route path="/auth" render={() => handleAuth()} />
             <Route
               path="/login"
               render={() =>
-                setTokenFromCookie() ? <Redirect to="/maps" /> : handleLogin()
+                accessToken !== "" ? <Redirect to="/maps" /> : handleLogin()
               }
             />
             <Route exact path="/">
