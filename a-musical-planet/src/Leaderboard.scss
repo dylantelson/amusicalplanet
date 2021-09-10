@@ -1,21 +1,20 @@
 $small: 650px;
 $tiny: 450px;
 
-.leaderboardContainer {
-  /* box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px; */
-}
+// .leaderboardContainer {
+  // box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+// }
 
 .leaderboardHead {
   margin: 0.3% 0px;
   display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
   align-content: center;
-  justify-content: space-around;
   align-items: center;
-  width: 34%;
+  justify-content: space-around;
+  width: 90%;
+  max-width: 600px;
   margin: 2% auto 0px auto;
-  padding-bottom: 10px;
+  padding-bottom: 3px;
 }
 
 .leaderboardHead select {
@@ -31,12 +30,15 @@ $tiny: 450px;
   margin: 0;
   border-radius: 3px;
   text-indent: 0.01px;
-  text-overflow: "";
-  -webkit-appearance: button; /* hide default arrow in chrome OSX */
+  -moz-appearance: menulist-button;
+  -webkit-appearance: menulist-button;
 }
 
 .leaderboardHead h1 {
   margin: 10px 0px;
+  @media screen and (max-width: $small) {
+    font-size: 1.5em;
+  }
 }
 
 .leaderboard {
@@ -61,6 +63,10 @@ $tiny: 450px;
   padding-top: 1%;
 }
 
+.hidden {
+  display: none;
+}
+
 .leaderboardUser {
   display: flex;
   flex: 0 1 auto;
@@ -80,10 +86,9 @@ $tiny: 450px;
   max-height: 450px;
   padding: 12px 12px;
   border-radius: 15px;
-  // @media screen and (max-width: $tiny) {
-  //   padding: 12px 12px;
-  //   width: 100%;
-  // }
+  @media screen and (max-width: $tiny) {
+    margin: 0px 0px 10px 0px;
+  }
 }
 
 // .leaderboard button {

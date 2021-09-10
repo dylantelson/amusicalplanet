@@ -10,12 +10,15 @@ $small-height: 900px;
 .countryGuessInfo {
   display: flex;
   flex-direction: column;
+  width: auto;
   /* justify-content: flex-end; */
   align-items: flex-start;
-  width: 100%;
+  // width: 100%;
   max-height: 200px;
   /* max-width: 250px; */
   min-width: 100px;
+  margin-left: 20px;
+  margin-top: 10px;
 }
 
 .countryGuessInfo h2 {
@@ -31,9 +34,12 @@ $small-height: 900px;
   height: auto;
   /* max-height: 100px; */
   max-width: 133.35px;
-  min-width: 100px;
+  min-width: 60px;
   /* margin-left: ; */
   /* display: block; */
+  @media screen and (max-width: $small) {
+    width: 60px;
+  }
 }
 
 @media screen and (min-width: 1350px) {
@@ -48,20 +54,29 @@ $small-height: 900px;
 }
 
 .countryGuessInfo button {
-  padding: 10px 20px;
+  padding: 10px 0px;
   border-radius: 6px;
   border-width: 0px;
   width: 100%;
   height: auto;
   max-width: 133.35px;
-  min-width: 100px;
+  min-width: 60px;
   margin-top: 10px;
-  background-color: "white";
+  text-align: center;
+  background: white;
   font-size: 18px;
   color: #000;
   font-family: "Ubuntu", sans-serif;
   cursor: pointer;
-  -moz-appearance: none;
+  @media screen and (max-width: $small) {
+    width: 60px;
+    font-size: 12px;
+  }
+}
+
+button {
+  -moz-appearance: button;
+  -webkit-appearance: button;
 }
 
 .popup-container {
@@ -71,27 +86,6 @@ $small-height: 900px;
   height: 100%;
   top: 0;
   left: 0;
-}
-
-.overlay {
-  position: absolute;
-  width: 10%;
-  max-width: 350px;
-  padding-top: 20px;
-  padding-left: 20px;
-  display: flex;
-  justify-content: flex-start;
-  align-items: baseline;
-  flex-direction: column;
-  pointer-events: none;
-}
-
-.overlay button {
-  pointer-events: all;
-}
-
-.overlay audio {
-  pointer-events: all;
 }
 
 .indexText {
@@ -117,16 +111,20 @@ $small-height: 900px;
   max-width: 500px;
   margin: auto;
   height: auto;
-  max-height: 70vh;
-  margin-top: calc(15vh);
+  max-height: 73%;
+  margin-top: 20%;
   // background: #1db954;
   border-radius: 30px;
-  padding: 30px 30px;
+  padding: 20px 30px;
   /* border: 1px solid #999; */
   overflow: none;
   display: flex;
   flex-direction: column;
   flex: 0 1 auto;
+  // @media screen and (max-width: $small) {
+  //   width: 60px;
+  //   font-size: 12px;
+  // }
 }
 
 .popup-container h1 {
@@ -188,11 +186,11 @@ $small-height: 900px;
 }
 
 .popup-buttons {
-  margin-top: 20px;
+  margin-top: 15px;
   display: flex;
   justify-content: space-evenly;
-  @media screen and (max-height: $small-height) {
-    margin-top: 3px;
+  @media screen and (max-width: $small) {
+    margin-top: 7px;
   }
 }
 
@@ -204,12 +202,12 @@ $small-height: 900px;
   padding: 10px 20px;
   border-radius: 15px;
   border-width: 0px;
-  background-color: "white";
+  background: white;
   font-size: 20px;
   color: #1db954;
   font-family: "Ubuntu", sans-serif;
   cursor: pointer;
-  z-index: 2;
+  z-index: 1;
   transition: 0.25s ease;
 }
 
@@ -272,6 +270,7 @@ $small-height: 900px;
 .summaryItemHeaderName {
   display: flex;
   justify-content: center;
+  align-items: baseline;
   @media screen and (max-width: $small) {
     flex-direction: row;
   }
@@ -318,20 +317,44 @@ $small-height: 900px;
   opacity: 0.2;
 }
 
-iframe {
+.guess-popup iframe {
   border-radius: 20px;
-}
-
-.playButtonContainer {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  justify-content: flex-start;
-  align-items: center;
+  @media screen and (max-width: $small) {
+    height: 240px;
+  }
 }
 
 .hidden {
   display: none;
+}
+
+.overlay {
+  position: absolute;
+  width: 100vw;
+  pointer-events: none;
+}
+
+.overlay button {
+  pointer-events: all;
+}
+
+.overlay audio {
+  pointer-events: all;
+}
+
+.playButtonContainer {
+  // margin-left: auto;
+  position: absolute;
+  // width: 35%;
+  // display: flex;
+  left: 50%;
+  top: 20px;
+  transform: translateX(-50%); 
+  // margin-left:auto;
+  // margin-right:auto;
+  // flex-direction: column;
+  // justify-content: flex-start;
+  // align-items: center;
 }
 
 .timeControls {
@@ -341,6 +364,10 @@ iframe {
   justify-content: flex-start;
 }
 
+.timeControls p {
+  margin: 3px 0px;
+}
+
 #audioPlayer {
   display: none;
 }
@@ -348,15 +375,19 @@ iframe {
 .audioSeeker {
   flex: 1 1 auto;
   pointer-events: all;
+  width: 30vw;
+  max-width: 200px;
 }
 
 .audioButton {
   pointer-events: all;
   box-sizing: border-box;
   width: 0;
-  height: 4vw;
+  margin: auto;
+  height: 6vw;
+  max-height: 40px;
   border-style: solid;
-  border-width: 2vw 0 2vw 3.2vw;
+  border-width: 3vw 0 3vw 4.8vw;
   border-color: transparent transparent transparent #202020;
   cursor: pointer;
   will-change: border-width;
@@ -364,8 +395,8 @@ iframe {
 }
 .audioButton.paused {
   border-style: double;
-  height: 4vw;
-  border-width: 0px 0 0px 4vw;
+  height: 6vw;
+  border-width: 0px 0 0px 6vw;
 }
 .audioButton:hover {
   border-color: transparent transparent transparent #404040;

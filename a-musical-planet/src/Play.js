@@ -28,6 +28,8 @@ const Play = ({
 
   const [currChosen, setCurrChosen] = useState("");
 
+  const [loading, setLoading] = useState(true);
+
   const handleNewChosen = useCallback((newChosen) => {
     setCurrChosen(newChosen);
   }, []);
@@ -128,6 +130,8 @@ const Play = ({
           round: currTrack.round < 5 ? currTrack.round + 1 : 1,
           id: data.tracks.items[trackIndex].track.id,
         });
+        console.log("AUDIOREF:");
+        console.log(audioRef);
         audioRef.current.load();
         audioRef.current.play();
       })
@@ -271,8 +275,10 @@ const Play = ({
   };
 
   useEffect(() => {
-    nextTrack();
-  }, []);
+    if(accessToken === null || accessToken === "")
+        return setRedirect("login");
+    if(!loading) newGame();
+  }, [loading]);
 
   if (redirect !== "") {
     return <Redirect to={`/${redirect}`} />;
@@ -283,17 +289,19 @@ const Play = ({
   return (
     <>
       <div className="play-section">
-        <div className="overlay">
-          <CountryGuessInfo
-            currChosen={currChosen}
-            guessGiven={guessGiven}
-            audioRef={audioRef}
-            trackURL={currTrack.url}
-          />
-          {/* <button onClick={refreshToken}>Refresh</button> */}
-        </div>
+        {true ? 
+          <div className="overlay">
+            <CountryGuessInfo
+              currChosen={currChosen}
+              guessGiven={guessGiven}
+              audioRef={audioRef}
+              trackURL={currTrack.url}
+              loading={loading}
+            />
+          </div>
+        : <></>}
         <div className="map-div">
-          <MapPage handleNewChosen={handleNewChosen} currMap={currMap} />
+          <MapPage handleNewChosen={handleNewChosen} setPlayLoading={setLoading} currMap={currMap} />
         </div>
         <GuessPopup
           show={popup.show}

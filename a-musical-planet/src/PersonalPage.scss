@@ -11,6 +11,15 @@ $small: 650px;
   display: flex;
   flex-direction: column;
   padding: 3% 0px;
+  @media screen and (max-width: $small) {
+    margin-top: 15%;
+  }
+}
+
+.userPage h1, .userPage h2 {
+  @media screen and (max-width: $small) {
+    margin: 5px 0px;
+  }
 }
 
 .userHead > img {
@@ -24,6 +33,7 @@ $small: 650px;
 .userName {
   display: flex;
   justify-content: center;
+  align-items: baseline;
 }
 
 .userName > img {
@@ -39,29 +49,34 @@ $small: 650px;
 
 .statsHead {
   display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
   justify-content: space-evenly;
   align-items: center;
-  width: 70%;
+  width: 90%;
   margin: auto;
+}
+
+.statsHead h2 {
+  @media screen and (max-width: $small) {
+    display: none;
+  }
 }
 
 .statsHead select {
   /* background-color: #1abc9c; */
   background-color: white;
   border: 1px solid black;
-  height: 25%;
+  height: 40px;
   color: black;
   font-size: inherit;
   padding: 0.5em;
   padding-right: 2.5em;
   /* border: 0; */
-  margin: 0;
+  margin: 5px 0px;
   border-radius: 3px;
   text-indent: 0.01px;
   text-overflow: "";
-  -webkit-appearance: button; /* hide default arrow in chrome OSX */
+  -moz-appearance: menulist-button;
+  -webkit-appearance: menulist-button;
 }
 
 .statsBody {
@@ -71,6 +86,7 @@ $small: 650px;
   @media screen and (max-width: $small) {
     flex-direction: column;
     align-items: center;
+    margin-top: 5px;
   }
 }
 
@@ -83,6 +99,9 @@ $small: 650px;
   // margin: 10px 0px;
   padding: 0px 15px;
   height: 85px;
+  @media screen and (max-width: $small) {
+    width: 50%;
+  }
 }
 
 .statsBody > * * {

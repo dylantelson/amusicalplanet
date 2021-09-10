@@ -4,7 +4,7 @@ import "./ChooseMap.scss";
 import MapData from "./MapData.json";
 
 const ChooseMap = ({ handleMapChosen }) => {
-  const [chosenMap, setChosenMap] = useState("World Hard");
+  const [chosenMap, setChosenMap] = useState("World Easy");
   const [chosenMapCategory, setChosenMapCategory] = useState("World");
   const chosenMapData = MapData.find((map) => map.name === chosenMap);
 

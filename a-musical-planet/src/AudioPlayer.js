@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 // import "./Play.scss";
 
-const AudioPlayer = ({ audioRef, trackURL }) => {
+const AudioPlayer = ({ audioRef, trackURL, loading }) => {
   const [paused, setPaused] = useState(true);
   const [currTime, setCurrTime] = useState(0);
   const togglePause = () => {
@@ -34,7 +34,7 @@ const AudioPlayer = ({ audioRef, trackURL }) => {
   // };
 
   return (
-    <>
+    <div className={loading ? "hidden" : ""}>
       <audio
         id="audioPlayer"
         controls
@@ -77,7 +77,7 @@ const AudioPlayer = ({ audioRef, trackURL }) => {
           </p>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

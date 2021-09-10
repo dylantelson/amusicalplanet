@@ -17,7 +17,7 @@ const Leaderboard = () => {
       },
       method: "GET",
     }).then((leaderboardData) => {
-      console.log("LEADERBOARD:");
+      console.log("LeADERBOARD:");
       console.log(leaderboardData);
       setLeaderboardStats(leaderboardData.data);
     });
@@ -48,7 +48,7 @@ const Leaderboard = () => {
         <img
           src="/next.png"
           id="leftArrow"
-          className={currPage <= 0 ? "disabledArrow" : ""}
+          className={(!leaderboardStats[chosenMap] ? "hidden " : "") + (currPage <= 0 ? "disabledArrow" : "")}
           onClick={() => (currPage > 0 ? setCurrPage(currPage - 1) : null)}
         />
         <div className="leaderboardUsers">
@@ -72,7 +72,7 @@ const Leaderboard = () => {
         <img
           src="/next.png"
           id="rightArrow"
-          className={currPage >= 4 ? "disabledArrow" : ""}
+          className={(!leaderboardStats[chosenMap] ? "hidden " : "") + (currPage >= 4 ? "disabledArrow" : "")}
           onClick={() => (currPage < 4 ? setCurrPage(currPage + 1) : null)}
         />
       </div>

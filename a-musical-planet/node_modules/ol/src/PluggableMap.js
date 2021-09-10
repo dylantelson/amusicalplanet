@@ -66,7 +66,7 @@ import {removeNode} from './dom.js';
 
 /**
  * @typedef {Object} AtPixelOptions
- * @property {undefined|function(import("./layer/Layer.js").default): boolean} [layerFilter] Layer filter
+ * @property {undefined|function(import("./layer/Layer.js").default<import("./source/Source").default>): boolean} [layerFilter] Layer filter
  * function. The filter function will receive one argument, the
  * {@link module:ol/layer/Layer layer-candidate} and it should return a boolean value.
  * Only layers which are visible and for which this function returns `true`
@@ -143,6 +143,11 @@ import {removeNode} from './dom.js';
  */
 
 /**
+ * @fires import("./MapBrowserEvent.js").MapBrowserEvent
+ * @fires import("./MapEvent.js").MapEvent
+ * @fires import("./render/Event.js").default#precompose
+ * @fires import("./render/Event.js").default#postcompose
+ * @fires import("./render/Event.js").default#rendercomplete
  * @api
  */
 class PluggableMap extends BaseObject {
@@ -383,16 +388,6 @@ class PluggableMap extends BaseObject {
     // is "defined" already.
     this.setProperties(optionsInternal.values);
 
-    this.controls.forEach(
-      /**
-       * @param {import("./control/Control.js").default} control Control.
-       * @this {PluggableMap}
-       */
-      function (control) {
-        control.setMap(this);
-      }.bind(this)
-    );
-
     this.controls.addEventListener(
       CollectionEventType.ADD,
       /**
@@ -410,16 +405,6 @@ class PluggableMap extends BaseObject {
        */
       function (event) {
         event.element.setMap(null);
-      }.bind(this)
-    );
-
-    this.interactions.forEach(
-      /**
-       * @param {import("./interaction/Interaction.js").default} interaction Interaction.
-       * @this {PluggableMap}
-       */
-      function (interaction) {
-        interaction.setMap(this);
       }.bind(this)
     );
 
@@ -442,8 +427,6 @@ class PluggableMap extends BaseObject {
         event.element.setMap(null);
       }.bind(this)
     );
-
-    this.overlays_.forEach(this.addOverlayInternal_.bind(this));
 
     this.overlays_.addEventListener(
       CollectionEventType.ADD,
@@ -473,6 +456,28 @@ class PluggableMap extends BaseObject {
         event.element.setMap(null);
       }.bind(this)
     );
+
+    this.controls.forEach(
+      /**
+       * @param {import("./control/Control.js").default} control Control.
+       * @this {PluggableMap}
+       */
+      function (control) {
+        control.setMap(this);
+      }.bind(this)
+    );
+
+    this.interactions.forEach(
+      /**
+       * @param {import("./interaction/Interaction.js").default} interaction Interaction.
+       * @this {PluggableMap}
+       */
+      function (interaction) {
+        interaction.setMap(this);
+      }.bind(this)
+    );
+
+    this.overlays_.forEach(this.addOverlayInternal_.bind(this));
   }
 
   /**
@@ -553,7 +558,7 @@ class PluggableMap extends BaseObject {
    * callback with each intersecting feature. Layers included in the detection can
    * be configured through the `layerFilter` option in `opt_options`.
    * @param {import("./pixel.js").Pixel} pixel Pixel.
-   * @param {function(import("./Feature.js").FeatureLike, import("./layer/Layer.js").default, import("./geom/SimpleGeometry.js").default): T} callback Feature callback. The callback will be
+   * @param {function(import("./Feature.js").FeatureLike, import("./layer/Layer.js").default<import("./source/Source").default>, import("./geom/SimpleGeometry.js").default): T} callback Feature callback. The callback will be
    *     called with two arguments. The first argument is one
    *     {@link module:ol/Feature feature} or
    *     {@link module:ol/render/Feature render feature} at the pixel, the second is
@@ -563,7 +568,7 @@ class PluggableMap extends BaseObject {
    * @param {AtPixelOptions} [opt_options] Optional options.
    * @return {T|undefined} Callback result, i.e. the return value of last
    * callback execution, or the first truthy callback return value.
-   * @template S,T
+   * @template T
    * @api
    */
   forEachFeatureAtPixel(pixel, callback, opt_options) {
@@ -1524,7 +1529,14 @@ class PluggableMap extends BaseObject {
         parseFloat(computedStyle['borderBottomWidth']);
       if (!isNaN(width) && !isNaN(height)) {
         size = [width, height];
-        if (!hasArea(size)) {
+        if (
+          !hasArea(size) &&
+          !!(
+            targetElement.offsetWidth ||
+            targetElement.offsetHeight ||
+            targetElement.getClientRects().length
+          )
+        ) {
           // eslint-disable-next-line
           console.warn(
             "No map visible because the map container's width or height are 0."

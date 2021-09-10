@@ -74,7 +74,8 @@ const checkDifficulty = (mapDifficulty, countryDifficulty) => {
 
 let countriesToShow = [];
 let currSelectedCountry = null;
-const MapChart = ({ handleNewChosen, mapProps, currMap }) => {
+const MapChart = ({ handleNewChosen, mapProps, currMap, setPlayLoading }) => {
+  console.log("RENDERING MAP");
   const [loading, setLoading] = useState(true);
   useEffect(() => {
     countriesToShow = [];
@@ -94,6 +95,7 @@ const MapChart = ({ handleNewChosen, mapProps, currMap }) => {
       if (document.querySelectorAll(".rsm-geography").length !== 0) {
         clearInterval(waitForMapLoad);
         setLoading(false);
+        setPlayLoading(false);
       }
     }, 500);
   }, [currMap]);
@@ -193,10 +195,11 @@ const MapChart = ({ handleNewChosen, mapProps, currMap }) => {
     if (area > 1000000) return { fontSize: "9px" };
     if (area > 500000) return { fontSize: "7px" };
     if (area > 300000) return { fontSize: "5px" };
-    if (area > 200000) return { fontSize: "4px" };
-    if (area > 100000) return { fontSize: "3px" };
-    if (area > 70000) return { fontSize: "2.5px" };
-    return { fontSize: "2px" };
+    // if (area > 200000) return { fontSize: "4px" };
+    // if (area > 100000) return { fontSize: "3px" };
+    return { fontSize: "4px" };
+    // if (area > 70000) return { fontSize: "2.5px" };
+    // return { fontSize: "2px" };
   };
 
   const hoveredStyle = (color) => {

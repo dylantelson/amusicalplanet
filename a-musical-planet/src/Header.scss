@@ -45,11 +45,11 @@ $small: 650px;
 
 .userLink {
   margin-left: 5px;
-  display: flex;
 }
 
 .userLink img {
   width: 50px;
+  height: auto;
   border-radius: 50%;
 }
 
@@ -149,19 +149,20 @@ $small: 650px;
   color: #232323;
   font-size: 25px;
   margin: 10px 0px;
-  transition: color 0.3s ease;
+  // transition: color 0.3s ease;
   padding: 10px 0px;
   border-radius: 50px;
+  border: 1px solid black;
 }
 
-#menu a:hover {
-  color: tomato;
-}
+// #menu a:hover {
+//   color: tomato;
+// }
 
 #menu {
   z-index: 2;
   background-color: #fcfaf9;
-  top: 10vh;
+  top: 11vh;
   margin-top: 100px;
   display: none;
   position: absolute;

@@ -36,8 +36,8 @@ $small: 768px;
   margin-bottom: 25px;
   border-radius: 3px;
   text-indent: 0.01px;
-  text-overflow: "";
-  -webkit-appearance: button; /* hide default arrow in chrome OSX */
+  -moz-appearance: menulist-button;
+  -webkit-appearance: menulist-button;
 }
 
 .MapHead {
@@ -100,8 +100,8 @@ $small: 768px;
   margin: 0;
   border-radius: 3px;
   text-indent: 0.01px;
-  text-overflow: "";
-  -webkit-appearance: button; /* hide default arrow in chrome OSX */
+  -moz-appearance: menulist-button;
+  -webkit-appearance: menulist-button;
 }
 
 .MapItem img {
