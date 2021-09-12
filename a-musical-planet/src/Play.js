@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef, useCallback } from "react";
 import { Redirect } from "react-router-dom";
 
-import MapPage from "./MapPage";
+import MapChart from "./MapChart";
 import GuessPopup from "./GuessPopup";
 import CountryGuessInfo from "./CountryGuessInfo.js";
 import "./Play.scss";
@@ -59,7 +59,6 @@ const Play = ({
       roundScore: 0,
     });
     setCurrChosen("");
-    console.log("PLAY_ACCESS_TOKEN", accessToken);
     if (accessToken === null || accessToken === "") {
       return setRedirect("login");
     }
@@ -95,7 +94,6 @@ const Play = ({
       }
     )
       .then((response) => {
-        console.log(response.status);
         if (response.status >= 400) throw response;
         return response.json();
       })
@@ -116,7 +114,6 @@ const Play = ({
             track = "";
           }
         }
-        console.log(track);
         setCurrTrack({
           url: track.preview_url,
           artist: data.tracks.items[trackIndex].track.artists[0].name,
@@ -127,8 +124,6 @@ const Play = ({
           round: currTrack.round < 5 ? currTrack.round + 1 : 1,
           id: data.tracks.items[trackIndex].track.id,
         });
-        console.log("AUDIOREF:");
-        console.log(audioRef);
         audioRef.current.load();
         audioRef.current.play();
       })
@@ -153,7 +148,6 @@ const Play = ({
   };
 
   const refreshToken = () => {
-    console.log("OLD ACCESS TOKEN:", accessToken);
     fetch(`${process.env.REACT_APP_BACKEND_URI}/refreshToken`, {
       method: "GET",
       credentials: "include",
@@ -165,11 +159,9 @@ const Play = ({
       .then((newAccessToken) => newAccessToken.json())
       .then((data) => {
         if (data && data.access_token) {
-          console.log("RETURNING NEW ACCESS TOKEN:", data.access_token);
           setAccessTokenHandler(data.access_token);
           return nextTrack();
         }
-        console.log("Could not refresh! Going to server's /getNewToken...");
         return window.location.replace(
           `${process.env.REACT_APP_BACKEND_URI}/getNewToken`
         );
@@ -218,8 +210,6 @@ const Play = ({
       haversine(chosenCountryCoords, currTrackCountryCoords) / 1000 / 2
     );
 
-    console.log("Initial deduction", scoreDeduction);
-
     switch (currMap) {
       case "Europe":
         scoreDeduction *= 4;
@@ -242,8 +232,6 @@ const Play = ({
       default:
         break;
     }
-
-    console.log("Final deduction", scoreDeduction);
 
     let score = maxScore - scoreDeduction;
     if (score < 0) score = 0;
@@ -298,7 +286,7 @@ const Play = ({
           </div>
         : <></>}
         <div className="map-div">
-          <MapPage handleNewChosen={handleNewChosen} setPlayLoading={setLoading} currMap={currMap} />
+          <MapChart handleNewChosen={handleNewChosen} setPlayLoading={setLoading} currMap={currMap} />
         </div>
         <GuessPopup
           show={popup.show}

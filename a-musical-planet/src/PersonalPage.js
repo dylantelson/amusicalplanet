@@ -29,7 +29,7 @@ const PersonalPage = () => {
       {userData ? (
         <div className="userPage">
           <div className="userHead">
-            <img src={userData.profilePicture} alt="User" />
+            <img src={userData.profilePicture !== "NONE" ? userData.profilePicture : "/defaultavatar.png"} alt="User" />
             <div className="userName">
               <h1>{userData.displayName}</h1>
               <img

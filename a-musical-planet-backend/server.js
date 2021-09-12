@@ -316,6 +316,8 @@ app.get("/callback", function (req, res) {
             console.log(`USER ${parsedBody.id} ALREADY EXISTS`);
           } else {
             console.log(`CREATING USER WITH ID ${parsedBody.id}`);
+            let profilePic = "NONE";
+            if(parsedBody.images && parsedBody.images[0]) profilePic = parsedBody.images[0].url;
             const user = new User({
               displayName: parsedBody.display_name,
               userName: parsedBody.id,
@@ -333,7 +335,7 @@ app.get("/callback", function (req, res) {
                   overall: 0,
                 },
               },
-              profilePicture: parsedBody.images[0].url,
+              profilePicture: profilePic,
               country: parsedBody.country,
             });
             user

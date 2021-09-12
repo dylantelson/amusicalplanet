@@ -5,7 +5,7 @@ const LeaderboardUser = ({ userData, map, rank }) => {
   return (
     <div className="leaderboardUser">
       <h1 className="rank">{rank}</h1>
-      <img src={userData.profilePicture} alt="User" />
+      <img src={userData.profilePicture !== "NONE" ? userData.profilePicture : "/defaultavatar.png"} alt="User" />
       <div className="names">
         <Link to={`/user/${userData.userName}`}>{userData.displayName}</Link>
         <p>{userData.userName}</p>

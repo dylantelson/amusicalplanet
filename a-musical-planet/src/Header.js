@@ -59,7 +59,7 @@ const Header = () => {
           </NavLink>
           {userData && userData.displayName ? (
             <NavLink className="userLink" to={`/user/${userData.userName}`}>
-              <img src={userData.profilePicture} alt="" />
+              <img src={userData.profilePicture !== "NONE" ? userData.profilePicture : "/defaultavatar.png"} alt="" />
             </NavLink>
           ) : (
             <></>

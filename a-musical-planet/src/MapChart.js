@@ -16,6 +16,8 @@ const worldCountries = require("./WorldInfo.json");
 
 const worldGeoSVG = require("./WorldSVG50m.json");
 const colors = require("./colors.json");
+
+const MapPropsJSON = require("./MapProps.json");
 // const europeGeoSVG = require("./EuropeInfo.json");
 
 // const locationInfo = {
@@ -74,9 +76,9 @@ const checkDifficulty = (mapDifficulty, countryDifficulty) => {
 
 let countriesToShow = [];
 let currSelectedCountry = null;
-const MapChart = ({ handleNewChosen, mapProps, currMap, setPlayLoading }) => {
-  console.log("RENDERING MAP");
+const MapChart = ({ handleNewChosen, currMap, setPlayLoading }) => {
   const [loading, setLoading] = useState(true);
+  const mapProps = currMap.slice(0, 5) === "world" ? MapPropsJSON.world : MapPropsJSON[currMap];
   useEffect(() => {
     countriesToShow = [];
     currSelectedCountry = null;
@@ -90,7 +92,6 @@ const MapChart = ({ handleNewChosen, mapProps, currMap, setPlayLoading }) => {
         countriesToShow.push(camelize(playlist.country));
       }
     }
-    console.log(countriesToShow);
     var waitForMapLoad = setInterval(function () {
       if (document.querySelectorAll(".rsm-geography").length !== 0) {
         clearInterval(waitForMapLoad);

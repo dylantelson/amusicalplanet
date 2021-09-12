@@ -1,7 +1,7 @@
 import React from "react";
 
 const CustomiFrame = React.memo(({ src, width, height }) => {
-  console.log("RENDERING IFRAME");
+  if(!src) return null;
   return (
     <iframe
       src={src}
