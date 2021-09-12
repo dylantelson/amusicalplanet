@@ -245,7 +245,7 @@ const MapChart = ({ handleNewChosen, currMap, setPlayLoading }) => {
         projection={projection}
         style={{
           width: "100%",
-          height: "auto",
+          height: "100%",
           outline: "none",
         }}
       >
