@@ -238,7 +238,7 @@ const MapChart = ({ handleNewChosen, currMap, setPlayLoading }) => {
   // }, [currLocation]);
 
   return (
-    <>
+    <div className="map">
       {loading ? <h1 className="mapLoading">Loading...</h1> : <></>}
       <ComposableMap
         data-tip=""
@@ -361,7 +361,7 @@ const MapChart = ({ handleNewChosen, currMap, setPlayLoading }) => {
           })}
         </ZoomableGroup>
       </ComposableMap>
-    </>
+    </div>
   );
 };
 

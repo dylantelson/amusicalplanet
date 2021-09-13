@@ -143,11 +143,6 @@ function App() {
       accessTokenExpireDate.getTime() + 3600 * 1000
     );
 
-    let refreshTokenExpireDate = new Date();
-    refreshTokenExpireDate.setTime(
-      refreshTokenExpireDate.getTime() + 3600 * 1000 * 24 * 365
-    );
-
     document.cookie =
       "accessToken=" +
       newAccessToken +

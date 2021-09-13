@@ -8,7 +8,7 @@ const ChooseMap = ({ handleMapChosen }) => {
   const [chosenMapCategory, setChosenMapCategory] = useState("World");
   const chosenMapData = MapData.find((map) => map.name === chosenMap);
 
-  const mapCategories = ["World", "Continent", "Other"];
+  const mapCategories = ["World", "Continent"]; //add "Other" when USA map is made
 
   return (
     <div className="ChooseMapContainer">

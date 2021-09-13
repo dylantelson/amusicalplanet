@@ -13,7 +13,7 @@ $tiny: 450px;
   justify-content: space-around;
   width: 90%;
   max-width: 600px;
-  margin: 2% auto 0px auto;
+  margin: 2vh auto 0px auto;
   padding-bottom: 3px;
 }
 
@@ -74,7 +74,7 @@ $tiny: 450px;
   align-items: center;
   border: 0px;
   box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
-  margin: 0px 0px 20px 0px;
+  margin: 0px 0px #{"min(20px, 2vh)"} 0px;
   background-color: #fff;
   /* width: 20%; */
   height: auto;
@@ -84,11 +84,11 @@ $tiny: 450px;
   width: 90%;
   // max-width: 600px;
   max-height: 450px;
-  padding: 12px 12px;
+  padding: #{"min(12px, 1vh)"} 12px;
   border-radius: 15px;
-  @media screen and (max-width: $tiny) {
-    margin: 0px 0px 10px 0px;
-  }
+  // @media screen and (max-width: $tiny) {
+  //   margin: 0px 0px 10px 0px;
+  // }
 }
 
 // .leaderboard button {
@@ -102,15 +102,12 @@ $tiny: 450px;
 }
 
 .leaderboardUser img {
-  width: 80px;
-  height: 80px;
+  width: #{"min(80px, 9vh, 17vw)"};
+  height: #{"min(80px, 9vh, 17vw)"};
+  min-width: 55px;
+  min-height: 55px;
   border-radius: 50%;
-  margin: 0px 20px;
-  @media screen and (max-width: $tiny) {
-    width: 55px;
-    height: 55px;
-    margin: 0px 6px;
-  }
+  margin: 0px #{"min(20px, 2vw)"};
 }
 
 .leaderboardUser a {

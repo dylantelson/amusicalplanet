@@ -56,7 +56,7 @@ $small: 650px;
   align-items: center;
   border: 0px;
   box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
-  margin: 0px 10px 20px 10px;
+  margin: 0px 15px 20px 15px;
   background-color: #fff;
   width: #{"min(28vw, 30vh)"};
   height: fit-content;
@@ -66,7 +66,7 @@ $small: 650px;
   max-height: 450px;
   border-radius: 20px;
   max-width: 330px;
-  padding: 8px;
+  padding: 8px 0px;
   padding-top: 0px;
   @media screen and (max-width: $small) {
     width: 75%;
@@ -124,11 +124,11 @@ $small: 650px;
 }
 
 .MapItem p {
-  font-size: #{"min(1vw, 1.5vh)"};
+  font-size: 13px;
   margin: #{"min(0.67vw, 1vh)"} 0px;
+  margin: 9px 5px;
   @media screen and (max-width: $small) {
-    font-size: #{"min(3vw, 4vh)"};
-    margin: #{"min(1.3vw, 1vh)"} 0px;
+    font-size: 15px;
   }
 }
 

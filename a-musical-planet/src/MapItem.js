@@ -16,7 +16,7 @@ const MapItem = ({ map, handleMapChosen }) => {
       : 0;
   return (
     <div className="MapItem">
-      <img src={"/mapimages/" + map.image} alt={map.name} />
+      <img src={"/mapimages/" + formattedMapName + ".png"} alt={map.name} />
       <h1>{map.name}</h1>
       <p>{map.description}</p>
       <p>{`Max Score: ${maxScore}`}</p>
