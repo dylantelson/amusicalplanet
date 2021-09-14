@@ -15,7 +15,8 @@ const GuessPopup = ({
   sessionInfo,
   newGame,
   sendScoreToServer,
-  currMap,
+  likeTrack,
+  setRedirect
 }) => {
   // const userData = useContext(UserContext);
   // console.log("USER DATA");
@@ -23,6 +24,18 @@ const GuessPopup = ({
 
   const [gameFinished, setGameFinished] = useState(false);
   const [showSummary, setShowSummary] = useState(false);
+  const [liked, setLiked] = useState(false);
+
+  const handleLike = () => {
+    likeTrack(liked);
+    setLiked(!liked);
+  }
+
+  const handleNext = () => {
+    setLiked(false);
+    nextTrack();
+  }
+
   const correctText = (
     <div>
       <h1>Good job!</h1>
@@ -58,6 +71,7 @@ const GuessPopup = ({
         sessionScore={sessionScore}
         sessionInfo={sessionInfo}
         summaryExit={summaryExit}
+        setRedirect={setRedirect}
       />
       <div
         className={"popup-container" + (!show || showSummary ? " hidden" : "")}
@@ -96,13 +110,20 @@ const GuessPopup = ({
           >
             {/* <button>LIKE</button> */}
             {/* <button>PLAY</button> */}
+            <button
+                id="likeButton"
+                onClick={handleLike}
+              >
+                <img className="spotifyIcon" src="/spotifyicon.png" alt="Spotify icon"/>
+                {liked ? "UNLIKE" : "LIKE"}
+              </button>
             {currTrack.round < 5 ? (
               <button
-                style={{ color: `#${getMixedColor(roundScore / 5000)}` }}
-                onClick={nextTrack}
-              >
-                NEXT
-              </button>
+              style={{ color: `#${getMixedColor(roundScore / 5000)}` }}
+              onClick={handleNext}
+            >
+              NEXT
+            </button>
             ) : (
               <button
                 style={{ color: `#${getMixedColor(roundScore / 5000)}` }}

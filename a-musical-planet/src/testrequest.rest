@@ -1,7 +1,7 @@
-GET https://api.spotify.com/v1/me/
-    Content-Type: "application/json"
-    Accept: "application/json"
-    Authorization: "Bearer BQDM9fJJ2kyFMptRPPioAsIpPDiliGYQfjG5N25YLLmrbORJ6Ak414Eo7uqo6b0LdpvFTb4OJOJuTJIG_xoe3nSMc40yar5dFQNsP1AioTrWvA0H80lSv9HLQ0kEGEHdX7WzMSbHrVfwBhDGMWQxUwCbutFooNw7FwYsbiV1jFCa9kL_xQ"
+# GET https://api.spotify.com/v1/me/
+#     Content-Type: "application/json"
+#     Accept: "application/json"
+#     Authorization: "Bearer BQDM9fJJ2kyFMptRPPioAsIpPDiliGYQfjG5N25YLLmrbORJ6Ak414Eo7uqo6b0LdpvFTb4OJOJuTJIG_xoe3nSMc40yar5dFQNsP1AioTrWvA0H80lSv9HLQ0kEGEHdX7WzMSbHrVfwBhDGMWQxUwCbutFooNw7FwYsbiV1jFCa9kL_xQ"
 
 # GET https://api.spotify.com/v1/playlists/203Sb3O6IJHmhZjc6T1evu
 #     Content-Type: "application/json"
@@ -15,3 +15,6 @@ GET https://api.spotify.com/v1/me/
 # GET http://localhost:8888/getLeaderboard/
 
 # POST http://localhost:8888/createRandomUsers/20
+
+PUT https://api.spotify.com/v1/me/tracks?ids=3jtjMFHZUpdjQr1n2UWltQ
+    Authorization: "Bearer BQBnc_xljmjWNmCxo3k6H_MMZ-GwzXKwfaESl8gpuR9syDXbb5ZI7V92_3h1RgMawGbf8Cjj7eS0atd9GoG1SIr0YMBRCxid-j7QUYBDhtTt9n6iqVtx-WCz6OnjYL98ptvtOcbM-xDXzkrSVYKwywowvtUJihkHAVMVIuTAG2k1NNs"

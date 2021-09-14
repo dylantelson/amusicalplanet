@@ -5,7 +5,7 @@ $small: 650px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: 10vh;
+  height: 10%;
   min-height: 75px;
   width: 100%;
 }
@@ -162,13 +162,13 @@ $small: 650px;
 #menu {
   z-index: 2;
   background-color: #fcfaf9;
-  top: 11vh;
-  margin-top: 100px;
+  top: 12%;
+  // margin-top: 100px;
   display: none;
   position: absolute;
   flex-direction: column;
   // float: right;
-  height: 90vh;
+  height: 90%;
   width: 100vw;
   color: white;
   // left: 100vw;

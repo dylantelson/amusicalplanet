@@ -83,16 +83,15 @@ app.use((req, res, next) => {
 
 app.get("/login", function (req, res) {
   console.log("LOGGING IN");
-  if (!req.session.user || !req.session.user.refresh_token)
+  if (!req.session.user || !req.session.user.refresh_token) {
     return createNewSession(res);
-  if (req.session.user.access_token && req.session.user.access_token !== "") {
+  }
+  if (req.session.user.access_token && req.session.user.access_token !== "" && req.session.user.access_token_expire_date && req.session.user.access_token_expire_date > new Date().getTime()) {
     console.log("Session existing");
     return res.redirect(
       process.env.FRONTEND_URI +
         "/auth/?access_token=" +
-        req.session.user.access_token +
-        "&refresh_token=" +
-        req.session.user.refresh_token
+        req.session.user.access_token
     );
   }
   if (req.session.user.refresh_token !== "") {
@@ -121,16 +120,21 @@ app.get("/login", function (req, res) {
       var access_token = body.access_token;
       var refresh_token = body.refresh_token;
       let uri = process.env.FRONTEND_URI || "http://localhost:3000/auth/";
+
+      let access_token_expire_date = new Date();
+      access_token_expire_date.setTime(
+      access_token_expire_date.getTime() + 60 * 60 * 1000
+      );
+
       req.session.user = {
         access_token,
-        refresh_token,
+        access_token_expire_date, 
+        refresh_token
       };
       return res.redirect(
         uri +
           "/auth/?access_token=" +
-          access_token +
-          "&refresh_token=" +
-          refresh_token
+          access_token
       );
       // request.get(
       //   {
@@ -157,8 +161,7 @@ app.get("/login", function (req, res) {
       //   }
       // );
     });
-  }
-  return createNewSession(res);
+  } else return createNewSession(res);
 });
 
 const createNewSession = (res) => {
@@ -168,7 +171,7 @@ const createNewSession = (res) => {
       querystring.stringify({
         response_type: "code",
         client_id: process.env.SPOTIFY_CLIENT_ID,
-        scope: "user-read-private user-read-email",
+        scope: "user-read-private user-read-email user-library-modify",
         redirect_uri,
       })
   );
@@ -199,9 +202,15 @@ app.get("/refreshToken", function (req, res) {
     if (!body.access_token || body.access_token === "")
       return createNewSession(res);
 
+      let access_token_expire_date = new Date();
+      access_token_expire_date.setTime(
+      access_token_expire_date.getTime() + 60 * 1000
+      );
+
     req.session.user = {
       id: req.session.user.id,
       access_token: body.access_token,
+      access_token_expire_date,
       refresh_token: req.session.user.refresh_token,
     };
     return res.json({
@@ -234,18 +243,23 @@ app.get("/getNewToken", function (req, res) {
   request.post(authOptions, function (error, response, body) {
     if (!body.access_token || body.access_token === "")
       return createNewSession(res);
+
+      let access_token_expire_date = new Date();
+      access_token_expire_date.setTime(
+      access_token_expire_date.getTime() + 60 * 1000
+      );
+
     req.session.user = {
       id: req.session.user.id,
       access_token: body.access_token,
+      access_token_expire_date,
       refresh_token: req.session.user.refresh_token,
     };
     let uri = process.env.FRONTEND_URI || "http://localhost:3000/auth/";
     return res.redirect(
       uri +
         "/auth/?access_token=" +
-        body.access_token +
-        "&refresh_token=" +
-        req.session.user.refresh_token
+        body.access_token
     );
   });
 });
@@ -306,9 +320,14 @@ app.get("/callback", function (req, res) {
       },
       function (error, response, body) {
         const parsedBody = JSON.parse(body);
+        let access_token_expire_date = new Date();
+        access_token_expire_date.setTime(
+        access_token_expire_date.getTime() + 60 * 1000
+        );
         req.session.user = {
           id: JSON.parse(body).id,
           access_token,
+          access_token_expire_date,
           refresh_token,
         };
         User.findOne({ userName: parsedBody.id }).then((user, err) => {
@@ -349,9 +368,7 @@ app.get("/callback", function (req, res) {
         return res.redirect(
           uri +
             "/auth/?access_token=" +
-            access_token +
-            "&refresh_token=" +
-            refresh_token
+            access_token
         );
       }
     );

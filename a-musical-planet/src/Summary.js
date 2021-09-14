@@ -1,7 +1,8 @@
 import React, { useState } from "react";
+import { Redirect } from "react-router-dom";
 import SummaryItem from "./SummaryItem";
 
-const Summary = ({ sessionInfo, sessionScore, summaryExit, show }) => {
+const Summary = ({ sessionInfo, sessionScore, summaryExit, show, setRedirect }) => {
   const [roundSelected, setRoundSelected] = useState(0);
   return (
     <div className={"popup-container" + (!show ? " hidden" : "")}>
@@ -55,7 +56,10 @@ const Summary = ({ sessionInfo, sessionScore, summaryExit, show }) => {
           )}
         </div>
         <div className="popup-buttons">
-          <button id="summary-button" onClick={summaryExit}>
+        <button className="summary-button" onClick={() => setRedirect("maps")}>
+            MAPS
+          </button>
+          <button className="summary-button" onClick={summaryExit}>
             NEW GAME
           </button>
         </div>

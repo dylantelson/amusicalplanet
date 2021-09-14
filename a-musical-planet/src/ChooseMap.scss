@@ -25,15 +25,15 @@ $small: 650px;
   /* background-color: #1abc9c; */
   background-color: white;
   border: 1px solid black;
-  height: 40px;
+  height: #{"min(40px, 4.5vh)"};;
   width: 150px;
   margin: auto;
   color: black;
-  font-size: inherit;
+  font-size: #{"min(16px, 2vh)"};;
   padding: 0.5em;
   padding-right: 2.5em;
   /* border: 0; */
-  margin-bottom: 25px;
+  margin-bottom: #{"min(25px, 2.5vh)"};;
   border-radius: 3px;
   text-indent: 0.01px;
   -moz-appearance: menulist-button;
@@ -46,33 +46,7 @@ $small: 650px;
 
 .MapHead h1 {
   font-size: #{"min(32px, 4vh)"};
-}
-
-.MapItem {
-  display: flex;
-  flex-direction: column;
-  flex: 0 1 auto;
-  justify-content: flex-start;
-  align-items: center;
-  border: 0px;
-  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
-  margin: 0px 15px 20px 15px;
-  background-color: #fff;
-  width: #{"min(28vw, 30vh)"};
-  height: fit-content;
-  min-height: 0;
-  /* min-width: 150px; */
-  overflow: hidden;
-  max-height: 450px;
-  border-radius: 20px;
-  max-width: 330px;
-  padding: 8px 0px;
-  padding-top: 0px;
-  @media screen and (max-width: $small) {
-    width: 75%;
-    margin: auto;
-    margin-top: 5vh;
-  }
+  margin: #{"min(14px, 2.3vh)"} 0px;
 }
 
 .MapItemsMobile {
@@ -104,6 +78,34 @@ $small: 650px;
   -webkit-appearance: menulist-button;
 }
 
+.MapItem {
+  display: flex;
+  flex-direction: column;
+  flex: 0 1 auto;
+  justify-content: flex-start;
+  align-items: center;
+  border: 0px;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  margin: 0px 15px #{"min(20px, 2.3vh)"} 15px;
+  background-color: #fff;
+  width: #{"min(28vw, 30vh)"};
+  height: fit-content;
+  min-height: 0;
+  /* min-width: 150px; */
+  overflow: hidden;
+  max-height: 450px;
+  border-radius: 20px;
+  max-width: 330px;
+  padding: 8px 0px;
+  padding-top: 0px;
+  @media screen and (max-width: $small) {
+    width: 75%;
+    margin: auto;
+    margin-top: 5vh;
+    padding: 0px;
+  }
+}
+
 .MapItem img {
   max-height: 40%;
   min-width: 0;
@@ -124,16 +126,15 @@ $small: 650px;
 }
 
 .MapItem p {
-  font-size: 13px;
-  margin: #{"min(0.67vw, 1vh)"} 0px;
-  margin: 9px 5px;
+  font-size: #{"min(13px, 1.6vh)"};
+  margin: #{"min(9px, 0.7vh)"} 5px;
   @media screen and (max-width: $small) {
     font-size: 15px;
   }
 }
 
 .MapItem a {
-  font-size: #{"min(1vw, 1.5vh)"};
+  font-size: #{"min(15px, 1.7vw, 2vh)"};
   padding: 8px 16px;
   margin: 0px 6px;
   border-radius: 6px;
@@ -145,7 +146,7 @@ $small: 650px;
   font-family: "Ubuntu", sans-serif;
   /* width: 50%; */
   @media screen and (max-width: $small) {
-    font-size: #{"min(2vw, 3vh)"};
+    font-size: #{"min(20px, 3vw, 3vh)"};
   }
 }
 

@@ -193,8 +193,11 @@ button {
   }
 }
 
-#summary-button {
-  color: #333;
+
+@media (hover: hover) {
+  .popup-buttons button:hover {
+    transform: scale(1.1);
+  }
 }
 
 .popup-buttons button {
@@ -210,12 +213,21 @@ button {
   transition: 0.25s ease;
 }
 
-.incorrect-text button {
-  color: #ee6c4d;
+.popup-buttons .summary-button {
+  color: #333;
 }
 
-.popup-buttons button:hover {
-  transform: scale(1.1);
+#likeButton {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  color: #1DB954;
+  background: black;
+  // padding: 5px 5px;
+}
+
+.incorrect-text button {
+  color: #ee6c4d;
 }
 
 .summary {
@@ -318,13 +330,27 @@ button {
 
 .guess-popup iframe {
   border-radius: 20px;
-  @media screen and (max-width: $small) {
-    height: 240px;
+  height: 30vh;
+  min-height: 250px;
+  max-height: 300px;
+  // @media screen and (max-width: $small) {
+  //   height: 240px;
+  // }
+  @media screen and (max-height: 610px) {
+    min-height: 80px;
+    height: 80px;
+    margin-bottom: 10px;
   }
 }
 
 .hidden {
   display: none;
+}
+
+.spotifyIcon {
+  width: 25px;
+  height: auto;
+  margin-right: 8px;
 }
 
 .overlay {

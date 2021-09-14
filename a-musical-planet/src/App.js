@@ -75,7 +75,7 @@ function App() {
   };
 
   useEffect(() => {
-    setTokenFromCookie();
+    if(!setTokenFromCookie()) return setRedirect("login");
   }, []);
 
   useEffect(() => {
@@ -109,19 +109,16 @@ function App() {
       })
       .catch((err) => {
         console.log("ERROR GETTING SPOTIFY USER DATA", err);
-        if (err.response.status >= 400) {
-          console.log("ERROR 400+, REFRESHING TOKEN");
           window.location.replace(
             `${process.env.REACT_APP_BACKEND_URI}/getNewToken`
           );
-        }
       });
   };
 
   const handleMapChosen = (mapName) => {
-    if (accessToken === null || accessToken === "") {
-      if (!setTokenFromCookie()) return setRedirect("login");
-    }
+    // if (accessToken === null || accessToken === "") {
+    //   if (!setTokenFromCookie()) return setRedirect("login");
+    // }
     console.log("HANDLING MAP CHOSEN");
     setCurrMap(mapName[0].toLowerCase() + mapName.slice(1).replace(/ /g, ""));
     // setRedirect("play");
@@ -140,7 +137,7 @@ function App() {
   const setAccessTokenHandler = (newAccessToken) => {
     let accessTokenExpireDate = new Date();
     accessTokenExpireDate.setTime(
-      accessTokenExpireDate.getTime() + 3600 * 1000
+      accessTokenExpireDate.getTime() + 60 * 60 * 1000
     );
 
     document.cookie =

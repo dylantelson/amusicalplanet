@@ -147,6 +147,22 @@ const Play = ({
       });
   };
 
+  const likeTrack = (liked) => {
+    if(!liked) console.log("LIKING SONG");
+    else console.log("UNLIKING SONG");
+    fetch(`https://api.spotify.com/v1/me/tracks?ids=${currTrack.id}`,
+    {
+      method: liked ? "DELETE" : "PUT",
+      headers:
+        { 
+          Authorization: "Bearer " + accessToken
+        }
+    }).then((response) => {
+      if (response.status >= 400) throw response;
+      return;
+    });
+  }
+
   const refreshToken = () => {
     fetch(`${process.env.REACT_APP_BACKEND_URI}/refreshToken`, {
       method: "GET",
@@ -290,7 +306,6 @@ const Play = ({
         </div>
         <GuessPopup
           show={popup.show}
-          currMap={currMap}
           currTrack={currTrack}
           currChosen={currChosen}
           nextTrack={nextTrack}
@@ -299,6 +314,8 @@ const Play = ({
           sessionInfo={popup.sessionInfo}
           sendScoreToServer={sendScoreToServer}
           newGame={newGame}
+          likeTrack={likeTrack}
+          setRedirect={setRedirect}
         />
       </div>
     </>
