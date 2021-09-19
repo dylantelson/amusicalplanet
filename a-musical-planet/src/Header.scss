@@ -10,16 +10,20 @@ $small: 650px;
   width: 100%;
 }
 
-.header div {
+.header > * {
   margin: 0px 4%;
 }
 
-.header h1 {
+#logo {
   font-size: 27px;
   display: flex;
   height: auto;
-  margin: 0px;
   color: #ddd;
+  text-decoration: none;
+  font-weight: bold;
+  &:hover {
+    color: #fff;
+  }
 }
 
 .navbar {
@@ -49,7 +53,7 @@ $small: 650px;
 
 .userLink img {
   width: 50px;
-  height: auto;
+  height: 50px;
   border-radius: 50%;
 }
 
@@ -164,9 +168,11 @@ $small: 650px;
   background-color: #fcfaf9;
   top: 12%;
   // margin-top: 100px;
-  display: none;
+  visibility: hidden;
   position: absolute;
   flex-direction: column;
+  display: flex;
+  opacity: 0;
   // float: right;
   height: 90%;
   width: 100vw;
@@ -175,8 +181,9 @@ $small: 650px;
   // transition: left 0.3s ease-in-out, visibility 0.3s, width 0s;
   margin: 0;
   padding: 0;
+  transition: visibility 0.1s ease-out, opacity 0.1s ease-out;
   // visibility: hidden;
   @media screen and (min-width: $small) {
-    display: none;
+    visibility: hidden;
   }
 }

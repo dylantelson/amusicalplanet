@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { Redirect } from "react-router-dom";
 import SummaryItem from "./SummaryItem";
 
 const Summary = ({ sessionInfo, sessionScore, summaryExit, show, setRedirect }) => {

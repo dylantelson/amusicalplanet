@@ -1,5 +1,5 @@
-import React, { useContext, useEffect, useState } from "react";
-import { NavLink } from "react-router-dom";
+import React, { useContext, useState } from "react";
+import { NavLink, Link } from "react-router-dom";
 
 import { UserContext } from "./App.js";
 import "./Header.scss";
@@ -13,9 +13,11 @@ const Header = () => {
     if (!menu) menu = document.getElementById("menu");
     console.log("openin!");
     if (hamburgerOpen) {
-      menu.style.display = "none";
+      menu.style.visibility = "hidden";
+      menu.style.opacity = "0";
     } else {
-      menu.style.display = "flex";
+      menu.style.visibility = "visible";
+      menu.style.opacity = "1";
     }
     setHamburgerOpen(!hamburgerOpen);
   };
@@ -23,9 +25,7 @@ const Header = () => {
   return (
     <>
       <div className="header">
-        <div className="logo">
-          <h1>A Musical Planet</h1>
-        </div>
+        <Link id="logo" to="/">A Musical Planet</Link>
         <div
           className={"hamburger" + (hamburgerOpen ? " open" : "")}
           onClick={openMenu}

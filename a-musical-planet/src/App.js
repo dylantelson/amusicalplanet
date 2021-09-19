@@ -75,7 +75,7 @@ function App() {
   };
 
   useEffect(() => {
-    if(!setTokenFromCookie()) return setRedirect("login");
+    if(!setTokenFromCookie() && !(window.location.pathname === "/")) return setRedirect("login");
   }, []);
 
   useEffect(() => {

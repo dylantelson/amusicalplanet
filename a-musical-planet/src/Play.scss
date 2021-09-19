@@ -328,8 +328,11 @@ button {
   opacity: 0.2;
 }
 
-.guess-popup iframe {
+iframe {
   border-radius: 20px;
+}
+
+.guess-popup iframe {
   height: 30vh;
   min-height: 250px;
   max-height: 300px;

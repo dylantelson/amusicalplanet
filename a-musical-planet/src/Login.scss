@@ -7,12 +7,15 @@
 }
 
 .login img {
-  width: 35%;
+  width: #{"min(60vh, 80vw)"};
+  height: auto;
+  max-width: 550px;
+  border-radius: 50%;
 }
 
 .login button {
   padding: 10px 20px;
-  margin: 0px 6px;
+  margin: 15px 6px;
   border-radius: 6px;
   border-width: 0px;
   background-color: #333;

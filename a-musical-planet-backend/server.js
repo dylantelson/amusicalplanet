@@ -127,6 +127,7 @@ app.get("/login", function (req, res) {
       );
 
       req.session.user = {
+        id: req.session.user.id,
         access_token,
         access_token_expire_date, 
         refresh_token
@@ -171,7 +172,7 @@ const createNewSession = (res) => {
       querystring.stringify({
         response_type: "code",
         client_id: process.env.SPOTIFY_CLIENT_ID,
-        scope: "user-read-private user-read-email user-library-modify",
+        scope: "user-read-private user-library-modify",
         redirect_uri,
       })
   );
