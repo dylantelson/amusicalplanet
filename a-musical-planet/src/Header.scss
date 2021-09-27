@@ -1,54 +1,97 @@
 $small: 650px;
 
 .header {
-  background-color: #333;
+  // background-color: #fcfaf9;
   display: flex;
   justify-content: space-between;
-  align-items: center;
-  height: 10%;
-  min-height: 75px;
+  align-items: flex-start;
+  height: 3vh;
+  margin-top: 3vh;
+  margin-bottom: 2vh;
+  // min-height: 75px;
   width: 100%;
+  @media screen and (max-width: $small) {
+    align-items: center;
+    margin-top: 0px;
+    height: 5vh;
+    min-height: 50px;
+    padding-top: 1.5vh;
+    margin-bottom: 1.5vh;
+    // background-color: #333;
+  }
 }
 
-.header > * {
-  margin: 0px 4%;
-}
-
-#logo {
+#logoDesktop {
+  margin-top: -0.5vh;
+  margin-left: 10%;
   font-size: 27px;
   display: flex;
   height: auto;
-  color: #ddd;
+  color: #000;
   text-decoration: none;
   font-weight: bold;
   &:hover {
-    color: #fff;
+    color: #0081af;
+  }
+  @media screen and (max-width: $small) {
+    display: none;
+  }
+}
+
+#logoMobile {
+  margin-top: -0.5vh;
+  margin-left: 10%;
+  font-size: 27px;
+  display: flex;
+  height: auto;
+  color: #000;
+  text-decoration: none;
+  font-weight: bold;
+  @media screen and (min-width: $small) {
+    display: none;
   }
 }
 
 .navbar {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
+  height: 100%;
+  margin-right: 10%;
+  // justify-content: center;
   @media screen and (max-width: $small) {
     display: none;
   }
 }
 
 .navbar .linkButton {
-  padding: #{"min(10px, 2vh)"} #{"min(20px, 1.3vw)"};
-  margin: 0px 6px;
-  border-radius: 6px;
+  // padding: #{"min(10px, 2vh)"} #{"min(20px, 1.3vw)"};
+  margin: 0px 16px;
+  // border-radius: 6px;
   border-width: 0px;
-  background-color: #ddd;
-  font-size: #{"min(20px, 2.5vw, 2.5vh)"};
+  // background-color: #ddd;
+  font-size: #{"min(24px, 2.5vw, 3.5vh)"};
   color: #000;
   font-family: "Ubuntu", sans-serif;
   cursor: pointer;
   text-decoration: none;
+  &:hover {
+    color: #0081af;
+  }
+}
+
+.activeUnderline {
+  // position: absolute;
+  height: 3px;
+  width: 45%;
+  background-color: #0081af;
+  margin: auto;
+  margin-top: 3px;
+  border-radius: 15px;
 }
 
 .userLink {
   margin-left: 5px;
+  margin-top: -1.5vh;
 }
 
 .userLink img {
@@ -59,8 +102,9 @@ $small: 650px;
 
 .hamburger {
   // float: right;
-  width: 60px;
-  height: 45px;
+  width: 50px;
+  height: 42px;
+  margin-right: 10%;
   // position: relative;
   // margin: auto;
   -webkit-transform: rotate(0deg);
@@ -81,9 +125,9 @@ $small: 650px;
 .hamburger span {
   display: block;
   position: absolute;
-  height: 9px;
+  height: 7px;
   width: 100%;
-  background: #ddd;
+  background: #000;
   border-radius: 9px;
   opacity: 1;
   left: 0;
@@ -103,15 +147,15 @@ $small: 650px;
 
 .hamburger span:nth-child(2),
 .hamburger span:nth-child(3) {
-  top: 18px;
+  top: 14px;
 }
 
 .hamburger span:nth-child(4) {
-  top: 36px;
+  top: 28px;
 }
 
 .hamburger.open span:nth-child(1) {
-  top: 18px;
+  top: 14px;
   width: 0%;
   left: 50%;
 }
@@ -131,7 +175,7 @@ $small: 650px;
 }
 
 .hamburger.open span:nth-child(4) {
-  top: 18px;
+  top: 14px;
   width: 0%;
   left: 50%;
 }

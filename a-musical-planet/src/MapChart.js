@@ -78,7 +78,10 @@ let countriesToShow = [];
 let currSelectedCountry = null;
 const MapChart = ({ handleNewChosen, currMap, setPlayLoading }) => {
   const [loading, setLoading] = useState(true);
-  const mapProps = currMap.slice(0, 5) === "world" ? MapPropsJSON.world : MapPropsJSON[currMap];
+  const mapProps =
+    currMap.slice(0, 5) === "world"
+      ? MapPropsJSON.world
+      : MapPropsJSON[currMap];
   useEffect(() => {
     countriesToShow = [];
     currSelectedCountry = null;
@@ -316,7 +319,7 @@ const MapChart = ({ handleNewChosen, currMap, setPlayLoading }) => {
                 key={country.name.common}
                 coordinates={
                   country.name.common === "Russia" && currMap === "europe"
-                    ? [country.latlng[1] - 57, country.latlng[0] - 6]
+                    ? [country.latlngAlt[1], country.latlngAlt[0]]
                     : [country.latlng[1], country.latlng[0]]
                 }
                 fill="#000"

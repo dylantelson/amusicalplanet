@@ -75,7 +75,8 @@ function App() {
   };
 
   useEffect(() => {
-    if(!setTokenFromCookie() && !(window.location.pathname === "/")) return setRedirect("login");
+    if (!setTokenFromCookie() && !(window.location.pathname === "/"))
+      return setRedirect("login");
   }, []);
 
   useEffect(() => {
@@ -109,9 +110,9 @@ function App() {
       })
       .catch((err) => {
         console.log("ERROR GETTING SPOTIFY USER DATA", err);
-          window.location.replace(
-            `${process.env.REACT_APP_BACKEND_URI}/getNewToken`
-          );
+        window.location.replace(
+          `${process.env.REACT_APP_BACKEND_URI}/getNewToken`
+        );
       });
   };
 
@@ -132,6 +133,13 @@ function App() {
 
   const handleLogin = () => {
     window.location.replace(`${process.env.REACT_APP_BACKEND_URI}/login`);
+  };
+
+  const handleLogout = () => {
+    document.cookie =
+      "accessToken=-1;expires=Thu, 01 Jan 1970 00:00:00 GMT;path=/";
+    setAccessToken("");
+    setRedirect("/");
   };
 
   const setAccessTokenHandler = (newAccessToken) => {
@@ -175,10 +183,11 @@ function App() {
         {redirect === "play" && window.location.pathname === "/maps" ? (
           <Redirect push to="play" />
         ) : null}
-        {redirect === "maps" ? <Redirect push to="/maps"/> : null}
+        {redirect === "/" ? <Redirect push to="/" replace /> : null}
+        {redirect === "maps" ? <Redirect push to="/maps" /> : null}
         {redirect === "login" ? <Redirect to="/login" /> : null}
         <UserContext.Provider value={userData}>
-          <Header/>
+          <Header />
           <Switch>
             <Route path="/auth" render={() => handleAuth()} />
             <Route
@@ -188,10 +197,12 @@ function App() {
               }
             />
             <Route exact path="/">
-              {document.cookie === "" ? (
-                <Login handleLogin={handleLogin} />
-              ) : (
+              {document.cookie.match(
+                /^(.*;)?\s*accessToken\s*=\s*[^;]+(.*)?$/
+              ) ? (
                 <Redirect to="/login" />
+              ) : (
+                <Login handleLogin={handleLogin} />
               )}
             </Route>
             <Route path="/maps">
@@ -203,7 +214,9 @@ function App() {
             <Route path="/leaderboard">
               <Leaderboard />
             </Route>
-            <Route path="/user/:userName" children={<PersonalPage />} />
+            <Route path="/user/:userName">
+              <PersonalPage handleLogout={handleLogout} />
+            </Route>
             <Route path="/play">
               <Play
                 accessToken={accessToken}

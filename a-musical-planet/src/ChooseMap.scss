@@ -25,15 +25,15 @@ $small: 650px;
   /* background-color: #1abc9c; */
   background-color: white;
   border: 1px solid black;
-  height: #{"min(40px, 4.5vh)"};;
+  height: #{"min(40px, 4.5vh)"};
   width: 150px;
   margin: auto;
   color: black;
-  font-size: #{"min(16px, 2vh)"};;
+  font-size: #{"min(16px, 2vh)"};
   padding: 0.5em;
   padding-right: 2.5em;
   /* border: 0; */
-  margin-bottom: #{"min(25px, 2.5vh)"};;
+  margin-bottom: #{"min(25px, 2.5vh)"};
   border-radius: 3px;
   text-indent: 0.01px;
   -moz-appearance: menulist-button;
@@ -135,9 +135,9 @@ $small: 650px;
 
 .MapItem a {
   font-size: #{"min(15px, 1.7vw, 2vh)"};
-  padding: 8px 16px;
-  margin: 0px 6px;
-  border-radius: 6px;
+  padding: 6px 16px;
+  margin: 4px 6px;
+  border-radius: 20px;
   border-width: 0px;
   background-color: #ddd;
   text-decoration: none;

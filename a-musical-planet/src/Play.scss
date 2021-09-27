@@ -3,7 +3,7 @@ $small: 650px;
 $small-height: 900px;
 
 .play-section {
-  height: 90%;
+  height: 92%;
   background-color: #bdd1c5;
 }
 
@@ -193,7 +193,6 @@ button {
   }
 }
 
-
 @media (hover: hover) {
   .popup-buttons button:hover {
     transform: scale(1.1);
@@ -221,7 +220,7 @@ button {
   display: flex;
   align-items: center;
   justify-content: space-evenly;
-  color: #1DB954;
+  color: #1db954;
   background: black;
   // padding: 5px 5px;
 }
@@ -377,7 +376,7 @@ iframe {
   // display: flex;
   left: 50%;
   top: 20px;
-  transform: translateX(-50%); 
+  transform: translateX(-50%);
   // margin-left:auto;
   // margin-right:auto;
   // flex-direction: column;

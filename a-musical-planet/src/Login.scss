@@ -1,31 +1,146 @@
 .login {
-  height: 90vh;
+  height: 100%;
   display: flex;
-  justify-content: center;
+  // justify-content: center;
+  margin-top: 15vh;
   align-items: center;
   flex-direction: column;
 }
 
-.login img {
-  width: #{"min(60vh, 80vw)"};
-  height: auto;
-  max-width: 550px;
-  border-radius: 50%;
+// .login img {
+//   width: #{"min(60vh, 80vw)"};
+//   height: auto;
+//   max-width: 550px;
+//   border-radius: 50%;
+// }
+
+#caption {
+  max-width: 650px;
+  width: 80%;
+  margin-top: 50px;
+  margin-bottom: 0px;
 }
 
-.login button {
-  padding: 10px 20px;
-  margin: 15px 6px;
-  border-radius: 6px;
-  border-width: 0px;
-  background-color: #333;
-  font-size: 20px;
-  color: #ddd;
-  font-family: "Ubuntu", sans-serif;
-  cursor: pointer;
-  transition: 0.25s ease;
+#caption p {
+  margin-top: 5px;
+  margin-bottom: 0px;
+  font-weight: 300;
+  font-size: 18px;
 }
 
 .login button:hover {
   transform: scale(1.1);
+}
+
+#loginButton {
+  padding: 10px 20px;
+  border-radius: 6px;
+  border-width: 0px;
+  font-size: 20px;
+  font-family: "Ubuntu", sans-serif;
+  cursor: pointer;
+  transition: 0.25s ease;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  color: #1db954;
+  background: black;
+  margin-top: 30px;
+  // padding: 5px 5px;
+}
+
+#spotifyIcon {
+  width: 25px;
+  height: auto;
+  margin-right: 8px;
+}
+
+.genreDivs {
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  width: 100%;
+  justify-content: center;
+  white-space: pre-wrap;
+}
+
+.genreDivs h1 {
+  font-size: 60px;
+  @media screen and (max-width: 400px) {
+    font-size: 50px;
+  }
+}
+
+h1.item {
+  // position: absolute;
+  width: 80%;
+  overflow: visible;
+  // font-size: 4em;
+  // transform-origin: 50% 70%;
+  // width: 150px;
+}
+
+.genreName {
+  // text-align: right;
+  color: #0081af;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 30%;
+  margin-left: auto;
+  margin-right: auto;
+}
+.countryName {
+  // text-align: left;
+  color: #f08080;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 24%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.genreName.curr {
+  animation: fadeIn 6s infinite reverse ease-in-out;
+}
+.countryName.curr {
+  animation: fadeIn 6s -3.6s infinite ease-in-out;
+}
+
+.genreName.prev {
+  animation: fadeIn 6s -3s infinite reverse ease-in-out;
+  opacity: 0;
+}
+.countryName.prev {
+  animation: fadeIn 6s -0.6s infinite ease-in-out;
+  opacity: 0;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 100;
+    transform: translateX(0px);
+  }
+  10% {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+  40% {
+    opacity: 0;
+    transform: translateX(0px);
+  }
+  50% {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+
+  60% {
+    opacity: 100;
+    transform: translateX(0px);
+  }
+  100% {
+    opacity: 100;
+    transform: translateX(0px);
+  }
 }

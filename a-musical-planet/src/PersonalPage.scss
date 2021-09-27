@@ -16,10 +16,61 @@ $small: 650px;
   }
 }
 
-.userPage h1, .userPage h2 {
+.userPage h1,
+.userPage h2 {
   @media screen and (max-width: $small) {
     margin: 5px 0px;
   }
+}
+
+// #logoutButton {
+//   padding: 10px 0px;
+//   border-radius: 20px;
+//   border-width: 0px;
+//   width: 100%;
+//   height: auto;
+//   max-width: 133.35px;
+//   min-width: 60px;
+//   margin-top: 10px;
+//   text-align: center;
+//   background: red;
+//   font-size: 18px;
+//   color: #000;
+//   font-family: "Ubuntu", sans-serif;
+//   cursor: pointer;
+//   @media screen and (max-width: $small) {
+//     width: 60px;
+//     font-size: 12px;
+//   }
+// }
+
+#logoutButton:hover {
+  transform: scale(1.1);
+}
+
+#logoutButton {
+  padding: 10px 20px;
+  border-radius: 6px;
+  border-width: 0px;
+  font-size: 20px;
+  font-family: "Ubuntu", sans-serif;
+  cursor: pointer;
+  transition: 0.25s ease;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  color: #1db954;
+  background: black;
+  margin: 15px auto 0px auto;
+  @media screen and (max-width: $small) {
+    margin-top: -15px;
+  }
+}
+
+#spotifyIcon {
+  width: 25px;
+  height: auto;
+  margin-right: 8px;
 }
 
 .userHead > img {

@@ -1,17 +1,21 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 
 import "./PersonalPage.scss";
 
 import MapData from "./MapData.json";
+import { UserContext } from "./App.js";
 
-const PersonalPage = () => {
+const PersonalPage = ({ handleLogout }) => {
+  const loggedInUser = useContext(UserContext);
   const { userName } = useParams();
 
   const [userData, setUserData] = useState(null);
 
   const [chosenMap, setChosenMap] = useState("overall");
+
+  console.log(handleLogout);
 
   useEffect(() => {
     setChosenMap("overall");
@@ -29,7 +33,14 @@ const PersonalPage = () => {
       {userData ? (
         <div className="userPage">
           <div className="userHead">
-            <img src={userData.profilePicture !== "NONE" ? userData.profilePicture : "/defaultavatar.png"} alt="User" />
+            <img
+              src={
+                userData.profilePicture !== "NONE"
+                  ? userData.profilePicture
+                  : "/defaultavatar.png"
+              }
+              alt="User"
+            />
             <div className="userName">
               <h1>{userData.displayName}</h1>
               <img
@@ -112,6 +123,12 @@ const PersonalPage = () => {
               </div>
             </div>
           </div>
+          {loggedInUser.userName === userName ? (
+            <button type="submit" id="logoutButton" onClick={handleLogout}>
+              <img id="spotifyIcon" src="/spotifyIcon.png" alt="Spotify icon" />
+              Log Out
+            </button>
+          ) : null}
         </div>
       ) : (
         <h3>LOADING...</h3>

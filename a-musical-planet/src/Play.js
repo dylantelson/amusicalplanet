@@ -16,7 +16,6 @@ const colors = require("./colors.json");
 const Play = ({
   accessToken,
   setAccessTokenHandler,
-  setTokenFromCookie,
   currMap,
   sendScoreToServer,
 }) => {
@@ -148,20 +147,18 @@ const Play = ({
   };
 
   const likeTrack = (liked) => {
-    if(!liked) console.log("LIKING SONG");
+    if (!liked) console.log("LIKING SONG");
     else console.log("UNLIKING SONG");
-    fetch(`https://api.spotify.com/v1/me/tracks?ids=${currTrack.id}`,
-    {
+    fetch(`https://api.spotify.com/v1/me/tracks?ids=${currTrack.id}`, {
       method: liked ? "DELETE" : "PUT",
-      headers:
-        { 
-          Authorization: "Bearer " + accessToken
-        }
+      headers: {
+        Authorization: "Bearer " + accessToken,
+      },
     }).then((response) => {
       if (response.status >= 400) throw response;
       return;
     });
-  }
+  };
 
   const refreshToken = () => {
     fetch(`${process.env.REACT_APP_BACKEND_URI}/refreshToken`, {
@@ -216,11 +213,19 @@ const Play = ({
       return;
     }
 
-    const currTrackCountryCoords = currTrackCountry.latlng;
+    const currTrackCountryCoords =
+      currTrackCountry.name.common !== "Russia"
+        ? currTrackCountry.latlng
+        : currTrackCountry.latlngAlt;
 
-    const chosenCountryCoords = countries.filter(function (country) {
+    const chosenCountry = countries.filter(function (country) {
       return country.name.common === currChosen;
-    })[0].latlng;
+    })[0];
+
+    const chosenCountryCoords =
+      chosenCountry.name.common !== "Russia"
+        ? chosenCountry.latlng
+        : chosenCountry.latlngAlt;
 
     let scoreDeduction = Math.ceil(
       haversine(chosenCountryCoords, currTrackCountryCoords) / 1000 / 2
@@ -276,9 +281,8 @@ const Play = ({
   };
 
   useEffect(() => {
-    if(accessToken === null || accessToken === "")
-        return setRedirect("login");
-    if(!loading) newGame();
+    if (accessToken === null || accessToken === "") return setRedirect("login");
+    if (!loading) newGame();
   }, [loading]);
 
   if (redirect !== "") {
@@ -290,7 +294,7 @@ const Play = ({
   return (
     <>
       <div className="play-section">
-        {true ? 
+        {true ? (
           <div className="overlay">
             <CountryGuessInfo
               currChosen={currChosen}
@@ -300,9 +304,15 @@ const Play = ({
               loading={loading}
             />
           </div>
-        : <></>}
+        ) : (
+          <></>
+        )}
         <div className="map-div">
-          <MapChart handleNewChosen={handleNewChosen} setPlayLoading={setLoading} currMap={currMap} />
+          <MapChart
+            handleNewChosen={handleNewChosen}
+            setPlayLoading={setLoading}
+            currMap={currMap}
+          />
         </div>
         <GuessPopup
           show={popup.show}

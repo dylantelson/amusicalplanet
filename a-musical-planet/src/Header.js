@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react";
-import { NavLink, Link } from "react-router-dom";
+import { NavLink, Link, useLocation } from "react-router-dom";
 
 import { UserContext } from "./App.js";
 import "./Header.scss";
@@ -8,6 +8,8 @@ const Header = () => {
   const userData = useContext(UserContext);
   const [hamburgerOpen, setHamburgerOpen] = useState(false);
   let menu = document.getElementById("menu");
+
+  const location = useLocation();
 
   const openMenu = () => {
     if (!menu) menu = document.getElementById("menu");
@@ -22,10 +24,16 @@ const Header = () => {
     setHamburgerOpen(!hamburgerOpen);
   };
 
+  // if (location.pathname === "/") return null;
   return (
     <>
       <div className="header">
-        <Link id="logo" to="/">A Musical Planet</Link>
+        <Link id="logoDesktop" to="/">
+          A Musical Planet
+        </Link>
+        <Link id="logoMobile" to="/">
+          AMP
+        </Link>
         <div
           className={"hamburger" + (hamburgerOpen ? " open" : "")}
           onClick={openMenu}
@@ -39,27 +47,43 @@ const Header = () => {
           <NavLink
             className="linkButton"
             to="/maps"
-            activeStyle={{ backgroundColor: "white" }}
+            activeStyle={{ color: "#0081AF" }}
           >
             Maps
+            {location.pathname === "/maps" ? (
+              <div className="activeUnderline"></div>
+            ) : null}
           </NavLink>
           <NavLink
             className="linkButton"
             to="/about"
-            activeStyle={{ backgroundColor: "white" }}
+            activeStyle={{ color: "#0081AF" }}
           >
             About
+            {location.pathname === "/about" ? (
+              <div className="activeUnderline"></div>
+            ) : null}
           </NavLink>
           <NavLink
             className="linkButton"
             to="/leaderboard"
-            activeStyle={{ backgroundColor: "white" }}
+            activeStyle={{ color: "#0081AF" }}
           >
             Leaderboard
+            {location.pathname === "/leaderboard" ? (
+              <div className="activeUnderline"></div>
+            ) : null}
           </NavLink>
           {userData && userData.displayName ? (
             <NavLink className="userLink" to={`/user/${userData.userName}`}>
-              <img src={userData.profilePicture !== "NONE" ? userData.profilePicture : "/defaultavatar.png"} alt="" />
+              <img
+                src={
+                  userData.profilePicture !== "NONE"
+                    ? userData.profilePicture
+                    : "/defaultavatar.png"
+                }
+                alt=""
+              />
             </NavLink>
           ) : (
             <></>
