@@ -18,10 +18,6 @@ const GuessPopup = ({
   likeTrack,
   setRedirect,
 }) => {
-  // const userData = useContext(UserContext);
-  // console.log("USER DATA");
-  // console.log(userData);
-
   const [gameFinished, setGameFinished] = useState(false);
   const [showSummary, setShowSummary] = useState(false);
   const [liked, setLiked] = useState(false);
@@ -54,7 +50,6 @@ const GuessPopup = ({
 
   if (show && !gameFinished && currTrack.round === 5) {
     setGameFinished(true);
-    console.log("SENDING SCORE TO SERVER:", sessionScore);
     sendScoreToServer(sessionScore);
   }
 

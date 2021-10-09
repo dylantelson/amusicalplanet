@@ -42,7 +42,7 @@ app.use(
 let redirect_uri = process.env.REDIRECT_URI || "http://localhost:8888/callback";
 
 // const mongoURI = "mongodb://localhost:27017/sessions";
-const mongoURI = `mongodb+srv://dylan:${process.env.MONGO_PASSWORD}@dtcluster.yn1yz.mongodb.net/aMusicalPlanet?retryWrites=true&w=majority`;
+const mongoURI = process.env.MONGO_URI;
 console.log(mongoURI);
 
 mongoose
@@ -53,8 +53,6 @@ mongoose
   })
   .then(async (client) => {
     console.log("MongoDB Connected");
-    // console.log(client);
-    // await UserDAO.injectDB(client);
   });
 
 const store = new MongoDBSession({
@@ -77,7 +75,6 @@ app.use(
 );
 
 app.use((req, res, next) => {
-  // console.log(req.session);
   next();
 });
 
@@ -132,10 +129,31 @@ app.get("/login", function (req, res) {
         access_token_expire_date, 
         refresh_token
       };
-      return res.redirect(
-        uri +
-          "/auth/?access_token=" +
-          access_token
+
+      request.get(
+        {
+          url: "https://api.spotify.com/v1/me",
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+            Authorization: "Bearer " + req.session.user.access_token,
+          },
+        },
+        function (error, response, body) {
+          const parsedBody = JSON.parse(body);
+          let profilePic = "NONE";
+          if(parsedBody.images && parsedBody.images[0]) profilePic = parsedBody.images[0].url;
+          User.updateOne({ userName: parsedBody.id }, { profilePicture: profilePic});
+  
+          if(parsedBody.images && parsedBody.images[0]) console.log(parsedBody.images[0].url);
+          else console.log("NO IMAGE FOUND!");
+
+          return res.redirect(
+            uri +
+              "/auth/?access_token=" +
+              access_token
+          );
+        }
       );
       // request.get(
       //   {
@@ -334,6 +352,19 @@ app.get("/callback", function (req, res) {
         User.findOne({ userName: parsedBody.id }).then((user, err) => {
           if (user) {
             console.log(`USER ${parsedBody.id} ALREADY EXISTS`);
+            let profilePic = "NONE";
+            if(parsedBody.images && parsedBody.images[0]) {
+              profilePic = parsedBody.images[0].url;
+              // console.log(profilePic);
+            }
+            console.log("UPDATING userName:", parsedBody.id, "With picture", profilePic)
+            User.updateOne({ userName: parsedBody.id }, { profilePicture: profilePic }).then(() => {
+              return res.redirect(
+                uri +
+                  "/auth/?access_token=" +
+                  access_token
+              );
+            });
           } else {
             console.log(`CREATING USER WITH ID ${parsedBody.id}`);
             let profilePic = "NONE";
@@ -362,32 +393,55 @@ app.get("/callback", function (req, res) {
               .save()
               .then((result) => {
                 console.log(result);
+                return res.redirect(
+                  uri +
+                    "/auth/?access_token=" +
+                    access_token
+                );
               })
               .catch((err) => console.log(err));
           }
         });
-        return res.redirect(
-          uri +
-            "/auth/?access_token=" +
-            access_token
-        );
       }
     );
   });
 });
 
 app.get("/userData/:userSpotifyId", function (req, res) {
-  // console.log("User requested data");
   const userSpotifyId = req.params.userSpotifyId;
-  // console.log(userSpotifyId);
   User.findOne({ userName: userSpotifyId })
     .exec()
     .then((user) => {
-      // console.log("RETURNING USER");
-      // console.log(user);
       return res.json(user);
     });
 });
+
+// app.post("/updatePicture", function (req, res) {
+//   console.log(req.session);
+//   request.get(
+//       {
+//         url: "https://api.spotify.com/v1/me",
+//         headers: {
+//           Accept: "application/json",
+//           "Content-Type": "application/json",
+//           Authorization: "Bearer " + req.session.user.access_token,
+//         },
+//       },
+//       function (error, response, body) {
+//         const parsedBody = JSON.parse(body);
+//         let profilePic = "NONE";
+//         if(parsedBody.images && parsedBody.images[0]) profilePic = parsedBody.images[0].url;
+//         User.updateOne({ userName: parsedBody.id }, { profilePicture: profilePic});
+
+//         if(parsedBody.images && parsedBody.images[0]) console.log(parsedBody.images[0].url);
+//         else console.log("NO IMAGE FOUND!");
+
+//         return res.json(
+//           {profilePicture: profilePic}
+//         );
+//       }
+//     );
+// })
 
 const randInt = (min, max) => {
   // min and max included
@@ -397,7 +451,6 @@ const randInt = (min, max) => {
 const createRandomUsers = async (loopTimes) => {
   const users = [];
   for (let i = 0; i < loopTimes; i++) {
-    // console.log("LOOP#", i);
     const res = await fetch("https://randomuser.me/api/");
     const resultsJson = await res.json();
     const userData = resultsJson.results[0];
@@ -489,13 +542,14 @@ app.post("/createRandomUsers/:loopTimes", async (req, res) => {
   res.send(usersMade);
 });
 
+app.get("/deleteBots", async (req, res) => {
+  await User.deleteMany({ "profilePicture": {$regex: 'https:\/\/randomuser.me\S*'} });
+});
+
 app.post("/newScore/:userSpotifyId/:map/:newScore", async (req, res) => {
   const userSpotifyId = req.params.userSpotifyId;
   const map = req.params.map;
   const newScore = parseInt(req.params.newScore);
-  // console.log(
-  //   `User ${userSpotifyId} posting new high score ${newScore} on map ${map}`
-  // );
 
   let userDoc = {};
 

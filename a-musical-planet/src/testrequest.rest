@@ -16,5 +16,7 @@
 
 # POST http://localhost:8888/createRandomUsers/20
 
-PUT https://api.spotify.com/v1/me/tracks?ids=3jtjMFHZUpdjQr1n2UWltQ
-    Authorization: "Bearer BQBnc_xljmjWNmCxo3k6H_MMZ-GwzXKwfaESl8gpuR9syDXbb5ZI7V92_3h1RgMawGbf8Cjj7eS0atd9GoG1SIr0YMBRCxid-j7QUYBDhtTt9n6iqVtx-WCz6OnjYL98ptvtOcbM-xDXzkrSVYKwywowvtUJihkHAVMVIuTAG2k1NNs"
+# PUT https://api.spotify.com/v1/me/tracks?ids=3jtjMFHZUpdjQr1n2UWltQ
+#     Authorization: "Bearer BQBnc_xljmjWNmCxo3k6H_MMZ-GwzXKwfaESl8gpuR9syDXbb5ZI7V92_3h1RgMawGbf8Cjj7eS0atd9GoG1SIr0YMBRCxid-j7QUYBDhtTt9n6iqVtx-WCz6OnjYL98ptvtOcbM-xDXzkrSVYKwywowvtUJihkHAVMVIuTAG2k1NNs"
+
+GET http://dylans-macbook-pro.local:8888/deleteBots

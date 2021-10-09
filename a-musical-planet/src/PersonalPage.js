@@ -15,8 +15,6 @@ const PersonalPage = ({ handleLogout }) => {
 
   const [chosenMap, setChosenMap] = useState("overall");
 
-  console.log(handleLogout);
-
   useEffect(() => {
     setChosenMap("overall");
     axios(`${process.env.REACT_APP_BACKEND_URI}/userData/${userName}`, {
@@ -40,6 +38,10 @@ const PersonalPage = ({ handleLogout }) => {
                   : "/defaultavatar.png"
               }
               alt="User"
+              onError={e => {
+                e.target.onerror = null;
+                e.target.src="/defaultavatar.png";
+              }}
             />
             <div className="userName">
               <h1>{userData.displayName}</h1>
@@ -62,7 +64,6 @@ const PersonalPage = ({ handleLogout }) => {
                 id="maplist"
                 value={chosenMap}
                 onChange={(e) => {
-                  console.log("Changing value to", e.target.value);
                   setChosenMap(e.target.value);
                 }}
               >

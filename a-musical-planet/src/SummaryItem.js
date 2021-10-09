@@ -5,7 +5,6 @@ import CustomiFrame from "./CustomiFrame";
 import getMixedColor from "./GetMixedColor";
 
 const SummaryItem = ({ countryInfo, index, show }) => {
-  // console.log(countryInfo.correct);
   return (
     <div
       className={"summaryItem" + (!show ? " hidden" : "")}

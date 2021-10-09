@@ -6,7 +6,9 @@ const About = () => {
     <div id="About">
       <h1>About</h1>
       <div id="AboutText">
-        <p>This is a placeholder.</p>
+        <p>
+          PLACEHOLDER
+        </p>
       </div>
     </div>
   );

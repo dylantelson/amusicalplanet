@@ -46,7 +46,6 @@ function App() {
   const [currMap, setCurrMap] = useState("world");
 
   const sendScoreToServer = (newScore) => {
-    console.log("Sending score to server", newScore);
     axios(
       `${process.env.REACT_APP_BACKEND_URI}/newScore/${userData.userName}/${currMap}/${newScore}`,
       {
@@ -54,8 +53,6 @@ function App() {
       }
     )
       .then(({ data }) => {
-        console.log("Score sent to server!");
-        console.log(data);
         setUserData(data);
       })
       .catch((err) => {
@@ -69,7 +66,6 @@ function App() {
       setAccessToken(accessTokenCookie);
       return true;
     } else {
-      console.log("Could not find cookie");
       return false;
     }
   };
@@ -117,12 +113,7 @@ function App() {
   };
 
   const handleMapChosen = (mapName) => {
-    // if (accessToken === null || accessToken === "") {
-    //   if (!setTokenFromCookie()) return setRedirect("login");
-    // }
-    console.log("HANDLING MAP CHOSEN");
     setCurrMap(mapName[0].toLowerCase() + mapName.slice(1).replace(/ /g, ""));
-    // setRedirect("play");
   };
 
   const checkToken = () => {
@@ -139,6 +130,13 @@ function App() {
     document.cookie =
       "accessToken=-1;expires=Thu, 01 Jan 1970 00:00:00 GMT;path=/";
     setAccessToken("");
+    setUserData({
+      displayName: "",
+      userName: "",
+      maxScores: {},
+      profilePicture: "",
+      country: "",
+    });
     setRedirect("/");
   };
 
@@ -159,21 +157,11 @@ function App() {
   };
 
   const handleAuth = () => {
-    // console.log(accessToken === "");
-    // if (accessToken !== "" && accessToken !== null) {
-    //   console.log("have access token", accessToken);
-    //   return setRedirect("maps");
-    // }
-    // if (setTokenFromCookie()) {
-    //   console.log("gettin from cookie");
-    //   return setRedirect("maps");
-    // }
     console.count("Handling AUTH");
     const URLAccessToken = new URLSearchParams(window.location.search).get(
       "access_token"
     );
     setAccessTokenHandler(URLAccessToken);
-    // return <Redirect to="/maps" />;
     setRedirect("maps");
   };
 

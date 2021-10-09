@@ -13,7 +13,6 @@ const Header = () => {
 
   const openMenu = () => {
     if (!menu) menu = document.getElementById("menu");
-    console.log("openin!");
     if (hamburgerOpen) {
       menu.style.visibility = "hidden";
       menu.style.opacity = "0";
@@ -83,6 +82,10 @@ const Header = () => {
                     : "/defaultavatar.png"
                 }
                 alt=""
+                onError={e => {
+                  e.target.onerror = null;
+                  e.target.src="/defaultavatar.png";
+                }}
               />
             </NavLink>
           ) : (

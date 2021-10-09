@@ -17,8 +17,6 @@ const Leaderboard = () => {
       },
       method: "GET",
     }).then((leaderboardData) => {
-      console.log("LeADERBOARD:");
-      console.log(leaderboardData);
       setLeaderboardStats(leaderboardData.data);
     });
   }, []);

@@ -147,8 +147,6 @@ const Play = ({
   };
 
   const likeTrack = (liked) => {
-    if (!liked) console.log("LIKING SONG");
-    else console.log("UNLIKING SONG");
     fetch(`https://api.spotify.com/v1/me/tracks?ids=${currTrack.id}`, {
       method: liked ? "DELETE" : "PUT",
       headers: {
