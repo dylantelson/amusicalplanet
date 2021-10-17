@@ -3,6 +3,7 @@ import { NavLink, Link, useLocation } from "react-router-dom";
 
 import { UserContext } from "./App.js";
 import "./Header.scss";
+import RecordPlayer from "./RecordPlayer.js";
 
 const Header = () => {
   const userData = useContext(UserContext);
@@ -28,10 +29,11 @@ const Header = () => {
     <>
       <div className="header">
         <Link id="logoDesktop" to="/">
+          <img src="/AMPLogoGreen.png"/>
           A Musical Planet
         </Link>
         <Link id="logoMobile" to="/">
-          AMP
+          <img src="/AMPLogoGreen.png"/>
         </Link>
         <div
           className={"hamburger" + (hamburgerOpen ? " open" : "")}

@@ -22,13 +22,11 @@ import getCookie from "./GetCookie";
 dotenv.config();
 
 export const UserContext = React.createContext({
-  userName: "user",
-  displayName: "user",
-  stats: {
-    maxScores: {},
-    averageScores: {},
-    completedGames: 0,
-  },
+  displayName: "",
+  userName: "",
+  maxScores: {},
+  profilePicture: "",
+  country: "",
 });
 
 function App() {

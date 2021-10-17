@@ -1,4 +1,5 @@
 $small: 650px;
+$medium: 830px;
 
 .header {
   // background-color: #fcfaf9;
@@ -33,23 +34,39 @@ $small: 650px;
   &:hover {
     color: #0081af;
   }
+  @media screen and (max-width: $medium) {
+    font-size: 0px;
+  }
   @media screen and (max-width: $small) {
     display: none;
   }
 }
 
 #logoMobile {
+  display: none;
   margin-top: -0.5vh;
   margin-left: 10%;
   font-size: 27px;
-  display: flex;
   height: auto;
   color: #000;
   text-decoration: none;
   font-weight: bold;
-  @media screen and (min-width: $small) {
-    display: none;
+  @media screen and (max-width: $small) {
+    display: flex;
   }
+}
+
+#logoMobile img {
+  margin-top: 1vh;
+  width: #{"min(78px, 10vh)"};
+  height: auto;
+}
+
+#logoDesktop img {
+  margin-top: -1.7vh;
+  margin-right: 8px;
+  width: #{"min(68px, 8vh)"};
+  height: auto;
 }
 
 .navbar {
@@ -102,6 +119,7 @@ $small: 650px;
 
 .hamburger {
   // float: right;
+  display: none;
   width: 50px;
   height: 42px;
   margin-right: 10%;
@@ -116,9 +134,9 @@ $small: 650px;
   -o-transition: 0.5s ease-in-out;
   transition: 0.5s ease-in-out;
   cursor: pointer;
-  z-index: 3;
-  @media screen and (min-width: $small) {
-    display: none;
+  z-index: 6;
+  @media screen and (max-width: $small) {
+    display: block;
   }
 }
 
@@ -196,7 +214,7 @@ $small: 650px;
   text-decoration: none;
   color: #232323;
   font-size: 25px;
-  margin: 10px 0px;
+  margin: 0px 0px 20px 0px;
   // transition: color 0.3s ease;
   padding: 10px 0px;
   border-radius: 50px;
@@ -208,9 +226,9 @@ $small: 650px;
 // }
 
 #menu {
-  z-index: 2;
+  z-index: 5;
   background-color: #fcfaf9;
-  top: 12%;
+  top: 11%;
   // margin-top: 100px;
   visibility: hidden;
   position: absolute;
@@ -229,5 +247,6 @@ $small: 650px;
   // visibility: hidden;
   @media screen and (min-width: $small) {
     visibility: hidden;
+    display: none;
   }
 }
