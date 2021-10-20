@@ -19,34 +19,36 @@ $small: 650px;
   align-items: center;
   min-height: 0;
   min-width: 0;
+  margin-top: #{"min(20px, 2vh)"};
 }
 
-.MapBodyDesktop select {
-  /* background-color: #1abc9c; */
-  background-color: white;
-  border: 1px solid black;
-  height: #{"min(40px, 4.5vh)"};
-  width: 150px;
-  margin: auto;
-  color: black;
-  font-size: #{"min(16px, 2vh)"};
-  padding: 0.5em;
-  padding-right: 2.5em;
-  /* border: 0; */
-  margin-bottom: #{"min(25px, 2.5vh)"};
-  border-radius: 3px;
-  text-indent: 0.01px;
-  -moz-appearance: menulist-button;
-  -webkit-appearance: menulist-button;
-}
+// .MapBodyDesktop select {
+//   /* background-color: #1abc9c; */
+//   background-color: white;
+//   border: 1px solid black;
+//   height: #{"min(40px, 4.5vh)"};
+//   width: 150px;
+//   margin: auto;
+//   color: black;
+//   font-size: #{"min(16px, 2vh)"};
+//   padding: 0.5em;
+//   padding-right: 2.5em;
+//   /* border: 0; */
+//   margin-bottom: #{"min(25px, 2.5vh)"};
+//   border-radius: 3px;
+//   text-indent: 0.01px;
+//   -moz-appearance: menulist-button;
+//   -webkit-appearance: menulist-button;
+// }
 
 .MapHead {
-  margin: 1% 0px;
+  margin: 1vh 0px 0.5vh 0px;
 }
 
 .MapHead h1 {
-  font-size: #{"min(32px, 4vh)"};
-  margin: #{"min(14px, 2.3vh)"} 0px;
+  font-size: #{"clamp(30px, 5vh, 48px)"};
+  margin: #{"min(14px, 0.5vh)"} 0px 0px 0px;
+  color: white;
 }
 
 .MapItemsMobile {
@@ -88,7 +90,7 @@ $small: 650px;
   box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
   margin: 0px 15px #{"min(20px, 2.3vh)"} 15px;
   background-color: #fff;
-  width: #{"min(28vw, 30vh)"};
+  width: #{"min(28vw, 32vh)"};
   height: fit-content;
   min-height: 0;
   /* min-width: 150px; */
@@ -116,36 +118,78 @@ $small: 650px;
 // }
 
 .MapItem h1 {
-  font-size: #{"min(2vw, 3vh)"};
-  margin: #{"min(0.67vw, 0.5vh)"} 0px;
+  font-size: #{"min(2.5vw, 3vh)"};
+  margin: #{"min(0.67vw, 0.2vh)"} 0px;
   @media screen and (max-width: $small) {
     font-size: #{"min(5vw, 7vh)"};
     margin: #{"min(1.3vw, 1vh)"} 0px;
   }
 }
 
+.MapItem h2 {
+  font-size: #{"clamp(16px, (1.5vw, 2.2vh), 26px)"};
+  margin-top: 0;
+  @media screen and (max-width: $small) {
+    font-size: #{"min(4vw, 5.5vh)"};
+    // margin: #{"min(1.3vw, 1vh)"} 0px;
+  }
+}
+
 .MapItem p {
+  width: 75%;
   font-size: #{"min(13px, 1.6vh)"};
-  margin: #{"min(9px, 0.7vh)"} 5px;
+  margin: #{"min(9px, 0.3vh)"} 5px;
   @media screen and (max-width: $small) {
     font-size: 15px;
   }
 }
 
 .MapItem a {
-  font-size: #{"min(15px, 1.7vw, 2vh)"};
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: #{"clamp(13px, (1.3vw, 2vh), 18px)"};
   padding: 6px 16px;
   margin: 4px 6px;
   border-radius: 20px;
   border-width: 0px;
-  background-color: #ddd;
+  background-color: #2BB673;;
   text-decoration: none;
+  vertical-align: middle;
   /* font-size: 1em; */
-  color: #000;
-  font-family: "Ubuntu", sans-serif;
-  /* width: 50%; */
+  color: white;
+  width: 20%;
+  height: #{"min(2.2vw, 2.6vh)"};
+  max-width: 98px;
+  max-height: 42px;
   @media screen and (max-width: $small) {
     font-size: #{"min(20px, 3vw, 3vh)"};
+    height: 24px;
+    margin-bottom: 15px;
+  }
+}
+
+#scoreDiv {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  margin-top: #{"min(9px, 0.7vh)"};
+}
+#scoreDiv h1 {
+  color: #2BB673;
+  font-size: #{"min(2vw, 3vh)"};
+  margin-bottom: 0;
+  @media screen and (max-width: $small) {
+    font-size: 30px;
+  }
+}
+#scoreDiv p {
+  font-size: #{"min(11px, 1.3vh)"};
+  width: 100%;
+  margin: 0px 0px 7px 0px;
+  @media screen and (max-width: $small) {
+    font-size: 14px;
+    margin-bottom: 10px;
   }
 }
 
@@ -208,7 +252,7 @@ $small: 650px;
   transition: transform 0.4s;
   // animation: lowerArm 1s reverse forwards;
   &.playing {
-    transform: rotate(-45deg);
+    transform: rotate(-26deg);
   }
 }
 
@@ -241,4 +285,95 @@ $small: 650px;
   flex-direction: column;
   flex: 0 1 auto;
   max-width: 1575;
+}
+
+.Switch {
+  width: 195px;
+  height: #{"clamp(42px, 7vh, 69px)"};
+  --dot: #000;
+  --circle: #000;
+  --background: hsla(0, 0%, 0%, 0.25);
+  --duration: .3s;
+  --text: #9EA0BE;
+  --shadow: 0 1px 3px #{rgba(#00093D, .08)};
+  cursor: pointer;
+  position: relative;
+  &:before {
+      content: '';
+      width: 100%;
+      height: 100%;
+      border-radius: 160px;
+      background: var(--background);
+      position: absolute;
+      left: 0;
+      top: 0;
+      box-shadow: var(--shadow);
+  }
+  input {
+      display: none;
+      & + div {
+          position: relative;
+          span {
+              line-height: 28px;
+              // color: var(--text);
+              background: #000;
+              background-color: #000;
+              width: 100%;
+              &:before {
+                  --x: 0;
+                  --b: var(--circle);
+                  --s: 4px;
+                  background: #000;
+                  content: 'World';
+                  position: absolute;
+                  left: 4px;
+                  top: 4px;
+                  width: 50%;
+                  height: #{"clamp(34px, 6vh, 56px)"};
+                  border-radius: 160px;
+                  transform: translateX(var(--x));
+                  transition: transform var(--duration) ease;
+              }
+              &:not(:empty) {
+                  // padding-left: 68px;
+              }
+          }
+      }
+      &:checked {
+          & + div {
+              &:before {
+                  --s: 1;
+              }
+              &:after {
+                  --s: 0;
+              }
+              span {
+                  &:before {
+                      --x: 88px;
+                      --s: 12px;
+                      --b: var(--dot);
+                  }
+              }
+          }
+      }
+  }
+}
+
+#SwitchText {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+#SwitchText p {
+  font-family: "Inter-Bold";
+  color: white;
+  opacity: 0;
+  width: 47%;
+  z-index: 1;
+  transition: opacity 0.4s;
+  &.active {
+    opacity: 100%;
+  }
 }

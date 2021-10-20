@@ -16,6 +16,7 @@ import ChooseMap from "./ChooseMap";
 import About from "./About";
 import Leaderboard from "./Leaderboard";
 import PersonalPage from "./PersonalPage";
+import World from "./World"
 import dotenv from "dotenv";
 import getCookie from "./GetCookie";
 
@@ -174,6 +175,7 @@ function App() {
         {redirect === "login" ? <Redirect to="/login" /> : null}
         <UserContext.Provider value={userData}>
           <Header />
+          <World shouldPlay={redirect}/>
           <Switch>
             <Route path="/auth" render={() => handleAuth()} />
             <Route

@@ -1,0 +1,28 @@
+#worldsvgDiv {
+    position: relative;
+}
+
+#worldsvg {
+    background: #1C75BC;
+    border-radius: 50%;
+    position: absolute;
+    left: 50%;
+    top: 12%;
+    transform: translateX(-50%);
+    max-height: 900px;
+    max-width: 900px;
+    min-height: 500px;
+    min-width: 500px;
+    width: 160vw;
+    height: 160vw;
+    // width: #{"min(85vw, 90vh)"};
+    // height: #{"min(85vw, 90vh)"};
+    // min-width: 780px;
+    // min-height: 780px;
+    overflow: hidden;
+    z-index: -1;
+}
+
+.land {
+    fill: #2BB673;
+}

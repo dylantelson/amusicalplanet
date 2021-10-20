@@ -8,11 +8,10 @@ const LeaderboardUser = ({ userData, map, rank }) => {
       <img src={userData.profilePicture !== "NONE" ? userData.profilePicture : "/defaultavatar.png"} alt="User" onError={e => {e.target.onerror = null; e.target.src="/defaultavatar.png"}} />
       <div className="names">
         <Link to={`/user/${userData.userName}`}>{userData.displayName}</Link>
-        <p>{userData.userName}</p>
       </div>
       <div className="highScore">
+        <h1>{userData.stats.maxScores[map] ? userData.stats.maxScores[map] : 0}</h1>
         <p>Score</p>
-        <h3>{userData.stats.maxScores[map] ? userData.stats.maxScores[map] : 0}</h3>
       </div>
     </div>
   );

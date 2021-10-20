@@ -24,11 +24,11 @@ $medium: 830px;
 
 #logoDesktop {
   margin-top: -0.5vh;
-  margin-left: 10%;
+  margin-left: 3%;
   font-size: 27px;
   display: flex;
   height: auto;
-  color: #000;
+  color: white;
   text-decoration: none;
   font-weight: bold;
   &:hover {
@@ -45,12 +45,13 @@ $medium: 830px;
 #logoMobile {
   display: none;
   margin-top: -0.5vh;
-  margin-left: 10%;
+  margin-left: 3%;
   font-size: 27px;
   height: auto;
-  color: #000;
+  color: white;
   text-decoration: none;
   font-weight: bold;
+  z-index: 4;
   @media screen and (max-width: $small) {
     display: flex;
   }
@@ -73,7 +74,7 @@ $medium: 830px;
   display: flex;
   align-items: flex-start;
   height: 100%;
-  margin-right: 10%;
+  margin-right: 3%;
   // justify-content: center;
   @media screen and (max-width: $small) {
     display: none;
@@ -87,12 +88,12 @@ $medium: 830px;
   border-width: 0px;
   // background-color: #ddd;
   font-size: #{"min(24px, 2.5vw)"};
-  color: #000;
+  color: white;
   font-family: "Ubuntu", sans-serif;
   cursor: pointer;
   text-decoration: none;
   &:hover {
-    color: #0081af;
+    color: white;
   }
 }
 
@@ -100,7 +101,7 @@ $medium: 830px;
   // position: absolute;
   height: 3px;
   width: 45%;
-  background-color: #0081af;
+  background-color: white;
   margin: auto;
   margin-top: 3px;
   border-radius: 15px;
@@ -145,7 +146,7 @@ $medium: 830px;
   position: absolute;
   height: 7px;
   width: 100%;
-  background: #000;
+  background: #fff;
   border-radius: 9px;
   opacity: 1;
   left: 0;
@@ -210,25 +211,18 @@ $medium: 830px;
   user-select: none;
 } */
 
-#menu a {
-  text-decoration: none;
-  color: #232323;
-  font-size: 25px;
-  margin: 0px 0px 20px 0px;
-  // transition: color 0.3s ease;
-  padding: 10px 0px;
-  border-radius: 50px;
-  border: 1px solid black;
-}
-
 // #menu a:hover {
 //   color: tomato;
 // }
 
+#menuDiv {
+  position: relative;
+  // overflow: hidden;
+}
+
 #menu {
   z-index: 5;
-  background-color: #fcfaf9;
-  top: 11%;
+  background-color: #000000e8;
   // margin-top: 100px;
   visibility: hidden;
   position: absolute;
@@ -236,17 +230,31 @@ $medium: 830px;
   display: flex;
   opacity: 0;
   // float: right;
-  height: 90%;
+  height: 100vh;
   width: 100vw;
   color: white;
   // left: 100vw;
   // transition: left 0.3s ease-in-out, visibility 0.3s, width 0s;
+  top: -15vh;
   margin: 0;
   padding: 0;
+  padding-top: 30%;
   transition: visibility 0.1s ease-out, opacity 0.1s ease-out;
   // visibility: hidden;
   @media screen and (min-width: $small) {
     visibility: hidden;
     display: none;
   }
+}
+
+#menu a {
+  text-decoration: none;
+  color: white;
+  font-size: 25px;
+  margin: 0px 0px 20px 0px;
+  background-color: #000;
+  // transition: color 0.3s ease;
+  padding: 10px 0px;
+  border-radius: 50px;
+  border: 1px solid white;
 }

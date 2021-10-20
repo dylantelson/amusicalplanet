@@ -121,6 +121,7 @@ button {
   display: flex;
   flex-direction: column;
   flex: 0 1 auto;
+  // z-index: 8;
   @media screen and (max-width: $small) {
     margin-top: 20%;
   }
@@ -129,6 +130,7 @@ button {
 .popup-container h1 {
   padding-top: 0px;
   margin-top: 0px;
+  // z-index: 7;
 }
 
 #score {

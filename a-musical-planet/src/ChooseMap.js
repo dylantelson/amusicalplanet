@@ -13,10 +13,10 @@ const ChooseMap = ({ handleMapChosen }) => {
   return (
     <div className="ChooseMapContainer">
       <div className="MapHead">
-        <h1>Official Maps</h1>
+        <h1>Maps</h1>
       </div>
       <div className="MapBodyDesktop">
-        <select
+        {/* <select
           id="maplistDesktop"
           onChange={(e) => {
             setChosenMapCategory(e.target.value);
@@ -27,7 +27,20 @@ const ChooseMap = ({ handleMapChosen }) => {
               {category}
             </option>
           ))}
-        </select>
+        </select> */}
+        {/* <input type="checkbox" id="switch" /><label for="switch">MapSelect</label> */}
+        <label className="Switch">
+          <input type="checkbox" onChange={(e) => {
+            e.target.checked ? setChosenMapCategory("Continent") : setChosenMapCategory("World");
+          }}/>
+          <div>
+              <span></span>
+          </div>
+          <div id="SwitchText">
+            <p className={chosenMapCategory==="World" ? "active" : ""}>World</p>
+            <p className={chosenMapCategory==="Continent" ? "active" : ""}>Continents</p>
+          </div>
+        </label>
         <div className="MapItemsDesktop">
           {MapData.map((currMap) =>
             currMap.category === chosenMapCategory ? (

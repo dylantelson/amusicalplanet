@@ -1,5 +1,5 @@
+
 .app {
-  font-family: sans-serif;
   text-align: center;
   display: flex;
   flex-direction: column;
@@ -11,8 +11,12 @@ html {
 body {
   height: 100%;
   overflow: hidden;
-  background-color: #fcfaf9;
+  background-color: #000;
   margin: 0px;
+}
+
+h1 {
+  font-family: 'Inter-Bold', arial, sans-serif;
 }
 
 #root {

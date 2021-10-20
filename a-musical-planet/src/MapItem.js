@@ -12,15 +12,15 @@ const MapItem = ({ map, handleMapChosen }) => {
 
 
     const playRecord = () => {
-      document.querySelector(`#${formattedMapName}Arm`).classList.add("playing");
-      setTimeout(() => isHovering ? document.querySelector(`#${formattedMapName}MapDisc`).classList.add("playing") : null, 250);
+      document.querySelectorAll(`#${formattedMapName}Arm`).forEach(arm => arm.classList.add("playing"));
+      setTimeout(() => isHovering ? document.querySelectorAll(`#${formattedMapName}MapDisc`).forEach(disc => disc.classList.add("playing")) : null, 250);
       isHovering = true;
       // document.querySelector(`#${formattedMapName}MapDisc`).classList.add("playing");
     }
   
     const stopRecord = () => {
-      document.querySelector(`#${formattedMapName}Arm`).classList.remove("playing");
-      document.querySelector(`#${formattedMapName}MapDisc`).classList.remove("playing");
+      document.querySelectorAll(`#${formattedMapName}Arm`).forEach(arm => arm.classList.remove("playing"));
+      document.querySelectorAll(`#${formattedMapName}MapDisc`).forEach(disc => disc.classList.remove("playing"));
       isHovering = false;
       // document.querySelector(`#${formattedMapName}MapDisc`).style.animationPlayState='paused';
     }
@@ -37,9 +37,13 @@ const MapItem = ({ map, handleMapChosen }) => {
       {/* <img src={"/mapimages/" + formattedMapName + ".png"} alt={map.name} /> */}
       <RecordPlayer map={formattedMapName} />
       <h1>{map.name}</h1>
+      {map.difficultyCaption ? <h2 style={{ color: map.color }}>{map.difficultyCaption}</h2> : null}
       <p>{map.description}</p>
-      <p>{`Max Score: ${maxScore}`}</p>
-      <Link to="/play" onClick={() => handleMapChosen(map.name)} replace>
+      <div id="scoreDiv">
+        <h1 style={{ color: map.color }}>{maxScore}</h1>
+        <p>Your Max Score</p>
+      </div>
+      <Link to="/play" style={{ backgroundColor: map.color }} onClick={() => handleMapChosen(map.name)} replace>
         Play
       </Link>
     </div>

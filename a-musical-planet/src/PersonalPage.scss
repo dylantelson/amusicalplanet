@@ -10,16 +10,15 @@ $small: 650px;
   border-radius: 15px;
   display: flex;
   flex-direction: column;
-  padding: 3% 0px;
+  padding-bottom: 3%;
   @media screen and (max-width: $small) {
     margin-top: 15%;
   }
 }
 
-.userPage h1,
-.userPage h2 {
+.userPage h1 {
   @media screen and (max-width: $small) {
-    margin: 5px 0px;
+    margin-bottom: 8px;
   }
 }
 
@@ -75,16 +74,16 @@ $small: 650px;
 
 .userHead > img {
   border-radius: 50%;
-  width: 25%;
-  max-width: 150px;
+  width: #{"clamp(115px, 20vw, 150px)"};
   height: auto;
-  margin-top: -19%;
+  transform: translateY(-50%);
 }
 
 .userName {
   display: flex;
   justify-content: center;
   align-items: baseline;
+  margin-top: -70px;
 }
 
 .userName > img {

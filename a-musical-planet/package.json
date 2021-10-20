@@ -7,6 +7,7 @@
     "@testing-library/react": "^11.2.7",
     "@testing-library/user-event": "^12.8.3",
     "axios": "^0.21.1",
+    "d3": "^7.1.1",
     "d3-fetch": "^3.0.1",
     "d3-geo": "^2.0.2",
     "d3-scale": "^4.0.0",
@@ -19,6 +20,7 @@
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.3",
     "react-simple-maps": "^2.3.0",
+    "topojson": "^3.0.2",
     "web-vitals": "^1.1.2"
   },
   "scripts": {

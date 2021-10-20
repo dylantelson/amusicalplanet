@@ -3,7 +3,6 @@ import { NavLink, Link, useLocation } from "react-router-dom";
 
 import { UserContext } from "./App.js";
 import "./Header.scss";
-import RecordPlayer from "./RecordPlayer.js";
 
 const Header = () => {
   const userData = useContext(UserContext);
@@ -48,7 +47,7 @@ const Header = () => {
           <NavLink
             className="linkButton"
             to="/maps"
-            activeStyle={{ color: "#0081AF" }}
+            activeStyle={{ color: "white" }}
           >
             Maps
             {location.pathname === "/maps" ? (
@@ -58,7 +57,8 @@ const Header = () => {
           <NavLink
             className="linkButton"
             to="/about"
-            activeStyle={{ color: "#0081AF" }}
+            activeStyle={{ color: "white" }}
+            // activeStyle={{ color: "#0081AF" }}
           >
             About
             {location.pathname === "/about" ? (
@@ -68,7 +68,7 @@ const Header = () => {
           <NavLink
             className="linkButton"
             to="/leaderboard"
-            activeStyle={{ color: "#0081AF" }}
+            activeStyle={{ color: "white" }}
           >
             Leaderboard
             {location.pathname === "/leaderboard" ? (
@@ -95,44 +95,46 @@ const Header = () => {
           )}
         </div>
       </div>
-      <ul
-        id="menu"
-        className={!hamburgerOpen ? " hidden" : ""}
-        onClick={openMenu}
-      >
-        <NavLink
-          className="linkButton"
-          to="/maps"
-          activeStyle={{ backgroundColor: "#333", color: "#fff" }}
+      <div id="menuDiv">
+        <ul
+          id="menu"
+          className={!hamburgerOpen ? " hidden" : ""}
+          onClick={openMenu}
         >
-          Maps
-        </NavLink>
-        <NavLink
-          className="linkButton"
-          to="/about"
-          activeStyle={{ backgroundColor: "#333", color: "#fff" }}
-        >
-          About
-        </NavLink>
-        <NavLink
-          className="linkButton"
-          to="/leaderboard"
-          activeStyle={{ backgroundColor: "#333", color: "#fff" }}
-        >
-          Leaderboard
-        </NavLink>
-        {userData && userData.displayName ? (
           <NavLink
             className="linkButton"
-            to={`/user/${userData.userName}`}
+            to="/maps"
             activeStyle={{ backgroundColor: "#333", color: "#fff" }}
           >
-            {userData.displayName}
+            Maps
           </NavLink>
-        ) : (
-          <></>
-        )}
-      </ul>
+          <NavLink
+            className="linkButton"
+            to="/about"
+            activeStyle={{ backgroundColor: "#333", color: "#fff" }}
+          >
+            About
+          </NavLink>
+          <NavLink
+            className="linkButton"
+            to="/leaderboard"
+            activeStyle={{ backgroundColor: "#333", color: "#fff" }}
+          >
+            Leaderboard
+          </NavLink>
+          {userData && userData.displayName ? (
+            <NavLink
+              className="linkButton"
+              to={`/user/${userData.userName}`}
+              activeStyle={{ backgroundColor: "#333", color: "#fff" }}
+            >
+              {userData.displayName}
+            </NavLink>
+          ) : (
+            <></>
+          )}
+        </ul>
+      </div>
     </>
   );
 };

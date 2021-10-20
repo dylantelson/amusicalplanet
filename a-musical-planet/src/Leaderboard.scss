@@ -7,6 +7,7 @@ $tiny: 450px;
 
 .leaderboardHead {
   display: flex;
+  flex-direction: column;
   align-content: center;
   align-items: center;
   justify-content: space-around;
@@ -19,12 +20,13 @@ $tiny: 450px;
 .leaderboardHead select {
   /* background-color: #1abc9c; */
   background-color: white;
-  border: 1px solid black;
+  border: 0;
   height: 40px;
   color: black;
-  font-size: inherit;
+  font-size: #{"min(18px, 2.4vh)"};
+  // font-family: 'Inter-Bold', arial, sans-serif;
   padding: 0.5em;
-  padding-right: 2.5em;
+  // padding-right: 2.5em;
   /* border: 0; */
   margin: 0;
   border-radius: 3px;
@@ -34,7 +36,9 @@ $tiny: 450px;
 }
 
 .leaderboardHead h1 {
+  font-size: #{"min(48px, 6vh)"};
   margin: 10px 0px;
+  color: white;
   @media screen and (max-width: $small) {
     font-size: 1.5em;
   }
@@ -109,10 +113,6 @@ $tiny: 450px;
   margin: 0px #{"min(20px, 2vw)"};
 }
 
-.leaderboardUser a {
-  text-decoration: none;
-}
-
 .leaderboardUser a,
 .leaderboardUser p,
 .leaderboardUser h3,
@@ -122,6 +122,15 @@ $tiny: 450px;
 }
 
 .leaderboardUser a {
+  text-decoration: none;
+  font-size: #{"min(24px, 2.5vw)"};
+  color: black;
+  &:visited {
+    color: #1C75BC;
+  }
+  &:hover {
+    color: #1C75BC;
+  }
   @media screen and (max-width: $tiny) {
     font-size: 15px;
   }
@@ -139,10 +148,15 @@ $tiny: 450px;
   }
 }
 
-.leaderboardUser .highScore {
+.highScore {
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+.highScore h1 {
+  font-size: #{"clamp(16px, (3.2vw, 4vh), 23px)"};
+  color: #2BB673;
 }
 
 /* .LeaderboardUser {

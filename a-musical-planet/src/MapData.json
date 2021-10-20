@@ -2,19 +2,25 @@
   {
     "name": "World Easy",
     "category": "World",
-    "description": "With only 2 countries from each continent, this should be easy!",
+    "difficultyCaption": "2 countries per continent",
+    "color": "#2BB673",
+    "description": "This should be easy!",
     "difficulty": 2
   },
   {
     "name": "World Medium",
     "category": "World",
+    "difficultyCaption": "6 countries per continent",
+    "color": "#FFC147",
     "description": "This will be a challenge, but not quite impossible!",
     "difficulty": 4
   },
   {
     "name": "World Hard",
     "category": "World",
-    "description": "Guess from the music of over 100 countries!",
+    "difficultyCaption": "All countries available",
+    "color": "#FF462D",
+    "description": "For connoisseurs and madmen alike!",
     "difficulty": 5
   },
   {
