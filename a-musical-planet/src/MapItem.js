@@ -34,6 +34,7 @@ const MapItem = ({ map, handleMapChosen }) => {
       : 0;
   return (
     <div className="MapItem" onMouseEnter={playRecord} onMouseLeave={stopRecord}>
+      {map.name === "World Easy" ? <div id="beginnerDiv"><p id="beginnerText">beginners start here!</p></div> : null}
       {/* <img src={"/mapimages/" + formattedMapName + ".png"} alt={map.name} /> */}
       <RecordPlayer map={formattedMapName} />
       <h1>{map.name}</h1>

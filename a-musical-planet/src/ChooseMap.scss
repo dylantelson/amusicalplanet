@@ -1,3 +1,4 @@
+$tiny: 600px;
 $small: 650px;
 
 .MapBodyDesktop {
@@ -94,7 +95,7 @@ $small: 650px;
   height: fit-content;
   min-height: 0;
   /* min-width: 150px; */
-  overflow: hidden;
+  overflow: visible;
   max-height: 450px;
   border-radius: 20px;
   max-width: 330px;
@@ -374,6 +375,36 @@ $small: 650px;
   z-index: 1;
   transition: opacity 0.4s;
   &.active {
-    opacity: 100%;
+    opacity: 1;
+  }
+}
+
+#beginnerDiv {
+  position: relative;
+  overflow: visible;
+  width: 100%;
+}
+
+#beginnerText {
+  position: absolute;
+  font-family: "Inter-Bold";
+  left: 0; 
+  right: 0; 
+  margin-left: auto; 
+  margin-right: auto;
+  width: 160px;
+  height: 30px;
+  color: white;
+  background: #67BCFF;
+  border-radius: 8px 8px 0 0;
+  transform: translateY(-100%);
+  line-height: 26px;
+  text-align: center;
+  z-index: -1;
+  @media screen and (max-width: $small) {
+    width: 200px;
+  }
+  @media screen and (max-height: $tiny) {
+    width: 100px;
   }
 }
