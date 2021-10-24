@@ -28,7 +28,7 @@ const countryGenres = {
   Madagascar: ["Valiha", "Ba-gasy", "Salegy", "Tsapika", "Basesa", "Kilalaky", "Mangaliba"]
 };
 
-const Login = ({ handleLogin }) => {
+const Login = ({ handleLogin, setShowGlobe }) => {
 
   const [startCurr, setStartCurr] = useState(false);
 
@@ -49,6 +49,8 @@ const Login = ({ handleLogin }) => {
   };
 
   useEffect(() => {
+    setShowGlobe(true);
+
     setNewGenre("curr");
     setNewGenre("prev");
     setTimeout(() => setStartCurr(true), 3000);

@@ -74,7 +74,12 @@ $small: 650px;
 
 .userHead > img {
   border-radius: 50%;
-  width: #{"clamp(115px, 20vw, 150px)"};
+  // width: #{"clamp(115px, 20vw, 150px)"};
+  width: 20vw;
+  min-width: 115px;
+  max-width: 150px;
+  min-height: 115px;
+  max-height: 150px;
   height: auto;
   transform: translateY(-50%);
 }

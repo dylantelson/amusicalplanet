@@ -3,10 +3,8 @@ import * as topojson from "topojson";
 import * as d3 from "d3";
 import "./World.scss";
 import WorldLowQuality from "./WorldLowQuality";
-import { useHistory } from "react-router";
 
 const World = () => {
-    const history = useHistory();
     let projection = d3
         .geoOrthographic()
         .scale(200)
@@ -17,9 +15,12 @@ const World = () => {
 
     var λ = d3.scaleLinear().domain([0, 400]).range([-180, 180]);
 
-    var φ = d3.scaleLinear().domain([0, 400]).range([90, -90]);
-
     let worldsvg;
+
+    //cap at 30fps
+    const framesPerAnimate = 1000/30;
+    let lastRenderedFrameTime;
+
 
     useEffect(() => {
         worldsvg = d3.select("#worldsvg");
@@ -28,18 +29,38 @@ const World = () => {
             .datum(topojson.feature(WorldLowQuality, WorldLowQuality.objects.land))
             .attr("class", "land")
             .attr("d", path);
+
+        lastRenderedFrameTime = window.performance.now();
+        rotateWorld();
   }, []);
 
-    var scrollSpeed = 50;
-    var current = 0;
-    function bgscroll() {
-        if(!worldsvg) return;
-        current += 1;
-        projection.rotate([λ(current), 0]);
-        worldsvg.selectAll("path").attr("d", path);
+
+
+    var curr = 0;
+    // const rotate = () => {
+    //     if(!worldsvg) return;
+    //     curr += 1;
+    //     projection.rotate([λ(curr), 0]);
+    //     worldsvg.selectAll("path").attr("d", path);
+    // }
+
+    const rotateWorld = () => {
+        // if(!worldsvg) return;
+        window.requestAnimationFrame(rotateWorld);
+
+        const currTime = window.performance.now();
+        const timeElapsed = currTime - lastRenderedFrameTime;
+
+        if(timeElapsed > framesPerAnimate) {
+            lastRenderedFrameTime = currTime - (timeElapsed % framesPerAnimate);
+            curr += 1;
+            projection.rotate([λ(curr), 0]);
+            worldsvg.selectAll("path").attr("d", path);
+        }
+
     }
 
-    setInterval(bgscroll, scrollSpeed);
+    // setInterval(rotate, rotateSpeed);
     
     return (
     <div id="worldsvgDiv">

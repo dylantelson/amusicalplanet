@@ -4,12 +4,14 @@ import MapData from "./MapData.json";
 import LeaderboardUser from "./LeaderboardUser";
 import "./Leaderboard.scss";
 
-const Leaderboard = () => {
+const Leaderboard = ({ setShowGlobe }) => {
   const [leaderboardStats, setLeaderboardStats] = useState([]);
   const [chosenMap, setChosenMap] = useState("worldEasy");
   const [currPage, setCurrPage] = useState(0);
 
   useEffect(() => {
+    setShowGlobe(true);
+    
     axios(`${process.env.REACT_APP_BACKEND_URI}/getLeaderboard`, {
       headers: {
         Accept: "application/json",

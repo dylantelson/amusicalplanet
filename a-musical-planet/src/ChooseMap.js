@@ -1,14 +1,18 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import MapItem from "./MapItem";
 import "./ChooseMap.scss";
 import MapData from "./MapData.json";
 
-const ChooseMap = ({ handleMapChosen }) => {
+const ChooseMap = ({ handleMapChosen, setShowGlobe }) => {
   const [chosenMap, setChosenMap] = useState("World Easy");
   const [chosenMapCategory, setChosenMapCategory] = useState("World");
   const chosenMapData = MapData.find((map) => map.name === chosenMap);
 
   const mapCategories = ["World", "Continent"]; //add "Other" when USA map is made
+
+  useEffect(() => {
+    setShowGlobe(true);
+  }, []);
 
   return (
     <div className="ChooseMapContainer">

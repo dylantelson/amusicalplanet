@@ -18,11 +18,14 @@ const Play = ({
   setAccessTokenHandler,
   currMap,
   sendScoreToServer,
+  setShowGlobe
 }) => {
   const [currTrack, setCurrTrack] = useState({ round: 0 });
   const [redirect, setRedirect] = useState("");
 
   const [currChosen, setCurrChosen] = useState("");
+
+  const [startTime, setStartTime] = useState(0);
 
   const [loading, setLoading] = useState(true);
 
@@ -122,6 +125,7 @@ const Play = ({
           name: data.tracks.items[trackIndex].track.name,
           round: currTrack.round < 5 ? currTrack.round + 1 : 1,
           id: data.tracks.items[trackIndex].track.id,
+          startTime: Date.now()
         });
         audioRef.current.load();
         audioRef.current.play();
@@ -184,6 +188,13 @@ const Play = ({
     const currChosenCountryDOM = document.querySelector(
       `#${currChosen[0].toLowerCase() + currChosen.slice(1).replace(/ /g, "")}`
     );
+
+    //check how many seconds have passed since round started
+    let scoreTimedRemoval = Math.round((Date.now() - currTrack.startTime) / 1000);
+    //
+    scoreTimedRemoval < 20 ? scoreTimedRemoval = 0 : scoreTimedRemoval *= 10;
+
+    console.log("REMOVING", scoreTimedRemoval, "POINTS FOR TIME");
     if (currChosenCountryDOM) {
       currChosenCountryDOM.classList.remove("pressed");
       currChosenCountryDOM.style.fill =
@@ -193,17 +204,19 @@ const Play = ({
       return country.name.common === currTrack.location;
     })[0];
     if (currChosen === currTrack.location) {
+      console.log("Score removed to time: ")
+      const score = Math.max(0, 5000 - scoreTimedRemoval);
       setPopup({
-        sessionScore: popup.sessionScore + maxScore,
+        sessionScore: popup.sessionScore + score,
         show: true,
-        roundScore: maxScore,
+        roundScore: score,
         sessionInfo: [
           ...popup.sessionInfo,
           {
             country: currTrack.location,
             songId: currTrack.id,
             correct: true,
-            score: 5000,
+            score: score,
             code: currTrackCountry.cca2.toLowerCase(),
           },
         ],
@@ -252,8 +265,7 @@ const Play = ({
         break;
     }
 
-    let score = maxScore - scoreDeduction;
-    if (score < 0) score = 0;
+    let score = Math.max(0, maxScore - scoreDeduction - scoreTimedRemoval);
 
     setPopup({
       show: true,
@@ -280,6 +292,7 @@ const Play = ({
 
   useEffect(() => {
     if (accessToken === null || accessToken === "") return setRedirect("login");
+    setShowGlobe(false);
     if (!loading) newGame();
   }, [loading]);
 

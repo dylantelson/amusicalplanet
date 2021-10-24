@@ -7,7 +7,7 @@ import "./PersonalPage.scss";
 import MapData from "./MapData.json";
 import { UserContext } from "./App.js";
 
-const PersonalPage = ({ handleLogout }) => {
+const PersonalPage = ({ handleLogout, setShowGlobe }) => {
   const loggedInUser = useContext(UserContext);
   const { userName } = useParams();
 
@@ -25,6 +25,10 @@ const PersonalPage = ({ handleLogout }) => {
       method: "GET",
     }).then(({ data }) => setUserData(data));
   }, [userName]);
+
+  useEffect(() => {
+    setShowGlobe(true);
+  }, []);
 
   return (
     <div className="userPageContainer">

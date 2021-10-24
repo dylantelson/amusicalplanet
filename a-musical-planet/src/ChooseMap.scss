@@ -47,6 +47,9 @@ $small: 650px;
 }
 
 .MapHead h1 {
+  //fallback
+  font-size: 40px;
+  //optimal
   font-size: #{"clamp(30px, 5vh, 48px)"};
   margin: #{"min(14px, 0.5vh)"} 0px 0px 0px;
   color: white;
@@ -128,6 +131,9 @@ $small: 650px;
 }
 
 .MapItem h2 {
+  //fallback
+  font-size: 20px;
+  //optimal
   font-size: #{"clamp(16px, (1.5vw, 2.2vh), 26px)"};
   margin-top: 0;
   @media screen and (max-width: $small) {
@@ -290,6 +296,9 @@ $small: 650px;
 
 .Switch {
   width: 195px;
+  //fallback
+  height: 58px;
+  //optimal
   height: #{"clamp(42px, 7vh, 69px)"};
   --dot: #000;
   --circle: #000;
@@ -330,6 +339,9 @@ $small: 650px;
                   left: 4px;
                   top: 4px;
                   width: 50%;
+                  //fallback
+                  height: 50px;
+                  //optimal
                   height: #{"clamp(34px, 6vh, 56px)"};
                   border-radius: 160px;
                   transform: translateX(var(--x));

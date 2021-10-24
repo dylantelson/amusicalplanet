@@ -389,8 +389,8 @@ iframe {
 .timeControls {
   width: 100%;
   display: flex;
-  flex: 1 1 auto;
   justify-content: flex-start;
+  align-items: center;
 }
 
 .timeControls p {
@@ -402,10 +402,27 @@ iframe {
 }
 
 .audioSeeker {
-  flex: 1 1 auto;
   pointer-events: all;
   width: 30vw;
   max-width: 200px;
+}
+
+.volumeSeeker {
+  pointer-events: all;
+  width: 20vw;
+  max-width: 130px;
+}
+
+.volumeControls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.volumeControls img {
+  pointer-events: all;
+  width: 18px;
+  height: auto;
 }
 
 .audioButton {
@@ -428,6 +445,30 @@ iframe {
 }
 .audioButton:hover {
   border-color: transparent transparent transparent #404040;
+}
+
+input[type=range] {
+  appearance: none;
+  background: linear-gradient(to right, #0b9294 0%, #0db8bb 50%, #fff 50%, #fff 100%);
+  border: solid 1px #82CFD0;
+  border-radius: 8px;
+  outline: none;
+  opacity: 0.7;
+  height: 8px;
+  transition: opacity 0.2s;
+  &:hover {
+    opacity: 1;
+  }
+
+  &::-webkit-slider-thumb {
+    appearance: none;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    border: 1px solid black;
+    background: white;
+    cursor: pointer;
+  }
 }
 
 // .incorrect-background {

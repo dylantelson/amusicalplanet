@@ -1,7 +1,12 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./About.scss";
 
-const About = () => {
+const About = ({ setShowGlobe }) => {
+  
+  useEffect(() => {
+    setShowGlobe(true);
+  }, []);
+
   return (
     <div id="About">
       <h1>About</h1>

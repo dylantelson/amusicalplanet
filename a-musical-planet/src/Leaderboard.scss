@@ -132,7 +132,7 @@ $tiny: 450px;
     color: #1C75BC;
   }
   @media screen and (max-width: $tiny) {
-    font-size: 15px;
+    font-size: 14px;
   }
 }
 
@@ -155,6 +155,9 @@ $tiny: 450px;
 }
 
 .highScore h1 {
+  //fallback
+  font-size: 20px;
+  //in browsers that support clamp
   font-size: #{"clamp(16px, (3.2vw, 4vh), 23px)"};
   color: #2BB673;
 }

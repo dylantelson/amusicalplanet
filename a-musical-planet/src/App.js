@@ -44,6 +44,8 @@ function App() {
   //default world as map
   const [currMap, setCurrMap] = useState("world");
 
+  const [showGlobe, setShowGlobe] = useState(true);
+
   const sendScoreToServer = (newScore) => {
     axios(
       `${process.env.REACT_APP_BACKEND_URI}/newScore/${userData.userName}/${currMap}/${newScore}`,
@@ -115,11 +117,11 @@ function App() {
     setCurrMap(mapName[0].toLowerCase() + mapName.slice(1).replace(/ /g, ""));
   };
 
-  const checkToken = () => {
-    if (!setTokenFromCookie()) {
-      setRedirect("login");
-    }
-  };
+  // const checkToken = () => {
+  //   if (!setTokenFromCookie()) {
+  //     setRedirect("login");
+  //   }
+  // };
 
   const handleLogin = () => {
     window.location.replace(`${process.env.REACT_APP_BACKEND_URI}/login`);
@@ -175,7 +177,7 @@ function App() {
         {redirect === "login" ? <Redirect to="/login" /> : null}
         <UserContext.Provider value={userData}>
           <Header />
-          <World shouldPlay={redirect}/>
+          {showGlobe ? <World /> : null}
           <Switch>
             <Route path="/auth" render={() => handleAuth()} />
             <Route
@@ -190,20 +192,20 @@ function App() {
               ) ? (
                 <Redirect to="/login" />
               ) : (
-                <Login handleLogin={handleLogin} />
+                <Login handleLogin={handleLogin}  setShowGlobe={setShowGlobe}/>
               )}
             </Route>
             <Route path="/maps">
-              <ChooseMap handleMapChosen={handleMapChosen} />
+              <ChooseMap handleMapChosen={handleMapChosen} setShowGlobe={setShowGlobe} />
             </Route>
             <Route path="/about">
-              <About />
+              <About  setShowGlobe={setShowGlobe}/>
             </Route>
             <Route path="/leaderboard">
-              <Leaderboard />
+              <Leaderboard  setShowGlobe={setShowGlobe}/>
             </Route>
             <Route path="/user/:userName">
-              <PersonalPage handleLogout={handleLogout} />
+              <PersonalPage handleLogout={handleLogout} setShowGlobe={setShowGlobe} />
             </Route>
             <Route path="/play">
               <Play
@@ -213,6 +215,7 @@ function App() {
                 setAccessTokenHandler={setAccessTokenHandler}
                 setTokenFromCookie={setTokenFromCookie}
                 sendScoreToServer={sendScoreToServer}
+                setShowGlobe={setShowGlobe}
               />
             </Route>
             <Route path="/error">
