@@ -10,21 +10,22 @@ const MapItem = ({ map, handleMapChosen }) => {
   const formattedMapName =
     map.name[0].toLowerCase() + map.name.slice(1).replace(/ /g, "");
 
+  //start record spinning animation
+  const playRecord = () => {
+    document.querySelectorAll(`#${formattedMapName}Arm`).forEach(arm => arm.classList.add("playing"));
+    setTimeout(() => isHovering ? document.querySelectorAll(`#${formattedMapName}MapDisc`).forEach(disc => disc.classList.add("playing")) : null, 250);
+    isHovering = true;
+    // document.querySelector(`#${formattedMapName}MapDisc`).classList.add("playing");
+  }
 
-    const playRecord = () => {
-      document.querySelectorAll(`#${formattedMapName}Arm`).forEach(arm => arm.classList.add("playing"));
-      setTimeout(() => isHovering ? document.querySelectorAll(`#${formattedMapName}MapDisc`).forEach(disc => disc.classList.add("playing")) : null, 250);
-      isHovering = true;
-      // document.querySelector(`#${formattedMapName}MapDisc`).classList.add("playing");
-    }
-  
-    const stopRecord = () => {
-      document.querySelectorAll(`#${formattedMapName}Arm`).forEach(arm => arm.classList.remove("playing"));
-      document.querySelectorAll(`#${formattedMapName}MapDisc`).forEach(disc => disc.classList.remove("playing"));
-      isHovering = false;
-      // document.querySelector(`#${formattedMapName}MapDisc`).style.animationPlayState='paused';
-    }
+  //end record spinning animation
+  const stopRecord = () => {
+    document.querySelectorAll(`#${formattedMapName}Arm`).forEach(arm => arm.classList.remove("playing"));
+    document.querySelectorAll(`#${formattedMapName}MapDisc`).forEach(disc => disc.classList.remove("playing"));
+    isHovering = false;
+  }
 
+  //If user has a score, show it- otherwise maxScore on this map is 0
   const maxScore =
     userData &&
     userData.stats &&
@@ -32,10 +33,10 @@ const MapItem = ({ map, handleMapChosen }) => {
     userData.stats.maxScores[formattedMapName]
       ? userData.stats.maxScores[formattedMapName]
       : 0;
+
   return (
     <div className="MapItem" onMouseEnter={playRecord} onMouseLeave={stopRecord}>
       {map.name === "World Easy" ? <div id="beginnerDiv"><p id="beginnerText">beginners start here!</p></div> : null}
-      {/* <img src={"/mapimages/" + formattedMapName + ".png"} alt={map.name} /> */}
       <RecordPlayer map={formattedMapName} />
       <h1>{map.name}</h1>
       {map.difficultyCaption ? <h2 style={{ color: map.color }}>{map.difficultyCaption}</h2> : null}

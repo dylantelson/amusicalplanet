@@ -22,6 +22,7 @@ import getCookie from "./GetCookie";
 
 dotenv.config();
 
+//logged in user information
 export const UserContext = React.createContext({
   displayName: "",
   userName: "",
@@ -41,11 +42,18 @@ function App() {
     country: "",
   });
 
-  //default world as map
+  //world is default map
   const [currMap, setCurrMap] = useState("world");
 
+  //whether to show the spinning globe (set to false in /play)
   const [showGlobe, setShowGlobe] = useState(true);
 
+  //sending score to server
+  //would be good to send country guess
+  //and have server calculate score,
+  //but would put extra stress on the server
+  //as it would have to make all the Spotify
+  //requests itself
   const sendScoreToServer = (newScore) => {
     axios(
       `${process.env.REACT_APP_BACKEND_URI}/newScore/${userData.userName}/${currMap}/${newScore}`,
@@ -61,6 +69,8 @@ function App() {
       });
   };
 
+  //Get the access token from a cookie
+  //if it still exists (expires after 1 hour)
   const setTokenFromCookie = () => {
     const accessTokenCookie = getCookie("accessToken");
     if (accessTokenCookie !== "") {
@@ -71,17 +81,24 @@ function App() {
     }
   };
 
+  //If user refreshes a page other than the homepage,
+  //such as play, and the cookie has expired, automatically
+  //relogin rather than making the user click login again
   useEffect(() => {
     if (!setTokenFromCookie() && !(window.location.pathname === "/"))
       return setRedirect("login");
   }, []);
 
+  //this is to ensure the userData is set even if on first
+  //render the accessToken isn't set
   useEffect(() => {
+    if(accessToken === "TEST") return; //DELETE THIS
     if (accessToken !== "" && accessToken !== null) {
       setUser();
     }
   }, [accessToken]);
 
+  //Get user's information from Spotify
   const setUser = async () => {
     return axios("https://api.spotify.com/v1/me", {
       headers: {
@@ -113,20 +130,20 @@ function App() {
       });
   };
 
+  //Set map to whatever MapItem is chosen from ChooseMap
+  //Reformatting: North America -> northAmerica
   const handleMapChosen = (mapName) => {
     setCurrMap(mapName[0].toLowerCase() + mapName.slice(1).replace(/ /g, ""));
   };
 
-  // const checkToken = () => {
-  //   if (!setTokenFromCookie()) {
-  //     setRedirect("login");
-  //   }
-  // };
-
+  //When login button is clicked, redirect to server
+  //We do it this way so the server can redirect to
+  //the Spotify authentication page for new users
   const handleLogin = () => {
     window.location.replace(`${process.env.REACT_APP_BACKEND_URI}/login`);
   };
 
+  //On logout we remove all cookies, clear user data, and redirect to home
   const handleLogout = () => {
     document.cookie =
       "accessToken=-1;expires=Thu, 01 Jan 1970 00:00:00 GMT;path=/";
@@ -141,6 +158,7 @@ function App() {
     setRedirect("/");
   };
 
+  //Set access token and the access token cookie
   const setAccessTokenHandler = (newAccessToken) => {
     let accessTokenExpireDate = new Date();
     accessTokenExpireDate.setTime(
@@ -157,8 +175,9 @@ function App() {
     setAccessToken(newAccessToken);
   };
 
+  //When redirected from the server, we set the access token
+  //and redirect to /maps
   const handleAuth = () => {
-    console.count("Handling AUTH");
     const URLAccessToken = new URLSearchParams(window.location.search).get(
       "access_token"
     );

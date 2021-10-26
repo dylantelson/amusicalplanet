@@ -23,7 +23,7 @@ const SummaryItem = ({ countryInfo, index, show }) => {
         <h3>(+{countryInfo.score})</h3>
       </div>
       <CustomiFrame
-        src={`https://open.spotify.com/embed/track/${countryInfo.songId}`}
+        trackId={countryInfo.songId}
         width="90%"
         height="80"
       />

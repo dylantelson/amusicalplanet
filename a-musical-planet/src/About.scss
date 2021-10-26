@@ -1,13 +1,39 @@
 #About {
-  margin: 1% 0px;
+  margin: 1vh 0px;
   height: 80vh;
   display: flex;
   flex-direction: column;
   flex: 0 1 auto;
-  max-width: 1575;
+  align-items: center;
 }
 
 #About h1 {
-  font-size: #{"min(32px, 4vh)"};
-  margin: #{"min(14px, 2.3vh)"} 0px;
+  //fallback
+  font-size: 40px;
+  //optimal
+  font-size: #{"clamp(30px, 5vh, 48px)"};
+  margin: #{"min(14px, 0.5vh)"} 0px 0px 0px;
+  color: white;
+}
+
+#AboutText {
+  margin-top: 55px;
+  margin-bottom: 0px;
+  display: flex;
+  flex-direction: column;
+  // justify-content: center;
+  align-items: center;
+  background: white;
+  border-radius: 100px;
+  padding: 30px;
+  width: 40%;
+  max-width: 600px;
+}
+
+#AboutText p {
+  // margin: auto;
+  max-width: 650px;
+  // width: 100%;
+  font-size: 19px;
+  color: black;
 }

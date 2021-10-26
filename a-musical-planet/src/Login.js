@@ -5,33 +5,50 @@ import "./Login.scss";
 const countryGenres = {
   Zimbabwe: ["Chimurenga", "Sungura", "Imbubwe", "Mbira"],
   Algeria: ["Chaabi", "Raï", "Gharnati"],
+  "DR Congo": ["Soukous", "Mbuti", "Cavacha"],
+  Cameroon: ["Baka", "Bikutsi", "Makossa", "Assiko"],
+  Madagascar: ["Valiha", "Ba-gasy", "Salegy", "Tsapika", "Basesa", "Kilalaky", "Mangaliba"],
+  Ethiopia: ["Masenqo", "Tizita", "Bolel"],
+  Egypt: ["Shaabi", "Baladi", "Al Jeel"],
+  Mali: ["Kora", "Griot", "Bamana", "Mandinka"],
+  Uganda: ["Baganda", "Amadinda", "Bakisimba", "Kidandali"],
+
   Argentina: ["Tango", "Zamba", "Chamamé", "Milonga", "Chacarera"],
   Brazil: ["Samba", "Capoeira", "Choro"],
   Colombia: ["Cumbia", "Bambuco", "Salsa", "Vallenato"],
   Peru: ["Marinera", "Huayno", "Cueca"],
-  Australia: ["Bunggul", "Manikay", "Wangga", "Didgeridoo"],
-  Cambodia: ["Pinpeat", "Mahori", "Rock"],
-  Spain: ["Flamenco", "Jota", "Sardana"],
-  Japan: ["Min'yō", "Shima-uta", "Ryūkōka"],
   Ecuador: ["Pasillo", "Pascalle", "Yaraví", "Capischa", "Tonada"],
   Venezuela: ["Joropo", "Gaita", "Aguinaldo"],
+  Bolivia: ["Morenada", "Caporales", "Tobas"],
+  Paraguay: ["Morenada", "Caporales", "Tobas"],
+
+  Australia: ["Bunggul", "Manikay", "Wangga", "Didgeridoo"],
+
+  Cambodia: ["Pinpeat", "Mahori", "Rock"],
+  Japan: ["Min'yō", "Shima-uta", "Ryūkōka"],
   Indonesia: ["Gamelan", "Jaipongan", "Campursari"],
   Kazakhstan: ["Dombra", "Kuy", "Kobyz"],
   Vietnam: ["Xẩm", "Quan họ", "Ca trù", "Nhã nhạc"],
-  Cuba: ["Son", "Songo", "Trova", "Guaracha", "Charanga", "Bolero", "Mambo"],
-  Panama: ["Tamborito", "Pindín", "Saloma"],
-  "DR Congo": ["Soukous", "Mbuti", "Cavacha"],
-  Cameroon: ["Baka", "Bikutsi", "Makossa", "Assiko"],
+  Thailand: ["Piphat", "Mor Lam", "Sueng"],
+
+  Spain: ["Flamenco", "Jota", "Sardana"],
   Bulgaria: ["Choir", "Gaida", "Gadulka"],
   Italy: ["Ciaramedda", "Siciliana", "Saltarello", "Opera"],
   Bosnia: ["Ganga", "Sevdalinka", "Ilahije"],
-  Madagascar: ["Valiha", "Ba-gasy", "Salegy", "Tsapika", "Basesa", "Kilalaky", "Mangaliba"]
+
+  Cuba: ["Son", "Songo", "Trova", "Guaracha", "Charanga", "Bolero", "Mambo"],
+  Panama: ["Tamborito", "Pindín", "Saloma"],
+  Haiti: ["Kadans", "Rara", "Twoubadou", "Compas"],
+  Jamaica: ["Reggae", "Mento", "Rocksteady"],
+  Mexico: ["Corrido", "Mariachi", "Tamborazo", "Duranguense"],
+
 };
 
 const Login = ({ handleLogin, setShowGlobe }) => {
 
   const [startCurr, setStartCurr] = useState(false);
 
+  //we have 2 variables so that one h1 can fade out while the other enters
   const [prevGenre, setPrevGenre] = useState(["Candombe", "Uruguay"]);
   const [currGenre, setCurrGenre] = useState(["Salsa", "Puerto Rico"]);
 
@@ -48,6 +65,10 @@ const Login = ({ handleLogin, setShowGlobe }) => {
       : setPrevGenre([genre, country]);
   };
 
+  //After setting new genre, we initially wait
+  //only 3 seconds to change it as the website
+  //starts off in the middle of the animation.
+  //After that, we change the genre every 6 seconds
   useEffect(() => {
     setShowGlobe(true);
 
@@ -57,13 +78,13 @@ const Login = ({ handleLogin, setShowGlobe }) => {
     const prevInterval = setInterval(() => {
       setNewGenre("prev");
     }, 6000);
-    // setTimeoutsList([...timeoutsList, setTimeout(newCountryGenre1, 2990)]);
-    // setTimeoutsList([...timeoutsList, setTimeout(newCountryGenre2, 4450)]);
     return () => {
       clearInterval(prevInterval);
     };
   }, []);
 
+  //We use this useEffect so a 3 second delay occurs
+  //before the setInterval() is set to 6 second delays
   useEffect(() => {
     if(!startCurr) return;
     setNewGenre("curr");

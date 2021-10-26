@@ -59,6 +59,11 @@ const GuessPopup = ({
     newGame();
   };
 
+  //NOTE: We have summary always rendering, even when not visible,
+  //because otherwise the iFrames take too much time to load.
+  //Same reason why this GuessPopup is always rendered even
+  //while not showing. Can be changed if a way to
+  //preload iFrames efficiently is found.
   return (
     <>
       <Summary
@@ -84,7 +89,7 @@ const GuessPopup = ({
           </div>
           <div className="song-info">
             <CustomiFrame
-              src={`https://open.spotify.com/embed/track/${currTrack.id}`}
+              trackId={currTrack.id}
               width="80%"
               height="300"
             />

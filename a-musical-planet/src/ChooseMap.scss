@@ -11,36 +11,15 @@ $small: 650px;
 }
 
 .MapItemsDesktop {
-  /* height: 100%; */
   display: flex;
   flex: 0 1 auto;
   flex-wrap: wrap;
-  /* align-self: center; */
   justify-content: center;
   align-items: center;
   min-height: 0;
   min-width: 0;
   margin-top: #{"min(20px, 2vh)"};
 }
-
-// .MapBodyDesktop select {
-//   /* background-color: #1abc9c; */
-//   background-color: white;
-//   border: 1px solid black;
-//   height: #{"min(40px, 4.5vh)"};
-//   width: 150px;
-//   margin: auto;
-//   color: black;
-//   font-size: #{"min(16px, 2vh)"};
-//   padding: 0.5em;
-//   padding-right: 2.5em;
-//   /* border: 0; */
-//   margin-bottom: #{"min(25px, 2.5vh)"};
-//   border-radius: 3px;
-//   text-indent: 0.01px;
-//   -moz-appearance: menulist-button;
-//   -webkit-appearance: menulist-button;
-// }
 
 .MapHead {
   margin: 1vh 0px 0.5vh 0px;
@@ -66,7 +45,6 @@ $small: 650px;
 }
 
 .MapItemsMobile select {
-  /* background-color: #1abc9c; */
   background-color: white;
   border: 1px solid black;
   height: 40px;
@@ -76,7 +54,6 @@ $small: 650px;
   font-size: inherit;
   padding: 0.5em;
   padding-right: 2.5em;
-  /* border: 0; */
   margin: 0;
   border-radius: 3px;
   text-indent: 0.01px;
@@ -97,7 +74,6 @@ $small: 650px;
   width: #{"min(28vw, 32vh)"};
   height: fit-content;
   min-height: 0;
-  /* min-width: 150px; */
   overflow: visible;
   max-height: 450px;
   border-radius: 20px;
@@ -111,15 +87,6 @@ $small: 650px;
     padding: 0px;
   }
 }
-
-// .MapItem img {
-//   min-width: 0;
-//   min-height: 0;
-//   object-fit: contain;
-//   width: #{"min(100%, 40vh)"};
-//   height: auto;
-//   display: block;
-// }
 
 .MapItem h1 {
   font-size: #{"min(2.5vw, 3vh)"};
@@ -136,9 +103,13 @@ $small: 650px;
   //optimal
   font-size: #{"clamp(16px, (1.5vw, 2.2vh), 26px)"};
   margin-top: 0;
+  justify-content: center;
+  width: 80%;
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
   @media screen and (max-width: $small) {
     font-size: #{"min(4vw, 5.5vh)"};
-    // margin: #{"min(1.3vw, 1vh)"} 0px;
   }
 }
 
@@ -215,8 +186,8 @@ $small: 650px;
   z-index: 1;
   display: grid;
   margin-left: 0;
-  grid-row: 1/2;    // Change here
-  grid-column: 1/2; // Change here
+  grid-row: 1/2;
+  grid-column: 1/2;
   // right: 97.2px;
 }
 
@@ -225,8 +196,8 @@ $small: 650px;
   margin-left: 12px;
   margin-bottom: 1px;
   display: grid;
-  grid-row: 1/2;    // Change here
-  grid-column: 1/2; // Change here
+  grid-row: 1/2;
+  grid-column: 1/2;
   animation: spin 1s infinite linear;
   animation-play-state: paused;
   &.playing {
@@ -253,8 +224,8 @@ $small: 650px;
   right: -41px;
   // right: 1px;
   display: grid;
-  grid-row: 1/2;    // Change here
-  grid-column: 1/2; // Change here
+  grid-row: 1/2;
+  grid-column: 1/2;
   transform-origin: bottom right;
   transition: transform 0.4s;
   // animation: lowerArm 1s reverse forwards;
@@ -270,21 +241,9 @@ $small: 650px;
   right: 1px;
   top: 9px;
   display: grid;
-  grid-row: 1/2;    // Change here
-  grid-column: 1/2; // Change here
+  grid-row: 1/2;
+  grid-column: 1/2;
 }
-
-/* @media screen and (min-width: 1600px) {
-  .MapItem h1 {
-    font-size: 1.8em;
-  }
-  .MapItem p {
-    font-size: 1em;
-  }
-  .MapItem button {
-    font-size: 1em;
-  }
-} */
 
 .ChooseMapContainer {
   height: 80vh;
@@ -325,7 +284,6 @@ $small: 650px;
           position: relative;
           span {
               line-height: 28px;
-              // color: var(--text);
               background: #000;
               background-color: #000;
               width: 100%;
@@ -347,27 +305,24 @@ $small: 650px;
                   transform: translateX(var(--x));
                   transition: transform var(--duration) ease;
               }
-              &:not(:empty) {
-                  // padding-left: 68px;
-              }
           }
       }
       &:checked {
-          & + div {
-              &:before {
-                  --s: 1;
-              }
-              &:after {
-                  --s: 0;
-              }
-              span {
-                  &:before {
-                      --x: 88px;
-                      --s: 12px;
-                      --b: var(--dot);
-                  }
-              }
+        & + div {
+          &:before {
+            --s: 1;
           }
+          &:after {
+            --s: 0;
+          }
+          span {
+            &:before {
+              --x: 88px;
+              --s: 12px;
+              --b: var(--dot);
+            }
+          }
+        }
       }
   }
 }

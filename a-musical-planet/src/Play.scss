@@ -417,6 +417,9 @@ iframe {
   display: flex;
   justify-content: center;
   align-items: center;
+  @media screen and (max-width: $small) {
+    display: none;
+  }
 }
 
 .volumeControls img {
@@ -449,7 +452,7 @@ iframe {
 
 input[type=range] {
   appearance: none;
-  background: linear-gradient(to right, #0b9294 0%, #0db8bb 50%, #fff 50%, #fff 100%);
+  background: linear-gradient(to right, #fff 0%, #fff 50%, #fff 50%, #fff 100%);
   border: solid 1px #82CFD0;
   border-radius: 8px;
   outline: none;

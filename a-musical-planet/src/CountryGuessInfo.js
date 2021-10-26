@@ -5,9 +5,11 @@ import AudioPlayer from "./AudioPlayer";
 const countries = require("./WorldInfo.json");
 
 const CountryGuessInfo = ({ currChosen, guessGiven, audioRef, trackURL, loading }) => {
+  
   const countryCode = currChosen !== "" ? countries.filter(function (country) {
     return country.name.common === currChosen;
   })[0].cca2 : "";
+
   return (
     <>
       {currChosen !== "" ? 

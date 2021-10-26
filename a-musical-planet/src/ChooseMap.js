@@ -8,7 +8,7 @@ const ChooseMap = ({ handleMapChosen, setShowGlobe }) => {
   const [chosenMapCategory, setChosenMapCategory] = useState("World");
   const chosenMapData = MapData.find((map) => map.name === chosenMap);
 
-  const mapCategories = ["World", "Continent"]; //add "Other" when USA map is made
+  const mapCategories = ["World", "Continent"];
 
   useEffect(() => {
     setShowGlobe(true);
@@ -20,19 +20,6 @@ const ChooseMap = ({ handleMapChosen, setShowGlobe }) => {
         <h1>Maps</h1>
       </div>
       <div className="MapBodyDesktop">
-        {/* <select
-          id="maplistDesktop"
-          onChange={(e) => {
-            setChosenMapCategory(e.target.value);
-          }}
-        >
-          {mapCategories.map((category, i) => (
-            <option value={category}>
-              {category}
-            </option>
-          ))}
-        </select> */}
-        {/* <input type="checkbox" id="switch" /><label for="switch">MapSelect</label> */}
         <label className="Switch">
           <input type="checkbox" onChange={(e) => {
             e.target.checked ? setChosenMapCategory("Continent") : setChosenMapCategory("World");

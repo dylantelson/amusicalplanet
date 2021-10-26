@@ -6,6 +6,9 @@ const AudioPlayer = ({ audioRef, trackURL, loading }) => {
   const [currTime, setCurrTime] = useState(0);
   const [currVolume, setCurrVolume] = useState(1);
 
+  //set Volume to 1 on load
+  //necessary to get the slider gradient
+  //to update to the correct value
   useEffect(() => {
     inputChangeHandler(1, "volume");
   }, [])
@@ -15,6 +18,7 @@ const AudioPlayer = ({ audioRef, trackURL, loading }) => {
     else audioRef.current.pause();
     setPaused(!paused);
   };
+
   const formatTime = (timeInSeconds) => {
     // const totalSeconds = Math.floor(time);
     const minutes = Math.floor(timeInSeconds / 60);
@@ -23,8 +27,9 @@ const AudioPlayer = ({ audioRef, trackURL, loading }) => {
     return `${minutes}:${seconds}`;
   };
 
+  //Set the gradient to the correct value,
+  //then update the slider's value and volume/time
   const inputChangeHandler = (newValue, type) => {
-    console.log(type, ":", newValue)
     const slider = type==="volume" ? document.querySelector("#volumeslider") : document.querySelector("#timeslider");
     var gradientValue = (newValue-slider.min)/(slider.max-slider.min)*100;
     slider.style.background = 'linear-gradient(to right, #0db8bb 0%, #0db8bb ' + gradientValue + '%, #fff ' + gradientValue + '%, white 100%)';
@@ -42,22 +47,6 @@ const AudioPlayer = ({ audioRef, trackURL, loading }) => {
       setCurrTime(newValue);
     }
   }
-
-  // const sliderInputHandler = (slider, type) => {
-  //   if(type === "volume") setVolumeHandler(slider.value);
-  //   else setTimeHandler(slider.value);
-  // }
-
-  //uncomment this if you want audio to autoplay
-  //after the user finishes seeking a paused track
-  //note: will also need to uncomment the onMouseEnd
-  //that is found in the Seeker HTML range input
-  // const onSeekEnd = () => {
-  //   if (paused) {
-  //     audioRef.current.play();
-  //     setPaused(false);
-  //   }
-  // };
 
   return (
     <div className={loading ? "hidden" : ""}>
@@ -113,7 +102,7 @@ const AudioPlayer = ({ audioRef, trackURL, loading }) => {
               value={currVolume}
               min="0"
               max="1"
-              step="0.05"
+              step="0.01"
               className="volumeSeeker"
               onChange={(e) => inputChangeHandler(e.target.value, "volume")}
               // onInput={(e) => sliderInputHandler(e.target)}

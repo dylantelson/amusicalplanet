@@ -31,6 +31,7 @@ const MapPropsJSON = require("./MapProps.json");
 
 const borderWidth = 0.2;
 
+//Calculate color for country hover/active states
 function LightenDarkenColor(col, amt) {
   var usePound = false;
 
@@ -61,10 +62,14 @@ function LightenDarkenColor(col, amt) {
   return (usePound ? "#" : "") + (g | (b << 8) | (r << 16)).toString(16);
 }
 
+//Format country names, Saudi Arabia -> saudiArabia
 const camelize = (word) => {
   return word[0].toLowerCase() + word.slice(1).replace(/ /g, "");
 };
 
+//Returns a boolean based on whether the current country's difficulty
+//matches the selected map's difficulty. If this returns false,
+//this country is not used for the game.
 const checkDifficulty = (mapDifficulty, countryDifficulty) => {
   if (mapDifficulty === "Easy") return countryDifficulty === "Easy";
   if (mapDifficulty === "Medium")
@@ -74,14 +79,21 @@ const checkDifficulty = (mapDifficulty, countryDifficulty) => {
   return false;
 };
 
+//keep track of what countries fit the current map
 let countriesToShow = [];
+
 let currSelectedCountry = null;
+
 const MapChart = ({ handleNewChosen, currMap, setPlayLoading }) => {
+
   const [loading, setLoading] = useState(true);
+
   const mapProps =
     currMap.slice(0, 5) === "world"
       ? MapPropsJSON.world
       : MapPropsJSON[currMap];
+
+  //Set countriesToShow to the map's countries
   useEffect(() => {
     countriesToShow = [];
     currSelectedCountry = null;
@@ -95,14 +107,17 @@ const MapChart = ({ handleNewChosen, currMap, setPlayLoading }) => {
         countriesToShow.push(camelize(playlist.country));
       }
     }
+    //Wait until the map is loaded (map is very heavy),
+    //then clear the interval and show the map to the user
     var waitForMapLoad = setInterval(function () {
       if (document.querySelectorAll(".rsm-geography").length !== 0) {
         clearInterval(waitForMapLoad);
         setLoading(false);
         setPlayLoading(false);
       }
-    }, 500);
+    }, 100);
   }, [currMap]);
+
 
   if (!loading) {
     const countries = document.querySelectorAll(".rsm-geography");
@@ -117,34 +132,6 @@ const MapChart = ({ handleNewChosen, currMap, setPlayLoading }) => {
       );
     }
   }
-
-  // style={{
-  //                       currSelectedCountry &&
-  //                       currSelectedCountry.element.id ===
-  //                         geo.properties.NAME.replace(/ /g, "")
-  //                         ? selectedStyle(colors[geo.properties.CONTINENT])
-  //                         : countriesToShow.indexOf(geo.properties.NAME) >= 0
-  //                         ? {
-  //                             fill: colors[geo.properties.CONTINENT],
-  //                             pointerEvents: "all",
-  //                             stroke: "#000000",
-  //                             strokeWidth: borderWidth,
-  //                             outline: "none",
-  //                           }
-  //                         : {
-  //                             fill: "#ccc",
-  //                             pointerEvents: "none",
-  //                             stroke: "#000000",
-  //                             strokeWidth: borderWidth,
-  //                             outline: "none",
-  //                           },
-  //                     hover:
-  //                       currSelectedCountry &&
-  //                       currSelectedCountry.element.id ===
-  //                         geo.properties.NAME.replace(/ /g, "")
-  //                         ? selectedStyle(colors[geo.properties.CONTINENT])
-  //                         : hoveredStyle(colors[geo.properties.CONTINENT]),
-  //                   }}
 
   const setPressedStyle = (country, event) => {
     if (currSelectedCountry) {
@@ -163,45 +150,15 @@ const MapChart = ({ handleNewChosen, currMap, setPlayLoading }) => {
     event.target.classList.add("pressed");
   };
 
-  // const clearPressedStyle = () => {
-  //   if (currSelectedCountry) {
-  //     document.querySelector(`#${currSelectedCountry.element.id}`).style.fill =
-  //       colors[currSelectedCountry.props.CONTINENT];
-  //     currSelectedCountry = null;
-  //   }
-  // };
-
-  // const renderStyle = (country) => {
-  //   if (!country.area || country.area < 1500) return [{ fontSize: "0px" }, 0];
-  //   let adjustedFont =
-  //     country.area > 500000
-  //       ? country.area / 800000 + 4.5
-  //       : country.area / 800000 + 2.3;
-  //   if (adjustedFont <= country.name.common.length) adjustedFont /= 1.3;
-
-  //   if (country.name.common === "Russia" && currMap === "europe")
-  //     adjustedFont /= 2.5;
-  //   //const rightOffset = adjustedFont;
-  //   return [
-  //     {
-  //       fontSize: `${adjustedFont}px`,
-  //       // stroke: "#FFF",
-  //       // stroke: colors[country.CONTINENT],
-  //       // strokeWidth: `${adjustedFont / 50}px`,
-  //     },
-  //     adjustedFont - 1,
-  //   ];
-  // };
-
   const renderStyle = (area) => {
-    if (area > 5000000) return { fontSize: "20px" };
-    if (area > 2500000) return { fontSize: "12px" };
-    if (area > 1000000) return { fontSize: "9px" };
-    if (area > 500000) return { fontSize: "7px" };
-    if (area > 300000) return { fontSize: "5px" };
+    if (area > 5000000) return { fontSize: "19px" };
+    if (area > 2500000) return { fontSize: "11px" };
+    if (area > 1000000) return { fontSize: "8px" };
+    if (area > 500000) return { fontSize: "6px" };
+    if (area > 300000) return { fontSize: "5.5px" };
     // if (area > 200000) return { fontSize: "4px" };
-    if (area > 100000) return { fontSize: "4px" };
-    return { fontSize: "3.5px" };
+    if (area > 100000) return { fontSize: "5px" };
+    return { fontSize: "4px" };
     // if (area > 70000) return { fontSize: "2.5px" };
     // return { fontSize: "2px" };
   };
@@ -313,7 +270,6 @@ const MapChart = ({ handleNewChosen, currMap, setPlayLoading }) => {
               countriesToShow.indexOf(camelize(country.name.common)) < 0
             )
               return null;
-            // const currStyle = renderStyle(country);
             return (
               <Marker
                 key={country.name.common}
@@ -331,34 +287,6 @@ const MapChart = ({ handleNewChosen, currMap, setPlayLoading }) => {
                 >
                   {country.name.common}
                 </text>
-                {/* {currPos.zoom * 2 + currStyle[1] > 9 ? (
-                  currStyle[1] > country.name.common.length ? (
-                    <text
-                      textAnchor="middle"
-                      pointerEvents="none"
-                      style={currStyle[0]}
-                    >
-                      {country.name.common}
-                    </text>
-                  ) : (
-                    country.name.common.split(" ").map((word, index) => {
-                      return (
-                        <text
-                          key={word + index}
-                          textRendering="optimizeSpeed"
-                          textAnchor="middle"
-                          pointerEvents="none"
-                          y={(currStyle[1] / 1.3 + 1.3) * index}
-                          style={currStyle[0]}
-                        >
-                          {word}
-                        </text>
-                      );
-                    })
-                  )
-                ) : (
-                  <></>
-                )} */}
               </Marker>
             );
           })}

@@ -12,6 +12,7 @@ const Leaderboard = ({ setShowGlobe }) => {
   useEffect(() => {
     setShowGlobe(true);
     
+    //get leaderboard data from the server
     axios(`${process.env.REACT_APP_BACKEND_URI}/getLeaderboard`, {
       headers: {
         Accept: "application/json",

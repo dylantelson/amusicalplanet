@@ -1,12 +1,13 @@
 import React from "react";
 
-const CustomiFrame = React.memo(({ src, width, height }) => {
-  if(!src) return null;
+const CustomiFrame = React.memo(({ trackId, width, height }) => {
+  if(!trackId || trackId === "undefined") return null;
+  console.log("SRC:", trackId);
   return (
     <iframe
-      src={src}
-      title={`Spotify Web Player ${src}`}
-      key={src}
+      src={`https://open.spotify.com/embed/track/${trackId}`}
+      title={`Spotify Web Player ${trackId}`}
+      key={trackId}
       width={width}
       height={height}
       frameBorder="0"

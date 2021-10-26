@@ -72,7 +72,7 @@
     },
     {
       "country": "Canada",
-      "difficulty": "Medium",
+      "difficulty": "Hard",
 			"playlistId": "0PSIeEbRwcMewVtMp1HsBh"
     },
     {
@@ -92,7 +92,7 @@
     },
     {
       "country": "Dominican Rep",
-      "difficulty": "Medium",
+      "difficulty": "Hard",
 			"playlistId": "4LRDG2CYFmzKUz4ZSx3kAl"
     },
     {
@@ -137,7 +137,7 @@
     },
     {
       "country": "Paraguay",
-      "difficulty": "Hard",
+      "difficulty": "Medium",
 			"playlistId": "6mjbOGvMnacK5oPmqxlR2Q"
     },
     {
@@ -147,12 +147,12 @@
     },
     {
       "country": "Venezuela",
-      "difficulty": "Hard",
+      "difficulty": "Medium",
 			"playlistId": "1q78pdUD8xExdzjEaqFSp3"
     },
     {
       "country": "Peru",
-      "difficulty": "Hard",
+      "difficulty": "Medium",
 			"playlistId": "5V4vG7twdJXeobdkxhAbDD"
     },
     {
@@ -207,7 +207,7 @@
     },
     {
       "country": "Ghana",
-      "difficulty": "Medium",
+      "difficulty": "Hard",
 			"playlistId": "3w84XGZUM5omvMBu5AmWBL"
     },
     {
@@ -302,7 +302,7 @@
     },
     {
       "country": "Philippines",
-      "difficulty": "Medium",
+      "difficulty": "Hard",
 			"playlistId": "2lkkc59sbl27jJEyNBQKrs"
     },
     {
@@ -610,12 +610,10 @@
   "northAmerica": [
     {
       "country": "Canada",
-      "difficulty": "Medium",
 			"playlistId": "0PSIeEbRwcMewVtMp1HsBh"
     },
     {
       "country": "United States",
-      "difficulty": "Easy",
 			"playlistId": "574Eur5rJ4oO11PzUoQhVb"
     },
     {

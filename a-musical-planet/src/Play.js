@@ -33,8 +33,6 @@ const Play = ({
     setCurrChosen(newChosen);
   }, []);
 
-  //first value is a bool on whether to show popup,
-  //second is the score to show
   const [popup, setPopup] = useState({
     show: false,
     roundScore: 0,
@@ -55,6 +53,7 @@ const Play = ({
   };
 
   const nextTrack = () => {
+    if(!audioRef.current) return;
     setPopup({
       ...popup,
       show: false,
@@ -65,6 +64,8 @@ const Play = ({
       return setRedirect("login");
     }
 
+    //Get random song from random playlists
+    //Redo if new country is equal to the previous country
     let relevantPlaylists = Playlists[currMap];
     if (currMap.slice(0, 5) === "world") {
       if (currMap.slice(5) === "Easy")
@@ -86,9 +87,8 @@ const Play = ({
     if (relevantPlaylists[currPlaylistIndex].country === currTrack.location) {
       nextTrack();
       return;
-      // if (currPlaylistIndex > 0) currPlaylistIndex--;
-      // else currPlaylistIndex++;
     }
+
     fetch(
       `https://api.spotify.com/v1/playlists/${relevantPlaylists[currPlaylistIndex].playlistId}`,
       {
@@ -105,6 +105,8 @@ const Play = ({
         while (track === "") {
           trackIndex = Math.floor(Math.random() * data.tracks.items.length);
           track = data.tracks.items[trackIndex].track;
+          //Sometimes tracks have no preview_url, which is the 30 second snippet
+          //we rely on. If this happens, we get a new track from the same country
           if (track.preview_url === null) {
             console.log(
               "Track",
@@ -137,16 +139,15 @@ const Play = ({
         );
         console.log("err", err);
         console.log("err status", err.status);
+        if (err.status === 401) {
+          return refreshToken();
+        }
         if (err.status === 400)
           return window.location.replace(
             `${process.env.REACT_APP_BACKEND_URI}/getNewToken`
           );
-        if (err.status === 401) {
-          return refreshToken();
-        }
-        if (err.status === 404) return nextTrack();
-        //this is only really for error 401, meaning
-        return setRedirect("maps");
+        if (err.status === 404) return nextTrack(); 
+        else return setRedirect("maps");
       });
   };
 
@@ -162,6 +163,11 @@ const Play = ({
     });
   };
 
+  //If mid-game the access token has expired,
+  //we refresh it in the moment so that the user can
+  //continue their game. If this fails, it likely means
+  //the refresh token is invalid so we have to redirect
+  //to the server.
   const refreshToken = () => {
     fetch(`${process.env.REACT_APP_BACKEND_URI}/refreshToken`, {
       method: "GET",
@@ -173,9 +179,11 @@ const Play = ({
     })
       .then((newAccessToken) => newAccessToken.json())
       .then((data) => {
+        console.log("GOT DATA");
         if (data && data.access_token) {
+          console.log("SETTING TOKEN", data.access_token);
           setAccessTokenHandler(data.access_token);
-          return nextTrack();
+          return;
         }
         return window.location.replace(
           `${process.env.REACT_APP_BACKEND_URI}/getNewToken`
@@ -183,6 +191,9 @@ const Play = ({
       });
   };
 
+  //After the guess is given, we remove points based on the map, country distance,
+  //and the amount of time taken, then we change the color based on the score and
+  //show the GuessPopup.
   const guessGiven = () => {
     audioRef.current.pause();
     const currChosenCountryDOM = document.querySelector(
@@ -192,7 +203,7 @@ const Play = ({
     //check how many seconds have passed since round started
     let scoreTimedRemoval = Math.round((Date.now() - currTrack.startTime) / 1000);
     //
-    scoreTimedRemoval < 20 ? scoreTimedRemoval = 0 : scoreTimedRemoval *= 10;
+    scoreTimedRemoval < 20 ? scoreTimedRemoval = 0 : scoreTimedRemoval = (scoreTimedRemoval - 20) * 30;
 
     console.log("REMOVING", scoreTimedRemoval, "POINTS FOR TIME");
     if (currChosenCountryDOM) {
@@ -282,26 +293,30 @@ const Play = ({
         },
       ],
     });
-    // if (currTrack.location === currChosen) {
-    //   //alert(`${currChosen} is correct!`);
-    // } else {
-    //   //alert(  `You guessed ${currChosen} but the answer was ${currTrack.location}!`);
-    // }
-    // getNewArtist();
   };
 
+  //We make sure we have an access token, as the user could refresh /play after
+  //it expires. If the map is done loading, we start a new game
   useEffect(() => {
     if (accessToken === null || accessToken === "") return setRedirect("login");
     setShowGlobe(false);
     if (!loading) newGame();
   }, [loading]);
 
+  //If accessToken is changed by refreshToken(), then we need to call nextTrack() through here
+  //This is because if called right after setting the new token, it will end in an infinite loop
+  //as it thinks the previous token is the current one.
+  //nextTrack() works for current use- if at some point something needs the token that could end up
+  //refreshing it without wanting to go to the next track, this would have to be altered.
+  useEffect(() => {
+      if(!loading)
+        nextTrack();
+  }, [accessToken]);
+
   if (redirect !== "") {
     return <Redirect to={`/${redirect}`} />;
   }
-  // if (redirect === "login") {
-  //   return <Redirect to="/login" />;
-  // }
+
   return (
     <>
       <div className="play-section">
