@@ -121,7 +121,7 @@ app.get("/login", function (req, res) {
 
       let access_token_expire_date = new Date();
       access_token_expire_date.setTime(
-      access_token_expire_date.getTime() + 60 * 60 * 1000
+        access_token_expire_date.getTime() + 60 * 60 * 1000
       );
 
       req.session.user = {
@@ -200,12 +200,15 @@ app.get("/refreshToken", function (req, res) {
   };
   request.post(authOptions, function (error, response, body) {
     console.log(body);
-    if (!body.access_token || body.access_token === "")
-      return createNewSession(res);
+    if (!body.access_token || body.access_token === "") {
+      //if false, the client knows to request a new session
+      console.log("Refreshing token failed, must redirect window to get new tokens");
+      return false;
+    }
 
       let access_token_expire_date = new Date();
       access_token_expire_date.setTime(
-      access_token_expire_date.getTime() + 60 * 1000
+        access_token_expire_date.getTime() + 60 * 60 * 1000
       );
 
     req.session.user = {
@@ -249,7 +252,7 @@ app.get("/getNewToken", function (req, res) {
 
       let access_token_expire_date = new Date();
       access_token_expire_date.setTime(
-      access_token_expire_date.getTime() + 60 * 1000
+        access_token_expire_date.getTime() + 60 * 60 * 1000
       );
 
     req.session.user = {
@@ -309,7 +312,7 @@ app.get("/callback", function (req, res) {
         const parsedBody = JSON.parse(body);
         let access_token_expire_date = new Date();
         access_token_expire_date.setTime(
-        access_token_expire_date.getTime() + 60 * 1000
+          access_token_expire_date.getTime() + 60 * 60 * 1000
         );
         req.session.user = {
           id: JSON.parse(body).id,
@@ -560,6 +563,6 @@ app.options("/", (req, res) => res.send());
 
 let port = process.env.PORT || 8888;
 console.log(
-  `Listening on port ${port}. Go /login to initiate authentication flow.`
+  `Listening on port ${port}.`
 );
 app.listen(port);

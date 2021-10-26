@@ -157,8 +157,8 @@ const MapChart = ({ handleNewChosen, currMap, setPlayLoading }) => {
     if (area > 500000) return { fontSize: "6px" };
     if (area > 300000) return { fontSize: "5.5px" };
     // if (area > 200000) return { fontSize: "4px" };
-    if (area > 100000) return { fontSize: "5px" };
-    return { fontSize: "4px" };
+    if (area > 100000) return { fontSize: "4.5px" };
+    return { fontSize: "3.5px" };
     // if (area > 70000) return { fontSize: "2.5px" };
     // return { fontSize: "2px" };
   };

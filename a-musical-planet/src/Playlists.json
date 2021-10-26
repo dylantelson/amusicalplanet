@@ -71,6 +71,36 @@
 			"playlistId": "2oQkWZ2EVbYeSxCPNncq91"
     },
     {
+      "country": "Norway",
+      "difficulty": "Hard",
+      "playlistId": "1MBSjr50SEPmZ5rr16Q8U8"
+    },
+    {
+      "country": "Sweden",
+      "difficulty": "Hard",
+      "playlistId": "5CbtzIclUlyorZ5wHoZNz6"
+    },
+    {
+      "country": "Denmark",
+      "difficulty": "Hard",
+      "playlistId": "0lENHMiL16FRopXzNFOl0A"
+    },
+    {
+      "country": "Finland",
+      "difficulty": "Hard",
+      "playlistId": "4Z1ocxaWZHRFl9ug2uJnwo"
+    },
+    {
+      "country": "Latvia",
+      "difficulty": "Hard",
+      "playlistId": "0mWWB9RYEjS1OukKb87sts"
+    },
+    {
+      "country": "Serbia",
+      "difficulty": "Hard",
+      "playlistId": "2N1AJRgcT9HJHelmDgxdNE"
+    },
+    {
       "country": "Canada",
       "difficulty": "Hard",
 			"playlistId": "0PSIeEbRwcMewVtMp1HsBh"
@@ -477,6 +507,30 @@
     {
       "country": "Bosnia",
       "playlistId": "3YDxzefl5kmaDKACoHBT7M"
+    },
+    {
+      "country": "Norway",
+      "playlistId": "1MBSjr50SEPmZ5rr16Q8U8"
+    },
+    {
+      "country": "Sweden",
+      "playlistId": "5CbtzIclUlyorZ5wHoZNz6"
+    },
+    {
+      "country": "Denmark",
+      "playlistId": "0lENHMiL16FRopXzNFOl0A"
+    },
+    {
+      "country": "Finland",
+      "playlistId": "4Z1ocxaWZHRFl9ug2uJnwo"
+    },
+    {
+      "country": "Latvia",
+      "playlistId": "0mWWB9RYEjS1OukKb87sts"
+    },
+    {
+      "country": "Serbia",
+      "playlistId": "2N1AJRgcT9HJHelmDgxdNE"
     }
   ],
   "africa": [

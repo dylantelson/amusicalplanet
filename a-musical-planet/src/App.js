@@ -92,7 +92,6 @@ function App() {
   //this is to ensure the userData is set even if on first
   //render the accessToken isn't set
   useEffect(() => {
-    if(accessToken === "TEST") return; //DELETE THIS
     if (accessToken !== "" && accessToken !== null) {
       setUser();
     }

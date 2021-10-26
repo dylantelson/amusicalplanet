@@ -179,15 +179,18 @@ const Play = ({
     })
       .then((newAccessToken) => newAccessToken.json())
       .then((data) => {
-        console.log("GOT DATA");
         if (data && data.access_token) {
-          console.log("SETTING TOKEN", data.access_token);
-          setAccessTokenHandler(data.access_token);
-          return;
+          console.log("SETTING TOKEN FROM /PLAY", data.access_token);
+          return setAccessTokenHandler(data.access_token);
         }
         return window.location.replace(
           `${process.env.REACT_APP_BACKEND_URI}/getNewToken`
         );
+      })
+      .catch((err) => {
+        console.log("ERROR");
+        console.log(err);
+        setRedirect("login");
       });
   };
 

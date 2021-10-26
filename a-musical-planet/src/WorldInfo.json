@@ -3533,7 +3533,7 @@
         },
         "latlng": [
             42.5,
-            25
+            26.2
         ],
         "landlocked": false,
         "borders": [
@@ -4004,7 +4004,7 @@
             }
         },
         "latlng": [
-            44,
+            43.6,
             17.7
         ],
         "landlocked": false,
@@ -10170,8 +10170,8 @@
             }
         },
         "latlng": [
-            56,
-            10
+            56.2,
+            9.2
         ],
         "landlocked": false,
         "borders": [
@@ -11753,8 +11753,8 @@
             }
         },
         "latlng": [
-            64,
-            26
+            62,
+            26.5
         ],
         "landlocked": false,
         "borders": [
@@ -12815,7 +12815,7 @@
             }
         },
         "latlng": [
-            52,
+            55.5,
             -2
         ],
         "landlocked": false,
@@ -21399,7 +21399,7 @@
             }
         },
         "latlng": [
-            57,
+            56.5,
             25
         ],
         "landlocked": false,
@@ -26463,8 +26463,8 @@
             }
         },
         "latlng": [
-            62,
-            10
+            60.5,
+            9
         ],
         "landlocked": false,
         "borders": [
@@ -28775,7 +28775,7 @@
             }
         },
         "latlng": [
-            39.5,
+            39,
             -8
         ],
         "landlocked": false,
@@ -32160,8 +32160,8 @@
             }
         },
         "latlng": [
-            44,
-            21
+            44.2,
+            20.8
         ],
         "landlocked": true,
         "borders": [
@@ -33075,7 +33075,7 @@
         },
         "latlng": [
             62,
-            15
+            16
         ],
         "landlocked": false,
         "borders": [
