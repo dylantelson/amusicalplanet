@@ -1,11 +1,11 @@
 {
-  "asia": "#E5B961",
-  "europe": "#D4A29C",
-  "africa": "#EDCC8B",
-  "southAmerica": "#E8B298",
-  "northAmerica": "#C7877F",
-  "oceania": "#7FC6A4",
-  "water": "#BDD1C5",
-  "russia": "#DDAE7F",
+  "asia": "#a0c60d",
+  "europe": "#2ab673",
+  "africa": "#d0d36d",
+  "southAmerica": "#b3c10b",
+  "northAmerica": "#62ac55",
+  "oceania": "#e7ae5e",
+  "water": "#1e75bd",
+  "empty": "#D1D6DB",
   "Selected": "#FFAAFA"
 }

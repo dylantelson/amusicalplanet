@@ -46,17 +46,9 @@ const Leaderboard = ({ setShowGlobe }) => {
         </select>
       </div>
       <div className="leaderboard">
-        <img
-          src="/next.png"
-          id="leftArrow"
-          alt="Previous Arrow"
-          className={(!leaderboardStats[chosenMap] ? "hidden " : "") + (currPage <= 0 ? "disabledArrow" : "")}
-          onClick={() => (currPage > 0 ? setCurrPage(currPage - 1) : null)}
-        />
         <div className="leaderboardUsers">
           {leaderboardStats[chosenMap] ? (
             leaderboardStats[chosenMap]
-              .slice(currPage * 5, currPage * 5 + 5)
               .map((userData, rank) => (
                 <LeaderboardUser
                   key={
@@ -68,16 +60,9 @@ const Leaderboard = ({ setShowGlobe }) => {
                 />
               ))
           ) : (
-            <h3>LOADING...</h3>
+            <div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>
           )}
         </div>
-        <img
-          src="/next.png"
-          id="rightArrow"
-          alt="Next Arrow"
-          className={(!leaderboardStats[chosenMap] ? "hidden " : "") + (currPage >= 4 ? "disabledArrow" : "")}
-          onClick={() => (currPage < 4 ? setCurrPage(currPage + 1) : null)}
-        />
       </div>
     </div>
   );

@@ -29,7 +29,7 @@ const MapPropsJSON = require("./MapProps.json");
 //   world: worldGeoSVG,
 // };
 
-const borderWidth = 0.2;
+const borderWidth = 0.3;
 
 //Calculate color for country hover/active states
 function LightenDarkenColor(col, amt) {
@@ -116,6 +116,7 @@ const MapChart = ({ handleNewChosen, currMap, setPlayLoading }) => {
         setPlayLoading(false);
       }
     }, 100);
+    return () => clearInterval(waitForMapLoad);
   }, [currMap]);
 
 
@@ -127,9 +128,10 @@ const MapChart = ({ handleNewChosen, currMap, setPlayLoading }) => {
         countriesToShow.indexOf(country.id) >= 0
           ? `fill: ${
               colors[country.getAttribute("continent")]
-            }; pointer-events: all; stroke: #000000; stroke-width: ${borderWidth}; outline: none; visibility: visible;`
-          : `fill: #ccc; pointer-events: none; stroke: #000000; stroke-width: ${borderWidth}; outline: none; visibility: visible`
+            }; pointer-events: all; stroke: #1e75bd; stroke-width: ${borderWidth}; outline: none; visibility: visible;`
+          : `fill: ${colors.empty}; pointer-events: none; stroke: #1e75bd; stroke-width: ${borderWidth}; outline: none; visibility: visible`
       );
+      if(country.id === "antarctica") country.setAttribute("style", "display: none");
     }
   }
 
@@ -151,31 +153,29 @@ const MapChart = ({ handleNewChosen, currMap, setPlayLoading }) => {
   };
 
   const renderStyle = (area) => {
-    if (area > 5000000) return { fontSize: "19px" };
-    if (area > 2500000) return { fontSize: "11px" };
-    if (area > 1000000) return { fontSize: "8px" };
-    if (area > 500000) return { fontSize: "6px" };
-    if (area > 300000) return { fontSize: "5.5px" };
+    let fontSize;
+    if (area > 5000000) fontSize = 19;
+    else if (area > 2500000) fontSize = 11;
+    else if (area > 1000000) fontSize = 8;
+    else if (area > 500000) fontSize = 6;
+    else if (area > 300000) fontSize = 5.2;
     // if (area > 200000) return { fontSize: "4px" };
-    if (area > 100000) return { fontSize: "4.5px" };
-    return { fontSize: "3.5px" };
-    // if (area > 70000) return { fontSize: "2.5px" };
-    // return { fontSize: "2px" };
+    else if (area > 100000) fontSize = 4.2;
+    else fontSize = 3;
+
+    if(currMap === "worldEasy") fontSize += 3.5;
+    return { fontSize: fontSize + "px" };
   };
 
   const hoveredStyle = (color) => {
     return {
       fill: LightenDarkenColor(color, 15),
-      stroke: "#000",
-      strokeWidth: borderWidth,
       outline: "none",
     };
   };
   const selectedStyle = (color) => {
     return {
       fill: LightenDarkenColor(color, 40),
-      stroke: "#000",
-      strokeWidth: borderWidth,
       outline: "none",
     };
   };
@@ -199,7 +199,7 @@ const MapChart = ({ handleNewChosen, currMap, setPlayLoading }) => {
 
   return (
     <div className="map">
-      {loading ? <h1 className="mapLoading">Loading...</h1> : <></>}
+      {loading ? <div className="lds-ellipsis"><div></div><div></div><div></div><div></div></div> : <></>}
       <ComposableMap
         data-tip=""
         projection={projection}

@@ -1,10 +1,11 @@
 #About {
-  margin: 1vh 0px;
-  height: 80vh;
+  margin: 0;
+  height: 100vh;
   display: flex;
   flex-direction: column;
   flex: 0 1 auto;
   align-items: center;
+  background: rgba(0, 0, 0, 0.85);
 }
 
 #About h1 {
@@ -17,23 +18,64 @@
 }
 
 #AboutText {
-  margin-top: 55px;
+  margin-top: 10px;
   margin-bottom: 0px;
   display: flex;
   flex-direction: column;
   // justify-content: center;
   align-items: center;
-  background: white;
-  border-radius: 100px;
-  padding: 30px;
-  width: 40%;
-  max-width: 600px;
+  // border-radius: 100px;
+  // padding: 30px;
+  width: 100%;
+  text-align: left;
+  max-width: 1250px;
+  max-height: 80vh;
+  // padding-bottom: 4vh;
+  overflow-y: scroll;
+  mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1), 95%, rgba(0, 0, 0, 0));
 }
 
 #AboutText p {
   // margin: auto;
-  max-width: 650px;
-  // width: 100%;
+  // max-width: 650px;
+  width: 80%;
   font-size: 19px;
-  color: black;
+  margin-top: 0px;
+  color: white;
+  line-height: 27px;
+}
+
+#AboutText h2 {
+  color: white;
+  font-family: 'Inter-Bold', arial, sans-serif;
+}
+
+#extra {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+#AboutText a:not(#github) {
+  text-decoration: none;
+  color: #1C75BC;
+  &:hover {
+    text-decoration: underline;
+  }
+  &:visited {
+    color: #1C75BC;
+  }
+}
+
+#github {
+  height: fit-content;
+  font-family: 'Inter-Bold', arial, sans-serif;
+  font-size: 1.5em;
+  text-decoration: none;
+  color: white;
+}
+
+::-webkit-scrollbar {
+  display: none;
 }

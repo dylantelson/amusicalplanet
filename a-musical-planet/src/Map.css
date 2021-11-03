@@ -11,24 +11,3 @@ bigger and moving it to the left covers both margins. */
 .map rect {
   transform: scale(2, 2) translate(-25%);
 }
-
-.mapLoading {
-  position: absolute;
-  width: 100%;
-  margin: auto;
-  margin-top: 10%;
-}
-/* .rsm-marker {
-  color: "#ACACAC";
-  width: 100px;
-  display: block;
-  max-width: 100px;
-  white-space: pre-wrap;
-  height: 100px;
-} */
-
-/* svg {
-  display: inline-block;
-  vertical-align: middle;
-  width: 100%;
-} */

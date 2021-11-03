@@ -300,7 +300,7 @@ $small: 650px;
                   //fallback
                   height: 50px;
                   //optimal
-                  height: #{"clamp(34px, 6vh, 56px)"};
+                  height: #{"clamp(34px, 6vh, 60px)"};
                   border-radius: 160px;
                   transform: translateX(var(--x));
                   transition: transform var(--duration) ease;

@@ -66,6 +66,36 @@
 			"playlistId": "2cyLQ802g8fXN1uiF3ma8w"
     },
     {
+      "country": "Lithuania",
+      "difficulty": "Hard",
+			"playlistId": "5aWAbzzmNWO1u97oISMRNJ"
+    },
+    {
+      "country": "Macedonia",
+      "difficulty": "Hard",
+			"playlistId": "2fuxV6OID19OQC0W9UtW9X"
+    },
+    {
+      "country": "Czechia",
+      "difficulty": "Hard",
+			"playlistId": "2PsbQ6ftnFjO4HOK2i6iIA"
+    },
+    {
+      "country": "Slovenia",
+      "difficulty": "Hard",
+			"playlistId": "1TatzPsrGuZG9AH13HTbyK"
+    },
+    {
+      "country": "Croatia",
+      "difficulty": "Hard",
+			"playlistId": "5J2M7DduIiky449qE1qWA9"
+    },
+    {
+      "country": "Hungary",
+      "difficulty": "Hard",
+			"playlistId": "33BWRi2ryBwt2jAdwEnunH"
+    },
+    {
       "country": "Poland",
       "difficulty": "Hard",
 			"playlistId": "2oQkWZ2EVbYeSxCPNncq91"
@@ -139,6 +169,11 @@
       "country": "Panama",
       "difficulty": "Hard",
 			"playlistId": "0sWwhwwVhja1WRVgF6YCnT"
+    },
+    {
+      "country": "Nicaragua",
+      "difficulty": "Hard",
+      "playlistId": "5wo9FrPx07WlEjymQEPLDq"
     },
     {
       "country": "Haiti",
@@ -304,6 +339,26 @@
       "country": "DR Congo",
       "difficulty": "Hard",
 			"playlistId": "2EchA1jp8PplmETrwElMzz"
+    },
+    {
+      "country": "Somalia",
+      "difficulty": "Hard",
+			"playlistId": "1DSvvhlXW6HhKyMq4vMsNZ"
+    },
+    {
+      "country": "Ivory Coast",
+      "difficulty": "Hard",
+			"playlistId": "235kHjobRgRArlmKD1j3N8"
+    },
+    {
+      "country": "Senegal",
+      "difficulty": "Hard",
+			"playlistId": "05ecUJCSXAy6v07mt3pDeb"
+    },
+    {
+      "country": "Zambia",
+      "difficulty": "Hard",
+			"playlistId": "2iR6aBEh7umGfrTWxQ7hIN"
     },
     {
       "country": "South Korea",
@@ -473,6 +528,30 @@
 			"playlistId": "2cyLQ802g8fXN1uiF3ma8w"
     },
     {
+      "country": "Lithuania",
+			"playlistId": "5aWAbzzmNWO1u97oISMRNJ"
+    },
+    {
+      "country": "Macedonia",
+			"playlistId": "2fuxV6OID19OQC0W9UtW9X"
+    },
+    {
+      "country": "Czechia",
+			"playlistId": "2PsbQ6ftnFjO4HOK2i6iIA"
+    },
+    {
+      "country": "Slovenia",
+			"playlistId": "1TatzPsrGuZG9AH13HTbyK"
+    },
+    {
+      "country": "Croatia",
+			"playlistId": "5J2M7DduIiky449qE1qWA9"
+    },
+    {
+      "country": "Hungary",
+			"playlistId": "33BWRi2ryBwt2jAdwEnunH"
+    },
+    {
       "country": "Poland",
 			"playlistId": "2oQkWZ2EVbYeSxCPNncq91"
     },
@@ -617,6 +696,22 @@
     {
       "country": "DR Congo",
       "playlistId": "2EchA1jp8PplmETrwElMzz"
+    },
+    {
+      "country": "Somalia",
+			"playlistId": "1DSvvhlXW6HhKyMq4vMsNZ"
+    },
+    {
+      "country": "Ivory Coast",
+			"playlistId": "235kHjobRgRArlmKD1j3N8"
+    },
+    {
+      "country": "Senegal",
+			"playlistId": "05ecUJCSXAy6v07mt3pDeb"
+    },
+    {
+      "country": "Zambia",
+			"playlistId": "2iR6aBEh7umGfrTWxQ7hIN"
     }
   ],
   "southAmerica": [
@@ -693,6 +788,10 @@
     {
       "country": "Panama",
       "playlistId": "0sWwhwwVhja1WRVgF6YCnT"
+    },
+    {
+      "country": "Nicaragua",
+      "playlistId": "5wo9FrPx07WlEjymQEPLDq"
     },
     {
       "country": "Haiti",
@@ -815,7 +914,7 @@
 			"playlistId": "3KUG0cDOr8yZ07buYZx30k"
     },
     {
-      "country": "Solomon Is.",
+      "country": "Solomon Islands",
 			"playlistId": "6Eh0iVkDKg7ovSCu4OmJrs"
     },
     {

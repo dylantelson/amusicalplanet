@@ -4,9 +4,6 @@ import connectMongoDBSession from "connect-mongodb-session";
 import mongoose from "mongoose";
 import request from "request";
 import querystring from "querystring";
-import fetch from "node-fetch";
-
-import UserDAO from "./userDAO.js";
 
 import cors from "cors";
 import dotenv from "dotenv";
