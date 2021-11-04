@@ -2,8 +2,6 @@ import React from 'react'
 // import ChooseMap from "ChooseMap.scss"
 
 const RecordPlayer = ({ map }) => {
-    console.log(map.slice(0,5));
-
     let color = "green";
     if(map === "worldMedium") color = "yellow";
     else if(map === "worldHard") color = "red";
