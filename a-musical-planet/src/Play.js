@@ -204,11 +204,11 @@ const Play = ({
     );
 
     //check how many seconds have passed since round started
-    let scoreTimedRemoval = Math.round((Date.now() - currTrack.startTime) / 1000);
+    // let scoreTimedRemoval = Math.round((Date.now() - currTrack.startTime) / 1000);
     //
-    scoreTimedRemoval < 20 ? scoreTimedRemoval = 0 : scoreTimedRemoval = (scoreTimedRemoval - 20) * 30;
+    // scoreTimedRemoval < 20 ? scoreTimedRemoval = 0 : scoreTimedRemoval = (scoreTimedRemoval - 20) * 30;
 
-    console.log("REMOVING", scoreTimedRemoval, "POINTS FOR TIME");
+    // console.log("REMOVING", scoreTimedRemoval, "POINTS FOR TIME");
     if (currChosenCountryDOM) {
       currChosenCountryDOM.classList.remove("pressed");
       currChosenCountryDOM.style.fill =
@@ -219,7 +219,8 @@ const Play = ({
     })[0];
     if (currChosen === currTrack.location) {
       console.log("Score removed to time: ")
-      const score = Math.max(0, 5000 - scoreTimedRemoval);
+      // const score = Math.max(0, 5000 - scoreTimedRemoval);
+      const score = 5000;
       setPopup({
         sessionScore: popup.sessionScore + score,
         show: true,
@@ -279,7 +280,8 @@ const Play = ({
         break;
     }
 
-    let score = Math.max(0, maxScore - scoreDeduction - scoreTimedRemoval);
+    // let score = Math.max(0, maxScore - scoreDeduction - scoreTimedRemoval);
+    let score = Math.max(0, maxScore - scoreDeduction);
 
     setPopup({
       show: true,
