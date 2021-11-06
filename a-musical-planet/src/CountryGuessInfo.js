@@ -14,7 +14,6 @@ const CountryGuessInfo = ({ currChosen, guessGiven, audioRef, trackURL, loading 
     <>
       {currChosen !== "" ? 
         <div className="countryGuessInfo">
-          <h2>{currChosen}</h2>
           <img
             src={"/flags/" + countryCode.toLowerCase() + ".svg"}
             alt={currChosen + " flag"}
