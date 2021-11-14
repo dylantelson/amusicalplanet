@@ -18,7 +18,7 @@ const Play = ({
   setAccessTokenHandler,
   currMap,
   sendScoreToServer,
-  setShowGlobe
+  setShowGlobe,
 }) => {
   const [currTrack, setCurrTrack] = useState({ round: 0 });
   const [redirect, setRedirect] = useState("");
@@ -53,7 +53,7 @@ const Play = ({
   };
 
   const nextTrack = () => {
-    if(!audioRef.current) return;
+    if (!audioRef.current) return;
     setPopup({
       ...popup,
       show: false,
@@ -127,7 +127,7 @@ const Play = ({
           name: data.tracks.items[trackIndex].track.name,
           round: currTrack.round < 5 ? currTrack.round + 1 : 1,
           id: data.tracks.items[trackIndex].track.id,
-          startTime: Date.now()
+          startTime: Date.now(),
         });
         audioRef.current.load();
         audioRef.current.play();
@@ -146,7 +146,7 @@ const Play = ({
           return window.location.replace(
             `${process.env.REACT_APP_BACKEND_URI}/getNewToken`
           );
-        if (err.status === 404) return nextTrack(); 
+        if (err.status === 404) return nextTrack();
         else return setRedirect("maps");
       });
   };
@@ -180,7 +180,6 @@ const Play = ({
       .then((newAccessToken) => newAccessToken.json())
       .then((data) => {
         if (data && data.access_token) {
-          console.log("SETTING TOKEN FROM /PLAY", data.access_token);
           return setAccessTokenHandler(data.access_token);
         }
         return window.location.replace(
@@ -218,7 +217,6 @@ const Play = ({
       return country.name.common === currTrack.location;
     })[0];
     if (currChosen === currTrack.location) {
-      console.log("Score removed to time: ")
       // const score = Math.max(0, 5000 - scoreTimedRemoval);
       const score = 5000;
       setPopup({
@@ -314,8 +312,7 @@ const Play = ({
   //nextTrack() works for current use- if at some point something needs the token that could end up
   //refreshing it without wanting to go to the next track, this would have to be altered.
   useEffect(() => {
-      if(!loading)
-        nextTrack();
+    if (!loading) nextTrack();
   }, [accessToken]);
 
   if (redirect !== "") {

@@ -1,8 +1,7 @@
 import React from "react";
 
 const CustomiFrame = React.memo(({ trackId, width, height }) => {
-  if(!trackId || trackId === "undefined") return null;
-  console.log("SRC:", trackId);
+  if (!trackId || trackId === "undefined") return null;
   return (
     <iframe
       src={`https://open.spotify.com/embed/track/${trackId}`}

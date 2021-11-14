@@ -82,7 +82,12 @@ app.get("/login", function (req, res) {
   if (!req.session.user || !req.session.user.refresh_token) {
     return createNewSession(res);
   }
-  if (req.session.user.access_token && req.session.user.access_token !== "" && req.session.user.access_token_expire_date && req.session.user.access_token_expire_date > new Date().getTime()) {
+  if (
+    req.session.user.access_token &&
+    req.session.user.access_token !== "" &&
+    req.session.user.access_token_expire_date &&
+    req.session.user.access_token_expire_date > new Date().getTime()
+  ) {
     console.log("Session existing:", req.session.user.refresh_token);
     return res.redirect(
       process.env.FRONTEND_URI +
@@ -124,8 +129,8 @@ app.get("/login", function (req, res) {
       req.session.user = {
         id: req.session.user.id,
         access_token,
-        access_token_expire_date, 
-        refresh_token: req.session.user.refresh_token
+        access_token_expire_date,
+        refresh_token: req.session.user.refresh_token,
       };
 
       request.get(
@@ -140,17 +145,18 @@ app.get("/login", function (req, res) {
         function (error, response, body) {
           const parsedBody = JSON.parse(body);
           let profilePic = "NONE";
-          if(parsedBody.images && parsedBody.images[0]) profilePic = parsedBody.images[0].url;
-          User.updateOne({ userName: parsedBody.id }, { profilePicture: profilePic});
-  
-          if(parsedBody.images && parsedBody.images[0]) console.log(parsedBody.images[0].url);
+          if (parsedBody.images && parsedBody.images[0])
+            profilePic = parsedBody.images[0].url;
+          User.updateOne(
+            { userName: parsedBody.id },
+            { profilePicture: profilePic }
+          );
+
+          if (parsedBody.images && parsedBody.images[0])
+            console.log(parsedBody.images[0].url);
           else console.log("NO IMAGE FOUND!");
 
-          return res.redirect(
-            uri +
-              "/auth/?access_token=" +
-              access_token
-          );
+          return res.redirect(uri + "/auth/?access_token=" + access_token);
         }
       );
     });
@@ -199,14 +205,16 @@ app.get("/refreshToken", function (req, res) {
     console.log(body);
     if (!body.access_token || body.access_token === "") {
       //if false, the client knows to request a new session
-      console.log("Refreshing token failed, must redirect window to get new tokens");
+      console.log(
+        "Refreshing token failed, must redirect window to get new tokens"
+      );
       return false;
     }
 
-      let access_token_expire_date = new Date();
-      access_token_expire_date.setTime(
-        access_token_expire_date.getTime() + 60 * 60 * 1000
-      );
+    let access_token_expire_date = new Date();
+    access_token_expire_date.setTime(
+      access_token_expire_date.getTime() + 60 * 60 * 1000
+    );
 
     req.session.user = {
       id: req.session.user.id,
@@ -225,7 +233,10 @@ app.get("/refreshToken", function (req, res) {
 app.get("/getNewToken", function (req, res) {
   if (!req.session.user || !req.session.user.refresh_token)
     return createNewSession(res);
-  console.log("Refreshing token from /getNewToken:", req.session.user.refresh_token);
+  console.log(
+    "Refreshing token from /getNewToken:",
+    req.session.user.refresh_token
+  );
   let authOptions = {
     url: "https://accounts.spotify.com/api/token",
     form: {
@@ -247,10 +258,10 @@ app.get("/getNewToken", function (req, res) {
     if (!body.access_token || body.access_token === "")
       return createNewSession(res);
 
-      let access_token_expire_date = new Date();
-      access_token_expire_date.setTime(
-        access_token_expire_date.getTime() + 60 * 60 * 1000
-      );
+    let access_token_expire_date = new Date();
+    access_token_expire_date.setTime(
+      access_token_expire_date.getTime() + 60 * 60 * 1000
+    );
 
     req.session.user = {
       id: req.session.user.id,
@@ -259,11 +270,7 @@ app.get("/getNewToken", function (req, res) {
       refresh_token: req.session.user.refresh_token,
     };
     let uri = process.env.FRONTEND_URI || "http://localhost:3000/auth/";
-    return res.redirect(
-      uri +
-        "/auth/?access_token=" +
-        body.access_token
-    );
+    return res.redirect(uri + "/auth/?access_token=" + body.access_token);
   });
 });
 
@@ -321,7 +328,7 @@ app.get("/callback", function (req, res) {
           if (user) {
             console.log(`USER ${parsedBody.id} ALREADY EXISTS`);
             let profilePic = "NONE";
-            if(parsedBody.images && parsedBody.images[0]) {
+            if (parsedBody.images && parsedBody.images[0]) {
               profilePic = parsedBody.images[0].url;
             }
             //We update the picture whenever a user logs in because often
@@ -329,18 +336,23 @@ app.get("/callback", function (req, res) {
             //weeks old could lose their picture. The alternative could
             //be storing images in the database rather than Spotify's URLs,
             //but that would use much more storage.
-            console.log("UPDATING userName:", parsedBody.id, "With picture", profilePic)
-            User.updateOne({ userName: parsedBody.id }, { profilePicture: profilePic }).then(() => {
-              return res.redirect(
-                uri +
-                  "/auth/?access_token=" +
-                  access_token
-              );
+            console.log(
+              "UPDATING userName:",
+              parsedBody.id,
+              "With picture",
+              profilePic
+            );
+            User.updateOne(
+              { userName: parsedBody.id },
+              { profilePicture: profilePic }
+            ).then(() => {
+              return res.redirect(uri + "/auth/?access_token=" + access_token);
             });
           } else {
             console.log(`CREATING USER WITH ID ${parsedBody.id}`);
             let profilePic = "NONE";
-            if(parsedBody.images && parsedBody.images[0]) profilePic = parsedBody.images[0].url;
+            if (parsedBody.images && parsedBody.images[0])
+              profilePic = parsedBody.images[0].url;
             const user = new User({
               displayName: parsedBody.display_name,
               userName: parsedBody.id,
@@ -366,9 +378,7 @@ app.get("/callback", function (req, res) {
               .then((result) => {
                 console.log(result);
                 return res.redirect(
-                  uri +
-                    "/auth/?access_token=" +
-                    access_token
+                  uri + "/auth/?access_token=" + access_token
                 );
               })
               .catch((err) => console.log(err));
@@ -496,7 +506,7 @@ app.get("/getLeaderboard/", async (req, res) => {
 //   await User.deleteMany({ "profilePicture": {$regex: 'https:\/\/randomuser.me\S*'} });
 // });
 
-//Store the user's new score for the given map. 
+//Store the user's new score for the given map.
 app.post("/newScore/:userSpotifyId/:map/:newScore", async (req, res) => {
   const userSpotifyId = req.params.userSpotifyId;
   const map = req.params.map;
@@ -559,7 +569,5 @@ app.post("/newScore/:userSpotifyId/:map/:newScore", async (req, res) => {
 app.options("/", (req, res) => res.send());
 
 let port = process.env.PORT || 8888;
-console.log(
-  `Listening on port ${port}.`
-);
+console.log(`Listening on port ${port}.`);
 app.listen(port);

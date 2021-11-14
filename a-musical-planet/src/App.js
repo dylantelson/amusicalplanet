@@ -16,7 +16,7 @@ import ChooseMap from "./ChooseMap";
 import About from "./About";
 import Leaderboard from "./Leaderboard";
 import PersonalPage from "./PersonalPage";
-import World from "./World"
+import World from "./World";
 import dotenv from "dotenv";
 import getCookie from "./GetCookie";
 
@@ -210,20 +210,26 @@ function App() {
               ) ? (
                 <Redirect to="/login" />
               ) : (
-                <Login handleLogin={handleLogin}  setShowGlobe={setShowGlobe}/>
+                <Login handleLogin={handleLogin} setShowGlobe={setShowGlobe} />
               )}
             </Route>
             <Route path="/maps">
-              <ChooseMap handleMapChosen={handleMapChosen} setShowGlobe={setShowGlobe} />
+              <ChooseMap
+                handleMapChosen={handleMapChosen}
+                setShowGlobe={setShowGlobe}
+              />
             </Route>
             <Route path="/about">
-              <About  setShowGlobe={setShowGlobe}/>
+              <About setShowGlobe={setShowGlobe} />
             </Route>
             <Route path="/leaderboard">
-              <Leaderboard  setShowGlobe={setShowGlobe}/>
+              <Leaderboard setShowGlobe={setShowGlobe} />
             </Route>
             <Route path="/user/:userName">
-              <PersonalPage handleLogout={handleLogout} setShowGlobe={setShowGlobe} />
+              <PersonalPage
+                handleLogout={handleLogout}
+                setShowGlobe={setShowGlobe}
+              />
             </Route>
             <Route path="/play">
               <Play

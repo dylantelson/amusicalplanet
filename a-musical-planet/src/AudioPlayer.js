@@ -11,7 +11,7 @@ const AudioPlayer = ({ audioRef, trackURL, loading }) => {
   //to update to the correct value
   useEffect(() => {
     inputChangeHandler(1, "volume");
-  }, [])
+  }, []);
 
   const togglePause = () => {
     if (paused === true) audioRef.current.play();
@@ -30,23 +30,29 @@ const AudioPlayer = ({ audioRef, trackURL, loading }) => {
   //Set the gradient to the correct value,
   //then update the slider's value and volume/time
   const inputChangeHandler = (newValue, type) => {
-    const slider = type==="volume" ? document.querySelector("#volumeslider") : document.querySelector("#timeslider");
-    var gradientValue = (newValue-slider.min)/(slider.max-slider.min)*100;
-    slider.style.background = 'linear-gradient(to right, #0db8bb 0%, #0db8bb ' + gradientValue + '%, #fff ' + gradientValue + '%, white 100%)';
-   
-    if(type === "volume") {
+    const slider =
+      type === "volume"
+        ? document.querySelector("#volumeslider")
+        : document.querySelector("#timeslider");
+    var gradientValue =
+      ((newValue - slider.min) / (slider.max - slider.min)) * 100;
+    slider.style.background =
+      "linear-gradient(to right, #0db8bb 0%, #0db8bb " +
+      gradientValue +
+      "%, #fff " +
+      gradientValue +
+      "%, white 100%)";
+
+    if (type === "volume") {
       audioRef.current.volume = newValue;
       setCurrVolume(newValue);
-    }
-    else if(type === "timeUpdated") {
+    } else if (type === "timeUpdated") {
       audioRef.current.currentTime = newValue;
       setCurrTime(newValue);
-    }
-    else if(type === "timePlayed") {
-      console.log("UPDATING CURRTIME");
+    } else if (type === "timePlayed") {
       setCurrTime(newValue);
     }
-  }
+  };
 
   return (
     <div className={loading ? "hidden" : ""}>
@@ -54,7 +60,9 @@ const AudioPlayer = ({ audioRef, trackURL, loading }) => {
         id="audioPlayer"
         controls
         ref={audioRef}
-        onTimeUpdate={() => inputChangeHandler(audioRef.current.currentTime, "timePlayed")}
+        onTimeUpdate={() =>
+          inputChangeHandler(audioRef.current.currentTime, "timePlayed")
+        }
         onPlay={() => (paused ? setPaused(false) : null)}
         onPause={() => (!paused ? setPaused(true) : null)}
       >
@@ -95,20 +103,28 @@ const AudioPlayer = ({ audioRef, trackURL, loading }) => {
           </p>
         </div>
         <div className="volumeControls">
-          <img src="/audiomute.png" alt="audio empty" onClick={() => inputChangeHandler(0, "volume")}/>
-          <input
-              type="range"
-              id="volumeslider"
-              value={currVolume}
-              min="0"
-              max="1"
-              step="0.01"
-              className="volumeSeeker"
-              onChange={(e) => inputChangeHandler(e.target.value, "volume")}
-              // onInput={(e) => sliderInputHandler(e.target)}
-              // onMouseUp={onSeekEnd}
+          <img
+            src="/audiomute.png"
+            alt="audio empty"
+            onClick={() => inputChangeHandler(0, "volume")}
           />
-          <img src="/audiofull.png" alt="audio full" onClick={() => inputChangeHandler(1, "volume")}/>
+          <input
+            type="range"
+            id="volumeslider"
+            value={currVolume}
+            min="0"
+            max="1"
+            step="0.01"
+            className="volumeSeeker"
+            onChange={(e) => inputChangeHandler(e.target.value, "volume")}
+            // onInput={(e) => sliderInputHandler(e.target)}
+            // onMouseUp={onSeekEnd}
+          />
+          <img
+            src="/audiofull.png"
+            alt="audio full"
+            onClick={() => inputChangeHandler(1, "volume")}
+          />
         </div>
       </div>
     </div>
